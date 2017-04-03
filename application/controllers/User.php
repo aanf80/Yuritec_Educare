@@ -10,10 +10,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller {
 
+
+
     public function sign_up()
     {
         $this->load->view('header');
         $this->load->view('user/signup_view');
+        $this->load->view('footer');
+    }
+
+
+
+    public function profile()
+    {
+        $this->load->view('header');
+        $this->load->view('user/profile_view');
         $this->load->view('footer');
     }
 }

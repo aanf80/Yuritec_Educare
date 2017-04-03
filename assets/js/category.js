@@ -90,7 +90,7 @@ $(function() {
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/Yuritec/model/categories/GetCategories.php"  ,
+            url:"/Yuritec_Educare/magazine/getCategories",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -130,7 +130,7 @@ function updateCategory() {
 
     $.ajax(
         {
-            url:"/Yuritec/model/categories/UpdateCategory.php" ,
+            url:"/Yuritec_Educare/magazine/updateCategory" ,
             type: "post",
             data: {
                 categoryid: $('#categoryid').val(),
@@ -150,17 +150,17 @@ function updateCategory() {
         }
     ).fail(
         function () {
-            $.growl.error({message: "El servidor no está disponible :( hjfjky"});
+            $.growl.error({message: "El servidor no está disponible"});
         }
     );
 }
 function newCategory(){
 
     $.ajax({
-        url: "/Yuritec/model/categories/NewCategory.php",
+        url: "/Yuritec_Educare/magazine/insertCategory",
         type: "post",
         data: {
-            nombreCategoria : $('#nombreCategoria').val()
+            categoryname: $('#nombreCategoria').val()
         }
     }).done(
         function(data){

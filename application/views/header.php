@@ -35,6 +35,7 @@
 
 </head>
 <body>
+
 <div align="center">
     <!-- <img src="http://www.ittepic.edu.mx/images/header2.jpg" class="img-responsive" alt=""/> -->
     <img src="<?php echo base_url('assets/img/banner.jpg'); ?>" class="img-responsive" alt=""/>
@@ -45,7 +46,11 @@
     <nav class="navbar navbar-inverse ">
 
         <div class="container">
-
+            <script>
+                $('.carousel').carousel({
+                    interval: 5000 //changes the speed
+                })
+            </script>
             <div class="navbar-header">
 
                 <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -55,23 +60,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo site_url('/inicio') ?>">Inicio</a>
+                <a class="navbar-brand" href="<?php echo site_url('/home') ?>">Inicio</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <?php echo anchor('/nosotros', '¿Quiénes somos?', 'class="link-class"') ?>
+                        <?php echo anchor('/about', '¿Quiénes somos?', 'class="link-class"') ?>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Artículos <b
                                     class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <?php echo anchor('/articulo', 'Mis Artículos', 'class="link-class"') ?>
+                                <?php echo anchor('/article', 'Mis Artículos', 'class="link-class"') ?>
                             </li>
                             <li>
-                                <?php echo anchor('/articulo/editor', 'Editor', 'class="link-class"') ?>
+                                <?php echo anchor('/article/edit_area', 'Editor', 'class="link-class"') ?>
                             </li>
                             <li>
                                 <a href="blog-post.html">Blog Post</a>
@@ -79,14 +84,14 @@
                         </ul>
                     </li>
                     <li>
-                        <?php echo anchor('/contacto', 'Contacto', 'class="link-class"') ?>
+                        <?php echo anchor('/contact', 'Contacto', 'class="link-class"') ?>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuraciones<b
                                     class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <?php echo anchor('/revista/apartados_tematicos', 'Apartados temáticos', 'class="link-class"') ?>
+                                <?php echo anchor('/magazine/categories', 'Apartados temáticos', 'class="link-class"') ?>
                             </li>
                             <li>
                                 <a href="magazine.php">Gestión de Revista</a>
@@ -110,7 +115,7 @@
                                     class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="profile.php">Datos personales</a>
+                                <?php echo anchor('/user/profile', 'Mi perfil', 'class="link-class"') ?>
                             </li>
                             <li>
                                 <a href="password.php">Seguridad</a>

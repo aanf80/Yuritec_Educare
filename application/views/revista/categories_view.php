@@ -6,6 +6,7 @@
  * Time: 02:19 PM
  */
 ?>
+<script type="text/javascript" src="<?php echo base_url('assets/js/category.js'); ?>"></script>
 <div class="container">
     <h2>Apartados Temáticos</h2>
 
@@ -75,5 +76,4 @@
             </table>
         </div>
     </div>
-</div>
 
