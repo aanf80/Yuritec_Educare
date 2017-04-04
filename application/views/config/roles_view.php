@@ -6,11 +6,11 @@
  * Time: 02:19 PM
  */
 ?>
-<script type="text/javascript" src="<?php echo base_url('assets/js/category.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/role.js'); ?>"></script>
 <div class="container">
-    <h2>Apartados Temáticos</h2>
+    <h2>Roles de usuario</h2>
 
-    <div id="modalCategory" class="modal">
+    <div id="modalRole" class="modal">
         <div class="modal-dialog">
             <div class="modal-content">
 
@@ -18,20 +18,20 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         &times;
                     </button>
-                    <h3>Modificar Categoria</h3>
+                    <h3>Modificar Rol</h3>
                 </div>
                 <div class="modal-body">
-                    <form id="frmEditCategory">
+                    <form id="frmEditRole">
 
 
                         <div class="form-group">
-                            <label class="control-label" for="nombreCategoria2">Categoria</label>
+                            <label class="control-label" for="rolename2">Nombre del rol</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-user"></i>
                                 </span>
-                                <input class="form-control" id="nombreCategoria2" name="nombreCategoria2" placeholder="Nombre de la Categoria">
-                                <input type="hidden" id="categoryid" name="categoryid">
+                                <input class="form-control" id="rolename2" name="rolename2" placeholder="Nombre del rol">
+                                <input type="hidden" id="roleid" name="roleid">
                             </div>
                         </div>
 
@@ -40,7 +40,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-primary" id="btnModificar">Guardar</button>
+                    <button type="button" class="btn btn-sm btn-primary btn-warning" id="btnModificar">Guardar</button>
                 </div>
             </div>
         </div>
@@ -49,11 +49,11 @@
 
     <!-- Aqui inicia el formulario-->
     <div class="col-md-8">
-        <form id="frmCategoria">
+        <form id="frmRole">
             <label>Nombre</label>
 
-            <input type="text" class="form-control" id="nombreCategoria" name="nombreCategoria"
-                   placeholder="Nombre del apartado temático">
+            <input type="text" class="form-control" id="rolename" name="rolename"
+                   placeholder="Nombre del rol de usuario">
             <div class="row">&nbsp;</div>
             <button type="submit" class="btn btn btn-warning"><span
                     class="glyphicon glyphicon-floppy-save"></span>
@@ -65,11 +65,11 @@
     <div class ="row"><hr></div>
     <div class="row">
         <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <table id="tbCategoria">
+            <table id="tbRole" class="table table-striped table-bordered">
                 <thead>
                 <tr>
                     <th>Clave</th>
-                    <th>Apartado Temático</th>
+                    <th>Nombre del Rol</th>
                     <th>Operaciones</th>
                 </tr>
                 </thead>

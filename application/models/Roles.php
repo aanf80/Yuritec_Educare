@@ -9,8 +9,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 //This is the Book Model for CodeIgniter CRUD using Ajax Application.
-class Categories extends CI_Model{
-    var $table = 'category';
+class Roles extends CI_Model{
+    var $table = 'role';
 
 
     public function __construct()
@@ -19,21 +19,21 @@ class Categories extends CI_Model{
         $this->load->database();
     }
 
-    public function newCategory($data){
+    public function newRole($data){
         $this->db->insert($this->table, $data);
         return true;
     }
-    public function getCategories(){
-        $this->db->from('category');
+    public function getRoles(){
+        $this->db->from('role');
         $query=$this->db->get();
         return $query->result();
     }
-    public function updateCategory($where,$data){
+    public function updateRole($where,$data){
         $this->db->update($this->table, $data, $where);
         return true;
     }
-    public function deleteCategory($id){
-        $this->db->where('categoryid', $id);
+    public function deleteRole($id){
+        $this->db->where('roleid', $id);
         $this->db->delete($this->table);
         return true;
     }

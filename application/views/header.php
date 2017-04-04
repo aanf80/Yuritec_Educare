@@ -68,21 +68,16 @@
                     <li>
                         <?php echo anchor('/about', '¿Quiénes somos?', 'class="link-class"') ?>
                     </li>
-                    <li class="dropdown">
+                    <!--<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Artículos <b
                                     class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li>
-                                <?php echo anchor('/article', 'Mis Artículos', 'class="link-class"') ?>
-                            </li>
-                            <li>
-                                <?php echo anchor('/article/edit_area', 'Editor', 'class="link-class"') ?>
-                            </li>
+
                             <li>
                                 <a href="blog-post.html">Blog Post</a>
                             </li>
                         </ul>
-                    </li>
+                    </li>-->
                     <li>
                         <?php echo anchor('/contact', 'Contacto', 'class="link-class"') ?>
                     </li>
@@ -91,10 +86,13 @@
                                     class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <?php echo anchor('/magazine/categories', 'Apartados temáticos', 'class="link-class"') ?>
+                                <?php echo anchor('/settings/categories', 'Apartados temáticos', 'class="link-class"') ?>
                             </li>
                             <li>
                                 <a href="magazine.php">Gestión de Revista</a>
+                            </li>
+                            <li>
+                                <?php echo anchor('/settings/roles', 'Roles de usuario', 'class="link-class"') ?>
                             </li>
                             <li>
                                 <a href="users.php">Gestión de Usuarios</a>
@@ -115,10 +113,16 @@
                                     class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <?php echo anchor('/user/profile', 'Mi perfil', 'class="link-class"') ?>
+                                <?php echo anchor('/user/profile', 'Datos Personales', 'class="link-class"') ?>
                             </li>
                             <li>
                                 <a href="password.php">Seguridad</a>
+                            </li>
+                            <li>
+                                <?php echo anchor('/article', 'Mis Artículos', 'class="link-class"') ?>
+                            </li>
+                            <li>
+                                <?php echo anchor('/article/edit_area', 'Nuevo Artículo', 'class="link-class"') ?>
                             </li>
 
                         </ul>

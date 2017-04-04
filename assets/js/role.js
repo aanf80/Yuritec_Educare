@@ -4,18 +4,18 @@
 
 $(function() {
 
-    $('#frmCategoria').validate({
+    $('#frmRole').validate({
         rules: {
 
-            nombreCategoria: {
+            rolename: {
                 minlength: 3,
                 required: true
             }
         },
         messages: {
 
-            nombreCategoria: {
-                required: "Capture el nombre de la categoria"
+            rolename: {
+                required: "Capture el nombre del rol"
             }
         },
         highlight: function (element) {
@@ -34,25 +34,25 @@ $(function() {
             }
         },
         submitHandler: function (form) {
-            newCategory();
+            newRole();
             return false;
         }
     });
 
 
-    $('#frmEditCategory').validate({
+    $('#frmEditRole').validate({
         rules: {
-            nombreCategoria2: {
+            rolename2: {
                 minlength: 3,
 
                 required: true
             }
         },
         messages: {
-            nombreCategoria2: {
+            rolename2: {
                 minlength: "Introduzca al menos 3 caracteres",
 
-                required: "Capture el nombre de la categoria"
+                required: "Capture el nombre del rol"
             }
         },
         highlight: function (element) {
@@ -71,7 +71,7 @@ $(function() {
             }
         },
         submitHandler: function (form) {
-            updateCategory();
+            updateRole();
             return false;
         }
     });
@@ -79,18 +79,18 @@ $(function() {
 
     $('#btnModificar').on('click', function () {
 
-        $('#frmEditCategory').submit();
+        $('#frmEditRole').submit();
 
     });
 
 
-    $('#tbCategoria').DataTable({
+    $('#tbRole').DataTable({
         responsive: true,
         language:{
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/Yuritec_Educare/settings/getCategories",
+            url:"/Yuritec_Educare/settings/getRoles",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -98,16 +98,16 @@ $(function() {
         },
         columns:[
             {
-                data:"categoryid"
+                data:"roleid"
             },
             {
-                data:"categoryname"
+                data:"rolename"
             },
             {
                 data: function (row) {
                     str = "<div >";
-                    str +="<button id='btnEditar' class='btn btn-success' onClick='showCategory(" + row['categoryid'] + ",\"" + row['categoryname'] + "\")'><i class=\"glyphicon glyphicon-edit\"></i> Editar</button>";
-                    str += "&nbsp;<button id='btnBorrar' class='btn btn-danger' onClick='deleteCategory(" + row['categoryid'] + ")'><i class=\"glyphicon glyphicon-trash\"></i> Eliminar</button>";//trash
+                    str +="<button id='btnEditar' class='btn btn-success' onClick='showRole(" + row['roleid'] + ",\"" + row['rolename'] + "\")'><i class=\"glyphicon glyphicon-edit\"></i> Editar</button>";
+                    str += "&nbsp;<button id='btnBorrar' class='btn btn-danger' onClick='deleteRole(" + row['roleid'] + ")'><i class=\"glyphicon glyphicon-trash\"></i> Eliminar</button>";//trash
                     str += "</div>"
                     return str;
                 }
@@ -120,21 +120,21 @@ $(function() {
 
 });
 
-function showCategory(categoryid, nombrecategory) {
-    $('#categoryid').val(categoryid);
-    $('#nombreCategoria2').val(nombrecategory);
-    $('#modalCategory').modal("show");
+function showRole(roleid, nombrerole) {
+    $('#roleid').val(roleid);
+    $('#rolename2').val(nombrerole);
+    $('#modalRole').modal("show");
 
 }
-function updateCategory() {
+function updateRole() {
 
     $.ajax(
         {
-            url:"/Yuritec_Educare/settings/updateCategory" ,
+            url:"/Yuritec_Educare/settings/updateRole" ,
             type: "post",
             data: {
-                categoryid: $('#categoryid').val(),
-                categoryname: $('#nombreCategoria2').val()
+                roleid: $('#roleid').val(),
+                rolename: $('#rolename2').val()
             }
         }
     ).done(
@@ -142,8 +142,8 @@ function updateCategory() {
 
             if (data.code == 200) {
                 $.growl.notice({message: data.msg});
-                $('#tbCategoria').dataTable().api().ajax.reload();
-                $('#modalCategory').modal("toggle");
+                $('#tbRole').dataTable().api().ajax.reload();
+                $('#modalRole').modal("toggle");
             } else {
                 $.growl.error({message: data.msg});
             }
@@ -154,20 +154,20 @@ function updateCategory() {
         }
     );
 }
-function newCategory(){
+function newRole(){
 
     $.ajax({
-        url: "/Yuritec_Educare/settings/insertCategory",
+        url: "/Yuritec_Educare/settings/insertRole",
         type: "post",
         data: {
-            categoryname: $('#nombreCategoria').val()
+            rolename: $('#rolename').val()
         }
     }).done(
         function(data){
             if(data.code === 200){
                 $.growl.notice({ message: data.msg });
-                $('#tbCategoria').dataTable().api().ajax.reload();
-                $('#nombreCategoria').val('');
+                $('#tbRole').dataTable().api().ajax.reload();
+                $('#rolename').val('');
             }
             else{
                 $.growl.error({ message: data.msg });
@@ -181,7 +181,7 @@ function newCategory(){
     );
 }
 
-function deleteCategory(categoryid) {
+function deleteRole(roleid) {
 
     swal(
         {
@@ -194,14 +194,14 @@ function deleteCategory(categoryid) {
             if (isConfirm) {
 
                 var para = {
-                    "categoryid": categoryid
+                    "roleid": roleid
                 };
                 ///Comienza a Borrar
                 $.ajax(
                     {
-                        url: "/Yuritec_Educare/settings/deleteCategory",
+                        url: "/Yuritec_Educare/settings/deleteRole",
                         type: "post",
-                        data: {categoryid: categoryid}
+                        data: {roleid: roleid}
                     }
                 ).done(
                     function (data) {
@@ -210,8 +210,8 @@ function deleteCategory(categoryid) {
                             //$.growl.notice({message: data.msg});
                             $.growl.notice({message: data.msg + " " + data.details});
                             swal("Eliminado!", "El registro se elimino correctamente", "success");
-                            $('#tbCategoria').dataTable().api().ajax.reload();
-                            $('#categoryid').val('');
+                            $('#tbRole').dataTable().api().ajax.reload();
+                            $('#roleid').val('');
                         } else {
                             $.growl.error({message: data.msg});
                         }
@@ -227,7 +227,6 @@ function deleteCategory(categoryid) {
         });
 
 }
-
 
 
 
