@@ -6,6 +6,7 @@
  * Time: 11:03 AM
  */
 ?>
+<script type="text/javascript" src="<?php echo base_url('assets/js/login.js'); ?>"></script>
 <div class="container">
     <h3 class="page-header">Iniciar sesión</h3>
 
@@ -17,11 +18,11 @@
                 <img class="center-block img-responsive img-rounded"
                      src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120">
                 <div class="help-block"></div>
-                <form id="formLogin" name="">
+                <form id="frmLogin" name="">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Correo electrónico" required="" autofocus="">
+                        <input type="text" class="form-control" placeholder="Correo electrónico"  id="username" name="username" required="" autofocus="">
                         <div class="help-block"></div>
-                        <input type="password" class="form-control" placeholder="Contraseña" required="">
+                        <input type="password" class="form-control" placeholder="Contraseña"  id="password" name="password" required="">
                         <div class="help-block"></div>
                     </div>
                     <div class="form-group">

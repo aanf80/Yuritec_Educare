@@ -16,4 +16,34 @@ class Login extends CI_Controller {
         $this->load->view('login_view');
         $this->load->view('footer');
     }
+
+    public function validaLogin(){
+        $this->load->model('Model_Login');
+        $jsondata = array();
+        $insert = false;
+
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+
+
+        $result = $this->Model_Login->validaLogin($username,$password);
+        if ($result==true) {
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = "Si tiene acceso al sistema";
+            $jsondata["details"] = "OK";
+
+
+            session_start();
+            $_SESSION["username"] = $username;
+
+        }else{
+            $jsondata["code"] = 401;
+            $jsondata["msg"] = "No tiene acceso al sistema";
+            $jsondata["details"] = "OK";
+        }
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata, JSON_FORCE_OBJECT);
+
+    }
 }

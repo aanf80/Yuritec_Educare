@@ -9,20 +9,14 @@
 <script>
     tinymce.init({selector: 'textarea'}
     );</script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/article.js'); ?>"></script>
 <div class="container">
 
     <h3>Título</h3>
     <input type="text" class="form-control" id="txtTitle" required>
     <div class="row">&nbsp;</div>
     <h3>Apartado Temático</h3>
-    <select name="tipoAct" id="tipoAct" class="form-control">
-        <option>Ciencias de la Tierra</option>
-        <option>Arquitectura, Urbanismo y Diseño de Edificaciones</option>
-        <option>Tecnologías de la Información y Comunicación</option>
-        <option>Ingeniería Eléctrica y Electrónica</option>
-        <option>Administración de Recursos Humanos y empresas</option>
-        <option>Ingenierían Química y Bioquímica</option>
-    </select>
+    <select name="cbCategory" id="cbCategory" class="form-control"></select>
     <div class="row">&nbsp;</div>
     <h3>Resumen</h3>
     <textarea></textarea>
