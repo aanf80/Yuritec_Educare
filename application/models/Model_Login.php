@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 //This is the Book Model for CodeIgniter CRUD using Ajax Application.
 class Model_Login extends CI_Model{
-    var $table = 'role';
+
 
 
     public function __construct()
@@ -19,25 +19,44 @@ class Model_Login extends CI_Model{
         $this->load->database();
     }
 
-    function validaLogin($username, $password)
-    {
-        $this -> db -> select('email, contrasena');
+    function validaLogin($username, $password){
+        $roleid = 0;
+        $email = "";
+        $this -> db -> select('email, contrasena,roleid');
         $this -> db -> from('user');
         $this -> db -> where('email', $username);
         $this -> db -> where('contrasena',$password);
         $this -> db -> limit(1);
 
         $query = $this -> db -> get();
-
+        foreach ($query ->result() as $row)
+        {
+            $roleid = $row->roleid;
+            $email = $row->email;
+        }
+        $usuario_data = array(
+            'id' => $roleid,
+            'nombre' => $email,
+            'logueado' => false
+        );
         if($query -> num_rows() == 1)
         {
-            return true;
+            $usuario_data['logueado']=true;
         }
-        else
-        {
-            return false;
-        }
+        return $usuario_data;
     }
 
+
+    public  function access($username, $password){
+        $this -> db -> select('email, contrasena, roleid');
+        $this -> db -> from('user');
+        $this -> db -> where('email', $username);
+        $this -> db -> where('contrasena',$password);
+        $this -> db -> limit(1);
+
+        $query = $this -> db -> get();
+        $resultado = $query->row();
+        return $resultado;
+    }
 
 }

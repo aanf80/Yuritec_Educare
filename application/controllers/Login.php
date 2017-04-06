@@ -25,18 +25,18 @@ class Login extends CI_Controller {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
-
         $result = $this->Model_Login->validaLogin($username,$password);
-        if ($result==true) {
+
+
+        if($result['logueado']){
+
             $jsondata["code"] = 200;
-            $jsondata["msg"] = "Si tiene acceso al sistema";
+            $jsondata["msg"] = "Si tiene acceso al sistema"." el id es:".$result['id'];
             $jsondata["details"] = "OK";
 
-
-            session_start();
-            $_SESSION["username"] = $username;
-
-        }else{
+            $this->session->set_userdata($result);
+        }
+        else{
             $jsondata["code"] = 401;
             $jsondata["msg"] = "No tiene acceso al sistema";
             $jsondata["details"] = "OK";
@@ -45,5 +45,35 @@ class Login extends CI_Controller {
         header("Cache-Control: no-store");
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
 
+
+        /*
+                $result = $this->Model_Login->validaLogin($username,$password);
+                if ($result==true) {
+
+                    $roleid = $this->Model_Login->getID($username,$password);
+                   $_SESSION["roleid"] = $roleid;
+
+                    $jsondata["code"] = 200;
+                    $jsondata["msg"] = "Si tiene acceso al sistema"." el id es:".$roleid;
+                    $jsondata["details"] = "OK";
+
+
+                    session_start();
+                    $_SESSION["username"] = $username;
+
+
+
+
+                }else{
+                    $jsondata["code"] = 401;
+                    $jsondata["msg"] = "No tiene acceso al sistema";
+                    $jsondata["details"] = "OK";
+                }
+                header('Content-type: application/json; charset=utf-8');
+                header("Cache-Control: no-store");
+                echo json_encode($jsondata, JSON_FORCE_OBJECT);
+        */
     }
+
+
 }
