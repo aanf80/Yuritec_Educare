@@ -9,7 +9,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
-
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->library('session');
+    }
     public function index()
     {
         $this->load->view('header');
@@ -31,10 +35,11 @@ class Login extends CI_Controller {
         if($result['logueado']){
 
             $jsondata["code"] = 200;
-            $jsondata["msg"] = "Si tiene acceso al sistema"." el id es:".$result['id'];
+            $jsondata["msg"] = "Si tiene acceso al sistema"." el id es:".$result['nombre'];
             $jsondata["details"] = "OK";
 
             $this->session->set_userdata($result);
+            $this->load->library('session');
         }
         else{
             $jsondata["code"] = 401;

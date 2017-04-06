@@ -32,7 +32,7 @@ $(function(){
             function(data){
                 if(data.code === 200){
                     var url = "index.php";
-                   // $(location).attr('href',url);
+                    $(location).attr('href',url);
                     $.growl.notice({ message: data.msg });
                 }
                 else{
