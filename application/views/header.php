@@ -124,24 +124,8 @@
                     if($this->session->userdata('id') == 1){
 
                         ?>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mi Perfil <b
-                                        class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <?php echo anchor('/user/profile', 'Datos Personales', 'class="link-class"') ?>
-                                </li>
-                                <li>
-                                    <a href="password.php">Seguridad</a>
-                                </li>
-                                <li>
-                                    <?php echo anchor('/article', 'Mis Artículos', 'class="link-class"') ?>
-                                </li>
-                                <li>
-                                    <?php echo anchor('/article/edit_area', 'Nuevo Artículo', 'class="link-class"') ?>
-                                </li>
-
-                            </ul>
+                        <li>
+                            <?php echo anchor('/user/profile', 'Mi Perfil', 'class="link-class"') ?>
                         </li>
                         <?php
                     }
@@ -159,7 +143,7 @@
                     else {
                         ?>
                         <li>
-                            <a href="<?php echo site_url('/login') ?>"><span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión</a>
+                            <a href="<?php echo site_url('/login/sign_out') ?>"><span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión</a>
                         </li>
                         <?php
                     }

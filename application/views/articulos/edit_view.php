@@ -11,6 +11,20 @@
     );</script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/article.js'); ?>"></script>
 <div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header">Área de Edición</h3>
+            <ol class="breadcrumb">
+                <li>
+                    <?php echo anchor('/user/profile', 'Mi Perfil', 'class="link-class"') ?>
+                </li>
+                <li>
+                    <?php echo anchor('/article', 'Mis Artículos', 'class="link-class"') ?>
+                </li>
+                <li class="active">Área de Edición</li>
+            </ol>
+        </div>
+    </div>
 
     <h3>Título</h3>
     <input type="text" class="form-control" id="txtTitle" required>

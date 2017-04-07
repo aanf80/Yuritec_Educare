@@ -9,6 +9,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller {
+
     public function __construct()
     {
         parent::__construct();
@@ -27,8 +28,14 @@ class User extends CI_Controller {
 
     public function profile()
     {
+
+        $this->load->model('Model_User');
+
+        $email = $this->session->userdata('nombre');
+        $data['user'] = $this->Model_User->getUserByEmail($email);
+
         $this->load->view('header');
-        $this->load->view('user/profile_view');
+        $this->load->view('user/profile_view',$data);
         $this->load->view('footer');
     }
 }

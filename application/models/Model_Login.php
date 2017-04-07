@@ -22,10 +22,10 @@ class Model_Login extends CI_Model{
     function validaLogin($username, $password){
         $roleid = 0;
         $email = "";
-        $this -> db -> select('email, contrasena,roleid');
+        $this -> db -> select('email, password,roleid');
         $this -> db -> from('user');
         $this -> db -> where('email', $username);
-        $this -> db -> where('contrasena',$password);
+        $this -> db -> where('password',$password);
         $this -> db -> limit(1);
 
         $query = $this -> db -> get();
@@ -48,10 +48,10 @@ class Model_Login extends CI_Model{
 
 
     public  function access($username, $password){
-        $this -> db -> select('email, contrasena, roleid');
+        $this -> db -> select('email, password, roleid');
         $this -> db -> from('user');
         $this -> db -> where('email', $username);
-        $this -> db -> where('contrasena',$password);
+        $this -> db -> where('password',$password);
         $this -> db -> limit(1);
 
         $query = $this -> db -> get();
