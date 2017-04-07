@@ -69,21 +69,12 @@
                     <li>
                         <?php echo anchor('/about', '¿Quiénes somos?', 'class="link-class"') ?>
                     </li>
-                    <!--<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Artículos <b
-                                    class="caret"></b></a>
-                        <ul class="dropdown-menu">
 
-                            <li>
-                                <a href="blog-post.html">Blog Post</a>
-                            </li>
-                        </ul>
-                    </li>-->
                     <li>
                         <?php echo anchor('/contact', 'Contacto', 'class="link-class"') ?>
                     </li>
                     <?php
-                    //  echo "<li> jejeje".$this->session->userdata('id')."</li>";
+
                     if($this->session->userdata('id') == 1){
 
                         ?>
@@ -113,14 +104,14 @@
                     ?>
 
                     <li>
-                        <a href="copies.php">Ejemplares</a>
+                        <?php echo anchor('/magazine', 'Ejemplares', 'class="link-class"') ?>
                     </li>
                     <li>
                         <a href="map.php">Mapa del Sitio</a>
                     </li>
 
                     <?php
-                    //  echo "<li> jejeje".$this->session->userdata('id')."</li>";
+
                     if($this->session->userdata('id') == 1){
 
                         ?>

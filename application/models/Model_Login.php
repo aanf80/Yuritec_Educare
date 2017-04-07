@@ -47,16 +47,4 @@ class Model_Login extends CI_Model{
     }
 
 
-    public  function access($username, $password){
-        $this -> db -> select('email, password, roleid');
-        $this -> db -> from('user');
-        $this -> db -> where('email', $username);
-        $this -> db -> where('password',$password);
-        $this -> db -> limit(1);
-
-        $query = $this -> db -> get();
-        $resultado = $query->row();
-        return $resultado;
-    }
-
 }
