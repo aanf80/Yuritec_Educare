@@ -25,6 +25,10 @@ class Model_User extends CI_Model{
 
         return $query->result();
     }
+    public function  newUser($data){
+        $this->db->insert($this->table, $data);
+        return true;
+    }
 
 
 }

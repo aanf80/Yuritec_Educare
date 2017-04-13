@@ -7,140 +7,119 @@
  */
 ?>
 
-
+<script type="text/javascript" src="<?php echo base_url('assets/js/user.js'); ?>"></script>
 <div class="container">
 
     <h3 class="page-header">Registrarse</h3>
 
-    <div class="row">
+    <form id="frmRegister">
+        <div class="form-group">
+            <div class="col-lg-6">
 
-        <div class="col-lg-5">
-            <form name="" id="formRegistro">
-                <div class="form-group">
-                    <label for="email">Correo electrónico *</label>
-                    <input type="email" placeholder="jorge@ittepic.edu.mx" id="email" required data-validation-required-message="Por favor ingresa tu correo electrónico." class="form-control">
-                    <div class="help-block">Será su nombre de usuario</div>
-                </div>
-                <div class="form-group">
-                    <label for="psw">Contraseña *</label>
-                    <input type="password" id="psw" required data-validation-required-message="Por favor ingresa tu contraseña."class="form-control">
-                    <div class="help-block"></div>
-                </div>
+                <!-- Datos Personales-->
+                <label class="control-label">Correo Electrónico *</label>
+                <input type="text" class="form-control" id="email" name="email" placeholder="Ejemplo: jorge@ittepic.edu.mx">
+                <div class="help-block">Será su nombre de usuario</div>
 
-                <div class="form-group">
-                    <label for="conf-psw">Confirmar contraseña *</label>
-                    <input type="password" required data-validation-required-message="Por favor confirma tu contraseña." class="form-control" id="conf-psw">
-                    <div class="help-block"></div>
-                </div>
+                <label class="control-label">Contraseña *</label>
+                <input type="password" class="form-control" id="password" name="password">
+                <div class="help-block"></div>
 
-                <div class="form-group">
-                    <label for="fotoPerfil">Seleccionar foto de perfil</label>
-                    <input type="file" id="fotoPerfil">
-                </div>
+                <label class="control-label">Confirmar contraseña *</label>
+                <input type="password" class="form-control" id="confpassword" name="confpassword">
+                <div class="help-block"></div>
 
-                <div class="form-group">
-                    <label>Nombre *</label>
-                    <input type="text" placeholder="Nombre(s)" required data-validation-required-message="Por favor ingresa tu nombre." class="form-control">
-                    <div class="help-block"></div>
-                    <input type="text" placeholder="Apellidos" required data-validation-required-message="Por favor ingresa tus apellidos." class="form-control">
-                </div>
+                <label class="control-label">Foto de perfil</label>
+                <input type="text" class="form-control" id="photo" name="photo" placeholder="Escriba el enlace de la imagen">
+                <div class="help-block"></div>
 
-                <div class="form-group">
-                    <label for="iniciales">Iniciales</label>
-                    <input type="text" id="iniciales" class="form-control">
-                    <span class="help-block">Ej. Axel García Pérez = AGP</span>
-                    <div class="help-block"></div>
-                </div>
+                <label class="control-label">Nombre:</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Nombre(s)">
+                <div class="help-block"></div>
+                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Apellido Paterno">
+                <div class="help-block"></div>
+                <input type="text" class="form-control" id="maternalsurname" name="maternalsurname" placeholder="Apellido Materno">
 
-                <div class="form-group">
-                    <label for="firma">Firma</label>
-                    <input type="text" id="firma" class="form-control">
-                    <div class="help-block"></div>
-                </div>
+                <label class="control-label">Iniciales</label>
+                <input type="text" class="form-control" id="initials" name="initials">
+                <div class="help-block"></div>
 
-                <div class="form-group">
-                    <div><label>Sexo</label></div>
+                <label class="control-label">Firma</label>
+                <input type="text" class="form-control" id="sign" name="sign">
+                <div class="help-block"></div>
+
+                <div id="gender">
+                    <div><label>Género</label></div>
                     <label class="radio-inline">
-                        <input type="radio" value="f" name="sexo" id="fem"> Femenino
+                        <input type="radio" value="F" name="gender" id="r1"> Femenino
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" value="m" name="sexo" id="masc"> Masculino
+                        <input type="radio" value="M" name="gender" id="r2"> Masculino
                     </label>
-                    <label class="radio-inline">
-                        <input type="radio" value="o" name="sexo" id="otro"> Otro
-                    </label>
-                    <div class="help-block"></div>
                 </div>
+                <div class="help-block"></div>
 
-                <div class="form-group">
-                    <label for="institucion">Institución</label>
-                    <textarea id="institucion" class="form-control" rows="2"></textarea>
-                    <div class="help-block">Ej. Instituto tecnológico de Tepic</div>
-                </div>
-                <div class="form-group">
-                    <div>
-                        <label for="resumen">Resumen biográfico</label>
-                        <textarea name="" id="resumen" rows="6" class="form-control"></textarea>
-                        <div class="help-block">Ej. Departamento y Rango</div>
-                    </div>
-                </div>
+                <label class="control-label">Posición</label>
+                <input type="text" class="form-control" id="position" name="position" placeholder="Ejemplo: Maestro">
+                <div class="help-block"></div>
+
+                <label class="control-label">Institución</label>
+                <input type="text" class="form-control" id="institute" name="institute" placeholder="Ejemplo: Instituto Tecnológico de Tepic">
+                <div class="help-block"></div>
+
+                <label for="resumen">Resumen biográfico</label>
+                <textarea name="" id="resume" rows="6" class="form-control"></textarea>
+                <div class="help-block">Ej. Departamento y Rango</div>
+
                 <h4><strong>Domicilio</strong></h4>
-                <div class="form-group row">
-                    <div class="col-md-9">
-                        <label for="calle">Calle</label>
-                        <input type="text" id="calle" class="form-control">
-                        <div class="help-block"></div>
 
-                        <label for="colonia">Colonia</label>
-                        <input type="text" id="colonia" class="form-control">
-                        <div class="help-block"></div>
-                    </div>
 
-                    <div class="col-lg-3">
-                        <label for="numero">Número</label>
-                        <input type="number" id="numero" class="form-control">
-                        <div class="help-block"></div>
+                <label class="control-label">Calle</label>
+                <input type="text" class="form-control" id="address" name="address">
+                <div class="help-block"></div>
 
-                        <label for="cp">C. P.</label>
-                        <input type="number" id="cp" class="form-control">
-                        <div class="help-block"></div>
-                    </div>
-                    <div class="col-lg-6">
-                        <label for="ciudad">Ciudad</label>
-                        <input type="text" id="ciudad" class="form-control">
-                        <div class="help-block"></div>
-                    </div>
-                    <div class="col-lg-6">
-                        <label for="estado">Estado</label>
-                        <input type="text" id="estado" class="form-control">
-                        <div class="help-block"></div>
-                    </div>
-                    <div class="col-lg-12">
-                        <label class="col-lg-12" for="pais">País</label>
-                        <select class="form-control" id="pais">
-                            <option value=""></option>
-                            <option value="">México</option>
-                            <option value="">Estados Unidos</option>
-                            <option value="">Canadá</option>
-                            <option value="">Argentina</option>
-                        </select>
-                        <div class="help-block"></div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>* Campo requerido</label>
-                    <div class="checkbox">
-                        <label for="confirm"><input id="confirm" type="checkbox">Enviar correo electrónico de
-                            confirmación con usuario y contraseña</label>
-                    </div>
-                </div>
-                <div id="success"></div>
-                <button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-floppy-save"></span> Registrarse</button>
-                <button type="clear" class="btn btn-warning"><span class="glyphicon glyphicon-floppy-remove"></span> Cancelar</button>
-            </form>
-        </div>
-    </div>
-    <!-- /.row -->
 
-    <hr>
+                <label class="control-label">Colonia</label>
+                <input type="text" class="form-control" id="neighborhood" name="neighborhood">
+                <div class="help-block"></div>
+
+
+                <label class="control-label">Número</label>
+                <input type="text" class="form-control" id="streetnumber" name="streetnumber">
+                <div class="help-block"></div>
+
+                <label class="control-label">Código Postal</label>
+                <input type="text" class="form-control" id="zipcode" name="zipcode">
+                <div class="help-block"></div>
+
+                <label class="control-label">Ciudad</label>
+                <input type="text" class="form-control" id="city" name="city">
+                <div class="help-block"></div>
+
+                <label class="control-label">Estado</label>
+                <input type="text" class="form-control" id="state" name="state">
+                <div class="help-block"></div>
+
+                <label class="control-label">País</label>
+                <select name="country" id="country" class="form-control">
+                    <option>México</option>
+                    <option>Estados Unidos</option>
+                    <option>España</option>
+                    <option>Argentina</option>
+                </select>
+                <div class="help-block"></div>
+
+
+
+            </div> <!-- tamaño de pantalla-->
+
+        </div> <!-- form group-->
+
+        <div class="row">&nbsp;</div>
+        <div class="row">&nbsp;</div>
+
+        <button type="submit" class="btn btn-warning"><i class="glyphicon glyphicon-floppy-disk"></i>Guardar</button>
+    </form>
+
+
 

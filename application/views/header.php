@@ -112,7 +112,7 @@
 
                     <?php
 
-                    if($this->session->userdata('id') == 1){
+                    if($this->session->userdata('id') == 1 || $this->session->userdata('id') == 2){
 
                         ?>
                         <li>

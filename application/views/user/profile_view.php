@@ -76,7 +76,7 @@
                         <hr>
                     </div>
                     <div class="col-lg-8">
-                        <h4 id="pais">México</h4>
+                        <h4 id="firma"><?php echo $userdata->country;?></h4>
                         <hr>
                     </div>
                 </div>
