@@ -22,6 +22,16 @@
                     <?php echo anchor('/article', 'Mis Artículos', 'class="link-class"') ?>
                 </li>
                 <li class="active">Área de Edición</li>
+                <?php
+
+                if($this->session->userdata('id') == 1){
+                    ?>
+                    <li>
+                        <?php echo anchor('/article/edit_area', 'Área de Revisión', 'class="link-class"') ?>
+                    </li>
+                    <?php
+                }
+                ?>
             </ol>
         </div>
     </div>

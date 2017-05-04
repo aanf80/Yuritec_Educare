@@ -106,7 +106,7 @@ $(function() {
             {
                 data: function (row) {
                     str = "<div >";
-                    str +="<button id='btnEditar' class='btn btn-warning' onClick='showRole(" + row['roleid'] + ",\"" + row['rolename'] + "\")'><i class=\"glyphicon glyphicon-edit\"></i> Editar</button>";
+                    str +="<button id='btnEditar' class='btn btn-success' onClick='showRole(" + row['roleid'] + ",\"" + row['rolename'] + "\")'><i class=\"glyphicon glyphicon-edit\"></i> Editar</button>";
                     str += "&nbsp;<button id='btnBorrar' class='btn btn-danger' onClick='deleteRole(" + row['roleid'] + ")'><i class=\"glyphicon glyphicon-trash\"></i> Eliminar</button>";//trash
                     str += "</div>"
                     return str;
