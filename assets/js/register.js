@@ -3,23 +3,7 @@
  */
 $(function () {
 
-    $('#roleid').trigger('click');
-
-    $.ajax({
-        url: '/Yuritec_Educare/settings/getRoles',
-        type: 'GET',
-        dataType: 'json'
-    }).done(function (json){
-        console.log("Codigo json: "+json.code);
-        if(json.code===200)
-            $.each(json.msg, function(i,row){
-                console.log(row.rolename);
-                $('<option></option>', {text: row.rolename}).attr('value',row.roleid).appendTo('#roleid');
-            });
-    });
-
-
-    $('#frmUser').validate({
+    $('#frmRegister').validate({
         rules:{
 
             username:{
@@ -59,32 +43,32 @@ $(function () {
 
 function newUser(){
     $.ajax({
-        url: "/Yuritec_Educare/user/newUser",
+        url: "/Yuritec_Educare/user/register",
         type: "post",
-        data: $('#frmUser').serialize()
+        data: $('#frmRegister').serialize()
     }).done(
         function(data){
             console.log(data.code);
             if(data.code === 200){
                 $.growl.notice({ message: data.msg });
-                 $('#username').val('');
-                 $('#lastname').val('');
-                 $('#maternalsurname').val('');
-                 $('#password').val('');
-                 $('#email').val('');
-                 $('#position').val('');
-                 $('#institute').val('');
-                 $('#inititals').val('');
-                 $('#sign').val('');
-                 $('#photo').val('');
-                 $('#address').val('');
-                 $('#country').val('');
-                 $('#neighborhood').val('');
-                 $('#state').val('');
-                 $('#city').val('');
-                 $('#streetnumber').val('');
-                 $('#zipcode').val('');
-                $('#roleid').index(0);
+                $('#username').val('');
+                $('#lastname').val('');
+                $('#maternalsurname').val('');
+                $('#password').val('');
+                $('#email').val('');
+                $('#position').val('');
+                $('#institute').val('');
+                $('#inititals').val('');
+                $('#sign').val('');
+                $('#photo').val('');
+                $('#address').val('');
+                $('#country').val('');
+                $('#neighborhood').val('');
+                $('#state').val('');
+                $('#city').val('');
+                $('#streetnumber').val('');
+                $('#zipcode').val('');
+
                 $('#country').index(0);
 
                 console.log("usuario insertado!!");

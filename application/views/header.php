@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Revista Científica ITTepic</title>
+    <title>Yurítec Educare</title>
 
     <!-- Bootstrap Core CSS -->
 
@@ -92,7 +92,7 @@
                                     <?php echo anchor('/settings/roles', 'Roles de usuario', 'class="link-class"') ?>
                                 </li>
                                 <li>
-                                    <a href="users.php">Gestión de Usuarios</a>
+                                    <?php echo anchor('/user/users', 'Usuarios', 'class="link-class"') ?>
                                 </li>
                                 <li>
                                     <a href="pricing.html">Pricing Table</a>

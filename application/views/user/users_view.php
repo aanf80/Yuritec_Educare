@@ -7,12 +7,23 @@
  */
 ?>
 
-<script type="text/javascript" src="<?php echo base_url('assets/js/register.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/user.js'); ?>"></script>
 <div class="container">
 
-    <h3 class="page-header">Registrarse</h3>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header">Nuevo Usuario</h3>
+            <ol class="breadcrumb">
+                <li class="active">Nuevo Usuario</li>
+                <li>
+                    <?php echo anchor('/article/edit_area', 'Ver Usuarios', 'class="link-class"') ?>
+                </li>
 
-    <form id="frmRegister">
+
+            </ol>
+        </div>
+    </div>
+    <form id="frmUser">
         <div class="form-group">
             <div class="col-lg-6">
 
@@ -27,6 +38,10 @@
 
                 <label class="control-label">Confirmar contraseña *</label>
                 <input type="password" class="form-control" id="confpassword" name="confpassword">
+                <div class="help-block"></div>
+
+                <label class="control-label" for="roleid">Tipo de usuario:</label>
+                <select name="roleid" id="roleid" class="form-control"></select>
                 <div class="help-block"></div>
 
                 <label class="control-label">Foto de perfil</label>
