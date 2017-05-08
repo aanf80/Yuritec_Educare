@@ -20,7 +20,16 @@
                     <?php echo anchor('/article/edit_area', 'Área de Edición', 'class="link-class"') ?>
                 </li>
 
+                <?php
 
+                if($this->session->userdata('id') == 1){
+                ?>
+                    <li>
+                        <?php echo anchor('/article/edit_area', 'Área de Revisión', 'class="link-class"') ?>
+                    </li>
+                <?php
+                }
+                ?>
             </ol>
         </div>
     </div>
@@ -29,7 +38,7 @@
         <?php foreach($user as $userdata) { ?>
             <div class="col-lg-3">
 
-                <img src="<?php echo $userdata->photo;  ?>" class="img-responsive" alt=""/>
+                <img src="<?php echo $userdata->photo;  ?>" class="img-responsive" width="1600" height="1600"/>
                 <br>
                 <br>
                 <a href="editarPerfil.html" class="btn btn-warning btn-block">Editar perfil</a>

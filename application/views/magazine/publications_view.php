@@ -13,8 +13,8 @@
     <div class="row">&nbsp;</div>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Blog Home One
-<small>Subheading</small>
+            <h1 class="page-header">Ejemplares
+                <small>Yúritec Educare</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="index.php">Home</a>
@@ -35,7 +35,7 @@
                 <a href="#">Blog Post Title</a>
             </h2>
             <p class="lead">
-by <a href="index.php">Start Bootstrap</a>
+                by <a href="index.php">Start Bootstrap</a>
             </p>
             <p><i class="fa fa-clock-o"></i> Posted on August 28, 2013 at 10:00 PM</p>
             <hr>
@@ -53,7 +53,7 @@ by <a href="index.php">Start Bootstrap</a>
                 <a href="#">Blog Post Title</a>
             </h2>
             <p class="lead">
-by <a href="index.php">Start Bootstrap</a>
+                by <a href="index.php">Start Bootstrap</a>
             </p>
             <p><i class="fa fa-clock-o"></i> Posted on August 28, 2013 at 10:45 PM</p>
             <hr>
@@ -71,7 +71,7 @@ by <a href="index.php">Start Bootstrap</a>
                 <a href="#">Blog Post Title</a>
             </h2>
             <p class="lead">
-by <a href="index.php">Start Bootstrap</a>
+                by <a href="index.php">Start Bootstrap</a>
             </p>
             <p><i class="fa fa-clock-o"></i> Posted on August 28, 2013 at 10:45 PM</p>
             <hr>
@@ -113,34 +113,23 @@ by <a href="index.php">Start Bootstrap</a>
 
             <!-- Blog Categories Well -->
             <div class="well">
-                <h4>Blog Categories</h4>
+                <h4>Apartados Temáticos</h4>
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <ul class="list-unstyled">
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
+
+                            <?php foreach($categories as $cat) { ?>
+                                <li><a href="#"><?php echo $cat->categoryname;  ?></a>
+                                </li>
+
+                                <?php
+                            }
+                            ?>
+
+
                         </ul>
                     </div>
-                    <!-- /.col-lg-6 -->
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled">
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                            <li><a href="#">Category Name</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /.col-lg-6 -->
+
                 </div>
                 <!-- /.row -->
             </div>
