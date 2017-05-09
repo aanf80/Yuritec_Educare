@@ -171,6 +171,8 @@ function newUser(){
                 $('#sign').val('');
                 $('#photo').val('');
                 $('#address').val('');
+                //$('#address').val('');
+                //$('#address').val('');
                 $('#neighborhood').val('');
                 $('#state').val('');
                 $('#city').val('');
