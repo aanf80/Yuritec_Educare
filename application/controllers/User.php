@@ -23,6 +23,12 @@ class User extends CI_Controller {
         $this->load->view('user/signup_view');
         $this->load->view('footer');
     }
+    public function users_new()
+    {
+        $this->load->view('header');
+        $this->load->view('user/NewUsers_view');
+        $this->load->view('footer');
+    }
     public function users()
     {
         $this->load->view('header');
@@ -78,6 +84,55 @@ class User extends CI_Controller {
         header("Cache-Control: no-store");
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
+
+    public function getUsers(){
+
+        $this->load->model('Model_User');
+        $data = $this->Model_User->getUsers();
+        $jsondata["code"] = 200;
+        $jsondata["msg"] = array();
+        foreach($data as $user){
+            $jsondata["msg"][] = $user;
+        }
+
+        $jsondata["details"] = "OK";
+
+
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata);
+    }
+
+    public function deleteUser()    {
+
+        $this->load->model('Model_User');
+        $jsondata = array();
+        $insert = false;
+        $data = array(
+            'userid' => $this->input->post('userid')
+        );
+
+        if($data['userid']==null){
+            redirect('home', 'refresh');
+        }
+
+        $delete =  $this->Model_User->deleteUser($data['userid']);
+        if($delete == true){
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = "Eliminado correctamente";
+            $jsondata["details"] = "OK";
+        }
+        else{
+            $jsondata["code"] = 500;
+            $jsondata["msg"] = "Error en el registro";
+            $jsondata["details"] = "OK";
+        }
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata, JSON_FORCE_OBJECT);
+    }
+
+
     public function register()
     {
         $this->load->model('Model_User');

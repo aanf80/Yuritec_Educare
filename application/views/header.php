@@ -92,7 +92,7 @@
                                     <?php echo anchor('/settings/roles', 'Roles de usuario', 'class="link-class"') ?>
                                 </li>
                                 <li>
-                                    <?php echo anchor('/user/users', 'Usuarios', 'class="link-class"') ?>
+                                    <?php echo anchor('/user/users_new', 'Usuarios', 'class="link-class"') ?>
                                 </li>
                                 <li>
                                     <a href="pricing.html">Pricing Table</a>
