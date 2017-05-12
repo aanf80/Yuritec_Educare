@@ -102,7 +102,55 @@ class User extends CI_Controller {
         header("Cache-Control: no-store");
         echo json_encode($jsondata);
     }
+    public function updateUser(){
+        $this->load->model('Model_User');
+        $jsondata = array();
+        $hoy = date("Y-m-d");
 
+        $data = array(
+            'userid' => $this->input->post('userid'),
+            'username' => $this->input->post('username'),
+            'lastname' => $this->input->post('lastname'),
+            'maternalsurname' => $this->input->post('maternalsurname'),
+            'password' => $this->input->post('password'),
+            'email' => $this->input->post('email'),
+            'position' => $this->input->post('position'),
+            'institute' => $this->input->post('institute'),
+            'gender' => $this->input->post('gender'),
+            'initials' => $this->input->post('initials'),
+            'sign' => $this->input->post('sign'),
+            'photo' => $this->input->post('photo'),
+            'roleid' => $this->input->post('roleid'),
+            'status' => 'P',
+            'registerdate' => $hoy,
+            'address' => $this->input->post('address'),
+            'country' => $this->input->post('country'),
+            'neighborhood' => $this->input->post('neighborhood'),
+            'state' => $this->input->post('state'),
+            'city' => $this->input->post('city'),
+            'streetnumber' => $this->input->post('streetnumber'),
+            'zipcode' => $this->input->post('zipcode')
+
+        );
+
+        if($data['username']==null){
+            redirect('home', 'refresh');
+        }
+        $insert = $this->Model_User->newUser($data);
+        if($insert == true){
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = "Registrado correctamente";
+            $jsondata["details"] = "OK";
+        }
+        else{
+            $jsondata["code"] = 500;
+            $jsondata["msg"] = "Error en el registro";
+            $jsondata["details"] = "OK";
+        }
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata, JSON_FORCE_OBJECT);
+    }
     public function deleteUser()    {
 
         $this->load->model('Model_User');

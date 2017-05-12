@@ -13,8 +13,12 @@ class Model_User extends CI_Model{
         parent::__construct();
         $this->load->database();
     }
+    public function  newUser($data){
+        $this->db->insert($this->table, $data);
+        return true;
+    }
 
-    public function getUserByEmail($email)
+    public function getUserByEmail($email) //C
     {
         $this->db->from($this->table);
         $this->db->where('email',$email);
@@ -25,18 +29,18 @@ class Model_User extends CI_Model{
 
         return $query->result();
     }
-    public function getUsers(){
+    public function getUsers(){//R
         $this->db->from('user');
         $query=$this->db->get();
         return $query->result();
     }
-    public function deleteUser($id){
-        $this->db->where('userid', $id);
-        $this->db->delete($this->table);
+    public function updateUser($where,$data){// U
+        $this->db->update($this->table, $data, $where);
         return true;
     }
-    public function  newUser($data){
-        $this->db->insert($this->table, $data);
+    public function deleteUser($id){//D
+        $this->db->where('userid', $id);
+        $this->db->delete($this->table);
         return true;
     }
 

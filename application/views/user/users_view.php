@@ -21,42 +21,250 @@
             </ol>
         </div>
     </div>
-    <div id="modalCategory" class="modal">
+    <div id="modalUser" class="modal">
         <div class="modal-dialog">
             <div class="modal-content">
-
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <h3>Modificar Categoria</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3>Modificar Usuario</h3>
                 </div>
                 <div class="modal-body">
-                    <form id="frmEditCategory">
+                    <form id="frmEditUser" enctype="multipart/form-data">
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
 
-                        <div class="form-group">
-                            <label class="control-label" for="nombreCategoria2">Categoria</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-th-list"></i>
-                                </span>
-                                <input class="form-control" id="nombreCategoria2" name="nombreCategoria2" placeholder="Nombre de la Categoria">
-                                <input type="hidden" id="categoryid" name="categoryid">
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="email2">Correo</label>
+                                <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-envelope"></i>
+                            </span>
+                                    <input class="form-control" id="email2" name="email" placeholder="Email del Usuario">
+                                </div>
                             </div>
+
+
+
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="password2">Contraseña</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-lock"></i>
+                                </span>
+                                    <input class="form-control" id="password2" name="password" placeholder="Contraseña del Usuario">
+                                </div>
+                            </div>
+
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="username2">Nombre del Usuario</label>
+                                <div class="input-group" >
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                </span>
+                                    <input  type="hidden" class="form-control" id="userid" name="userid">
+
+                                    <input class="form-control" id="username2" name="username" placeholder="Nombre del Usuario">
+                                </div>
+                            </div>
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="lastname2">Apellido Paterno</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                </span>
+                                    <input class="form-control" id="lastname2" name="lastname">
+                                </div>
+                            </div>
+                            <!-- Primer fila-->
+
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="maternalsurname2">Apellido Materno</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                    </span>
+                                    <input class="form-control" id="maternalsurname2" name="maternalsurname">
+                                </div>
+                            </div>
+
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="initials2">Iniciales</label>
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                    </span>
+                                    <input class="form-control" id="initials2" name="initials">
+                                </div>
+                            </div>
+                            <!-- Segunda fila-->
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="sign2">Firma</label>
+                                <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-user"></i>
+                            </span>
+                                    <input class="form-control" id="sign2" name="sign">
+                                </div>
+                            </div>
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="gender2">Género</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                </span>
+                                    <select name="tipoAct" id="tipoAct" class="form-control">
+                                        <option>Femenino</option>
+                                        <option>Masculino</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Tercera fila-->
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="position2">Posición</label>
+                                <div class="input-group">
+                              <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-star"></i>
+                              </span>
+                                    <input class="form-control" id="position2" name="position">
+                                </div>
+                            </div>
+
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="institute2">Institución</label>
+                                <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-education"></i>
+                            </span>
+                                    <input class="form-control" id="institute2" name="institute">
+                                </div>
+                            </div>
+
+
+                            <!-- Tercera fila-->
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="address2">Calle</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-pushpin"></i>
+                                </span>
+                                    <input class="form-control" id="address2" name="address" placeholder="Calle del domicilio">
+                                </div>
+                            </div>
+
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="neigborhood2">Colonia</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-home"></i>
+                                </span>
+                                    <input class="form-control" id="neigborhood2" name="neigborhood" placeholder="Colonia del usuario">
+                                </div>
+                            </div>
+                            <!-- Cuarta fila-->
+
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="streetnumber2">Numero de Casa</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-home"></i>
+                                </span>
+                                    <input class="form-control" id="streetnumber2" name="streetnumber" placeholder="Numero de Casa(Domicilio)">
+                                </div>
+                            </div>
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="zipcode2">Codigo Postal</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-envelope"></i>
+                                </span>
+                                    <input class="form-control" id="zipcode2" name="zipcode" placeholder="Codigo Postal del Usuario">
+                                </div>
+                            </div>
+
+                            <!-- Quinta fila-->
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="city2">Ciudad</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-flag"></i>
+                                </span>
+                                    <input class="form-control" id="city2" name="city" placeholder="Ciudad">
+                                </div>
+                            </div>
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="state2">Estado</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-flag"></i>
+                                </span>
+                                    <input class="form-control" id="state2" name="state" placeholder="Estado">
+                                </div>
+                            </div>
+
+
+
+                            <!-- Sexta fila-->
+                            <div class="col-xs-6 col-md-6 col-lg-6">
+
+                                <label class="control-label" for="photo2">Enlace de fotografía:</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-picture"></i>
+                                </span>
+                                    <input id="file2" name="file" type="file"  />
+                                </div>
+                            </div>
+                            <!-- Séptima fila-->
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="roleid2">Role</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-king"></i>
+                                </span>
+                                    <select name="roleid" id="roleid2" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="companyid2">Compañia</label>
+                                <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-briefcase"></i>
+                            </span>
+                                    <select name="companyid" id="companyid2" class="form-control"></select>
+                                </div>
+                            </div>
+                            <!-- Octava fila-->
+
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="country2">Pais</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-flag"></i>
+                                </span>
+                                    <input class="form-control" id="country2" name="country" placeholder="Pais">
+                                </div>
+                            </div>
+
+                            <!-- Novena fila-->
+
+
+
+
                         </div>
 
-
                     </form>
-
                 </div>
+
+
+
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-primary btn-warning" id="btnModificar">Guardar</button>
+                    <button id="btnModificarUser" type="button" class="btn btn-sm btn-primary ">Guardar</button>
                 </div>
             </div>
         </div>
     </div>
-
 
     <!-- Aqui inicia el formulario-->
     <div class="col-md-8">

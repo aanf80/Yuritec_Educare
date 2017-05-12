@@ -171,8 +171,6 @@ function newUser(){
                 $('#sign').val('');
                 $('#photo').val('');
                 $('#address').val('');
-                //$('#address').val('');
-                //$('#address').val('');
                 $('#neighborhood').val('');
                 $('#state').val('');
                 $('#city').val('');
@@ -195,6 +193,14 @@ function newUser(){
         }
     );
 }
+
+function showUser(userid, username) {
+    $('#userid').val(userid);
+    $('#username2').val(username);
+    $('#modalUser').modal("show");
+
+}
+
 
 
 function deleteUser(userid) {
