@@ -113,7 +113,7 @@
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-user"></i>
                                 </span>
-                                    <select name="tipoAct" id="tipoAct" class="form-control">
+                                    <select name="gender" id="gender2" class="form-control">
                                         <option>Femenino</option>
                                         <option>Masculino</option>
                                     </select>
@@ -154,12 +154,12 @@
                             </div>
 
                             <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label class="control-label" for="neigborhood2">Colonia</label>
+                                <label class="control-label" for="neighborhood2">Colonia</label>
                                 <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-home"></i>
                                 </span>
-                                    <input class="form-control" id="neigborhood2" name="neigborhood" placeholder="Colonia del usuario">
+                                    <input class="form-control" id="neighborhood2" name="neighborhood" placeholder="Colonia del usuario">
                                 </div>
                             </div>
                             <!-- Cuarta fila-->
@@ -213,12 +213,13 @@
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-picture"></i>
                                 </span>
-                                    <input id="file2" name="file" type="file"  />
+                                <!--    <input id="file2" name="file" type="file"  /> -->
+                                    <input class="form-control" id="photo2" name="photo" placeholder="Fotografía">
                                 </div>
                             </div>
                             <!-- Séptima fila-->
                             <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label class="control-label" for="roleid2">Role</label>
+                                <label class="control-label" for="roleid2">Rol de usuario</label>
                                 <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-king"></i>
@@ -226,19 +227,9 @@
                                     <select name="roleid" id="roleid2" class="form-control"></select>
                                 </div>
                             </div>
-                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label class="control-label" for="companyid2">Compañia</label>
-                                <div class="input-group">
-                            <span class="input-group-addon">
-                                <i class="glyphicon glyphicon-briefcase"></i>
-                            </span>
-                                    <select name="companyid" id="companyid2" class="form-control"></select>
-                                </div>
-                            </div>
-                            <!-- Octava fila-->
 
                             <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label class="control-label" for="country2">Pais</label>
+                                <label class="control-label" for="country2">País</label>
                                 <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-flag"></i>
@@ -260,7 +251,7 @@
 
 
                 <div class="modal-footer">
-                    <button id="btnModificarUser" type="button" class="btn btn-sm btn-primary ">Guardar</button>
+                    <button id="btnModificarUser" type="button" class="btn btn-sm btn-warning ">Guardar</button>
                 </div>
             </div>
         </div>

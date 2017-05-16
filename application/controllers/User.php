@@ -26,7 +26,7 @@ class User extends CI_Controller {
     public function users_new()
     {
         $this->load->view('header');
-        $this->load->view('user/NewUsers_view');
+        $this->load->view('user/newusers_view');
         $this->load->view('footer');
     }
     public function users()

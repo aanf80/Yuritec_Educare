@@ -13,10 +13,24 @@ $(function () {
         console.log("Codigo json: "+json.code);
         if(json.code===200)
             $.each(json.msg, function(i,row){
-                console.log(row.rolename);
+
                 $('<option></option>', {text: row.rolename}).attr('value',row.roleid).appendTo('#roleid');
             });
     });
+
+    $.ajax({
+        url: '/Yuritec_Educare/settings/getRoles',
+        type: 'GET',
+        dataType: 'json'
+    }).done(function (json){
+        console.log("Codigo json: "+json.code);
+        if(json.code===200)
+            $.each(json.msg, function(i,row){
+
+                $('<option></option>', {text: row.rolename}).attr('value',row.roleid).appendTo('#roleid2');
+            });
+    });
+
 
 
     $('#frmUser').validate({
@@ -129,7 +143,13 @@ $(function () {
             {
                 data: function (row) {
                     str = "<div align='center'>";
-                    str +="<button id='btnEditar' class='btn btn-success' onClick='showUser(" + row['userid'] + ",\"" + row['username'] + "\")'><i class=\"glyphicon glyphicon-edit\"></i></button>";
+                    str +="<button id='btnEditar' class='btn btn-success' onClick='showUser(" + row['userid'] + ",\"" + row['username']
+                        + "\",\"" + row['lastname'] + "\",\"" + row['maternalsurname'] + "\",\"" + row['gender'] +
+                        "\",\"" + row['address'] + "\",\"" + row['streetnumber'] + "\",\"" + row['neighborhood'] +
+                        "\",\"" + row['zipcode'] + "\",\"" + row['city'] + "\",\"" + row['state'] +
+                        "\",\"" + row['country'] + "\",\"" + row['email'] + "\",\"" + row['password'] +
+                        "\",\"" + row['sign'] + "\",\"" + row['position'] + "\",\"" + row['institute'] +
+                        "\",\"" + row['initials'] + "\",\"" + row['role'] + "\")'><i class=\"glyphicon glyphicon-edit\"></i></button>";
                     str += "&nbsp;<button id='btnBorrar' class='btn btn-danger' onClick='deleteUser(" + row['userid'] + ")'><i class=\"glyphicon glyphicon-trash\"></i> </button>";//trash
                     str += "</div>"
                     return str;
@@ -194,9 +214,34 @@ function newUser(){
     );
 }
 
-function showUser(userid, username) {
+function showUser(userid, username, lastname, maternalsurname,gender,address,streetnumber,neighborhood,zipcode,
+                  city,state,country,email,password,sign,position,institute,initials) {
     $('#userid').val(userid);
     $('#username2').val(username);
+    $('#lastname2').val(lastname);
+    $('#maternalsurname2').val(maternalsurname);
+    $('#streetnumber2').val(streetnumber);
+    $('#zipcode2').val(zipcode);
+    $('#city2').val(city);
+    $('#state2').val(state);
+    $('#country2').val(country);
+    $('#email2').val(email);
+    $('#password2').val(password);
+    $('#sign2').val(sign);
+    $('#position2').val(position);
+    $('#institute2').val(institute);
+    $('#initials2').val(initials);
+
+    if(gender=="M"){
+        $('#gender2').val("Masculino");
+    }
+
+    if(gender=="F"){
+        $('#gender2').val("Femenino");
+    }
+
+    $('#address2').val(address);
+    $('#neighborhood2').val(neighborhood);
     $('#modalUser').modal("show");
 
 }
