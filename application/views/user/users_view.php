@@ -11,7 +11,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h3>Consulta de usuarios</h3>
+            <h3 class="page-header">Consulta de usuarios</h3>
             <ol class="breadcrumb">
                 <li>
                     <?php echo anchor('/user/users_new', 'Consulta de usuarios', 'class="link-class"') ?>
@@ -114,8 +114,8 @@
                                     <i class="glyphicon glyphicon-user"></i>
                                 </span>
                                     <select name="gender" id="gender2" class="form-control">
-                                        <option>Femenino</option>
-                                        <option>Masculino</option>
+                                        <option value="F">Femenino</option>
+                                        <option value="M">Masculino</option>
                                     </select>
                                 </div>
                             </div>
@@ -213,7 +213,7 @@
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-picture"></i>
                                 </span>
-                                <!--    <input id="file2" name="file" type="file"  /> -->
+                                    <!--    <input id="file2" name="file" type="file"  /> -->
                                     <input class="form-control" id="photo2" name="photo" placeholder="Fotografía">
                                 </div>
                             </div>

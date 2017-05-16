@@ -136,8 +136,8 @@ class User extends CI_Controller {
         if($data['username']==null){
             redirect('home', 'refresh');
         }
-        $insert = $this->Model_User->newUser($data);
-        if($insert == true){
+        $update = $this->Model_User->updateUser(array('userid' => $this->input->post('userid')), $data);
+        if($update == true){
             $jsondata["code"] = 200;
             $jsondata["msg"] = "Registrado correctamente";
             $jsondata["details"] = "OK";

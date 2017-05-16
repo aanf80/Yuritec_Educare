@@ -1,6 +1,8 @@
 /**
  * Created by Armando_Navarro on 11/04/2017.
  */
+
+
 $(function () {
 
     $('#roleid').trigger('click');
@@ -10,7 +12,7 @@ $(function () {
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
-        console.log("Codigo json: "+json.code);
+
         if(json.code===200)
             $.each(json.msg, function(i,row){
 
@@ -23,7 +25,7 @@ $(function () {
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
-        console.log("Codigo json: "+json.code);
+
         if(json.code===200)
             $.each(json.msg, function(i,row){
 
@@ -69,8 +71,47 @@ $(function () {
         }
     });
 
+    $('#frmEditUser').validate({
+        rules:{
 
+            username:{
+                required: true
+            }
+        },
+        messages:{
 
+            username: {
+                minlength: "Introduzca al menos tres caracteres",
+                maxlength: "Introdusca menos de 20 caracteres",
+                required: "Capture el nombre de usuario"
+            }
+        },
+        highlight: function (element){
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function (element){
+            $(element).closest('.form-group').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function(error, element){
+            if(element.parent('.input-group').length){
+                error.insertAfter(element.parent());
+            }else{
+                error.insertAfter(element);
+            }
+        },
+        submitHandler: function(form){
+            updateUser();
+            return false;
+        }
+    });
+
+    $('#btnModificarUser').on('click', function () {
+
+        $('#frmEditUser').submit();
+
+    });
     $('#tbUsers').DataTable({
         responsive: true,
         language:{
@@ -142,14 +183,14 @@ $(function () {
             },
             {
                 data: function (row) {
-                    str = "<div align='center'>";
+                    str = "<div align='left'>";
                     str +="<button id='btnEditar' class='btn btn-success' onClick='showUser(" + row['userid'] + ",\"" + row['username']
                         + "\",\"" + row['lastname'] + "\",\"" + row['maternalsurname'] + "\",\"" + row['gender'] +
                         "\",\"" + row['address'] + "\",\"" + row['streetnumber'] + "\",\"" + row['neighborhood'] +
                         "\",\"" + row['zipcode'] + "\",\"" + row['city'] + "\",\"" + row['state'] +
                         "\",\"" + row['country'] + "\",\"" + row['email'] + "\",\"" + row['password'] +
                         "\",\"" + row['sign'] + "\",\"" + row['position'] + "\",\"" + row['institute'] +
-                        "\",\"" + row['initials'] + "\",\"" + row['role'] + "\")'><i class=\"glyphicon glyphicon-edit\"></i></button>";
+                        "\",\"" + row['initials'] + "\",\"" + row['roleid'] + "\",\"" + row['photo'] +"\")'><i class=\"glyphicon glyphicon-edit\"></i></button>";
                     str += "&nbsp;<button id='btnBorrar' class='btn btn-danger' onClick='deleteUser(" + row['userid'] + ")'><i class=\"glyphicon glyphicon-trash\"></i> </button>";//trash
                     str += "</div>"
                     return str;
@@ -177,7 +218,7 @@ function newUser(){
         data: $('#frmUser').serialize()
     }).done(
         function(data){
-            console.log(data.code);
+
             if(data.code === 200){
                 $.growl.notice({ message: data.msg });
                 $('#username').val('');
@@ -199,7 +240,6 @@ function newUser(){
                 $('#roleid').index(0);
                 $('#country').index(0);
 
-                console.log("usuario insertado!!");
             }
             else{
                 $.growl.error({ message: data.msg });
@@ -215,7 +255,7 @@ function newUser(){
 }
 
 function showUser(userid, username, lastname, maternalsurname,gender,address,streetnumber,neighborhood,zipcode,
-                  city,state,country,email,password,sign,position,institute,initials) {
+                  city,state,country,email,password,sign,position,institute,initials,roleid,photo) {
     $('#userid').val(userid);
     $('#username2').val(username);
     $('#lastname2').val(lastname);
@@ -225,28 +265,46 @@ function showUser(userid, username, lastname, maternalsurname,gender,address,str
     $('#city2').val(city);
     $('#state2').val(state);
     $('#country2').val(country);
+    $('#photo2').val(photo);
     $('#email2').val(email);
     $('#password2').val(password);
     $('#sign2').val(sign);
     $('#position2').val(position);
     $('#institute2').val(institute);
     $('#initials2').val(initials);
-
-    if(gender=="M"){
-        $('#gender2').val("Masculino");
-    }
-
-    if(gender=="F"){
-        $('#gender2').val("Femenino");
-    }
-
+    $('#gender2').val(gender);
+    $('#roleid2').val(roleid);
     $('#address2').val(address);
     $('#neighborhood2').val(neighborhood);
     $('#modalUser').modal("show");
 
 }
 
+function updateUser() {
 
+    $.ajax(
+        {
+            url:"/Yuritec_Educare/user/updateUser" ,
+            type: "post",
+            data: $('#frmEditUser').serialize()
+        }
+    ).done(
+        function (data) {
+
+            if (data.code == 200) {
+                $.growl.notice({message: data.msg});
+                $('#tbUsers').dataTable().api().ajax.reload();
+                $('#modalUser').modal("toggle");
+            } else {
+                $.growl.error({message: data.msg});
+            }
+        }
+    ).fail(
+        function () {
+            $.growl.error({message: "El servidor no está disponible"});
+        }
+    );
+}
 
 function deleteUser(userid) {
 
