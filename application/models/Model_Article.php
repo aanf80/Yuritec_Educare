@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * Created by PhpStorm.
+ * User: Concurso18
+ * Date: 03/04/2017
+ * Time: 11:42 AM
+ */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+//This is the Book Model for CodeIgniter CRUD using Ajax Application.
+class Model_Article extends CI_Model{
+    var $table = 'article';
+
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->database();
+    }
+
+    function newArticle($data){
+        $this->db->insert($this->table, $data);
+        return true;
+    } //C
+    function getArticles(){
+        $this->db->from('article');
+        $query=$this->db->get();
+        return $query->result();
+    } //R
+    function updateArticle($data, $where){
+        $this->db->update($this->table, $data, $where);
+        return true;
+    } //U
+    function deleteArticle($id){
+        $this->db->where('userid', $id);
+        $this->db->delete($this->table);
+        return true;
+    } //D
+
+
+
+}

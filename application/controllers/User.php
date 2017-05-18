@@ -31,12 +31,18 @@ class User extends CI_Controller {
     }
     public function users()
     {
+        if($this->session->userdata('nombre')==null){
+            redirect('home', 'refresh');
+        }
         $this->load->view('header');
         $this->load->view('user/users_view');
         $this->load->view('footer');
     }
 
     public function newUser(){
+        if($this->session->userdata('nombre')==null){
+            redirect('home', 'refresh');
+        }
         $this->load->model('Model_User');
         $jsondata = array();
         $hoy = date("Y-m-d");

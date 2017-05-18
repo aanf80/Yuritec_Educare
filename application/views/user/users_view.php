@@ -11,10 +11,10 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h3 class="page-header">Consulta de usuarios</h3>
+            <h3 class="page-header">Nuevo Usuario</h3>
             <ol class="breadcrumb">
                 <li>
-                    <?php echo anchor('/user/users_new', 'Consulta de usuarios', 'class="link-class"') ?>
+                    <?php echo anchor('/user/users_new', 'Nuevo Usuario', 'class="link-class"') ?>
                 </li>
                 <li class="active">Consulta de usuarios</li>
 
