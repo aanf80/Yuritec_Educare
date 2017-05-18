@@ -102,6 +102,24 @@ class User extends CI_Controller {
         header("Cache-Control: no-store");
         echo json_encode($jsondata);
     }
+    public function getUserById(){
+
+        $this->load->model('Model_User');
+        $email = $this->session->userdata('nombre');
+        $data = $this->Model_User->getUserByEmail($email);
+        $jsondata["code"] = 200;
+        $jsondata["msg"] = array();
+        foreach($data as $user){
+            $jsondata["msg"][] = $user;
+        }
+
+        $jsondata["details"] = "OK";
+
+
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata);
+    }
     public function updateUser(){
         $this->load->model('Model_User');
         $jsondata = array();

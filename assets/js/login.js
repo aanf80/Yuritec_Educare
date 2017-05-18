@@ -26,7 +26,6 @@ $(function(){
             url: "/Yuritec_Educare/login/validaLogin",
             type: "post",
             data: {username : $('#username').val(),
-
                 password : $('#password').val()}
         }).done(
             function(data){
