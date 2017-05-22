@@ -23,9 +23,10 @@ class Article extends CI_Controller {
     public function edit_area()
     {
         $this->load->view('header');
-        $this->load->view('articulos/edit_view');
+        $this->load->view('articles/edit_view');
         $this->load->view('footer');
     }
+
 //Funciones de BD
     public function newArticle(){
         if($this->session->userdata('nombre')==null){
@@ -65,6 +66,25 @@ class Article extends CI_Controller {
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
     public function getArticles(){
+        $this->load->model('Model_Article');
+        $data = $this->Model_Article->getArticles();
+        $jsondata["code"] = 200;
+        $jsondata["msg"] = array();
+        foreach($data as $cat){
+            $jsondata["msg"][] = $cat;
+        }
+
+        $jsondata["details"] = "OK";
+
+
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata);
+    }
+    public function getArticlesByVolume(){
+
+    }
+    public function getArticlesByUser(){
 
     }
     public function updateArticle(){

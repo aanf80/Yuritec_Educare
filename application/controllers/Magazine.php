@@ -22,4 +22,28 @@ class Magazine extends CI_Controller {
         $this->load->view('magazine/publications_view',$data);
         $this->load->view('footer');
     }
+
+    public function articles()
+    {
+        $this->load->model('Model_Article');
+        $data['articles'] = $this->Model_Article->getArticles();
+
+        $this->load->view('header');
+        $this->load->view('articles/articlemenu_view',$data);
+        $this->load->view('footer');
+    }
+
+    public function article_view()
+    {
+        $this->load->model('Categories');
+        $data['categories'] = $this->Categories->getCategories();
+
+        $this->load->model('Model_Article');
+        $data['articles'] = $this->Model_Article->getArticleByID(3);
+
+
+        $this->load->view('header');
+        $this->load->view('articles/article_view',$data);
+        $this->load->view('footer');
+    }
 }

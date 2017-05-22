@@ -9,7 +9,7 @@
 
 <script type="text/javascript" src="<?php echo base_url('assets/js/profile.js'); ?>"></script>
 <div class="container" xmlns="http://www.w3.org/1999/html">
-    <?php foreach($user as $userdata) { ?>
+
     <div class="row">
         <div class="col-lg-12">
             <h3 class="page-header">Perfil</h3>
@@ -35,6 +35,7 @@
             </ol>
         </div>
     </div>
+
 
     <div id="modalProfile" class="modal">
         <div class="modal-dialog">
@@ -229,7 +230,7 @@
                                     <i class="glyphicon glyphicon-picture"></i>
                                 </span>
                                     <!--    <input id="file2" name="file" type="file"  /> -->
-                                    <input class="form-control" id="photo2" name="photo" value="<?php echo $userdata->photo;?>">
+                                    <input class="form-control" id="photo2" name="photo" ">
                                 </div>
                             </div>
                             <!-- Séptima fila-->
@@ -239,7 +240,7 @@
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-flag"></i>
                                 </span>
-                                    <input class="form-control" id="country2" name="country" value="<?php echo $userdata->country;?>">
+                                    <input class="form-control" id="country2" name="country" >
                                 </div>
                             </div>
 
@@ -259,6 +260,7 @@
     </div>
 
     <div class="row">
+        <?php foreach($user as $userdata) { ?>
 
             <div class="col-lg-3">
 

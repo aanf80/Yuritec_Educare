@@ -6,7 +6,16 @@
  * Time: 07:42 PM
  */
 ?>
-<!--<script>tinymce.init({selector: 'textarea'});</script>-->
+<script>  tinymce.init({
+        selector: "textarea",
+        language : "es_MX",
+        plugins: [
+            "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+            "save table contextmenu directionality emoticons template paste textcolor"
+        ],
+        save_enablewhendirty: true
+    }); </script>
 <script type="text/javascript" src="<?php echo base_url('assets/js/article.js'); ?>"></script>
 <div class="container">
     <div class="row">

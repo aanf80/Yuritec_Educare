@@ -27,7 +27,20 @@ class Model_Article extends CI_Model{
         $this->db->from('article');
         $query=$this->db->get();
         return $query->result();
-    } //R
+    }
+
+    public function getArticleByID($id) //C
+    {
+        $this->db->from($this->table);
+        $this->db->where('articleid',$id);
+        $this -> db -> limit(1);
+
+        $query = $this->db->get();
+
+
+        return $query->result();
+    }
+    //R
     function updateArticle($data, $where){
         $this->db->update($this->table, $data, $where);
         return true;

@@ -22,8 +22,13 @@
 
     <script type="text/javascript" src="<?php echo base_url('assets/js/plugins/jquery.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/js/plugins/jquery.validate.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/tinymce/tinymce.min.js')?>"></script>
+
     <script type="text/javascript" src="<?php echo base_url('assets/js/plugins/jquery.dataTables.min.js'); ?>"></script>
+
     <script type="text/javascript" src="<?php echo base_url('assets/js/plugins/dataTables.responsive.min.js')?>"></script>
+
+
     <script src="<?php echo base_url('assets/js/plugins/bootstrap.min.js'); ?>"></script>
     <script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
     <script src="<?php echo base_url('assets/js/plugins/jqBootstrapValidation.js'); ?>"></script>
