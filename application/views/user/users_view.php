@@ -237,12 +237,12 @@
                                     <input class="form-control" id="country2" name="country" placeholder="Pais">
                                 </div>
                             </div>
-
-                            <!-- Novena fila-->
-
-
-
-
+                            <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <label class="control-label" for="bio2">Resumen biográfico</label>
+                                <div class="input-group">
+                                    <textarea id="bio2" name = "bio" rows="2" cols="100" class="form-control"></textarea>
+                                </div>
+                            </div>
                         </div>
 
                     </form>

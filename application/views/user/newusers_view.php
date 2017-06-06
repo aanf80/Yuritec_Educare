@@ -83,7 +83,7 @@
                 <div class="help-block"></div>
 
                 <label for="resumen">Resumen biográfico</label>
-                <textarea name="" id="resume" rows="6" class="form-control"></textarea>
+                <textarea name="bio" id="bio" rows="6" class="form-control"></textarea>
                 <div class="help-block">Ej. Departamento y Rango</div>
 
                 <h4><strong>Domicilio</strong></h4>

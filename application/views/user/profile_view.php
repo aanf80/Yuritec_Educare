@@ -245,6 +245,12 @@
                             </div>
 
                             <!-- Novena fila-->
+                            <div class="form-group col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <label class="control-label" for="bio2">Resumen biográfico</label>
+                                <div class="input-group">
+                                    <textarea id="bio2" name = "bio" rows="2" cols="100" class="form-control"></textarea>
+                                </div>
+                            </div>
                         </div>
 
                     </form>
@@ -320,9 +326,7 @@
                         <h4><strong>Resumen<br>biográfico</strong></h4>
                     </div>
                     <div class="col-lg-8">
-                        <h4>Dr. en Educación por Nova Southeastern University.
-                            Actualmente, profesor de la Universidad Autónoma de Nayarit y de Nova Southeastern
-                            University, y Director de Educación a Distancia de la Universidad Autónoma de Nayarit.</h4>
+                        <h4><?php echo $userdata->bio;?></h4>
                     </div>
                 </div>
             </div>

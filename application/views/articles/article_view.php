@@ -41,7 +41,7 @@
             <hr>
 
             <!-- Post Content -->
-           
+
             <?php echo $art->content;?>
 
 

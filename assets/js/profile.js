@@ -60,7 +60,7 @@ $(function () {
                 $.each(json.msg, function(i,row){
                     showProfile(row['userid'],row['username'],row['lastname'],row['maternalsurname'],row['gender'],row['address'],row['streetnumber'],
                         row['neighborhood'],row['zipcode'],row['city'],row['state'],row['country'],row['email'],row['password'],row['sign'],row['position'],
-                        row['institute'],row['initials'],row['photo'],row['roleid'])
+                        row['institute'],row['initials'],row['photo'],row['roleid'],row['bio'])
 
                 });
         });
@@ -72,7 +72,8 @@ $(function () {
 
 
 function showProfile(userid, username, lastname, maternalsurname,gender,address,streetnumber,neighborhood,zipcode,
-                     city,state,country,email,password,sign,position,institute,initials,photo,roleid) {
+                     city,state,country,email,password,sign,position,institute,initials,photo,roleid,bio) {
+    console.log("bio "+bio);
 
 
     $userid = userid;
@@ -86,6 +87,7 @@ function showProfile(userid, username, lastname, maternalsurname,gender,address,
     $('#state2').val(state);
     $('#country2').val(country);
     $('#photo2').val(photo);
+    $('#bio2').val(bio);
     $('#email2').val(email);
     $('#password2').val(password);
     $('#sign2').val(sign);
@@ -95,7 +97,7 @@ function showProfile(userid, username, lastname, maternalsurname,gender,address,
     $('#address2').val(address);
     $('#neighborhood2').val(neighborhood);
     $roleid = roleid;
- console.log("role id: "+$roleid)
+
     $('#modalProfile').modal("show");
 }
 function updateProfile() {
@@ -117,6 +119,7 @@ function updateProfile() {
                     position: $('#position2').val(),
                     institute: $('#institute2').val(),
                     initials: $('#initials2').val(),
+                    bio: $('#bio2').val(),
                     photo: $('#photo2').val(),
                     address: $('#address2').val(),
                     streetnumber: $('#streetnumber2').val(),
