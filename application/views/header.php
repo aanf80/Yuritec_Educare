@@ -94,15 +94,15 @@
                                     <a href="magazine.php">Gestión de Revista</a>
                                 </li>
                                 <li>
+                                    <?php echo anchor('/settings/terms', 'Políticas de Operación ', 'class="link-class"') ?>
+                                </li>
+                                <li>
                                     <?php echo anchor('/settings/roles', 'Roles de usuario', 'class="link-class"') ?>
                                 </li>
                                 <li>
                                     <?php echo anchor('/user/users_new', 'Usuarios', 'class="link-class"') ?>
                                 </li>
-                                <li>
-                                    <a href="pricing.html">Pricing Table</a>
-                                </li>
-                            </ul>
+                              </ul>
                         </li>
                         <?php
                     }

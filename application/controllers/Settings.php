@@ -215,8 +215,6 @@ class Settings extends CI_Controller {
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
 
-
-
     //Aqui empiezan las vistas!
     public function categories()
     {
@@ -228,6 +226,15 @@ class Settings extends CI_Controller {
     {
         $this->load->view('header');
         $this->load->view('config/roles_view');
+        $this->load->view('footer');
+    }
+
+    public function terms()
+    {
+       // $this->load->model('Categories');
+        //$data['categories'] = $this->Categories->getCategories();
+        $this->load->view('header');
+        $this->load->view('config/adminterms_view');
         $this->load->view('footer');
     }
 }

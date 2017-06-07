@@ -46,4 +46,6 @@ class Magazine extends CI_Controller {
         $this->load->view('articles/article_view',$data);
         $this->load->view('footer');
     }
+
+
 }
