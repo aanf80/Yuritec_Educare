@@ -2,7 +2,7 @@
  * Created by Armando_Navarro on 11/04/2017.
  */
 
-
+var info = [];
 $(function () {
 
     $('#roleid').trigger('click');
@@ -33,7 +33,7 @@ $(function () {
             });
     });
 
-
+// FIN SECCION DE SELECTS
 
     $('#frmUser').validate({
         rules:{
@@ -70,6 +70,8 @@ $(function () {
             return false;
         }
     });
+
+    // FIN SECCION DE FORMULARIO
 
     $('#frmEditUser').validate({
         rules:{
@@ -112,6 +114,9 @@ $(function () {
         $('#frmEditUser').submit();
 
     });
+
+// FIN SECCION FORMULARIO MODAL
+
     $('#tbUsers').DataTable({
         responsive: true,
         language:{
@@ -134,7 +139,6 @@ $(function () {
             {
                 data: function (row) {
                     str = "<div align = 'left'>"+ row['lastname']+" "+row['maternalsurname'];
-                    //  str += accounting.formatMoney(row['roleid']);
                     str += "</div>";
                     return str;
                 }
@@ -156,7 +160,6 @@ $(function () {
             {
                 data: function (row) {
                     str = "<div align = 'left'>"+row['city']+", "+row['state'];
-                    //  str += accounting.formatMoney(row['roleid']);
                     str += "</div>";
                     return str;
                 }
@@ -183,29 +186,9 @@ $(function () {
             },
             {
                 data: function (row) {
+                    $info = row;
                     str = "<div align='left'>";
                     str +="<button id='btnEditar' class='btn btn-success'><i class=\"glyphicon glyphicon-edit\"></i></button>";
-                    /* str +="<button id='btnEditar' class='btn btn-success' onClick='showUser(" + row['userid'] + ",\"" + row['username']
-                     + "\",\"" + row['lastname'] + "\",\"" + row['maternalsurname'] + "\",\"" + row['gender'] +
-                     "\",\"" + row['address'] + "\",\"" + row['streetnumber'] + "\",\"" + row['neighborhood'] +
-                     "\",\"" + row['zipcode'] + "\",\"" + row['city'] + "\",\"" + row['state'] +
-                     "\",\"" + row['country'] + "\",\"" + row['email'] + "\",\"" + row['password'] +
-                     "\",\"" + row['sign'] + "\",\"" + row['position'] + "\",\"" + row['institute'] +
-                     "\",\"" + row['initials'] + "\",\"" + row['roleid'] + "\",\"" + row['photo'] + "\",\"" + row['bio'] +"\")'><i class=\"glyphicon glyphicon-edit\"></i></button>";*/
-                    str+= "<script>" +
-                        "$(function () " +
-                        "{$('#btnEditar').on('click', function () {" +
-                        "$.ajax({url: '/Yuritec_Educare/user/getUsers'," +
-                        "type: 'GET'," +
-                        "dataType: 'json'}).done(" +
-                        "function (json)" +
-                        "{ if(json.code===200) $.each(json.msg, function(i,row){" +
-                        "showProfile(row['userid'],row['username'],row['lastname'],row['maternalsurname'],row['gender'],row['address'],row['streetnumber'], row['neighborhood'],row['zipcode'],row['city'],row['state'],row['country'],row['email'],row['password'],row['sign'],row['position'], row['institute'],row['initials'],row['photo'],row['roleid'],row['bio'])" +
-                        "}); " +
-                        "}); " +
-                        "});" +
-                        "});"+
-                        "</script>";
                     str += "&nbsp;<button id='btnBorrar' class='btn btn-danger' onClick='deleteUser(" + row['userid'] + ")'><i class=\"glyphicon glyphicon-trash\"></i> </button>";//trash
                     str += "</div>"
                     return str;
@@ -216,15 +199,20 @@ $(function () {
         ]
     });
 
+
+    $('#tbUsers tbody').on( 'click','.btn-success',  function () {
+
+        showUser($info['userid'],$info['username'],$info['lastname'],$info['maternalsurname'],$info['gender'],$info['address'],$info['streetnumber'],
+            $info['neighborhood'],$info['zipcode'],$info['city'],$info['state'],$info['country'],$info['email'],$info['password'],$info['sign'],$info['position'],
+            $info['institute'],$info['initials'],$info['roleid'],$info['photo'],$info['bio'])
+    } );
+
+
+// FIN SECCION DATATABLE
+
+
+
 });
-
-
-
-
-
-
-
-
 
 function newUser(){
     $.ajax({
