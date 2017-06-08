@@ -232,7 +232,6 @@ class Settings extends CI_Controller {
 
         $jsondata["details"] = "OK";
 
-
         header('Content-type: application/json; charset=utf-8');
         header("Cache-Control: no-store");
         echo json_encode($jsondata);
@@ -267,6 +266,56 @@ class Settings extends CI_Controller {
         header("Cache-Control: no-store");
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
+    //Aqui empiezan los objetivos
+
+    public function getObjectives(){
+
+        $this->load->model('Model_Objectives');
+        $data = $this->Model_Objectives->getObjectives();
+        $jsondata["code"] = 200;
+        $jsondata["msg"] = array();
+        foreach($data as $objective){
+            $jsondata["msg"][] = $objective;
+        }
+
+        $jsondata["details"] = "OK";
+
+
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata);
+    }
+
+    public function updateObjectives(){
+
+        $this->load->model('Model_Objectives');
+        $jsondata = array();
+        $hoy = date("Y-m-d");
+
+        $data = array(
+            'objectivesid' => $this->input->post('objectivesid'),
+            'content' => $this->input->post('content'),
+            'mod_date' => $hoy
+        );
+        if($data['objectivesid']==null){
+            redirect('home', 'refresh');
+        }
+        $update = $this->Model_Objectives->updateObjectives(array('objectivesid' => $this->input->post('objectivesid')), $data);
+        if($update == true){
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = "Registrado correctamente";
+            $jsondata["details"] = "OK";
+        }
+        else{
+            $jsondata["code"] = 500;
+            $jsondata["msg"] = "Error en el registro";
+            $jsondata["details"] = "OK";
+        }
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata, JSON_FORCE_OBJECT);
+    }
+
 
     //Aqui empiezan las vistas!
     public function categories()
@@ -290,7 +339,14 @@ class Settings extends CI_Controller {
         $this->load->view('config/adminterms_view');
         $this->load->view('footer');
     }
-
+    public function objectives()
+    {
+        // $this->load->model('Categories');
+        //$data['categories'] = $this->Categories->getCategories();
+        $this->load->view('header');
+        $this->load->view('config/adminobjectives_view');
+        $this->load->view('footer');
+    }
 
 
 

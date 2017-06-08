@@ -10,4 +10,4 @@
 
     <textarea name="content" id="content" rows="6" class="form-control"></textarea>
     <div class="row">&nbsp;</div>
-     <button id="btnGuardarPoliticas" class="btn btn-warning"><i class="glyphicon glyphicon-floppy-disk"></i>Guardar</button>
+     <button id="btnGuardarPoliticas" class="btn btn-warning"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>

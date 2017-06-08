@@ -1,7 +1,9 @@
 /**
  * Created by Concurso18 on 08/06/2017.
  */
-var $termid, $content;
+
+
+var $objectiveid, $content;
 $(function () {
     tinymce.init({
         selector: "#content",
@@ -18,38 +20,38 @@ $(function () {
     });
 
     $.ajax({
-        url: '/Yuritec_Educare/settings/getTerms',
+        url: '/Yuritec_Educare/settings/getObjectives',
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
 
         if(json.code===200)
             $.each(json.msg, function(i,row){
-                showTerms(row['termsid'],row['content']);
+                showObjectives(row['objectivesid'],row['content']);
             });
     });
 
     $('#btnGuardarPoliticas').on('click', function () {
-        updateTerms();
+        updateObjectives();
     });
 });
 
 
 
-function showTerms(termsid,content){
-    $termid = termsid;
+function showObjectives(objectivesid,content){
+    $objectiveid = objectivesid;
     tinyMCE.activeEditor.setContent(content);
 }
 
 
-function updateTerms() {
-$content = tinyMCE.activeEditor.getContent();
+function updateObjectives() {
+    $content = tinyMCE.activeEditor.getContent();
     $.ajax(
         {
-            url:"/Yuritec_Educare/settings/updateTerms" ,
+            url:"/Yuritec_Educare/settings/updateObjectives" ,
             type: "post",
             data: {
-                termsid: $termid,
+                objectivesid: $objectiveid,
                 content: $content
             }
         }

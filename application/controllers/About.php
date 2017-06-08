@@ -29,4 +29,12 @@ class About extends CI_Controller {
         $this->load->view('terms_view',$data);
         $this->load->view('footer');
     }
+    public function objectives()
+    {
+       // $this->load->model('Model_Terms');
+        //$data['terms'] = $this->Model_Terms->getTerms();
+        $this->load->view('header');
+        $this->load->view('objectives_view');
+        $this->load->view('footer');
+    }
 }
