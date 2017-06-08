@@ -24,5 +24,6 @@
     </div>
 
     <?php foreach($terms as $ter) {
-        echo $ter->content;    }
+        echo $ter->content;
+    }
     ?>

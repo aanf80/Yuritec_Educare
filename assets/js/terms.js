@@ -1,7 +1,7 @@
 /**
  * Created by Concurso18 on 08/06/2017.
  */
-var $termid;
+var $termid, $content;
 $(function () {
     tinymce.init({
         selector: "#content",
@@ -27,29 +27,27 @@ $(function () {
     });
 
     $('#btnGuardarPoliticas').on('click', function () {
-console.log("Politicas acutalizadas");
+        updateTerms();
     });
 });
 
 
 
 function showTerms(termsid,content){
-$termid = termsid;
-tinyMCE.activeEditor.setContent(content);
-//$('#content').val(content);
-
+    $termid = termsid;
+    tinyMCE.activeEditor.setContent(content);
 }
 
 
 function updateTerms() {
-
+$content = tinyMCE.activeEditor.getContent();
     $.ajax(
         {
             url:"/Yuritec_Educare/settings/updateTerms" ,
             type: "post",
             data: {
                 termsid: $termid,
-                content: $('#content').val()
+                content: $content
             }
         }
     ).done(
