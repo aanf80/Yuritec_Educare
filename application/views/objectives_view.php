@@ -20,7 +20,11 @@
                     <?php echo anchor('/about/terms', 'Políticas de Operación', 'class="link-class"') ?>
                 </li>
             </ol>
-
-
         </div>
     </div>
+
+
+<?php foreach($objectives as $obj) {
+    echo $obj->objectivecontent;
+}
+?>

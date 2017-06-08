@@ -27,11 +27,11 @@ $(function () {
 
         if(json.code===200)
             $.each(json.msg, function(i,row){
-                showObjectives(row['objectivesid'],row['content']);
+                showObjectives(row['objectiveid'],row['objectivecontent']);
             });
     });
 
-    $('#btnGuardarPoliticas').on('click', function () {
+    $('#btnGuardarObj').on('click', function () {
         updateObjectives();
     });
 });
@@ -51,8 +51,8 @@ function updateObjectives() {
             url:"/Yuritec_Educare/settings/updateObjectives" ,
             type: "post",
             data: {
-                objectivesid: $objectiveid,
-                content: $content
+                objectiveid: $objectiveid,
+                objectivecontent: $content
             }
         }
     ).done(

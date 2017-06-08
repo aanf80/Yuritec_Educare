@@ -31,10 +31,10 @@ class About extends CI_Controller {
     }
     public function objectives()
     {
-       // $this->load->model('Model_Terms');
-        //$data['terms'] = $this->Model_Terms->getTerms();
+       $this->load->model('Model_Objectives');
+       $data['objectives'] = $this->Model_Objectives->getObjectives();
         $this->load->view('header');
-        $this->load->view('objectives_view');
+        $this->load->view('objectives_view',$data);
         $this->load->view('footer');
     }
 }

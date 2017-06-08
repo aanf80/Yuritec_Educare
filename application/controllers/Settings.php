@@ -293,14 +293,13 @@ class Settings extends CI_Controller {
         $hoy = date("Y-m-d");
 
         $data = array(
-            'objectivesid' => $this->input->post('objectivesid'),
-            'content' => $this->input->post('content'),
-            'mod_date' => $hoy
+            'objectiveid' => $this->input->post('objectiveid'),
+            'objectivecontent' => $this->input->post('objectivecontent')
         );
-        if($data['objectivesid']==null){
+        if($data['objectiveid']==null){
             redirect('home', 'refresh');
         }
-        $update = $this->Model_Objectives->updateObjectives(array('objectivesid' => $this->input->post('objectivesid')), $data);
+        $update = $this->Model_Objectives->updateObjectives(array('objectiveid' => $this->input->post('objectiveid')), $data);
         if($update == true){
             $jsondata["code"] = 200;
             $jsondata["msg"] = "Registrado correctamente";
