@@ -237,4 +237,25 @@ class Settings extends CI_Controller {
         $this->load->view('config/adminterms_view');
         $this->load->view('footer');
     }
+
+    public function getTerms(){
+
+        $this->load->model('Model_Terms');
+        $data = $this->Model_Terms->getTerms();
+        $jsondata["code"] = 200;
+        $jsondata["msg"] = array();
+        foreach($data as $term){
+            $jsondata["msg"][] = $term;
+        }
+
+        $jsondata["details"] = "OK";
+
+
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata);
+    }
+
+
+
 }

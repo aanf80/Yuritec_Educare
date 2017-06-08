@@ -72,7 +72,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <?php echo anchor('/about', '¿Quiénes somos?', 'class="link-class"') ?>
+                        <?php echo anchor('/about', 'Acerca de', 'class="link-class"') ?>
                     </li>
 
                     <li>

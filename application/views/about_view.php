@@ -3,9 +3,17 @@
     <!-- Page Heading/Breadcrumbs -->
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">¿Quiénes Somos?
-            </h1>
+            <h3 class="page-header">¿Quiénes Somos?</h3>
+            <ol class="breadcrumb">
+                <li class="active">Acerca de Yúritec Educare</li>
+                <li>
+                    <?php echo anchor('/about/objectives', 'Objetivos', 'class="link-class"') ?>
+                </li>
+                <li>
+                    <?php echo anchor('/about/terms', 'Políticas de Operación', 'class="link-class"') ?>
+                </li>
 
+            </ol>
         </div>
     </div>
     <!-- /.row -->
