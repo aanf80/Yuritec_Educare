@@ -31,7 +31,7 @@ class User extends CI_Controller {
     }
     public function users()
     {
-        if($this->session->userdata('nombre')==null){
+        if($this->session->userdata('email')==null){
             redirect('home', 'refresh');
         }
         $this->load->view('header');
@@ -40,7 +40,7 @@ class User extends CI_Controller {
     }
 
     public function newUser(){
-        if($this->session->userdata('nombre')==null){
+        if($this->session->userdata('email')==null){
             redirect('home', 'refresh');
         }
         $this->load->model('Model_User');
@@ -93,40 +93,42 @@ class User extends CI_Controller {
     }
 
     public function getUsers(){
+        $roleid = $this->session->userdata('roleid');
+        if($roleid != 1){
+            redirect('home', 'refresh');
+        }else{
+            $this->load->model('Model_User');
+            $data = $this->Model_User->getUsers();
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = array();
+            foreach($data as $user){
+                $jsondata["msg"][] = $user;
+            }
 
-        $this->load->model('Model_User');
-        $data = $this->Model_User->getUsers();
-        $jsondata["code"] = 200;
-        $jsondata["msg"] = array();
-        foreach($data as $user){
-            $jsondata["msg"][] = $user;
+            $jsondata["details"] = "OK";
+
+
+            header('Content-type: application/json; charset=utf-8');
+            header("Cache-Control: no-store");
+            echo json_encode($jsondata);
         }
 
-        $jsondata["details"] = "OK";
-
-
-        header('Content-type: application/json; charset=utf-8');
-        header("Cache-Control: no-store");
-        echo json_encode($jsondata);
     }
     public function getUserById(){
-
         $this->load->model('Model_User');
-        $email = $this->session->userdata('nombre');
-        $data = $this->Model_User->getUserByEmail($email);
+        $userid = $this->session->userdata('userid');
+        $data = $this->Model_User->getUserByID ($userid);
         $jsondata["code"] = 200;
         $jsondata["msg"] = array();
         foreach($data as $user){
             $jsondata["msg"][] = $user;
         }
-
         $jsondata["details"] = "OK";
-
-
         header('Content-type: application/json; charset=utf-8');
         header("Cache-Control: no-store");
         echo json_encode($jsondata);
     }
+
     public function updateUser(){
         $this->load->model('Model_User');
         $jsondata = array();
@@ -259,17 +261,21 @@ class User extends CI_Controller {
     }
 
 
-
+//Vistas
     public function profile()
     {
-
+        $userid = $this->session->userdata('userid');
         $this->load->model('Model_User');
-
-        $email = $this->session->userdata('nombre');
-        $data['user'] = $this->Model_User->getUserByEmail($email);
+        $data['user'] = $this->Model_User->getUserByID($userid);
 
         $this->load->view('header');
         $this->load->view('user/profile_view',$data);
+        $this->load->view('footer');
+    }
+
+    public function my_articles(){
+        $this->load->view('header');
+        $this->load->view('articles/myarticles_view');
         $this->load->view('footer');
     }
 }

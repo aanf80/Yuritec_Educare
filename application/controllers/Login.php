@@ -35,7 +35,7 @@ class Login extends CI_Controller {
         if($result['logueado']){
 
             $jsondata["code"] = 200;
-            $jsondata["msg"] = "Si tiene acceso al sistema"." el id es:".$result['nombre'];
+            $jsondata["msg"] = "Si tiene acceso al sistema"." el correo es:".$result['email'];
             $jsondata["details"] = "OK";
 
             $this->session->set_userdata($result);

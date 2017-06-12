@@ -81,7 +81,8 @@ class Article extends CI_Controller {
         header("Cache-Control: no-store");
         echo json_encode($jsondata);
     }
-    public function getArticlesByVolume(){
+
+     public function getArticlesByVolume(){
 
     }
     public function getArticlesByUser(){

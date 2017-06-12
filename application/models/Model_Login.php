@@ -21,8 +21,9 @@ class Model_Login extends CI_Model{
 
     function validaLogin($username, $password){
         $roleid = 0;
+        $userid = 0;
         $email = "";
-        $this -> db -> select('email, password,roleid');
+        $this -> db -> select('userid, email, password, roleid');
         $this -> db -> from('user');
         $this -> db -> where('email', $username);
         $this -> db -> where('password',$password);
@@ -31,12 +32,14 @@ class Model_Login extends CI_Model{
         $query = $this -> db -> get();
         foreach ($query ->result() as $row)
         {
+            $userid = $row->userid;
             $roleid = $row->roleid;
             $email = $row->email;
         }
         $usuario_data = array(
-            'id' => $roleid,
-            'nombre' => $email,
+            'userid' => $userid,
+            'roleid' => $roleid,
+            'email' => $email,
             'logueado' => false
         );
         if($query -> num_rows() == 1)

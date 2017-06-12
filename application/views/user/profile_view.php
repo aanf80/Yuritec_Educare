@@ -16,7 +16,7 @@
             <ol class="breadcrumb">
                 <li class="active">Perfil</li>
                 <li>
-                    <?php echo anchor('/article', 'Mis Artículos', 'class="link-class"') ?>
+                    <?php echo anchor('/user/my_articles', 'Mis Artículos', 'class="link-class"') ?>
                 </li>
                 <li>
                     <?php echo anchor('/article/edit_area', 'Área de Edición', 'class="link-class"') ?>
@@ -24,7 +24,7 @@
 
                 <?php
 
-                if($this->session->userdata('id') == 1){
+                if($this->session->userdata('roleid') == 1){
                     ?>
                     <li>
                         <?php echo anchor('/article/edit_area', 'Área de Revisión', 'class="link-class"') ?>

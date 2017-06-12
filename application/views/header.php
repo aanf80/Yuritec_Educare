@@ -80,7 +80,7 @@
                     </li>
                     <?php
 
-                    if($this->session->userdata('id') == 1){
+                    if($this->session->userdata('roleid') == 1){
 
                         ?>
                         <li class="dropdown">
@@ -95,6 +95,9 @@
                                 </li>
                                 <li>
                                     <?php echo anchor('/settings/objectives', 'Objetivos', 'class="link-class"') ?>
+                                </li>
+                                <li>
+                                    <?php echo anchor('/settings/terms', 'Página Principal', 'class="link-class"') ?>
                                 </li>
                                 <li>
                                     <?php echo anchor('/settings/terms', 'Políticas de Operación ', 'class="link-class"') ?>
@@ -120,7 +123,7 @@
 
                     <?php
 
-                    if($this->session->userdata('id') == 1 || $this->session->userdata('id') == 2){
+                    if($this->session->userdata('roleid') == 1 || $this->session->userdata('roleid') == 2){
 
                         ?>
                         <li>
@@ -131,7 +134,7 @@
                     ?>
                     <?php
                     //  echo "<li> jejeje".$this->session->userdata('id')."</li>";
-                    if($this->session->userdata('id') == ""){
+                    if($this->session->userdata('roleid') == ""){
 
                         ?>
                         <li>

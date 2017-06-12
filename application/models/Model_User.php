@@ -29,6 +29,18 @@ class Model_User extends CI_Model{
 
         return $query->result();
     }
+
+    public function getUserByID($id)
+    {
+        $this->db->from($this->table);
+        $this->db->where('userid',$id);
+        $this -> db -> limit(1);
+
+        $query = $this->db->get();
+
+
+        return $query->result();
+    }
     public function getUsers(){//R
         $this->db->from('user');
         $query=$this->db->get();

@@ -72,21 +72,27 @@ class Settings extends CI_Controller {
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
     public function getCategories(){
+        $roleid = $this->session->userdata('roleid');
+        if($roleid != 1) {
+            redirect('home', 'refresh');
+        }
+        else{
+            $this->load->model('Categories');
+            $data = $this->Categories->getCategories();
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = array();
+            foreach($data as $cat){
+                $jsondata["msg"][] = $cat;
+            }
 
-        $this->load->model('Categories');
-        $data = $this->Categories->getCategories();
-        $jsondata["code"] = 200;
-        $jsondata["msg"] = array();
-        foreach($data as $cat){
-            $jsondata["msg"][] = $cat;
+            $jsondata["details"] = "OK";
+
+
+            header('Content-type: application/json; charset=utf-8');
+            header("Cache-Control: no-store");
+            echo json_encode($jsondata);
         }
 
-        $jsondata["details"] = "OK";
-
-
-        header('Content-type: application/json; charset=utf-8');
-        header("Cache-Control: no-store");
-        echo json_encode($jsondata);
     }
     public function deleteCategory()    {
 
@@ -173,21 +179,26 @@ class Settings extends CI_Controller {
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
     public function getRoles(){
-
-        $this->load->model('Roles');
-        $data = $this->Roles->getRoles();
-        $jsondata["code"] = 200;
-        $jsondata["msg"] = array();
-        foreach($data as $cat){
-            $jsondata["msg"][] = $cat;
+        $roleid = $this->session->userdata('roleid');
+        if($roleid != 1) {
+            redirect('home', 'refresh');
         }
+        else {
+            $this->load->model('Roles');
+            $data = $this->Roles->getRoles();
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = array();
+            foreach ($data as $cat) {
+                $jsondata["msg"][] = $cat;
+            }
 
-        $jsondata["details"] = "OK";
+            $jsondata["details"] = "OK";
 
 
-        header('Content-type: application/json; charset=utf-8');
-        header("Cache-Control: no-store");
-        echo json_encode($jsondata);
+            header('Content-type: application/json; charset=utf-8');
+            header("Cache-Control: no-store");
+            echo json_encode($jsondata);
+        }
     }
 
     public function deleteRole()    {
@@ -319,32 +330,53 @@ class Settings extends CI_Controller {
     //Aqui empiezan las vistas!
     public function categories()
     {
-        $this->load->view('header');
-        $this->load->view('config/categories_view');
-        $this->load->view('footer');
+        $roleid = $this->session->userdata('roleid');
+        if($roleid != 1) {
+            redirect('home', 'refresh');
+        }
+        else {
+            $this->load->view('header');
+            $this->load->view('config/categories_view');
+            $this->load->view('footer');
+        }
     }
     public function roles()
     {
-        $this->load->view('header');
-        $this->load->view('config/roles_view');
-        $this->load->view('footer');
+        $roleid = $this->session->userdata('roleid');
+        if($roleid != 1) {
+            redirect('home', 'refresh');
+        }
+        else {
+            $this->load->view('header');
+            $this->load->view('config/roles_view');
+            $this->load->view('footer');
+        }
     }
 
     public function terms()
     {
-        // $this->load->model('Categories');
-        //$data['categories'] = $this->Categories->getCategories();
-        $this->load->view('header');
-        $this->load->view('config/adminterms_view');
-        $this->load->view('footer');
+        $roleid = $this->session->userdata('roleid');
+        if($roleid != 1) {
+            redirect('home', 'refresh');
+        }
+        else {
+            $this->load->view('header');
+            $this->load->view('config/adminterms_view');
+            $this->load->view('footer');
+        }
     }
     public function objectives()
     {
-        // $this->load->model('Categories');
-        //$data['categories'] = $this->Categories->getCategories();
-        $this->load->view('header');
-        $this->load->view('config/adminobjectives_view');
-        $this->load->view('footer');
+        $roleid = $this->session->userdata('roleid');
+        if($roleid != 1) {
+            redirect('home', 'refresh');
+        }
+        else {
+            $this->load->view('header');
+            $this->load->view('config/adminobjectives_view');
+            $this->load->view('footer');
+        }
+
     }
 
 

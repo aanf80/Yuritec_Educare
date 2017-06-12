@@ -26,7 +26,7 @@
                     <?php echo anchor('/user/profile', 'Mi Perfil', 'class="link-class"') ?>
                 </li>
                 <li>
-                    <?php echo anchor('/article', 'Mis Artículos', 'class="link-class"') ?>
+                    <?php echo anchor('/user/my_articles', 'Mis Artículos', 'class="link-class"') ?>
                 </li>
                 <li class="active">Área de Edición</li>
                 <?php
