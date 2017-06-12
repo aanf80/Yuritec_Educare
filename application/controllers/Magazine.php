@@ -39,7 +39,7 @@ class Magazine extends CI_Controller {
         $data['categories'] = $this->Categories->getCategories();
 
         $this->load->model('Model_Article');
-        $data['articles'] = $this->Model_Article->getArticleByID(3);
+        $data['articles'] = $this->Model_Article->getArticle(3);
 
 
         $this->load->view('header');

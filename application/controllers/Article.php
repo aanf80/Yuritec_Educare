@@ -26,7 +26,12 @@ class Article extends CI_Controller {
         $this->load->view('articles/edit_view');
         $this->load->view('footer');
     }
-
+    public function review_area()
+    {
+        $this->load->view('header');
+        $this->load->view('articles/review_view');
+        $this->load->view('footer');
+    }
 //Funciones de BD
     public function newArticle(){
         if($this->session->userdata('nombre')==null){

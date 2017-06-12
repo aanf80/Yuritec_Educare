@@ -39,7 +39,7 @@ class Model_Article extends CI_Model{
         return $query->result();
     }
 
-    public function getArticlesByID($id) //C
+    public function getArticle($id) //C
     {
         $this->db->from($this->table);
         $this->db->where('articleid',$id);

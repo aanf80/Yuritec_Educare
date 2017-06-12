@@ -379,7 +379,19 @@ class Settings extends CI_Controller {
 
     }
 
+    public function magazine()
+    {
+        $roleid = $this->session->userdata('roleid');
+        if($roleid != 1) {
+            redirect('home', 'refresh');
+        }
+        else {
+            $this->load->view('header');
+            $this->load->view('config/configmagazine_view');
+            $this->load->view('footer');
+        }
 
+    }
 
 
 }

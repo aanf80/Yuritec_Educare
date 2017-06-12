@@ -91,9 +91,6 @@
                                     <?php echo anchor('/settings/categories', 'Apartados temáticos', 'class="link-class"') ?>
                                 </li>
                                 <li>
-                                    <a href="magazine.php">Gestión de Revista</a>
-                                </li>
-                                <li>
                                     <?php echo anchor('/settings/objectives', 'Objetivos', 'class="link-class"') ?>
                                 </li>
                                 <li>
@@ -101,6 +98,9 @@
                                 </li>
                                 <li>
                                     <?php echo anchor('/settings/terms', 'Políticas de Operación ', 'class="link-class"') ?>
+                                </li>
+                                <li>
+                                    <?php echo anchor('/settings/magazine', 'Revista', 'class="link-class"') ?>
                                 </li>
                                 <li>
                                     <?php echo anchor('/settings/roles', 'Roles de usuario', 'class="link-class"') ?>

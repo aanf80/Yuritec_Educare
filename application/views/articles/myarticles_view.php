@@ -28,7 +28,7 @@
                 if($this->session->userdata('roleid') == 1){
                     ?>
                     <li>
-                        <?php echo anchor('/article/edit_area', 'Área de Revisión', 'class="link-class"') ?>
+                        <?php echo anchor('/article/review_area', 'Área de Revisión', 'class="link-class"') ?>
                     </li>
                     <?php
                 }
