@@ -20,7 +20,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <h3 class="page-header">Área de Edición</h3>
+            <h1 class="page-header">Área de Edición</h1>
             <ol class="breadcrumb">
                 <li>
                     <?php echo anchor('/user/profile', 'Mi Perfil', 'class="link-class"') ?>
@@ -31,7 +31,7 @@
                 <li class="active">Área de Edición</li>
                 <?php
 
-                if($this->session->userdata('id') == 1){
+                if($this->session->userdata('roleid') == 1){
                     ?>
                     <li>
                         <?php echo anchor('/article/edit_area', 'Área de Revisión', 'class="link-class"') ?>

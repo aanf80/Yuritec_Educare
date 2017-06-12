@@ -258,11 +258,8 @@
     </div>
 
     <!-- Aqui inicia el formulario-->
-    <div class="col-md-8">
-    </div>
-    <div class="row">&nbsp;</div>
-    <div class ="row"><hr></div>
-    <div class="row">
+
+  <br/>
         <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <table id="tbUsers" class="table table-striped table-bordered">
                 <thead>

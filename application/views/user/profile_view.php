@@ -12,7 +12,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h3 class="page-header">Perfil</h3>
+            <h1 class="page-header">Perfil</h1>
             <ol class="breadcrumb">
                 <li class="active">Perfil</li>
                 <li>

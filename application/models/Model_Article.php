@@ -32,9 +32,7 @@ class Model_Article extends CI_Model{
     public function getArticleByID($id) //C
     {
         $this->db->from($this->table);
-        $this->db->where('articleid',$id);
-        $this -> db -> limit(1);
-
+        $this->db->where('userid',$id);
         $query = $this->db->get();
 
 

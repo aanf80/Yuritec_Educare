@@ -85,8 +85,22 @@ class Article extends CI_Controller {
      public function getArticlesByVolume(){
 
     }
-    public function getArticlesByUser(){
+    public function getArticlesByID(){
+        $userid = $this->session->userdata('userid');
+        $this->load->model('Model_Article');
+        $data = $this->Model_Article->getArticleByID($userid);
+        $jsondata["code"] = 200;
+        $jsondata["msg"] = array();
+        foreach($data as $cat){
+            $jsondata["msg"][] = $cat;
+        }
 
+        $jsondata["details"] = "OK";
+
+
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata);
     }
     public function updateArticle(){
 
