@@ -1,6 +1,6 @@
 
 $(function(){
-
+    $status= [];
     $.ajax({
         url: '/Yuritec_Educare/settings/getCategories',
         type: 'GET',
@@ -23,9 +23,8 @@ $(function(){
         },
         messages:{
 
-            username: {
-                minlength: "Introduzca al menos tres caracteres",
-                maxlength: "Introdusca menos de 20 caracteres",
+            title: {
+
                 required: "Capture el nombre de usuario"
             }
         },
@@ -50,7 +49,7 @@ $(function(){
         }
     });
 
-    $('#tbArticle').DataTable({
+  var table =  $('#tbArticle').DataTable({
         responsive: true,
         language:{
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
@@ -79,29 +78,13 @@ $(function(){
             },
             {
                 data: function (row) {
+                    $status = row;
                     str = "<div >";
-                    switch(row['status']){
-                        case  "En edición":
-                            str +="<button id='btnEditar' class='btn btn-success' onClick='showCategory(" + row['categoryid'] + ",\"" + row['categoryname'] + "\")'><i class=\"glyphicon glyphicon-edit\"></i></button>";
-                            str += "&nbsp;<button id='btnBorrar' class='btn btn-danger' onClick='deleteCategory(" + row['categoryid'] + ")'><i class=\"glyphicon glyphicon-trash\"></i></button>";//trash
-                            break;
-                        case "Aprobado con observaciones":
-                            str +="<button id='btnEditar' class='btn btn-success' onClick='showCategory(" + row['categoryid'] + ",\"" + row['categoryname'] + "\")'><i class=\"glyphicon glyphicon-edit\"></i></button>";
+                            str +="<button id='btnEditar' class='btn btn-success'><i class=\"glyphicon glyphicon-edit\"></i></button>";
                             str += "&nbsp;<button id='btnBorrar' class='btn btn-danger' disabled='true'><i class=\"glyphicon glyphicon-trash\"></i></button>";//trash
-                            break;
-                        default:
-                            str +="<button id='btnEditar' class='btn btn-success' disabled='true'><i class=\"glyphicon glyphicon-edit\"></i></button>";
-                            str += "&nbsp;<button id='btnBorrar' class='btn btn-danger' disabled='true'><i class=\"glyphicon glyphicon-trash\"></i></button>";//trash
+                            str += "</div>"
+                            return str;
 
-                    }
-
-
-
-
-
-
-                    str += "</div>"
-                    return str;
                 }
 
             }
@@ -109,7 +92,16 @@ $(function(){
         ]
     });
 
+    $('#tbArticle tbody').on( 'click','.btn-success',  function () {
+        if(table.row(this).child.isShown()){
+            var data = table.row(this).data();
+        }else{
+            var data = table.row($(this).closest('tr')).data();
+        }
 
+        alert(data[Object.keys(data)[0]]+' s phone: '+data[Object.keys(data)[1]]);
+
+    } );
 
 
 

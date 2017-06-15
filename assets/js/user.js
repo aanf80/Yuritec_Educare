@@ -117,7 +117,7 @@ $(function () {
 
 // FIN SECCION FORMULARIO MODAL
 
-    $('#tbUsers').DataTable({
+    var table = $('#tbUsers').DataTable({
         responsive: true,
         language:{
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
@@ -201,10 +201,16 @@ $(function () {
 
 
     $('#tbUsers tbody').on( 'click','.btn-success',  function () {
+        if(table.row(this).child.isShown()){
+            var data = table.row(this).data();
+        }else{
+            var data = table.row($(this).closest('tr')).data();
+        }
 
-        showUser($info['userid'],$info['username'],$info['lastname'],$info['maternalsurname'],$info['gender'],$info['address'],$info['streetnumber'],
-            $info['neighborhood'],$info['zipcode'],$info['city'],$info['state'],$info['country'],$info['email'],$info['password'],$info['sign'],$info['position'],
-            $info['institute'],$info['initials'],$info['roleid'],$info['photo'],$info['bio'])
+        showUser(data[Object.keys(data)[0]],data[Object.keys(data)[1]],data[Object.keys(data)[2]],data[Object.keys(data)[3]],data[Object.keys(data)[8]],data[Object.keys(data)[15]],data[Object.keys(data)[20]],
+            data[Object.keys(data)[17]],data[Object.keys(data)[21]],data[Object.keys(data)[19]],data[Object.keys(data)[18]],data[Object.keys(data)[16]],data[Object.keys(data)[5]],data[Object.keys(data)[4]],data[Object.keys(data)[10]],data[Object.keys(data)[6]],
+            data[Object.keys(data)[7]],data[Object.keys(data)[9]],data[Object.keys(data)[12]],data[Object.keys(data)[11]],data[Object.keys(data)[22]])
+
     } );
 
 

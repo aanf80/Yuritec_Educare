@@ -75,9 +75,13 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
+	//'hostname' => 'mysql.hostinger.mx',
 	'hostname' => 'localhost',
+	//'username' => 'u441184812_aanf',
 	'username' => 'root',
+	//'password' => 'YuritecEducare2017',
 	'password' => '',
+	//'database' => 'u441184812_revis',
 	'database' => 'revista',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
