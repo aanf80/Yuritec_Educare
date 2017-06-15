@@ -14,7 +14,7 @@ $(function () {
 
             username: {
                 minlength: "Introduzca al menos tres caracteres",
-                maxlength: "Introdusca menos de 20 caracteres",
+                maxlength: "Introduzca menos de 20 caracteres",
                 required: "Capture el nombre de usuario"
             }
         },
@@ -55,7 +55,9 @@ function newUser(){
                 $('#lastname').val('');
                 $('#maternalsurname').val('');
                 $('#password').val('');
+                $('#confpassword').val('');
                 $('#email').val('');
+                $('#bio').val('');
                 $('#position').val('');
                 $('#institute').val('');
                 $('#inititals').val('');
@@ -68,7 +70,6 @@ function newUser(){
                 $('#city').val('');
                 $('#streetnumber').val('');
                 $('#zipcode').val('');
-
                 $('#country').index(0);
 
                 console.log("usuario insertado!!");
@@ -81,7 +82,7 @@ function newUser(){
         }
     ).fail(
         function(){
-            $.growl.error({ message: "No hay mensaje que mostrar" });
+            $.growl.error({ message: "Verifique que haya llenado correctamente los campos" });
         }
     );
 }

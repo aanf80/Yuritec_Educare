@@ -1,3 +1,4 @@
+<script type="text/javascript" src="<?php echo base_url('assets/js/contact.js'); ?>"></script>
 <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
@@ -48,30 +49,30 @@
     <div class="row">
         <div class="col-md-8">
             <h3>Envíanos un mensaje</h3>
-            <form name="sentMessage" id="contactForm" novalidate>
+            <form id="frmContact" id="contactForm" novalidate>
                 <div class="control-group form-group">
                     <div class="controls">
                         <label>Nombre completo:</label>
-                        <input type="text" class="form-control" id="name" required data-validation-required-message="Por favor ingresa tu nombre.">
+                        <input type="text" class="form-control" name="name" id="name" required data-validation-required-message="Por favor ingresa tu nombre.">
                         <p class="help-block"></p>
                     </div>
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
                         <label>Número de teléfono:</label>
-                        <input type="tel" class="form-control" id="phone" required data-validation-required-message="Por favor ingresa tu número de teléfono.">
+                        <input type="tel" class="form-control" name="phone" id="phone" ">
                     </div>
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
                         <label>Correo electrónico:</label>
-                        <input type="email" class="form-control" id="email" required data-validation-required-message="Por favor ingresa tu correo electrónico.">
+                        <input type="email" class="form-control" name="email" id="email" required data-validation-required-message="Por favor ingresa tu correo electrónico.">
                     </div>
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
                         <label>Mensaje:</label>
-                        <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Por favor ingresa tu mensaje." maxlength="999" style="resize:none"></textarea>
+                        <textarea rows="10" cols="100" class="form-control" name="message" id="message" required data-validation-required-message="Por favor ingresa tu mensaje." maxlength="999" style="resize:none"></textarea>
                     </div>
                 </div>
                 <div id="success"></div>
