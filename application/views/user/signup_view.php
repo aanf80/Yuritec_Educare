@@ -19,7 +19,7 @@
                 <!-- Datos Personales-->
                 <label class="control-label">Correo Electrónico *</label>
                 <input type="text" class="form-control" id="email" name="email" placeholder="Ejemplo: jorge@ittepic.edu.mx">
-                <div class="help-block">Será su nombre de usuario</div>
+                <div class="help-block"></div>
 
                 <label class="control-label">Contraseña *</label>
                 <input type="password" class="form-control" id="password" name="password">

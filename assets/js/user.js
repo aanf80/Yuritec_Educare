@@ -253,7 +253,7 @@ function newUser(){
         }
     ).fail(
         function(){
-            $.growl.error({ message: "No hay mensaje que mostrar" });
+            $.growl.error({ message: "Verifique que haya llenado correctamente los campos" });
         }
     );
 }
@@ -341,7 +341,7 @@ function deleteUser(userid) {
                         if (data.code == 200) {
                             //$.growl.notice({message: data.msg});
                             $.growl.notice({message: data.msg + " " + data.details});
-                            swal("Eliminado!", "El registro se elimino correctamente", "success");
+                            swal("Eliminado!", "El registro se eliminó correctamente", "success");
                             $('#tbUsers').dataTable().api().ajax.reload();
                             $('#userid').val('');
                         } else {

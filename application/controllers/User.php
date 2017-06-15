@@ -8,7 +8,8 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User extends CI_Controller {
+class User extends CI_Controller
+{
 
     public function __construct()
     {
@@ -23,15 +24,17 @@ class User extends CI_Controller {
         $this->load->view('user/signup_view');
         $this->load->view('footer');
     }
+
     public function users_new()
     {
         $this->load->view('header');
         $this->load->view('user/newusers_view');
         $this->load->view('footer');
     }
+
     public function users()
     {
-        if($this->session->userdata('email')==null){
+        if ($this->session->userdata('email') == null) {
             redirect('home', 'refresh');
         }
         $this->load->view('header');
@@ -39,8 +42,9 @@ class User extends CI_Controller {
         $this->load->view('footer');
     }
 
-    public function newUser(){
-        if($this->session->userdata('email')==null){
+    public function newUser()
+    {
+        if ($this->session->userdata('email') == null) {
             redirect('home', 'refresh');
         }
         $this->load->model('Model_User');
@@ -73,16 +77,16 @@ class User extends CI_Controller {
 
         );
 
-        if($data['username']==null){
+        if ($data['username'] == null) {
             redirect('home', 'refresh');
         }
         $insert = $this->Model_User->newUser($data);
-        if($insert == true){
+
+        if ($insert == true) {
             $jsondata["code"] = 200;
-            $jsondata["msg"] = "Registrado correctamente";
+            $jsondata["msg"] = "Registrado correctamente.";
             $jsondata["details"] = "OK";
-        }
-        else{
+        } else {
             $jsondata["code"] = 500;
             $jsondata["msg"] = "Error en el registro";
             $jsondata["details"] = "OK";
@@ -92,16 +96,17 @@ class User extends CI_Controller {
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
 
-    public function getUsers(){
+    public function getUsers()
+    {
         $roleid = $this->session->userdata('roleid');
-        if($roleid != 1){
+        if ($roleid != 1) {
             redirect('home', 'refresh');
-        }else{
+        } else {
             $this->load->model('Model_User');
             $data = $this->Model_User->getUsers();
             $jsondata["code"] = 200;
             $jsondata["msg"] = array();
-            foreach($data as $user){
+            foreach ($data as $user) {
                 $jsondata["msg"][] = $user;
             }
 
@@ -114,13 +119,15 @@ class User extends CI_Controller {
         }
 
     }
-    public function getUserById(){
+
+    public function getUserById()
+    {
         $this->load->model('Model_User');
         $userid = $this->session->userdata('userid');
-        $data = $this->Model_User->getUserByID ($userid);
+        $data = $this->Model_User->getUserByID($userid);
         $jsondata["code"] = 200;
         $jsondata["msg"] = array();
-        foreach($data as $user){
+        foreach ($data as $user) {
             $jsondata["msg"][] = $user;
         }
         $jsondata["details"] = "OK";
@@ -129,7 +136,8 @@ class User extends CI_Controller {
         echo json_encode($jsondata);
     }
 
-    public function updateUser(){
+    public function updateUser()
+    {
         $this->load->model('Model_User');
         $jsondata = array();
         $hoy = date("Y-m-d");
@@ -161,16 +169,15 @@ class User extends CI_Controller {
 
         );
 
-        if($data['username']==null){
+        if ($data['username'] == null) {
             redirect('home', 'refresh');
         }
         $update = $this->Model_User->updateUser(array('userid' => $this->input->post('userid')), $data);
-        if($update == true){
+        if ($update == true) {
             $jsondata["code"] = 200;
             $jsondata["msg"] = "Registrado correctamente";
             $jsondata["details"] = "OK";
-        }
-        else{
+        } else {
             $jsondata["code"] = 500;
             $jsondata["msg"] = "Error en el registro";
             $jsondata["details"] = "OK";
@@ -179,7 +186,9 @@ class User extends CI_Controller {
         header("Cache-Control: no-store");
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
-    public function deleteUser()    {
+
+    public function deleteUser()
+    {
 
         $this->load->model('Model_User');
         $jsondata = array();
@@ -188,17 +197,16 @@ class User extends CI_Controller {
             'userid' => $this->input->post('userid')
         );
 
-        if($data['userid']==null){
+        if ($data['userid'] == null) {
             redirect('home', 'refresh');
         }
 
-        $delete =  $this->Model_User->deleteUser($data['userid']);
-        if($delete == true){
+        $delete = $this->Model_User->deleteUser($data['userid']);
+        if ($delete == true) {
             $jsondata["code"] = 200;
             $jsondata["msg"] = "Eliminado correctamente";
             $jsondata["details"] = "OK";
-        }
-        else{
+        } else {
             $jsondata["code"] = 500;
             $jsondata["msg"] = "Error en el registro";
             $jsondata["details"] = "OK";
@@ -241,16 +249,22 @@ class User extends CI_Controller {
 
         );
 
-        if($data['username']==null){
+        if ($data['username'] == null) {
             redirect('home', 'refresh');
         }
         $insert = $this->Model_User->newUser($data);
-        if($insert == true){
+
+        if ($insert == true) {
+
             $jsondata["code"] = 200;
-            $jsondata["msg"] = "Registrado correctamente";
+            $jsondata["msg"] = "Registrado correctamente. Se ha enviado un correo de confirmación.
+            \nFavor de revisar su correo electrónico.";
             $jsondata["details"] = "OK";
-        }
-        else{
+
+            //Enviar correo electrónico de confirmación
+            $this->sendEmail($data['email']);
+
+        } else {
             $jsondata["code"] = 500;
             $jsondata["msg"] = "Error en el registro";
             $jsondata["details"] = "OK";
@@ -260,6 +274,42 @@ class User extends CI_Controller {
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
 
+    public function sendEmail($email){
+        $emailFrom = "jess.pardo1811@gmail.com";
+        $emailTo = $email;
+        $emailSubject = "Confirme su cuenta de Yurítec Educare";
+        $headers = 'From: ' . 'Revista Yurítec Educare' . "\r\n" .
+            'Reply-To: ' . $emailFrom . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+        $emailMessage = "<h1>Su registro a la revista Yurítec Educare ha sido exitoso.</h1>";
+        $emailMessage .= "<p>Para continuar por favor confirme su cuenta a continuación:</p>";
+        $emailMessage .= "<a href = http://localhost/Yuritec_Educare/login> Confirmar y continuar</a>";
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'jess.pardo1811@gmail.com',
+            'smtp_pass' => 'jessly1811',
+            'mailtype' => 'html',
+            'charset' => 'utf-8',
+            'wordwrap' => TRUE
+        );
+
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");
+        $email_setting = array('mailtype' => 'html');
+        $this->email->initialize($email_setting);
+        $this->email->from($emailFrom, "Revista Yurítec Educare");
+        $this->email->to($emailTo);
+        //$this->email->cc('another@another-example.com');
+        //$this->email->bcc('them@their-example.com');
+
+        $this->email->subject($emailSubject);
+        //$this->email->attach("/Yuritec_Educare/assets/img/yuritecbanner.png", 'inline');
+        $this->email->message($emailMessage);
+        $this->email->set_header("Headers", $headers);
+        $this->email->send();
+    }
 
 //Vistas
     public function profile()
@@ -269,11 +319,12 @@ class User extends CI_Controller {
         $data['user'] = $this->Model_User->getUserByID($userid);
 
         $this->load->view('header');
-        $this->load->view('user/profile_view',$data);
+        $this->load->view('user/profile_view', $data);
         $this->load->view('footer');
     }
 
-    public function my_articles(){
+    public function my_articles()
+    {
         $this->load->view('header');
         $this->load->view('articles/myarticles_view');
         $this->load->view('footer');
