@@ -49,7 +49,6 @@ class Contact extends CI_Controller
             'Reply-To: ' . $data['emailFrom'] . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
 
-
         $config = Array(
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
