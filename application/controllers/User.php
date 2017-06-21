@@ -272,8 +272,8 @@ echo $this->upload->display_errors();
         if ($data['username'] == null) {
             redirect('home', 'refresh');
         }
+        
         $insert = $this->Model_User->newUser($data);
-
         $user = $this->Model_User->getUserByEmail($email);
         $emailcode = md5((string)$user[0]->emailcode);
 
