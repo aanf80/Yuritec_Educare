@@ -29,27 +29,32 @@ class Login extends CI_Controller {
         $username = $this->input->post('username');
         $password = $this->input->post('password');
 
-        $result = $this->Model_Login->validaLogin($username,$password);
+        $confirmed = $this->Model_Login->isConfirmed($username);
+        if($confirmed[0]->status === 'C') {
+            $result = $this->Model_Login->validaLogin($username, $password);
 
+            if ($result['logueado']) {
 
-        if($result['logueado']){
+                $jsondata["code"] = 200;
+                $jsondata["msg"] = "Si tiene acceso al sistema" . " el correo es:" . $result['email'];
+                $jsondata["details"] = "OK";
 
-            $jsondata["code"] = 200;
-            $jsondata["msg"] = "Si tiene acceso al sistema"." el correo es:".$result['email'];
-            $jsondata["details"] = "OK";
-
-            $this->session->set_userdata($result);
-            $this->load->library('session');
+                $this->session->set_userdata($result);
+                $this->load->library('session');
+            } else {
+                $jsondata["code"] = 401;
+                $jsondata["msg"] = "No tiene acceso al sistema";
+                $jsondata["details"] = "OK";
+            }
         }
         else{
-            $jsondata["code"] = 401;
-            $jsondata["msg"] = "No tiene acceso al sistema";
+            $jsondata["code"] = 402;
+            $jsondata["msg"] = "Cuenta no confirmada. Revise su correo electrónico para confirmarla.";
             $jsondata["details"] = "OK";
         }
         header('Content-type: application/json; charset=utf-8');
         header("Cache-Control: no-store");
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
-
     }
 
     public  function  sign_out(){

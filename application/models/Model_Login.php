@@ -19,6 +19,17 @@ class Model_Login extends CI_Model{
         $this->load->database();
     }
 
+    function isConfirmed($username){
+        $this -> db -> select('status');
+        $this -> db -> from('user');
+        $this -> db -> where('email', $username);
+        $this -> db -> limit(1);
+
+        $query = $this -> db -> get();
+
+        return $query->result();
+    }
+
     function validaLogin($username, $password){
         $roleid = 0;
         $userid = 0;

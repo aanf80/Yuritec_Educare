@@ -10,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller
 {
+    public $userData = array();
 
     public function __construct()
     {
@@ -175,7 +176,7 @@ class User extends CI_Controller
         $update = $this->Model_User->updateUser(array('userid' => $this->input->post('userid')), $data);
         if ($update == true) {
             $jsondata["code"] = 200;
-            $jsondata["msg"] = "Registrado correctamente";
+            $jsondata["msg"] = "Actualizado correctamente";
             $jsondata["details"] = "OK";
         } else {
             $jsondata["code"] = 500;
@@ -264,10 +265,17 @@ echo $this->upload->display_errors();
         }
 
 
+        $email = $this->input->post('email');
+        $username = $this->input->post('username');
+        $lastname = $this->input->post('lastname');
+
         if ($data['username'] == null) {
             redirect('home', 'refresh');
         }
         $insert = $this->Model_User->newUser($data);
+
+        $user = $this->Model_User->getUserByEmail($email);
+        $emailcode = md5((string)$user[0]->emailcode);
 
         if ($insert == true) {
 
@@ -277,8 +285,7 @@ echo $this->upload->display_errors();
             $jsondata["details"] = "OK";
 
             //Enviar correo electrónico de confirmación
-            $this->sendEmail($data['email']);
-
+            $this->sendEmail($email, $username, $lastname, $emailcode);
         } else {
             $jsondata["code"] = 500;
             $jsondata["msg"] = "Error en el registro";
@@ -287,18 +294,55 @@ echo $this->upload->display_errors();
         header('Content-type: application/json; charset=utf-8');
         header("Cache-Control: no-store");
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
+
     }
 
-    public function sendEmail($email){
+
+    public function validate($email, $emailcode)
+    {
+        $result = false;
+        $this->load->model('Model_User');
+        $user = $this->Model_User->getUserByEmail($email);
+
+        if (md5((string)$user[0]->emailcode) === $emailcode) {
+            $result = $this->Model_User->updateStatus($email);
+            if ($result === true) {
+                return true;
+            } else {
+                echo 'Hubo un error al activar su cuenta. Por favor contacte al administrador.';
+                return false;
+            }
+        }
+    }
+
+    public function validateEmail($email, $emailcode)
+    {
+        $validated = false;
+        $emailcode = trim($emailcode);
+
+        $this->load->model('Model_User');
+        $validated = $this->validate($email, $emailcode);
+
+        if ($validated === true) {
+            redirect('login/');
+        } else {
+            echo 'Error al confirmar el correo electrónico. Por favor contacte al administrador.';
+        }
+    }
+
+    public function sendEmail($email, $username, $lastname, $emailcode)
+    {
         $emailFrom = "jess.pardo1811@gmail.com";
         $emailTo = $email;
         $emailSubject = "Confirme su cuenta de Yurítec Educare";
         $headers = 'From: ' . 'Revista Yurítec Educare' . "\r\n" .
             'Reply-To: ' . $emailFrom . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
-        $emailMessage = "<h1>Su registro a la revista Yurítec Educare ha sido exitoso.</h1>";
+        $emailMessage = "<h1>Hola ".$username." ".$lastname."</h1>";
+        $emailMessage .= "<h2>Su registro a la revista Yurítec Educare ha sido exitoso.</h2>";
         $emailMessage .= "<p>Para continuar por favor confirme su cuenta a continuación:</p>";
-        $emailMessage .= "<a href = http://localhost/Yuritec_Educare/login> Confirmar y continuar</a>";
+        $emailMessage .= "<a href= ". base_url('/user/validateEmail/' . $email . '/' . $emailcode). "> Confirmar y continuar</a>";
+        $emailMessage .= "<p>¡Gracias!</p>";
         $config = Array(
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -327,7 +371,8 @@ echo $this->upload->display_errors();
     }
 
 //Vistas
-    public function profile()
+    public
+    function profile()
     {
         $userid = $this->session->userdata('userid');
         $this->load->model('Model_User');
@@ -338,7 +383,8 @@ echo $this->upload->display_errors();
         $this->load->view('footer');
     }
 
-    public function my_articles()
+    public
+    function my_articles()
     {
         $this->load->view('header');
         $this->load->view('articles/myarticles_view');

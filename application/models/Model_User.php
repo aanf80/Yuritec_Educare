@@ -23,7 +23,24 @@ class Model_User extends CI_Model{
         $this->db->from($this->table);
         $this->db->where('email',$email);
         $this -> db -> limit(1);
+        $query = $this->db->get();
 
+        return $query->result();
+    }
+
+    public function updateStatus ($email){
+
+        $data = array('status' => 'C');
+
+        $this->db->where('email', $email);
+        $this->db->limit(1);
+        return $this->db->update($this->table, $data);
+    }
+
+    public function getEmailCode($emailcode){
+        $this->db->from($this->table);
+        $this->db->where('emailcode', $emailcode);
+        $this -> db -> limit(1);
         $query = $this->db->get();
 
 
