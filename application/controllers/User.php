@@ -15,6 +15,7 @@ class User extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->helper(array('form', 'url'));
         $this->load->library('session');
     }
 
@@ -220,20 +221,22 @@ class User extends CI_Controller
 
     public function register()
     {
-        $config = [
-            'upload_path' => './assets/img',
-            'allowed_types' => 'png|jpg'
-        ];
-        $this->load->library("upload",$config);
+        $config['upload_path']          = './assets/img';
+        $config['allowed_types']        = 'gif|jpg|png';
 
-        $this->load->model('Model_User');
-        $jsondata = array();
+
+        $this->load->library('upload', $config);
         $hoy = date("Y-m-d");
 
 
-        if($this->upload->do_upload("photo")){
-            $datos = array ("upload_data" => $this->upload->data());
-
+        if ( ! $this->upload->do_upload('photo'))
+        {
+     echo  $this->upload->display_errors();
+        }
+        else
+        {
+            $datos = array('upload_data' => $this->upload->data());
+            $this->load->model('Model_User');
             $data = array(
                 'username' => $this->input->post('username'),
                 'lastname' => $this->input->post('lastname'),
@@ -259,41 +262,43 @@ class User extends CI_Controller
                 'zipcode' => $this->input->post('zipcode')
 
             );
-        }
-        else{
-echo $this->upload->display_errors();
-        }
 
 
-        $email = $this->input->post('email');
-        $username = $this->input->post('username');
-        $lastname = $this->input->post('lastname');
 
-        if ($data['username'] == null) {
-            redirect('home', 'refresh');
-        }
-        
-        $insert = $this->Model_User->newUser($data);
-        $user = $this->Model_User->getUserByEmail($email);
-        $emailcode = md5((string)$user[0]->emailcode);
 
-        if ($insert == true) {
+            $email = $this->input->post('email');
+            $username = $this->input->post('username');
+            $lastname = $this->input->post('lastname');
 
-            $jsondata["code"] = 200;
-            $jsondata["msg"] = "Registrado correctamente. Se ha enviado un correo de confirmación.
+            if ($data['username'] == null) {
+                redirect('home', 'refresh');
+            }
+
+            $insert = $this->Model_User->newUser($data);
+            $user = $this->Model_User->getUserByEmail($email);
+            $emailcode = md5((string)$user[0]->emailcode);
+
+            if ($insert == true) {
+
+                $jsondata["code"] = 200;
+                $jsondata["msg"] = "Registrado correctamente. Se ha enviado un correo de confirmación.
             \nFavor de revisar su correo electrónico.";
-            $jsondata["details"] = "OK";
+                $jsondata["details"] = "OK";
 
-            //Enviar correo electrónico de confirmación
-            $this->sendEmail($email, $username, $lastname, $emailcode);
-        } else {
-            $jsondata["code"] = 500;
-            $jsondata["msg"] = "Error en el registro";
-            $jsondata["details"] = "OK";
+                //Enviar correo electrónico de confirmación
+                $this->sendEmail($email, $username, $lastname, $emailcode);
+            } else {
+                $jsondata["code"] = 500;
+                $jsondata["msg"] = "Error en el registro";
+                $jsondata["details"] = "OK";
+            }
+            header('Content-type: application/json; charset=utf-8');
+            header("Cache-Control: no-store");
+            echo json_encode($jsondata, JSON_FORCE_OBJECT);
+
         }
-        header('Content-type: application/json; charset=utf-8');
-        header("Cache-Control: no-store");
-        echo json_encode($jsondata, JSON_FORCE_OBJECT);
+
+
 
     }
 

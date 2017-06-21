@@ -12,7 +12,7 @@
 
     <h3 class="page-header">Registrarse</h3>
 
-    <form id="frmRegister" enctype="multipart/form-data">
+    <form id="frmRegister" >
         <div class="form-group">
             <div class="col-lg-6">
 
@@ -36,8 +36,8 @@
 
 -->
                 <div class="form-group">
-                    <label for="fotoPerfil">Seleccionar foto de perfil</label>
-                    <input type="file" id="photo"  name="photo">
+                    <label for="photo">Seleccionar foto de perfil</label>
+                     <input type="file" id="photo"  name="photo">
                 </div>
 
                 <label class="control-label">Nombre:</label>
