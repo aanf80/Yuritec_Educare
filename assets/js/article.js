@@ -1,6 +1,20 @@
 
 $(function(){
-    $status= [];
+
+    tinymce.init({
+        selector: "textarea",
+        file_browser_callback : "fileBrowserCallBack",
+        language : "es_MX",
+        plugins: [
+            "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+            "save table contextmenu directionality emoticons template paste FMathEditor "
+        ],
+        toolbar1: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | sizeselect | fontselect |  fontsizeselect | FMathEditor',
+        //toolbar2: " | bold italic | ",
+        fontsize_formats: "8pt 10pt 12pt 14pt 18pt 24pt 36pt",
+        save_enablewhendirty: true
+    });
     $.ajax({
         url: '/Yuritec_Educare/settings/getCategories',
         type: 'GET',
@@ -49,7 +63,7 @@ $(function(){
         }
     });
 
-  var table =  $('#tbArticle').DataTable({
+    var table =  $('#tbArticle').DataTable({
         responsive: true,
         language:{
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
@@ -80,13 +94,23 @@ $(function(){
                 data: function (row) {
                     $status = row;
                     str = "<div >";
+                    switch (row['status']) {
+                        case  "En edición":
+                            str +="<button id='btnEditar' class='btn btn-success'><i class=\"glyphicon glyphicon-edit\"></i></button>";
+                            str += "&nbsp;<button id='btnBorrar' class='btn btn-danger' onClick='deleteCategory(" + row['categoryid'] + ")'><i class=\"glyphicon glyphicon-trash\"></i></button>";//trash
+                            break;
+                        case "Aprobado con observaciones":
                             str +="<button id='btnEditar' class='btn btn-success'><i class=\"glyphicon glyphicon-edit\"></i></button>";
                             str += "&nbsp;<button id='btnBorrar' class='btn btn-danger' disabled='true'><i class=\"glyphicon glyphicon-trash\"></i></button>";//trash
-                            str += "</div>"
-                            return str;
+                            break;
+                        default:
+                            str += "<button id='btnEditar' class='btn btn-success' disabled='true'><i class=\"glyphicon glyphicon-edit\"></i></button>";
+                            str += "&nbsp;<button id='btnBorrar' class='btn btn-danger' disabled='true'><i class=\"glyphicon glyphicon-trash\"></i></button>";//trash
+                    }
+                    str += "</div>"
+                    return str;
 
                 }
-
             }
 
         ]

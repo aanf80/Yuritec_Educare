@@ -55,7 +55,7 @@ class Model_Article extends CI_Model{
         return true;
     } //U
     function deleteArticle($id){
-        $this->db->where('userid', $id);
+        $this->db->where('articleid', $id);
         $this->db->delete($this->table);
         return true;
     } //D

@@ -20,7 +20,7 @@
                 </li>
                 <li class="active">Mis Artículos</li>
                 <li>
-                    <?php echo anchor('/article/edit_area', ' Área de Edición', 'class="link-class"') ?>
+                    <?php echo anchor('/article/new_article', 'Nuevo Artículo', 'class="link-class"') ?>
                 </li>
 
                 <?php
@@ -37,18 +37,19 @@
         </div>
     </div>
 
-    <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <table id="tbArticle" class="table table-striped table-bordered">
-            <thead>
-            <tr>
-                <th>Clave</th>
-                <th>Titulo</th>
-                <th>Fecha de Creación</th>
-                <th>Estado</th>
-                <th>Portada</th>
-                <th>Operaciones</th>
-            </tr>
-            </thead>
-        </table>
+    <div class="row">
+        <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <table id="tbArticle" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Clave</th>
+                    <th>Titulo</th>
+                    <th>Fecha de Creación</th>
+                    <th>Estado</th>
+                    <th>Portada</th>
+                    <th>Operaciones</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
     </div>
-</div>

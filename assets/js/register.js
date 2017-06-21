@@ -42,10 +42,15 @@ $(function () {
 
 
 function newUser(){
+    var form = $('form#frmRegister')[0];
+    var data = new FormData(form);
     $.ajax({
         url: "/Yuritec_Educare/user/register",
         type: "post",
-        data: $('#frmRegister').serialize()
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false
     }).done(
         function(data){
             console.log(data.code);
@@ -64,7 +69,6 @@ function newUser(){
                 $('#sign').val('');
                 $('#photo').val('');
                 $('#address').val('');
-                $('#country').val('');
                 $('#neighborhood').val('');
                 $('#state').val('');
                 $('#city').val('');

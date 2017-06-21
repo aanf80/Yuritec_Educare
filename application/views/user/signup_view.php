@@ -12,7 +12,7 @@
 
     <h3 class="page-header">Registrarse</h3>
 
-    <form id="frmRegister">
+    <form id="frmRegister" enctype="multipart/form-data">
         <div class="form-group">
             <div class="col-lg-6">
 
@@ -29,9 +29,16 @@
                 <input type="password" class="form-control" id="confpassword" name="confpassword">
                 <div class="help-block"></div>
 
-                <label class="control-label">Foto de perfil</label>
+               <!-- <label class="control-label">Foto de perfil</label>
                 <input type="text" class="form-control" id="photo" name="photo" placeholder="Escriba el enlace de la imagen">
                 <div class="help-block"></div>
+
+
+-->
+                <div class="form-group">
+                    <label for="fotoPerfil">Seleccionar foto de perfil</label>
+                    <input type="file" id="photo"  name="photo">
+                </div>
 
                 <label class="control-label">Nombre:</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Nombre(s)">

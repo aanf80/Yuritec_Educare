@@ -219,35 +219,50 @@ class User extends CI_Controller
 
     public function register()
     {
+        $config = [
+            'upload_path' => './assets/img',
+            'allowed_types' => 'png|jpg'
+        ];
+        $this->load->library("upload",$config);
+
         $this->load->model('Model_User');
         $jsondata = array();
         $hoy = date("Y-m-d");
 
-        $data = array(
-            'username' => $this->input->post('username'),
-            'lastname' => $this->input->post('lastname'),
-            'maternalsurname' => $this->input->post('maternalsurname'),
-            'password' => $this->input->post('password'),
-            'email' => $this->input->post('email'),
-            'position' => $this->input->post('position'),
-            'institute' => $this->input->post('institute'),
-            'gender' => $this->input->post('gender'),
-            'initials' => $this->input->post('initials'),
-            'sign' => $this->input->post('sign'),
-            'photo' => $this->input->post('photo'),
-            'roleid' => 2,
-            'status' => 'P',
-            'registerdate' => $hoy,
-            'address' => $this->input->post('address'),
-            'bio' => $this->input->post('bio'),
-            'country' => $this->input->post('country'),
-            'neighborhood' => $this->input->post('neighborhood'),
-            'state' => $this->input->post('state'),
-            'city' => $this->input->post('city'),
-            'streetnumber' => $this->input->post('streetnumber'),
-            'zipcode' => $this->input->post('zipcode')
 
-        );
+        if($this->upload->do_upload("photo")){
+            $datos = array ("upload_data" => $this->upload->data());
+
+            $data = array(
+                'username' => $this->input->post('username'),
+                'lastname' => $this->input->post('lastname'),
+                'maternalsurname' => $this->input->post('maternalsurname'),
+                'password' => $this->input->post('password'),
+                'email' => $this->input->post('email'),
+                'position' => $this->input->post('position'),
+                'institute' => $this->input->post('institute'),
+                'gender' => $this->input->post('gender'),
+                'initials' => $this->input->post('initials'),
+                'sign' => $this->input->post('sign'),
+                'photo' => $datos['upload_data']['file_name'],
+                'roleid' => 2,
+                'status' => 'P',
+                'registerdate' => $hoy,
+                'address' => $this->input->post('address'),
+                'bio' => $this->input->post('bio'),
+                'country' => $this->input->post('country'),
+                'neighborhood' => $this->input->post('neighborhood'),
+                'state' => $this->input->post('state'),
+                'city' => $this->input->post('city'),
+                'streetnumber' => $this->input->post('streetnumber'),
+                'zipcode' => $this->input->post('zipcode')
+
+            );
+        }
+        else{
+echo $this->upload->display_errors();
+        }
+
 
         if ($data['username'] == null) {
             redirect('home', 'refresh');

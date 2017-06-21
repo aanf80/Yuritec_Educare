@@ -25,7 +25,9 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
                     <h3>Modificar Usuario</h3>
                 </div>
                 <div class="modal-body">
@@ -259,7 +261,8 @@
 
     <!-- Aqui inicia el formulario-->
 
-  <br/>
+    <br/>
+    <div class="row">
         <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <table id="tbUsers" class="table table-striped table-bordered">
                 <thead>

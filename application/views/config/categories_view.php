@@ -22,8 +22,6 @@
                 </div>
                 <div class="modal-body">
                     <form id="frmEditCategory">
-
-
                         <div class="form-group">
                             <label class="control-label" for="nombreCategoria2">Categoria</label>
                             <div class="input-group">
@@ -34,10 +32,7 @@
                                 <input type="hidden" id="categoryid" name="categoryid">
                             </div>
                         </div>
-
-
                     </form>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-primary btn-warning" id="btnModificar">Guardar</button>
@@ -61,8 +56,11 @@
             </button>
         </form>
     </div>
-    <div class="row">&nbsp;</div>
-    <div class ="row"><hr></div>
+
+
+    <br/><br/>
+    <br/><br/>
+
     <div class="row">
         <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <table id="tbCategoria" class="table table-striped table-bordered">

@@ -32,7 +32,7 @@
 
             <!-- First Blog Post -->
             <h2>
-                <a href="#">Blog Post Title</a>
+                <a href="<?php echo site_url('/magazine/articles') ?>">Blog Post Title</a>
             </h2>
             <p><i class="fa fa-clock-o"></i> Posted on August 28, 2013 at 10:00 PM</p>
             <hr>

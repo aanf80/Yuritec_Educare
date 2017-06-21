@@ -19,7 +19,7 @@
                     <?php echo anchor('/user/my_articles', 'Mis Artículos', 'class="link-class"') ?>
                 </li>
                 <li>
-                    <?php echo anchor('/article/edit_area', 'Área de Edición', 'class="link-class"') ?>
+                    <?php echo anchor('/article/new_article', 'Nuevo Artículo', 'class="link-class"') ?>
                 </li>
 
                 <?php
@@ -32,6 +32,9 @@
                     <?php
                 }
                 ?>
+                <li>
+                    <?php echo anchor('/user/my_articles', 'Buzón', 'class="link-class"') ?>
+                </li>
             </ol>
         </div>
     </div>
@@ -268,7 +271,7 @@
     <div class="row">
         <?php foreach($user as $userdata) { ?>
 
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 
                 <img src="<?php echo $userdata->photo;  ?>" class="img-responsive" width="1600" height="1600"/>
                 <br>
@@ -276,11 +279,11 @@
                 <button id="btnEditarProfile" class="btn btn-warning btn-block">Editar perfil</button>
             </div>
 
-            <div class="col-lg-9">
+            <div class="col-lg-9 col-md-6 col-sm-6 col-xs-12">
                 <h1 class="text-center" id="nombre"><strong><?php echo $userdata->username." ".$userdata->lastname." ".$userdata->maternalsurname;?></strong></h1>
                 <hr>
 
-                <div class="col-lg-12">
+                <div class="col-lg-12 ">
                     <div class="col-lg-4">
                         <h4><strong>Institución</strong></h4>
                         <hr>

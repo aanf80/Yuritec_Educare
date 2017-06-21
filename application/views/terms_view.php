@@ -27,3 +27,11 @@
         echo $ter->content;
     }
     ?>
+
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <div class="g-savetodrive"
+         data-src="/Yuritec_Educare/politicas.pdf"
+         data-filename="politicas_de_operacion.pdf"
+         data-sitename="Yuritec Educare">
+    </div>

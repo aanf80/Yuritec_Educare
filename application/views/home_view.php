@@ -1,11 +1,7 @@
 
 <div class="container">
     <!-- Marketing Icons Section -->
-    <script>
-        $('.carousel').carousel({
-            interval: 5000 //changes the speed
-        })
-    </script>
+
     <div class="row">
         <header id="myCarousel" class="carousel slide">
             <!-- Indicators -->
@@ -165,3 +161,8 @@
     <!-- Call to Action Section -->
     
     <hr>
+    <script>
+        $('.carousel').carousel({
+            interval: 5000 //changes the speed
+        })
+    </script>

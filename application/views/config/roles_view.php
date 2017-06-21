@@ -61,8 +61,8 @@
             </button>
         </form>
     </div>
-    <div class="row">&nbsp;</div>
-    <div class ="row"><hr></div>
+    <br/><br/>
+    <br/><br/>
     <div class="row">
         <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <table id="tbRole" class="table table-striped table-bordered">

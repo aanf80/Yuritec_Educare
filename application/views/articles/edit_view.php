@@ -6,21 +6,12 @@
  * Time: 07:42 PM
  */
 ?>
-<script>  tinymce.init({
-        selector: "textarea",
-        language : "es_MX",
-        plugins: [
-            "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
-            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-            "save table contextmenu directionality emoticons template paste textcolor"
-        ],
-        save_enablewhendirty: true
-    }); </script>
+
 <script type="text/javascript" src="<?php echo base_url('assets/js/article.js'); ?>"></script>
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Área de Edición</h1>
+            <h1 class="page-header">Nuevo Artículo</h1>
             <ol class="breadcrumb">
                 <li>
                     <?php echo anchor('/user/profile', 'Mi Perfil', 'class="link-class"') ?>
@@ -28,7 +19,7 @@
                 <li>
                     <?php echo anchor('/user/my_articles', 'Mis Artículos', 'class="link-class"') ?>
                 </li>
-                <li class="active">Área de Edición</li>
+                <li class="active">Nuevo Artículo</li>
                 <?php
 
                 if($this->session->userdata('roleid') == 1){
@@ -75,9 +66,7 @@
             <button type="submit" class="btn btn-warning" id="btnGuardar"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
         </div>
     </form>
-
-
-    <button type="submit" class="btn btn-warning" id="btnEnviar" ><span class="glyphicon glyphicon-open-file"></span> Enviar para revisión</button>
+    <button type="submit" class="btn btn-warning" id="btnEnviar" ><span class="glyphicon glyphicon-send"></span> Enviar para revisión</button>
 
 
 
