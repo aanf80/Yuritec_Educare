@@ -7,16 +7,18 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header"><?php echo $art->title;?>
-                <small>by <a href="#"> <?php echo $autorname . " " . $autorlastname  . " " . $autormoaternalsurname; ?></a>
-                </small>
+                <small>by <a href="#"> <?php echo $autorname . " " . $autorlastname  . " " . $autormoaternalsurname; ?></a></small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="index.html">Home</a>
+                <li><a href="index.php">Inicio</a>
                 </li>
-                <li class="active">Blog Post</li>
+                <li> <?php echo anchor('/magazine', 'Ejemplares', 'class="link-class"') ?></li>
+                <li> <?php echo anchor('/magazine/articles', 'Articulos', 'class="link-class"') ?></li>
+                <li class="active"><?php echo $art->title;?></li>
             </ol>
         </div>
     </div>
+
     <!-- /.row -->
 
     <!-- Content Row -->
@@ -27,14 +29,11 @@
             js = d.createElement(s); js.id = id;
             js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.9&appId=532724410449570";
             fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <div class="g-savetodrive"
-         data-src="/Yuritec_Educare/politicas.pdf"
-         data-filename="politicas_de_operacion.pdf"
-         data-sitename="Yuritec Educare">
-    </div>
+
+
     <div class="row">
 
 
@@ -54,9 +53,7 @@
             <img class="img-responsive" src="http://placehold.it/900x300" alt="">
             <br/>
             <div class="fb-share-button" data-href="http://appempre-aanf.esy.es/Yuritec_Educare/magazine/article_view" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Compartir</a></div>
-
-            <hr>
-
+           <br/>
             <!-- Post Content -->
 
             <?php echo $art->content;?>

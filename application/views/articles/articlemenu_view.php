@@ -7,10 +7,9 @@
                 <small>Nombre de la revista</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="index.html">Inicio</a>
+                <li><a href="index.php">Inicio</a>
                 </li>
-                <li><a href="index.html">Ejemplares</a>
-                </li>
+                <li> <?php echo anchor('/magazine', 'Ejemplares', 'class="link-class"') ?></li>
                 <li class="active">Artículos</li>
             </ol>
         </div>
@@ -33,6 +32,15 @@
             <p><?php echo $art->resumen;?></p>
             <a class="btn btn-warning" href="<?php echo site_url('/magazine/article_view/' . $art->articleid) ?>">Ver Artículo <span class="glyphicon glyphicon-circle-arrow-right"></span></i></a>
             <a class="btn btn-danger" href="<?php echo site_url('/magazine/generatePDF/' . $art->articleid) ?>" download>Descargar en PDF <span class="glyphicon glyphicon-download"></span></a>
+           <br/>
+           <br/>
+            <script src="https://apis.google.com/js/platform.js" async defer></script>
+            <div class="g-savetodrive"
+                 data-src="/Yuritec_Educare/politicas.pdf"
+                 data-filename="politicas_de_operacion.pdf"
+                 data-sitename="Yuritec Educare">
+            </div>
+            <hr>
         </div>
     </div>
 

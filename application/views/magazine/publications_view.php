@@ -10,16 +10,14 @@
 <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <div class="row">&nbsp;</div>
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Ejemplares
-                <small>Yúritec Educare</small>
+            <h1 class="page-header">Artículos
+                <small>Nombre de la revista</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="index.php">Home</a>
-                </li>
-                <li class="active">Blog Home One</li>
+                <li><a href="index.php">Inicio</a></li>
+                <li class="active">Ejemplares</li>
             </ol>
         </div>
     </div>
@@ -62,7 +60,7 @@
 
             <!-- Blog Search Well -->
             <div class="well">
-                <h4>Blog Search</h4>
+                <h4>Buscar</h4>
                 <div class="input-group">
                     <input type="text" class="form-control">
                     <span class="input-group-btn">
