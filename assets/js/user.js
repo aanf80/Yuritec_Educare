@@ -11,12 +11,12 @@ $(function () {
         url: '/Yuritec_Educare/settings/getRoles',
         type: 'GET',
         dataType: 'json'
-    }).done(function (json){
+    }).done(function (json) {
 
-        if(json.code===200)
-            $.each(json.msg, function(i,row){
+        if (json.code === 200)
+            $.each(json.msg, function (i, row) {
 
-                $('<option></option>', {text: row.rolename}).attr('value',row.roleid).appendTo('#roleid');
+                $('<option></option>', {text: row.rolename}).attr('value', row.roleid).appendTo('#roleid');
             });
     });
 
@@ -24,12 +24,12 @@ $(function () {
         url: '/Yuritec_Educare/settings/getRoles',
         type: 'GET',
         dataType: 'json'
-    }).done(function (json){
+    }).done(function (json) {
 
-        if(json.code===200)
-            $.each(json.msg, function(i,row){
+        if (json.code === 200)
+            $.each(json.msg, function (i, row) {
 
-                $('<option></option>', {text: row.rolename}).attr('value',row.roleid).appendTo('#roleid2');
+                $('<option></option>', {text: row.rolename}).attr('value', row.roleid).appendTo('#roleid2');
             });
     });
 
@@ -40,32 +40,90 @@ $(function () {
 
             username:{
                 required: true
+            },
+            email:{
+                required: true,
+                email:true
+            },
+            lastname:{
+                required: true
+            },
+            institute:{
+                required: true
+            },
+            password:{
+                required: true,
+                minlength: 5
+            },
+            confpassword:{
+                required: true,
+                minlength: 5,
+                equalTo: '#password'
+            },
+            streetnumber:{
+                digits: true
+            },
+            zipcode:{
+                digits: true
+            },
+            photo:{
+                required: true
             }
         },
         messages:{
 
             username: {
                 minlength: "Introduzca al menos tres caracteres",
-                maxlength: "Introdusca menos de 20 caracteres",
-                required: "Capture el nombre de usuario"
+                maxlength: "Introduzca máximo 20 caracteres",
+                required: "Capture su nombre"
+            },
+            lastname: {
+                minlength: "Introduzca al menos tres caracteres",
+                maxlength: "Introduzca máximo 20 caracteres",
+                required: "Capture su apellido paterno"
+            },
+            email:{
+                required: "Capture su correo electrónico",
+                email: "Formato de correo electrónico incorrecto"
+            },
+            password:{
+                required: "Capture su contraseña",
+                minlength: "Introduzca mínimo 5 caracteres"
+            },
+            institute:{
+                required: "Capture su institución de procedencia"
+            },
+            confpassword:{
+                required: "Confirme su contraseña",
+                minlength: "Introduzca mínimo 5 caracteres",
+                equalTo: "Las contraseñas no coinciden"
+            },
+            streetnumber:{
+                digits: "Introduzca sólo números"
+            },
+            zipcode:{
+                digits: "Introduzca sólo números"
+            },
+            photo:{
+                required: "Necesita seleccionar una foto de perfil"
             }
         },
-        highlight: function (element){
+        highlight: function (element) {
             $(element).closest('.form-group').addClass('has-error');
         },
-        unhighlight: function (element){
+        unhighlight: function (element) {
             $(element).closest('.form-group').removeClass('has-error');
         },
         errorElement: 'span',
         errorClass: 'help-block',
-        errorPlacement: function(error, element){
-            if(element.parent('.input-group').length){
+        errorPlacement: function (error, element) {
+            if (element.parent('.input-group').length) {
                 error.insertAfter(element.parent());
-            }else{
+            } else {
                 error.insertAfter(element);
             }
         },
-        submitHandler: function(form){
+        submitHandler: function (form) {
             newUser();
             return false;
         }
@@ -78,32 +136,90 @@ $(function () {
 
             username:{
                 required: true
+            },
+            email:{
+                required: true,
+                email:true
+            },
+            lastname:{
+                required: true
+            },
+            institute:{
+                required: true
+            },
+            password:{
+                required: true,
+                minlength: 5
+            },
+            confpassword:{
+                required: true,
+                minlength: 5,
+                equalTo: '#password'
+            },
+            streetnumber:{
+                digits: true
+            },
+            zipcode:{
+                digits: true
+            },
+            photo:{
+                required: true
             }
         },
         messages:{
 
             username: {
                 minlength: "Introduzca al menos tres caracteres",
-                maxlength: "Introdusca menos de 20 caracteres",
-                required: "Capture el nombre de usuario"
+                maxlength: "Introduzca máximo 20 caracteres",
+                required: "Capture su nombre"
+            },
+            lastname: {
+                minlength: "Introduzca al menos tres caracteres",
+                maxlength: "Introduzca máximo 20 caracteres",
+                required: "Capture su apellido paterno"
+            },
+            email:{
+                required: "Capture su correo electrónico",
+                email: "Formato de correo electrónico incorrecto"
+            },
+            password:{
+                required: "Capture su contraseña",
+                minlength: "Introduzca mínimo 5 caracteres"
+            },
+            institute:{
+                required: "Capture su institución de procedencia"
+            },
+            confpassword:{
+                required: "Confirme su contraseña",
+                minlength: "Introduzca mínimo 5 caracteres",
+                equalTo: "Las contraseñas no coinciden"
+            },
+            streetnumber:{
+                digits: "Introduzca sólo números"
+            },
+            zipcode:{
+                digits: "Introduzca sólo números"
+            },
+            photo:{
+                required: "Necesita seleccionar una foto de perfil"
             }
         },
-        highlight: function (element){
+        highlight: function (element) {
             $(element).closest('.form-group').addClass('has-error');
         },
-        unhighlight: function (element){
+        unhighlight: function (element) {
             $(element).closest('.form-group').removeClass('has-error');
         },
         errorElement: 'span',
         errorClass: 'help-block',
-        errorPlacement: function(error, element){
-            if(element.parent('.input-group').length){
+        errorPlacement: function (error, element) {
+            if (element.parent('.input-group').length) {
                 error.insertAfter(element.parent());
-            }else{
+            } else {
                 error.insertAfter(element);
             }
         },
-        submitHandler: function(form){
+        submitHandler: function (form) {
             updateUser();
             return false;
         }
@@ -119,76 +235,76 @@ $(function () {
 
     var table = $('#tbUsers').DataTable({
         responsive: true,
-        language:{
-            url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
+        language: {
+            url: "http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
-        ajax:{
-            url:"/Yuritec_Educare/user/getUsers",
-            dataSrc:function(json){
+        ajax: {
+            url: "/Yuritec_Educare/user/getUsers",
+            dataSrc: function (json) {
 
                 return json['msg'];
             }
         },
-        columns:[
+        columns: [
             {
-                data:"userid"
+                data: "userid"
             },
             {
-                data:"username"
+                data: "username"
             },
             {
                 data: function (row) {
-                    str = "<div align = 'left'>"+ row['lastname']+" "+row['maternalsurname'];
+                    str = "<div align = 'left'>" + row['lastname'] + " " + row['maternalsurname'];
                     str += "</div>";
                     return str;
                 }
             },
             {
-                data:"gender"
+                data: "gender"
             },
             {
                 data: function (row) {
-                    str = "<div align = 'left'>"+ row['address']+" #"+row['streetnumber']+", "+row['neighborhood'];
+                    str = "<div align = 'left'>" + row['address'] + " #" + row['streetnumber'] + ", " + row['neighborhood'];
                     //  str += accounting.formatMoney(row['roleid']);
                     str += "</div>";
                     return str;
                 }
             },
             {
-                data:"zipcode"
+                data: "zipcode"
             },
             {
                 data: function (row) {
-                    str = "<div align = 'left'>"+row['city']+", "+row['state'];
+                    str = "<div align = 'left'>" + row['city'] + ", " + row['state'];
                     str += "</div>";
                     return str;
                 }
             },
             {
-                data:"country"
+                data: "country"
             },
             {
-                data:"email"
+                data: "email"
             }, {
-                data:"password"
+                data: "password"
             },
             {
-                data:"sign"
+                data: "sign"
             },
             {
-                data:"position"
+                data: "position"
             },
             {
-                data:"institute"
+                data: "institute"
             },
             {
-                data:"roleid"
+                data: "roleid"
             },
             {
                 data: function (row) {
                     $info = row;
                     str = "<div align='left'>";
-                    str +="<button id='btnEditar' class='btn btn-success'><i class=\"glyphicon glyphicon-edit\"></i></button>";
+                    str += "<button id='btnEditar' class='btn btn-success'><i class=\"glyphicon glyphicon-edit\"></i></button>";
                     str += "&nbsp;<button id='btnBorrar' class='btn btn-danger' onClick='deleteUser(" + row['userid'] + ")'><i class=\"glyphicon glyphicon-trash\"></i> </button>";//trash
                     str += "</div>"
                     return str;
@@ -200,40 +316,40 @@ $(function () {
     });
 
 
-    $('#tbUsers tbody').on( 'click','.btn-success',  function () {
-        if(table.row(this).child.isShown()){
+    $('#tbUsers tbody').on('click', '.btn-success', function () {
+        if (table.row(this).child.isShown()) {
             var data = table.row(this).data();
-        }else{
+        } else {
             var data = table.row($(this).closest('tr')).data();
         }
 
-        showUser(data[Object.keys(data)[0]],data[Object.keys(data)[1]],data[Object.keys(data)[2]],data[Object.keys(data)[3]],data[Object.keys(data)[8]],data[Object.keys(data)[15]],data[Object.keys(data)[20]],
-            data[Object.keys(data)[17]],data[Object.keys(data)[21]],data[Object.keys(data)[19]],data[Object.keys(data)[18]],data[Object.keys(data)[16]],data[Object.keys(data)[5]],data[Object.keys(data)[4]],data[Object.keys(data)[10]],data[Object.keys(data)[6]],
-            data[Object.keys(data)[7]],data[Object.keys(data)[9]],data[Object.keys(data)[12]],data[Object.keys(data)[11]],data[Object.keys(data)[22]])
+        showUser(data[Object.keys(data)[0]], data[Object.keys(data)[1]], data[Object.keys(data)[2]], data[Object.keys(data)[3]], data[Object.keys(data)[8]], data[Object.keys(data)[15]], data[Object.keys(data)[20]],
+            data[Object.keys(data)[17]], data[Object.keys(data)[21]], data[Object.keys(data)[19]], data[Object.keys(data)[18]], data[Object.keys(data)[16]], data[Object.keys(data)[5]], data[Object.keys(data)[4]], data[Object.keys(data)[10]], data[Object.keys(data)[6]],
+            data[Object.keys(data)[7]], data[Object.keys(data)[9]], data[Object.keys(data)[12]], data[Object.keys(data)[11]], data[Object.keys(data)[22]])
 
-    } );
+    });
 
 
 // FIN SECCION DATATABLE
 
 
-
 });
 
-function newUser(){
+function newUser() {
     $.ajax({
         url: "/Yuritec_Educare/user/newUser",
         type: "post",
         data: $('#frmUser').serialize()
     }).done(
-        function(data){
+        function (data) {
 
-            if(data.code === 200){
-                $.growl.notice({ message: data.msg });
+            if (data.code === 200) {
+                $.growl.notice({message: data.msg});
                 $('#username').val('');
                 $('#lastname').val('');
                 $('#maternalsurname').val('');
                 $('#password').val('');
+                $('#confpassword').val('');
                 $('#email').val('');
                 $('#position').val('');
                 $('#institute').val('');
@@ -246,27 +362,27 @@ function newUser(){
                 $('#state').val('');
                 $('#city').val('');
                 $('#streetnumber').val('');
-                $('#zipcode').val('');
+                $('#zipc    ode').val('');
                 $('#roleid').index(0);
                 $('#country').index(0);
 
             }
-            else{
-                $.growl.error({ message: data.msg });
+            else {
+                $.growl.error({message: data.msg});
 
             }
 
         }
     ).fail(
-        function(){
-            $.growl.error({ message: "Verifique que haya llenado correctamente los campos" });
+        function () {
+            $.growl.error({message: "Verifique que haya llenado correctamente los campos"});
         }
     );
 }
 
-function showUser(userid, username, lastname, maternalsurname,gender,address,streetnumber,neighborhood,zipcode,
-                  city,state,country,email,password,sign,position,institute,initials,roleid,photo,bio) {
-    console.log("bio "+bio);
+function showUser(userid, username, lastname, maternalsurname, gender, address, streetnumber, neighborhood, zipcode,
+                  city, state, country, email, password, sign, position, institute, initials, roleid, photo, bio) {
+    console.log("bio " + bio);
 
     $('#userid').val(userid);
     $('#username2').val(username);
@@ -297,7 +413,7 @@ function updateUser() {
 
     $.ajax(
         {
-            url:"/Yuritec_Educare/user/updateUser" ,
+            url: "/Yuritec_Educare/user/updateUser",
             type: "post",
             data: $('#frmEditUser').serialize()
         }

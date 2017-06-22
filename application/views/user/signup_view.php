@@ -18,8 +18,8 @@
 
                 <!-- Datos Personales-->
                 <label class="control-label">Correo Electrónico *</label>
-                <input type="text" class="form-control" id="email" name="email" placeholder="Ejemplo: jorge@ittepic.edu.mx">
-                <div class="help-block"></div>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Ejemplo: jorge@ittepic.edu.mx">
+                <div class="help-block" id="invalidemail"></div>
 
                 <label class="control-label">Contraseña *</label>
                 <input type="password" class="form-control" id="password" name="password">
@@ -27,7 +27,7 @@
 
                 <label class="control-label">Confirmar contraseña *</label>
                 <input type="password" class="form-control" id="confpassword" name="confpassword">
-                <div class="help-block"></div>
+                <div class="help-block" id="equalpasswd"></div>
 
                <!-- <label class="control-label">Foto de perfil</label>
                 <input type="text" class="form-control" id="photo" name="photo" placeholder="Escriba el enlace de la imagen">
@@ -40,12 +40,13 @@
                      <input type="file" id="photo"  name="photo">
                 </div>
 
-                <label class="control-label">Nombre:</label>
+                <label class="control-label">Nombre: *</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Nombre(s)">
                 <div class="help-block"></div>
                 <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Apellido Paterno">
                 <div class="help-block"></div>
                 <input type="text" class="form-control" id="maternalsurname" name="maternalsurname" placeholder="Apellido Materno">
+                <div class="help-block"></div>
 
                 <label class="control-label">Iniciales</label>
                 <input type="text" class="form-control" id="initials" name="initials">
@@ -70,13 +71,13 @@
                 <input type="text" class="form-control" id="position" name="position" placeholder="Ejemplo: Maestro">
                 <div class="help-block"></div>
 
-                <label class="control-label">Institución</label>
+                <label class="control-label">Institución *</label>
                 <input type="text" class="form-control" id="institute" name="institute" placeholder="Ejemplo: Instituto Tecnológico de Tepic">
                 <div class="help-block"></div>
 
                 <label for="resumen">Resumen biográfico</label>
-                <textarea id="bio" name = "bio" rows="6" class="form-control"></textarea>
-                <div class="help-block">Ej. Departamento y Rango</div>
+                <textarea id="bio" name = "bio" rows="6" class="form-control" placeholder="Ejemplo: Departamento y Rango"></textarea>
+                <div class="help-block"></div>
 
                 <h4><strong>Domicilio</strong></h4>
 
