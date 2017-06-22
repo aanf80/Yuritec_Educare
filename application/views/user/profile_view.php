@@ -32,9 +32,6 @@
                     <?php
                 }
                 ?>
-                <li>
-                    <?php echo anchor('/user/my_articles', 'Buzón', 'class="link-class"') ?>
-                </li>
             </ol>
         </div>
     </div>

@@ -6,7 +6,7 @@
  * Time: 01:14 PM
  */
 ?>
-<script type="text/javascript" src="<?php echo base_url('assets/js/article.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/js/review.js'); ?>"></script>
 <div class="container">
 
     <div class="row">
@@ -35,7 +35,7 @@
     </div>
     <div class="row">
         <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <table id="tbArticle" class="table table-striped table-bordered">
+            <table id="tbReview" class="table table-striped table-bordered">
                 <thead>
                 <tr>
                     <th>Clave</th>
@@ -43,7 +43,7 @@
                     <th>Fecha de Creación</th>
                     <th>Estado</th>
                     <th>Portada</th>
-                    <th>Operaciones</th>
+                    <th>Descargar archivo</th>
                 </tr>
                 </thead>
             </table>

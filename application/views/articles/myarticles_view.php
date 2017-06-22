@@ -47,7 +47,6 @@
                     <th>Fecha de Creación</th>
                     <th>Estado</th>
                     <th>Portada</th>
-                    <th>Operaciones</th>
                 </tr>
                 </thead>
             </table>

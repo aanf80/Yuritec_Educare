@@ -38,7 +38,15 @@ class Model_Article extends CI_Model{
 
         return $query->result();
     }
+    public function getSendedArticles() //C
+    {
+        $this->db->from($this->table);
+        $this->db->where('status',"Enviado");
+        $query = $this->db->get();
 
+
+        return $query->result();
+    }
     public function getArticle($id) //C
     {
         $this->db->from($this->table);

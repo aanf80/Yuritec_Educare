@@ -51,22 +51,15 @@
             <input type="text" class="form-control" name="palabrasclave" id="palabrasclave">
             <div class="row">&nbsp;</div>
 
-            <h3>Abstract</h3>
-            <textarea name="abstract" id="abstract"></textarea>
-            <div class="row">&nbsp;</div>
-
-            <h3>Keywords</h3>
-            <input type="text" class="form-control" name="keywords" id="keywords">
-            <div class="row">&nbsp;</div>
-
-            <h3>Contenido</h3>
-            <textarea name="content" id="content"></textarea>
-            <div class="row">&nbsp;</div>
-            <div class="row">&nbsp;</div>
+            <hr>
+            <h3>Seleccionar archivo</h3>
+            <input type="file" id="file"  name="file">
+            <br/>
+            <br/>
             <button type="submit" class="btn btn-warning" id="btnGuardar"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
         </div>
     </form>
-    <button type="submit" class="btn btn-warning" id="btnEnviar" ><span class="glyphicon glyphicon-send"></span> Enviar para revisión</button>
+
 
 
 
