@@ -12,7 +12,7 @@
 
     <h3 class="page-header">Registrarse</h3>
 
-    <form id="frmRegister" >
+    <form id="frmRegister" enctype="multipart/form-data">
         <div class="form-group">
             <div class="col-lg-6">
 

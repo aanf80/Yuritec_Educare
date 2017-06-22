@@ -7,8 +7,7 @@
  * Time: 07:37 PM
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
-set_include_path(APPPATH . 'third_party/' . PATH_SEPARATOR . get_include_path());
-require_once APPPATH . 'third_party/vendor/autoload.php';
+
 
 class Article extends CI_Controller {
     public function __construct()
