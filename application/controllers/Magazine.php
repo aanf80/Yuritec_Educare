@@ -30,19 +30,30 @@ class Magazine extends CI_Controller
         $this->load->model('Model_Article');
         $data['articles'] = $this->Model_Article->getArticles();
 
+        $this->load->model('Model_User');
+        $users = $this->Model_User->getUsers();
+
+        foreach ($users as $user){
+            if ($user->userid == $data['articles'][0]->userid){
+                $data['autorname'] = $this->Model_User->getUserById($user->userid)[0]->username;
+                $data['autorlastname'] = $this->Model_User->getUserById($user->userid)[0]->lastname;
+                $data['autormoaternalsurname'] = $this->Model_User->getUserById($user->userid)[0]->maternalsurname;
+            }
+        }
+
         $this->load->view('header');
         $this->load->view('articles/articlemenu_view', $data);
         $this->load->view('footer');
     }
 
 
-    public function generatePDF()
+    public function generatePDF($idarticle)
     {
         $this->load->model('Model_Article');
         $this->load->model('Model_User');
         $this->load->model('Categories');
 
-        $data['articles'] = $this->Model_Article->getArticle(2);
+        $data['articles'] = $this->Model_Article->getArticle($idarticle);
         $category = $this->Categories->getCategoryName($data['articles'][0]->categoryid);
         $autor = $this->Model_User->getUserById($data['articles'][0]->userid);
 
@@ -127,14 +138,18 @@ class Magazine extends CI_Controller
         $pdf->Output($data['articles'][0]->title, 'I');
     }
 
-    public function article_view()
+    public function article_view($idarticle)
     {
         $this->load->model('Categories');
         $data['categories'] = $this->Categories->getCategories();
 
         $this->load->model('Model_Article');
-        $data['articles'] = $this->Model_Article->getArticle(3);
+        $data['articles'] = $this->Model_Article->getArticle($idarticle);
 
+        $this->load->model('Model_User');
+        $data['autorname'] = $this->Model_User->getUserById($data['articles'][0]->userid)[0]->username;
+        $data['autorlastname'] = $this->Model_User->getUserById($data['articles'][0]->userid)[0]->lastname;
+        $data['autormoaternalsurname'] = $this->Model_User->getUserById($data['articles'][0]->userid)[0]->maternalsurname;
 
         $this->load->view('header');
         $this->load->view('articles/article_view', $data);
