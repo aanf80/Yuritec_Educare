@@ -28,6 +28,16 @@ class Model_User extends CI_Model{
         return $query->result();
     }
 
+    public function userExists($email) //C
+    {
+        $this->db->from($this->table);
+        $this->db->where('email',$email);
+        $this -> db -> limit(1);
+        $query = $this->db->get();
+
+        return $query->num_rows();
+    }
+
     public function updateStatus ($email){
 
         $data = array('status' => 'C');

@@ -194,7 +194,7 @@ class User extends CI_Controller
 
         $this->load->model('Model_User');
         $jsondata = array();
-        $insert = false;
+
         $data = array(
             'userid' => $this->input->post('userid')
         );
@@ -221,20 +221,17 @@ class User extends CI_Controller
 
     public function register()
     {
-        $config['upload_path']          = './assets/img';
-        $config['allowed_types']        = 'gif|jpg|png';
+        $config['upload_path'] = './assets/img';
+        $config['allowed_types'] = 'gif|jpg|png';
 
 
         $this->load->library('upload', $config);
         $hoy = date("Y-m-d");
 
 
-        if ( ! $this->upload->do_upload('photo'))
-        {
-     echo  $this->upload->display_errors();
-        }
-        else
-        {
+        if (!$this->upload->do_upload('photo')) {
+            echo $this->upload->display_errors();
+        } else {
             $datos = array('upload_data' => $this->upload->data());
             $this->load->model('Model_User');
             $data = array(
@@ -264,17 +261,30 @@ class User extends CI_Controller
             );
 
 
-
-
             $email = $this->input->post('email');
             $username = $this->input->post('username');
             $lastname = $this->input->post('lastname');
+
+            $query = $this->Model_User->userExists($email);
+
+            if ($query != 0) {
+                $jsondata["code"] = 402;
+                $jsondata["msg"] = "El correo ya se encuentra registrado.";
+                $jsondata["details"] = "Correo duplicado";
+
+                header('Content-type: application/json; charset=utf-8');
+                header("Cache-Control: no-store");
+                echo json_encode($jsondata, JSON_FORCE_OBJECT);
+
+                return;
+            }
 
             if ($data['username'] == null) {
                 redirect('home', 'refresh');
             }
 
             $insert = $this->Model_User->newUser($data);
+
             $user = $this->Model_User->getUserByEmail($email);
             $emailcode = md5((string)$user[0]->emailcode);
 
@@ -297,8 +307,6 @@ class User extends CI_Controller
             echo json_encode($jsondata, JSON_FORCE_OBJECT);
 
         }
-
-
 
     }
 
@@ -329,7 +337,7 @@ class User extends CI_Controller
         $validated = $this->validate($email, $emailcode);
 
         if ($validated === true) {
-            redirect('login/');
+            redirect('login', 'refresh');
         } else {
             echo 'Error al confirmar el correo electrónico. Por favor contacte al administrador.';
         }
@@ -343,11 +351,11 @@ class User extends CI_Controller
         $headers = 'From: ' . 'Revista Yurítec Educare' . "\r\n" .
             'Reply-To: ' . $emailFrom . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
-        $emailMessage = "<h1>Hola ".$username." ".$lastname."</h1>";
+        $emailMessage = "<h1>Hola " . $username . " " . $lastname . "</h1>";
         $emailMessage .= "<h2>Su registro a la revista Yurítec Educare ha sido exitoso.</h2>";
         $emailMessage .= "<p>Para continuar por favor confirme su cuenta a continuación:</p>";
-        $emailMessage .= "<a href= ". base_url('/user/validateEmail/' . $email . '/' . $emailcode). "> Confirmar y continuar</a>";
-        $emailMessage .= "<p>¡Gracias!</p>";
+        $emailMessage .= "<a href= " . base_url('/user/validateEmail/' . $email . '/' . $emailcode) . "> Confirmar y continuar</a>";
+        $emailMessage .= "<h5>¡Gracias!</h5>";
         $config = Array(
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -369,7 +377,6 @@ class User extends CI_Controller
         //$this->email->bcc('them@their-example.com');
 
         $this->email->subject($emailSubject);
-        //$this->email->attach("/Yuritec_Educare/assets/img/yuritecbanner.png", 'inline');
         $this->email->message($emailMessage);
         $this->email->set_header("Headers", $headers);
         $this->email->send();
