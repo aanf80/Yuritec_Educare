@@ -50,7 +50,7 @@ class Magazine extends CI_Controller
         $html ="<h1>" . $data['articles'][0]->title . "</h1>";
 
         //add autor
-        $html .= "<p>" . $autor[0]->username . " " .$autor[0]->lastname . " " . $autor[0]->maternalsurname . "</p>";
+        $html .= "<p> " . $autor[0]->username . " " .$autor[0]->lastname . " " . $autor[0]->maternalsurname . "</p>";
         //add institución
         $html .= "<p>".$autor[0]->institute. "</p>";
 
