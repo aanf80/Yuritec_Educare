@@ -221,7 +221,11 @@ class User extends CI_Controller
 
     public function register()
     {
-        $config['upload_path'] = './assets/img';
+        $carpeta = 'C:/var/webapp/images';
+        if (!file_exists($carpeta)) {
+            mkdir($carpeta, 0777, true);
+        }
+        $config['upload_path'] = 'C:/var/webapp/images';
         $config['allowed_types'] = 'gif|jpg|png';
 
 
