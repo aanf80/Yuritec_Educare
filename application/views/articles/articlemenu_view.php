@@ -31,7 +31,7 @@
             <h4>Autor:</h4>
             <p><?php echo $art->resumen;?></p>
             <a class="btn btn-warning" href="<?php echo site_url('/magazine/article_view') ?>">Ver Artículo <span class="glyphicon glyphicon-circle-arrow-right"></span></i></a>
-            <button class="btn btn-danger">Descargar en PDF<span class="glyphicon glyphicon-download"></span></button>
+            <a class="btn btn-danger" href="<?php echo site_url('/magazine/generatePDF') ?>">Descargar en PDF <span class="glyphicon glyphicon-download"></span></a>
         </div>
     </div>
 

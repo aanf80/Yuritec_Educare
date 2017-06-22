@@ -28,6 +28,14 @@ class Categories extends CI_Model{
         $query=$this->db->get();
         return $query->result();
     }
+
+    public function getCategoryName($id){
+        $this->db->from('category');
+        $this->db->where('categoryid', $id);
+        $query=$this->db->get();
+        return $query->result();
+    }
+
     public function updateCategory($where,$data){
         $this->db->update($this->table, $data, $where);
         return true;
