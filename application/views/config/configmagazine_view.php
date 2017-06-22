@@ -7,7 +7,23 @@
  */
 ?>
 <script type="text/javascript" src="<?php echo base_url('assets/js/article.js'); ?>"></script>
+
+
 <div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Publicar Revista</h1>
+            <ol class="breadcrumb">
+                <li class="active">Publicar Revista</li>
+                <li>
+                    <?php echo anchor('/article/new_article', 'Seleccionar articulos', 'class="link-class"') ?>
+                </li>
+
+            </ol>
+        </div>
+    </div>
+
+
 
     <label class="control-label">Volumen</label>
     <input type="text" class="form-control" id="volume" name="volume">
