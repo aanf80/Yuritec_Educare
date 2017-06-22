@@ -48,13 +48,13 @@
                 <input type="text" class="form-control" id="photo" name="photo" placeholder="Escriba el enlace de la imagen">
                 <div class="help-block"></div>
 
-                <label class="control-label">Nombre:</label>
+                <label class="control-label">Nombre: *</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Nombre(s)">
                 <div class="help-block"></div>
                 <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Apellido Paterno">
                 <div class="help-block"></div>
                 <input type="text" class="form-control" id="maternalsurname" name="maternalsurname" placeholder="Apellido Materno">
-
+                <div class="help-block"></div>
                 <label class="control-label">Iniciales</label>
                 <input type="text" class="form-control" id="initials" name="initials">
                 <div class="help-block"></div>
@@ -78,7 +78,7 @@
                 <input type="text" class="form-control" id="position" name="position" placeholder="Ejemplo: Maestro">
                 <div class="help-block"></div>
 
-                <label class="control-label">Institución</label>
+                <label class="control-label">Institución *</label>
                 <input type="text" class="form-control" id="institute" name="institute" placeholder="Ejemplo: Instituto Tecnológico de Tepic">
                 <div class="help-block"></div>
 

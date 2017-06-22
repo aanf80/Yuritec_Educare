@@ -8,14 +8,72 @@ $(function () {
 
             username:{
                 required: true
+            },
+            email:{
+                required: true,
+                email:true
+            },
+            lastname:{
+                required: true
+            },
+            institute:{
+                required: true
+            },
+            password:{
+                required: true,
+                minlength: 5
+            },
+            confpassword:{
+                required: true,
+                minlength: 5,
+                equalTo: '#password'
+            },
+            streetnumber:{
+                digits: true
+            },
+            zipcode:{
+                digits: true
+            },
+            photo:{
+                required: true
             }
         },
         messages:{
 
             username: {
                 minlength: "Introduzca al menos tres caracteres",
-                maxlength: "Introduzca menos de 20 caracteres",
-                required: "Capture el nombre de usuario"
+                maxlength: "Introduzca máximo 20 caracteres",
+                required: "Capture su nombre"
+            },
+            lastname: {
+                minlength: "Introduzca al menos tres caracteres",
+                maxlength: "Introduzca máximo 20 caracteres",
+                required: "Capture su apellido paterno"
+            },
+            email:{
+                required: "Capture su correo electrónico",
+                email: "Formato de correo electrónico incorrecto"
+            },
+            password:{
+                required: "Capture su contraseña",
+                minlength: "Introduzca mínimo 5 caracteres"
+            },
+            institute:{
+                required: "Capture su institución de procedencia"
+            },
+            confpassword:{
+                required: "Confirme su contraseña",
+                minlength: "Introduzca mínimo 5 caracteres",
+                equalTo: "Las contraseñas no coinciden"
+            },
+            streetnumber:{
+                digits: "Introduzca sólo números"
+            },
+            zipcode:{
+                digits: "Introduzca sólo números"
+            },
+            photo:{
+                required: "Necesita seleccionar una foto de perfil"
             }
         },
         highlight: function (element){
@@ -25,7 +83,7 @@ $(function () {
             $(element).closest('.form-group').removeClass('has-error');
         },
         errorElement: 'span',
-        errorClass: 'help-block',
+        errorClass: 'alert-danger',
         errorPlacement: function(error, element){
             if(element.parent('.input-group').length){
                 error.insertAfter(element.parent());

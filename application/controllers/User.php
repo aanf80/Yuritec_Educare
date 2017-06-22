@@ -260,7 +260,6 @@ class User extends CI_Controller
 
             );
 
-
             $email = $this->input->post('email');
             $username = $this->input->post('username');
             $lastname = $this->input->post('lastname');
