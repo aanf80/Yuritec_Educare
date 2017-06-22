@@ -44,8 +44,10 @@
                 <select name="roleid" id="roleid" class="form-control"></select>
                 <div class="help-block"></div>
 
-                <label class="control-label">Foto de perfil</label>
-                <input type="text" class="form-control" id="photo" name="photo" placeholder="Escriba el enlace de la imagen">
+                <div class="form-group">
+                    <label for="photo">Seleccionar foto de perfil</label>
+                    <input type="file" id="photo"  name="photo">
+                </div>
                 <div class="help-block"></div>
 
                 <label class="control-label">Nombre: *</label>
@@ -66,7 +68,7 @@
                 <div id="gender">
                     <div><label>Género</label></div>
                     <label class="radio-inline">
-                        <input type="radio" value="F" name="gender" id="r1"> Femenino
+                        <input type="radio" value="F" name="gender" id="r1" checked> Femenino
                     </label>
                     <label class="radio-inline">
                         <input type="radio" value="M" name="gender" id="r2"> Masculino

@@ -108,18 +108,18 @@ $(function () {
                 required: "Necesita seleccionar una foto de perfil"
             }
         },
-        highlight: function (element) {
+        highlight: function (element){
             $(element).closest('.form-group').addClass('has-error');
         },
-        unhighlight: function (element) {
+        unhighlight: function (element){
             $(element).closest('.form-group').removeClass('has-error');
         },
         errorElement: 'span',
-        errorClass: 'help-block',
-        errorPlacement: function (error, element) {
-            if (element.parent('.input-group').length) {
+        errorClass: 'alert-danger',
+        errorPlacement: function(error, element){
+            if(element.parent('.input-group').length){
                 error.insertAfter(element.parent());
-            } else {
+            }else{
                 error.insertAfter(element);
             }
         },
@@ -154,7 +154,7 @@ $(function () {
             confpassword:{
                 required: true,
                 minlength: 5,
-                equalTo: '#password'
+                equalTo: '#password2'
             },
             streetnumber:{
                 digits: true
@@ -204,26 +204,28 @@ $(function () {
                 required: "Necesita seleccionar una foto de perfil"
             }
         },
-        highlight: function (element) {
+        highlight: function (element){
             $(element).closest('.form-group').addClass('has-error');
         },
-        unhighlight: function (element) {
+        unhighlight: function (element){
             $(element).closest('.form-group').removeClass('has-error');
         },
         errorElement: 'span',
-        errorClass: 'help-block',
-        errorPlacement: function (error, element) {
-            if (element.parent('.input-group').length) {
+        errorClass: 'alert-danger',
+        errorPlacement: function(error, element){
+            if(element.parent('.input-group').length){
                 error.insertAfter(element.parent());
-            } else {
+            }else{
                 error.insertAfter(element);
             }
         },
         submitHandler: function (form) {
-            updateUser();
+           updateUser();
+            console.log("Actualizado");
             return false;
         }
     });
+
 
     $('#btnModificarUser').on('click', function () {
 
@@ -325,7 +327,7 @@ $(function () {
 
         showUser(data[Object.keys(data)[0]], data[Object.keys(data)[1]], data[Object.keys(data)[2]], data[Object.keys(data)[3]], data[Object.keys(data)[8]], data[Object.keys(data)[15]], data[Object.keys(data)[20]],
             data[Object.keys(data)[17]], data[Object.keys(data)[21]], data[Object.keys(data)[19]], data[Object.keys(data)[18]], data[Object.keys(data)[16]], data[Object.keys(data)[5]], data[Object.keys(data)[4]], data[Object.keys(data)[10]], data[Object.keys(data)[6]],
-            data[Object.keys(data)[7]], data[Object.keys(data)[9]], data[Object.keys(data)[12]], data[Object.keys(data)[11]], data[Object.keys(data)[22]])
+            data[Object.keys(data)[7]], data[Object.keys(data)[9]], data[Object.keys(data)[12]], data[Object.keys(data)[11]], data[Object.keys(data)[22]],data[Object.keys(data)[13]],data[Object.keys(data)[14]])
 
     });
 
@@ -362,7 +364,7 @@ function newUser() {
                 $('#state').val('');
                 $('#city').val('');
                 $('#streetnumber').val('');
-                $('#zipc    ode').val('');
+                $('#zipcode').val('');
                 $('#roleid').index(0);
                 $('#country').index(0);
 
@@ -381,10 +383,10 @@ function newUser() {
 }
 
 function showUser(userid, username, lastname, maternalsurname, gender, address, streetnumber, neighborhood, zipcode,
-                  city, state, country, email, password, sign, position, institute, initials, roleid, photo, bio) {
-    console.log("bio " + bio);
-
+                  city, state, country, email, password, sign, position, institute, initials, roleid, photo, bio, status, date) {
     $('#userid').val(userid);
+    $('#status').val(status);
+    $('#registerdate').val(date);
     $('#username2').val(username);
     $('#lastname2').val(lastname);
     $('#maternalsurname2').val(maternalsurname);
@@ -396,6 +398,7 @@ function showUser(userid, username, lastname, maternalsurname, gender, address, 
     $('#photo2').val(photo);
     $('#email2').val(email);
     $('#password2').val(password);
+    $('#confpassword2').val(password);
     $('#sign2').val(sign);
     $('#bio2').val(bio);
     $('#position2').val(position);

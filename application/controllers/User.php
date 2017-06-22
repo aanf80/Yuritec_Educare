@@ -158,7 +158,7 @@ class User extends CI_Controller
             'sign' => $this->input->post('sign'),
             'photo' => $this->input->post('photo'),
             'roleid' => $this->input->post('roleid'),
-            'status' => 'P',
+            'status' => $this->input->post('status'),
             'registerdate' => $hoy,
             'bio' => $this->input->post('bio'),
             'address' => $this->input->post('address'),

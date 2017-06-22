@@ -68,7 +68,17 @@
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-lock"></i>
                                 </span>
-                                    <input class="form-control" id="password2" name="password">
+                                    <input class="form-control" type="password" id="password2" name="password">
+                                </div>
+                            </div>
+
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label" for="password2">Contraseña</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-lock"></i>
+                                </span>
+                                    <input class="form-control" type="password" id="confpassword2" name="confpassword">
                                 </div>
                             </div>
 
@@ -79,6 +89,7 @@
                                     <i class="glyphicon glyphicon-user"></i>
                                 </span>
                                     <input  type="hidden" class="form-control" id="userid" name="userid" >
+                                    <input  type="hidden" class="form-control" id="status" name="status" >
 
                                     <input class="form-control" id="username2" name="username" >
                                 </div>
@@ -222,8 +233,7 @@
 
 
                             <!-- Sexta fila-->
-                            <div class="col-xs-6 col-md-6 col-lg-6">
-
+                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label class="control-label" for="photo2">Enlace de fotografía:</label>
                                 <div class="input-group">
                                 <span class="input-group-addon">

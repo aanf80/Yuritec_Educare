@@ -59,7 +59,7 @@
                 <div id="gender">
                     <div><label>Género</label></div>
                     <label class="radio-inline">
-                        <input type="radio" value="F" name="gender" id="r1"> Femenino
+                        <input type="radio" value="F" name="gender" id="r1" checked> Femenino
                     </label>
                     <label class="radio-inline">
                         <input type="radio" value="M" name="gender" id="r2"> Masculino
