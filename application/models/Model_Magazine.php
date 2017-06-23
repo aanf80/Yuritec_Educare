@@ -29,7 +29,7 @@ class Model_Magazine extends CI_Model{
     public function getMagazineByID($id)
     {
         $this->db->from($this->table);
-        $this->db->where('userid',$id);
+        $this->db->where('magazineid',$id);
         $query = $this->db->get();
 
 

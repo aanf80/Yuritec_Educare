@@ -4,11 +4,9 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Artículos
-                <small>Nombre de la revista</small>
+                <small><?php echo "Volumen ".$volume." Número ".$number ?></small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="index.php">Inicio</a>
-                </li>
                 <li> <?php echo anchor('/magazine', 'Ejemplares', 'class="link-class"') ?></li>
                 <li class="active">Artículos</li>
             </ol>
@@ -30,7 +28,7 @@
             <h4>Autor: <?php
                 echo $autorname . " " . $autorlastname  . " " . $autormoaternalsurname; ?> </h4>
             <p><?php echo $art->resumen;?></p>
-            <a class="btn btn-warning" href="<?php echo site_url('/magazine/article_view/' . $art->articleid) ?>">Ver Artículo <span class="glyphicon glyphicon-circle-arrow-right"></span></i></a>
+            <a class="btn btn-warning" href="<?php echo site_url('/magazine/article_view/' .$magazineid.'/'. $art->articleid) ?>">Ver Artículo <span class="glyphicon glyphicon-circle-arrow-right"></span></i></a>
             <a class="btn btn-danger" href="<?php echo site_url('/magazine/generatePDF/' . $art->articleid) ?>" download>Descargar en PDF <span class="glyphicon glyphicon-download"></span></a>
            <br/>
            <br/>

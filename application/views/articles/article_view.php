@@ -13,7 +13,7 @@
                 <li><a href="index.php">Inicio</a>
                 </li>
                 <li> <?php echo anchor('/magazine', 'Ejemplares', 'class="link-class"') ?></li>
-                <li> <?php echo anchor('/magazine/articles', 'Articulos', 'class="link-class"') ?></li>
+                <li> <?php echo anchor('/magazine/articles/'.$magazineid, 'Articulos', 'class="link-class"') ?></li>
                 <li class="active"><?php echo $art->title;?></li>
             </ol>
         </div>

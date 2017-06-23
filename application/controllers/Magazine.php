@@ -45,6 +45,16 @@ class Magazine extends CI_Controller
                 $data['autormoaternalsurname'] = $this->Model_User->getUserById($user->userid)[0]->maternalsurname;
             }
         }
+        $this->load->model('Model_Magazine');
+        $data['magazines'] = $this->Model_Magazine->getMagazines();
+
+        foreach ($data['magazines'] as $magazine){
+            if ($magazine->magazineid == $data['articles'][0]->magazineid){
+                $data['volume'] = $this->Model_Magazine->getMagazineByID($magazine->magazineid)[0]->volume;
+                $data['number'] = $this->Model_Magazine->getMagazineByID($magazine->magazineid)[0]->number;
+                $data['magazineid'] = $this->Model_Magazine->getMagazineByID($magazine->magazineid)[0]->magazineid;
+            }
+        }
 
         $this->load->view('header');
         $this->load->view('articles/articlemenu_view', $data);
@@ -143,10 +153,12 @@ class Magazine extends CI_Controller
         $pdf->Output($data['articles'][0]->title, 'I');
     }
 
-    public function article_view($idarticle)
+    public function article_view($magazineid,$idarticle)
     {
         $this->load->model('Categories');
         $data['categories'] = $this->Categories->getCategories();
+
+        $data['magazineid'] = $magazineid;
 
         $this->load->model('Model_Article');
         $data['articles'] = $this->Model_Article->getArticle($idarticle);
@@ -161,5 +173,25 @@ class Magazine extends CI_Controller
         $this->load->view('footer');
     }
 
+
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    public function getMagazines(){
+
+        $this->load->model('Model_Magazine');
+        $data = $this->Model_Magazine->getMagazines();
+        $jsondata["code"] = 200;
+        $jsondata["msg"] = array();
+        foreach($data as $mag){
+            $jsondata["msg"][] = $mag;
+        }
+
+        $jsondata["details"] = "OK";
+
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata);
+    }
 
 }

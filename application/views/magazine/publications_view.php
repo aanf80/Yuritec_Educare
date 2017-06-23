@@ -14,10 +14,6 @@
         <div class="col-lg-12">
             <h1 class="page-header">Publicaciones
             </h1>
-            <ol class="breadcrumb">
-                <li><a href="index.php">Inicio</a></li>
-                <li class="active">Ejemplares</li>
-            </ol>
         </div>
     </div>
     <!-- /.row -->
