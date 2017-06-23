@@ -30,10 +30,10 @@ class Magazine extends CI_Controller
         $this->load->view('footer');
     }
 
-    public function articles()
+    public function articles($id)
     {
         $this->load->model('Model_Article');
-        $data['articles'] = $this->Model_Article->getArticles();
+        $data['articles'] = $this->Model_Article->getArticlesByVolume($id);
 
         $this->load->model('Model_User');
         $users = $this->Model_User->getUsers();

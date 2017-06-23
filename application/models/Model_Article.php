@@ -57,7 +57,7 @@ class Model_Article extends CI_Model{
 
         return $query->result();
     }
-    public function getArticleByVolume($id) //C
+    public function getArticlesByVolume($id) //C
     {
         $this->db->from($this->table);
         $this->db->where('magazineid',$id);

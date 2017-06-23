@@ -30,19 +30,19 @@
             <!-- First Blog Post -->
             <?php foreach($magazines as $magazine) { ?>
                 <h2>
-                    <a href="<?php echo site_url('/magazine/articles') ?>"><?php echo "Volumen ".$magazine->volume." Número ".$magazine->number  ?></a>
+                    <a href="<?php echo site_url('/magazine/articles/'.$magazine->magazineid) ?>"><?php echo "Volumen ".$magazine->volume." Número ".$magazine->number  ?></a>
                     <small><?php echo $magazine->period." ".$magazine->year ?></small>
                 </h2>
 
                 <p><i class="fa fa-clock-o"></i> <?php echo "Fecha de publicación: ".$magazine->date ?></p>
                 <hr>
                 <div align="center">
-                    <a href="<?php echo site_url('/magazine/articles') ?>">
+                    <a href="<?php echo site_url('/magazine/articles/'.$magazine->magazineid) ?>">
                         <img class="img-responsive img-hover" src="assets/img/imgabout.png" width="400" height=100" alt="">
                     </a>
                 </div>
                 <br/>
-                <a class="btn btn-warning" href="<?php echo site_url('/magazine/articles') ?>">Ver artículos <i class="fa fa-angle-right"></i></a>
+                <a class="btn btn-warning" href="<?php echo site_url('/magazine/articles/'.$magazine->magazineid) ?>">Ver artículos <i class="fa fa-angle-right"></i></a>
 
                 <hr>
                 <?php
