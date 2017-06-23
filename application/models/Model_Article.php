@@ -57,6 +57,16 @@ class Model_Article extends CI_Model{
 
         return $query->result();
     }
+    public function getArticleByVolume($id) //C
+    {
+        $this->db->from($this->table);
+        $this->db->where('magazineid',$id);
+
+        $query = $this->db->get();
+
+
+        return $query->result();
+    }
     //R
     function updateArticle($data, $where){
         $this->db->update($this->table, $data, $where);

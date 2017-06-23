@@ -18,8 +18,13 @@ class Magazine extends CI_Controller
 
     public function index()
     {
+
+        $this->load->model('Model_Magazine');
+        $data['magazines'] = $this->Model_Magazine->getMagazines();
+
         $this->load->model('Categories');
         $data['categories'] = $this->Categories->getCategories();
+
         $this->load->view('header');
         $this->load->view('magazine/publications_view', $data);
         $this->load->view('footer');

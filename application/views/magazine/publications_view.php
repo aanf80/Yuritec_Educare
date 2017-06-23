@@ -12,8 +12,7 @@
     <!-- Page Heading/Breadcrumbs -->
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Artículos
-                <small>Nombre de la revista</small>
+            <h1 class="page-header">Publicaciones
             </h1>
             <ol class="breadcrumb">
                 <li><a href="index.php">Inicio</a></li>
@@ -29,20 +28,26 @@
         <div class="col-md-8">
 
             <!-- First Blog Post -->
-            <h2>
-                <a href="<?php echo site_url('/magazine/articles') ?>">Blog Post Title</a>
-            </h2>
-            <p><i class="fa fa-clock-o"></i> Posted on August 28, 2013 at 10:00 PM</p>
-            <hr>
-            <a href="blog-post.html">
-                <img class="img-responsive img-hover" src="http://placehold.it/900x300" alt="">
-            </a>
-            <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, veritatis, tempora, necessitatibus inventore nisi quam quia repellat ut tempore laborum possimus eum dicta id animi corrupti debitis ipsum officiis rerum.</p>
-            <a class="btn btn-warning" href="<?php echo site_url('/magazine/articles') ?>">Read More <i class="fa fa-angle-right"></i></a>
+            <?php foreach($magazines as $magazine) { ?>
+                <h2>
+                    <a href="<?php echo site_url('/magazine/articles') ?>"><?php echo "Volumen ".$magazine->volume." Número ".$magazine->number  ?></a>
+                    <small><?php echo $magazine->period." ".$magazine->year ?></small>
+                </h2>
 
-            <hr>
+                <p><i class="fa fa-clock-o"></i> <?php echo "Fecha de publicación: ".$magazine->date ?></p>
+                <hr>
+                <div align="center">
+                    <a href="<?php echo site_url('/magazine/articles') ?>">
+                        <img class="img-responsive img-hover" src="assets/img/imgabout.png" width="400" height=100" alt="">
+                    </a>
+                </div>
+                <br/>
+                <a class="btn btn-warning" href="<?php echo site_url('/magazine/articles') ?>">Ver artículos <i class="fa fa-angle-right"></i></a>
 
+                <hr>
+                <?php
+            }
+            ?>
             <!-- Pager -->
             <ul class="pager">
                 <li class="previous">
