@@ -177,6 +177,59 @@ class Magazine extends CI_Controller
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    public function newMagazine(){
+        if($this->session->userdata('userid')==null){
+            redirect('home', 'refresh');
+        }
+        $cover = "";
+        $carpeta = 'C:/var/webapp/images';
+        if (!file_exists($carpeta)) {
+            mkdir($carpeta, 0777, true);
+        }
+        $config['upload_path'] = 'C:/var/webapp/images';
+        $config['allowed_types'] = 'gif|jpg|png';
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('cover')) {
+            $cover = "portada.jpg";
+        } else {
+            $cover = array('upload_data' => $this->upload->data());
+        }
+
+        $this->load->model('Model_Magazine');
+        $jsondata = array();
+        $hoy = date("Y-m-d");
+
+        $data = array(
+            'volume' => $this->input->post('volume'),
+            'number' => $this->input->post('number'),
+            'date' => $hoy,
+            'status' => 'sin publicar',
+            'period' => $this->input->post('period'),
+            'year' => $this->input->post('year'),
+            'file' => "revista.pdf",
+            'cover' => $cover
+        );
+
+        $insert = $this->Model_Magazine->newMagazine($data);
+
+        if($insert == true){
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = "Registrado correctamente";
+            $jsondata["details"] = "OK";
+        }
+        else{
+            $jsondata["code"] = 500;
+            $jsondata["msg"] = "Error en el registro";
+            $jsondata["details"] = "OK";
+        }
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata, JSON_FORCE_OBJECT);
+
+    }
+
     public function getMagazines(){
 
         $this->load->model('Model_Magazine');
@@ -193,5 +246,7 @@ class Magazine extends CI_Controller
         header("Cache-Control: no-store");
         echo json_encode($jsondata);
     }
+
+
 
 }

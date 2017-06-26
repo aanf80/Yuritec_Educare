@@ -18,6 +18,51 @@ $(function(){
             });
     });//fin de combobox
 
+    $('#frmMagazine').validate({
+        rules: {
+
+            volume: {
+                required: true
+            },
+            number: {
+                required: true
+            }
+        },
+        messages: {
+
+            volume: {
+                required: "Capture el volumen"
+            },
+            number: {
+                required: "Capture el número"
+            }
+        },
+        highlight: function (element) {
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function (element) {
+            $(element).closest('.form-group').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function (error, element) {
+            if (element.parent('.input-group').length) {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertAfter(element);
+            }
+        },
+        submitHandler: function (form) {
+            newMagazine();
+            return false;
+        }
+    });
+
+
+
+
+
+
 
     var table =  $('#tbArticles').DataTable({
         responsive: true,
@@ -56,6 +101,30 @@ $(function(){
     });//fin de datatable
 });
 
+function newMagazine(){
+    $.ajax({
+        url: "/Yuritec_Educare/magazine/newMagazine",
+        type: "post",
+        data: $('#frmMagazine').serialize()
+    }).done(
+        function(data){
+
+            if(data.code === 200){
+                $.growl.notice({ message: "Guardado Exitosamente" });
+
+            }
+            else{
+                $.growl.error({ message: data.msg });
+
+            }
+
+        }
+    ).fail(
+        function(){
+            $.growl.error({ message: "No hay mensaje que mostrar" });
+        }
+    );
+}
 
 function setMagazine(articleid,magazineid) {
     var revista = $('#magazineid option:selected').html();

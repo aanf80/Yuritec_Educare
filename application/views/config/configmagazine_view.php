@@ -23,26 +23,26 @@
         </div>
     </div>
 
-    <form id="frmUser">
+    <form id="frmMagazine" enctype="multipart/form-data">
         <div class="form-group">
             <div class="col-lg-6">
 
                 <!-- Datos Personales-->
                 <label class="control-label">Volumen</label>
-                <input type="text" class="form-control" id="email" name="email">
+                <input type="text" class="form-control" id="volume" name="volume">
                 <div class="help-block"></div>
 
                 <label class="control-label">Número</label>
-                <input type="text" class="form-control" id="password" name="password">
+                <input type="text" class="form-control" id="number" name="number">
                 <div class="help-block"></div>
 
                 <label class="control-label">Año</label>
-                <input type="text" class="form-control" id="confpassword" name="confpassword">
+                <input type="text" class="form-control" id="year" name="year">
                 <div class="help-block"></div>
 
 
                 <label class="control-label">Periodo</label>
-                <select name="country" id="country" class="form-control">
+                <select name="period" id="period" class="form-control">
                     <option>Enero - Junio</option>
                     <option>Agosto - Diciembre</option>
                 </select>
@@ -50,7 +50,7 @@
 
                 <div class="form-group">
                     <label for="photo">Seleccionar foto de portada</label>
-                    <input type="file" id="photo"  name="photo">
+                    <input type="file" id="cover"  name="cover">
                 </div>
                 <div class="help-block"></div>
 
