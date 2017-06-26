@@ -91,7 +91,7 @@ $(function(){
             {
                 data: function (row) {
                     str = "<div align='center'>";
-                    str +="<button id='btnEditar' class='btn btn-warning' onClick='setMagazine(" + row['articleid'] + ",\"" + $('#magazineid').val() + "\")'><i class=\"glyphicon glyphicon-plus-sign\"></i> Agregar</button>";
+                    str +="<button id='btnEditar' class='btn btn-warning' onClick='setMagazine(" + row['articleid']  + ")'><i class=\"glyphicon glyphicon-plus-sign\"></i> Agregar</button>";
                     str += "</div>"
                     return str;
                 }
@@ -132,7 +132,8 @@ function newMagazine(){
     );
 }
 
-function setMagazine(articleid,magazineid) {
+function setMagazine(articleid) {
+console.log("magaziine id: "+$('#magazineid').val())
     var revista = $('#magazineid option:selected').html();
     var status;
     if(magazineid == 0){
@@ -156,7 +157,7 @@ function setMagazine(articleid,magazineid) {
                     {
                         url: "/Yuritec_Educare/article/setMagazine",
                         type: "post",
-                        data: {articleid: articleid, magazineid: magazineid, status: status}
+                        data: {articleid: articleid, magazineid: $('#magazineid').val(), status: status}
                     }
                 ).done(
                     function (data) {
