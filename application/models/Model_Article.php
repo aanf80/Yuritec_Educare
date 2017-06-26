@@ -67,11 +67,23 @@ class Model_Article extends CI_Model{
 
         return $query->result();
     }
+
+    public function getArticlesByStatus($status) //C
+    {
+        $this->db->from($this->table);
+        $this->db->where('status',$status);
+
+        $query = $this->db->get();
+
+
+        return $query->result();
+    }
+
     //R
-    function updateArticle($data, $where){
+    public function updateArticle($where,$data){// U
         $this->db->update($this->table, $data, $where);
         return true;
-    } //U
+    }
     function deleteArticle($id){
         $this->db->where('articleid', $id);
         $this->db->delete($this->table);

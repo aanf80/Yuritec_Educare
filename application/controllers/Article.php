@@ -61,7 +61,7 @@ class Article extends CI_Controller {
             'palabrasclave' => $this->input->post('palabrasclave'),
             'keywords' => $this->input->post('keywords'),
             'userid' => $this->session->userdata('userid'),
-            'magazineid' => 1,
+            'magazineid' => 0,
             'categoryid' => $this->input->post('categoryid'),
         );
 
@@ -117,10 +117,26 @@ class Article extends CI_Controller {
         header("Cache-Control: no-store");
         echo json_encode($jsondata);
     }
-    public function updateArticle(){
-        if($this->session->userdata('nombre')==null){
-            redirect('home', 'refresh');
+
+    public function getApprovedArticles(){
+
+        $this->load->model('Model_Article');
+        $data = $this->Model_Article->getArticlesByStatus("Aprobado");
+        $jsondata["code"] = 200;
+        $jsondata["msg"] = array();
+        foreach($data as $cat){
+            $jsondata["msg"][] = $cat;
         }
+
+        $jsondata["details"] = "OK";
+
+
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata);
+    }
+    public function updateArticle(){
+
         $this->load->model('Model_Article');
         $jsondata = array();
         $hoy = date("Y-m-d");
@@ -135,13 +151,13 @@ class Article extends CI_Controller {
             'palabrasclave' => $this->input->post('palabrasclave'),
             'keywords' => $this->input->post('keywords'),
             'userid' => $this->session->userdata('userid'),
-            'magazineid' => 1,
+            'magazineid' => 0,
             'categoryid' => $this->input->post('categoryid'),
         );
         if($data['username']==null){
             redirect('home', 'refresh');
         }
-        $update = $this->Model_User->updateUser(array('userid' => $this->input->post('userid')), $data);
+        $update = $this->Model_Article->updateArticle(array('articleid' => $this->input->post('articleid')), $data);
         if($update == true){
             $jsondata["code"] = 200;
             $jsondata["msg"] = "Registrado correctamente";
@@ -156,6 +172,36 @@ class Article extends CI_Controller {
         header("Cache-Control: no-store");
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
+
+    public function setMagazine(){
+
+        $this->load->model('Model_Article');
+        $jsondata = array();
+
+        $data = array(
+            'magazineid' => $this->input->post('magazineid'),
+            'status' => $this->input->post('status')
+        );
+        if($data['magazineid']==null){
+            redirect('home', 'refresh');
+        }
+        $update = $this->Model_Article->updateArticle(array('articleid' => $this->input->post('articleid')), $data);
+        if($update == true){
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = "Se ha actualizado correctamente";
+            $jsondata["details"] = "OK";
+        }
+        else{
+            $jsondata["code"] = 500;
+            $jsondata["msg"] = "Error en el registro";
+            $jsondata["details"] = "OK";
+        }
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata, JSON_FORCE_OBJECT);
+    }
+
+
     public function deleteArticle(){
         $this->load->model('Model_Article');
         $jsondata = array();

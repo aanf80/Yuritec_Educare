@@ -6,6 +6,7 @@
  * Time: 10:14 AM
  */
 ?>
+<script type="text/javascript" src="<?php echo base_url('assets/js/magazine.js'); ?>"></script>
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -19,8 +20,7 @@
             </ol>
         </div>
     </div>
-    <script type="text/javascript" src="<?php echo base_url('assets/js/magazine.js'); ?>"></script>
-    <div class="container">
+
 
         <div class="col-lg-6">
 
@@ -29,9 +29,7 @@
             <select name="magazineid" id="magazineid" class="form-control"></select>
             <div class="help-block"></div>
 
-            <button id="btnAceptar" class="btn btn-warning"><i class="glyphicon glyphicon-check"></i> Aceptar</button>
-            <br/>
-            <br/>
+            <!--<button id="btnSelectMagazine" class="btn btn-warning"><i class="glyphicon glyphicon-check"></i> Aceptar</button>-->
             <br/>
             <br/>
 
@@ -48,7 +46,6 @@
                         <th>Titulo</th>
                         <th>Fecha de Creación</th>
                         <th>Estado</th>
-                        <th>Portada</th>
                         <th>Operaciones</th>
 
                     </tr>
@@ -59,5 +56,5 @@
 
         <br/>
         <br/>
-        <button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-floppy-disk"></span> Publicar</button>
+
 

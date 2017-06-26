@@ -450,10 +450,6 @@ function deleteUser(userid) {
         }, function (isConfirm) {
             if (isConfirm) {
 
-                var para = {
-                    "userid": userid
-                };
-                ///Comienza a Borrar
                 $.ajax(
                     {
                         url: "/Yuritec_Educare/user/deleteUser",

@@ -36,7 +36,7 @@ class Model_Magazine extends CI_Model{
         return $query->result();
     }//R
 
-    function updateMagazine($data, $where){
+    function updateMagazine($where, $data){
         $this->db->update($this->table, $data, $where);
         return true;
     } //U
