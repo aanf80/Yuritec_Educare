@@ -207,7 +207,7 @@ class Magazine extends CI_Controller
                 'file' => "revista.pdf",
                 'cover' => $datos['upload_data']['file_name']
             );
-            if ($data['username'] == null) {
+            if ($data['volume'] == null) {
                 redirect('home', 'refresh');
             }
 

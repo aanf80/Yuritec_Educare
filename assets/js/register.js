@@ -109,6 +109,7 @@ function newUser(){
         cache: false,
         contentType: false,
         processData: false
+
     }).done(
         function(data){
             console.log(data.code);
