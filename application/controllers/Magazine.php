@@ -13,7 +13,9 @@ class Magazine extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->helper(array('form', 'url'));
         $this->load->library('session');
+
     }
 
     public function index()
@@ -192,11 +194,12 @@ class Magazine extends CI_Controller
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('cover')) {
-            $cover = "portada.jpg";
+            echo $this->upload->display_errors();
+            $cover = "portada2017.jpg";
         } else {
             $cover = array('upload_data' => $this->upload->data());
         }
-
+        $cover = array('upload_data' => $this->upload->data());
         $this->load->model('Model_Magazine');
         $jsondata = array();
         $hoy = date("Y-m-d");
@@ -209,7 +212,7 @@ class Magazine extends CI_Controller
             'period' => $this->input->post('period'),
             'year' => $this->input->post('year'),
             'file' => "revista.pdf",
-            'cover' => $cover
+            'cover' => $cover['upload_data']['file_name']
         );
 
         $insert = $this->Model_Magazine->newMagazine($data);
