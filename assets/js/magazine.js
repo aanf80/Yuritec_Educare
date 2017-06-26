@@ -102,10 +102,16 @@ $(function(){
 });
 
 function newMagazine(){
+    var form = $('form#frmMagazine')[0];
+    var data = new FormData(form);
     $.ajax({
         url: "/Yuritec_Educare/magazine/newMagazine",
         type: "post",
-        data: $('#frmMagazine').serialize()
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false
+
     }).done(
         function(data){
 

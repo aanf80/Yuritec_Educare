@@ -180,10 +180,6 @@ class Magazine extends CI_Controller
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     public function newMagazine(){
-        if($this->session->userdata('userid')==null){
-            redirect('home', 'refresh');
-        }
-        $cover = "";
         $carpeta = 'C:/var/webapp/images';
         if (!file_exists($carpeta)) {
             mkdir($carpeta, 0777, true);
@@ -191,45 +187,47 @@ class Magazine extends CI_Controller
         $config['upload_path'] = 'C:/var/webapp/images';
         $config['allowed_types'] = 'gif|jpg|png';
 
+
         $this->load->library('upload', $config);
+        $hoy = date("Y-m-d");
 
         if (!$this->upload->do_upload('cover')) {
             echo $this->upload->display_errors();
-            $cover = "portada2017.jpg";
         } else {
-            $cover = array('upload_data' => $this->upload->data());
-        }
-        $cover = array('upload_data' => $this->upload->data());
-        $this->load->model('Model_Magazine');
-        $jsondata = array();
-        $hoy = date("Y-m-d");
+            $datos = array('upload_data' => $this->upload->data());
+            $this->load->model('Model_Magazine');
+            $jsondata = array();
+            $data = array(
+                'volume' => $this->input->post('volume'),
+                'number' => $this->input->post('number'),
+                'date' => $hoy,
+                'status' => 'sin publicar',
+                'period' => $this->input->post('period'),
+                'year' => $this->input->post('year'),
+                'file' => "revista.pdf",
+                'cover' => $datos['upload_data']['file_name']
+            );
+            if ($data['username'] == null) {
+                redirect('home', 'refresh');
+            }
 
-        $data = array(
-            'volume' => $this->input->post('volume'),
-            'number' => $this->input->post('number'),
-            'date' => $hoy,
-            'status' => 'sin publicar',
-            'period' => $this->input->post('period'),
-            'year' => $this->input->post('year'),
-            'file' => "revista.pdf",
-            'cover' => $cover['upload_data']['file_name']
-        );
+            $insert = $this->Model_Magazine->newMagazine($data);
 
-        $insert = $this->Model_Magazine->newMagazine($data);
+            if($insert == true){
+                $jsondata["code"] = 200;
+                $jsondata["msg"] = "Registrado correctamente";
+                $jsondata["details"] = "OK";
+            }
+            else{
+                $jsondata["code"] = 500;
+                $jsondata["msg"] = "Error en el registro";
+                $jsondata["details"] = "OK";
+            }
+            header('Content-type: application/json; charset=utf-8');
+            header("Cache-Control: no-store");
+            echo json_encode($jsondata, JSON_FORCE_OBJECT);
 
-        if($insert == true){
-            $jsondata["code"] = 200;
-            $jsondata["msg"] = "Registrado correctamente";
-            $jsondata["details"] = "OK";
         }
-        else{
-            $jsondata["code"] = 500;
-            $jsondata["msg"] = "Error en el registro";
-            $jsondata["details"] = "OK";
-        }
-        header('Content-type: application/json; charset=utf-8');
-        header("Cache-Control: no-store");
-        echo json_encode($jsondata, JSON_FORCE_OBJECT);
 
     }
 

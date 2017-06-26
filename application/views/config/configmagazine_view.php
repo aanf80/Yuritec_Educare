@@ -24,6 +24,7 @@
     </div>
 
     <form id="frmMagazine" enctype="multipart/form-data">
+
         <div class="form-group">
             <div class="col-lg-6">
 
