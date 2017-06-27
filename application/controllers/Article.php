@@ -47,38 +47,66 @@ class Article extends CI_Controller {
         if($this->session->userdata('userid')==null){
             redirect('home', 'refresh');
         }
-        $this->load->model('Model_Article');
-        $jsondata = array();
-        $hoy = date("Y-m-d");
 
-        $data = array(
-            'title' => $this->input->post('title'),
-            'content' => $this->input->post('content'),
-            'articledate' => $hoy,
-            'status' => 'En edición',
-            'resumen' => $this->input->post('resumen'),
-            'abstract' => $this->input->post('abstract'),
-            'palabrasclave' => $this->input->post('palabrasclave'),
-            'keywords' => $this->input->post('keywords'),
-            'userid' => $this->session->userdata('userid'),
-            'magazineid' => 0,
-            'categoryid' => $this->input->post('categoryid'),
-        );
+        $carpeta = './upload/articles';
+        if (!file_exists($carpeta)) {
+            mkdir($carpeta, 0777, true);
+        }
+        $config['upload_path'] = './upload/articles';
+        $config['allowed_types'] = 'doc|docx';
 
-        $insert = $this->Model_Article->newArticle($data);
-        if($insert == true){
-            $jsondata["code"] = 200;
-            $jsondata["msg"] = "Registrado correctamente";
+        $this->load->library('upload', $config);
+
+
+
+        if (!$this->upload->do_upload('file')) {
+            echo $this->upload->display_errors();
+            $jsondata["code"] = 400;
+            $jsondata["msg"] = "Tipo de documento no aceptado";
             $jsondata["details"] = "OK";
+            header('Content-type: application/json; charset=utf-8');
+            header("Cache-Control: no-store");
+            echo json_encode($jsondata, JSON_FORCE_OBJECT);
+
+        } else {
+            $this->load->model('Model_Article');
+            $datos = array('upload_data' => $this->upload->data());
+            $jsondata = array();
+            $hoy = date("Y-m-d");
+
+            $data = array(
+                'title' => $this->input->post('title'),
+                'content' => $this->input->post('content'),
+                'articledate' => $hoy,
+                'status' => 'En edición',
+                'resumen' => $this->input->post('resumen'),
+                'abstract' => $this->input->post('abstract'),
+                'palabrasclave' => $this->input->post('palabrasclave'),
+                'keywords' => $this->input->post('keywords'),
+                'userid' => $this->session->userdata('userid'),
+                'magazineid' => 0,
+                'categoryid' => $this->input->post('categoryid'),
+                'file' => $datos['upload_data']['file_name']
+            );
+
+            $insert = $this->Model_Article->newArticle($data);
+            if($insert == true){
+                $jsondata["code"] = 200;
+                $jsondata["msg"] = "Registrado correctamente";
+                $jsondata["details"] = "OK";
+            }
+            else{
+                $jsondata["code"] = 500;
+                $jsondata["msg"] = "Error en el registro";
+                $jsondata["details"] = "OK";
+            }
+            header('Content-type: application/json; charset=utf-8');
+            header("Cache-Control: no-store");
+            echo json_encode($jsondata, JSON_FORCE_OBJECT);
         }
-        else{
-            $jsondata["code"] = 500;
-            $jsondata["msg"] = "Error en el registro";
-            $jsondata["details"] = "OK";
-        }
-        header('Content-type: application/json; charset=utf-8');
-        header("Cache-Control: no-store");
-        echo json_encode($jsondata, JSON_FORCE_OBJECT);
+
+
+
     }
     public function getArticles(){
         $this->load->model('Model_Article');

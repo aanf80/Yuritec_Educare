@@ -22,7 +22,7 @@ class Magazine extends CI_Controller
     {
 
         $this->load->model('Model_Magazine');
-        $data['magazines'] = $this->Model_Magazine->getMagazines();
+        $data['magazines'] = $this->Model_Magazine->getPublishedMagazines();
 
         $this->load->model('Categories');
         $data['categories'] = $this->Categories->getCategories();
@@ -247,7 +247,6 @@ class Magazine extends CI_Controller
         header("Cache-Control: no-store");
         echo json_encode($jsondata);
     }
-
 
 
 }

@@ -36,6 +36,16 @@ class Model_Magazine extends CI_Model{
         return $query->result();
     }//R
 
+     public function getPublishedMagazines()
+    {
+        $this->db->from($this->table);
+        $this->db->where('status','publicada');
+        $query = $this->db->get();
+
+
+        return $query->result();
+    }//R
+
     function updateMagazine($where, $data){
         $this->db->update($this->table, $data, $where);
         return true;

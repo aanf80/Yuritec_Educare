@@ -22,6 +22,7 @@
 
     <script type="text/javascript" src="<?php echo base_url('assets/js/plugins/jquery.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/js/plugins/jquery.validate.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/js/plugins/additional-methods.min.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/tinymce/tinymce.min.js')?>"></script>
 
     <script type="text/javascript" src="<?php echo base_url('assets/js/plugins/jquery.dataTables.min.js'); ?>"></script>

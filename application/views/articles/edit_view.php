@@ -34,7 +34,7 @@
         </div>
     </div>
     <form id="frmArticle">
-        <div class="form-group">
+        <div class="form-group" enctype="multipart/form-data">
             <h3>Título</h3>
             <input type="text" class="form-control" name="title" id="title">
             <div class="row">&nbsp;</div>

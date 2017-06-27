@@ -8,9 +8,9 @@ $(function(){
         plugins: [
             "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-            "save table contextmenu directionality emoticons template paste FMathEditor "
+            "save table contextmenu directionality emoticons template paste  "
         ],
-        toolbar1: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | sizeselect | fontselect |  fontsizeselect | FMathEditor',
+        toolbar1: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | sizeselect | fontselect |  fontsizeselect ',
         //toolbar2: " | bold italic | ",
         fontsize_formats: "8pt 10pt 12pt 14pt 18pt 24pt 36pt",
         save_enablewhendirty: true
@@ -34,6 +34,10 @@ $(function(){
 
             title:{
                 required: true
+            } ,
+            file: {
+                required: true,
+                extension: "doc|docx"
             }
         },
         messages:{
@@ -41,6 +45,10 @@ $(function(){
             title: {
 
                 required: "Capture el nombre de usuario"
+            },
+            file:{
+                required: "No ha seleccionado algún archivo",
+                extension: "Los tipos válidos son .doc y .docx"
             }
         },
         highlight: function (element){
@@ -98,10 +106,17 @@ $(function(){
 
 
 function newArticle(){
+
+    var msg;
+    var form = $('form#frmArticle')[0];
+    var data = new FormData(form);
     $.ajax({
         url: "/Yuritec_Educare/article/newArticle",
         type: "post",
-        data: $('#frmArticle').serialize()
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false
     }).done(
         function(data){
 
@@ -117,7 +132,7 @@ function newArticle(){
         }
     ).fail(
         function(){
-            $.growl.error({ message: "No hay mensaje que mostrar" });
+            $.growl.error({ message: "Verifique que haya llenado correctamente los campos"});
         }
     );
 }

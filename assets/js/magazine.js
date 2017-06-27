@@ -104,6 +104,7 @@ $(function(){
 function newMagazine(){
     var form = $('form#frmMagazine')[0];
     var data = new FormData(form);
+
     $.ajax({
         url: "/Yuritec_Educare/magazine/newMagazine",
         type: "post",
@@ -115,8 +116,12 @@ function newMagazine(){
     }).done(
         function(data){
 
+
             if(data.code === 200){
                 $.growl.notice({ message: "Guardado Exitosamente" });
+                $('#volume').val('');
+                $('#number').val('');
+                $('#year').val('');
 
             }
             else{
@@ -127,7 +132,7 @@ function newMagazine(){
         }
     ).fail(
         function(){
-            $.growl.error({ message: "No hay mensaje que mostrar" });
+            $.growl.error({ message: msg });
         }
     );
 }
