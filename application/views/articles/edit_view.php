@@ -20,8 +20,11 @@
                     <?php echo anchor('/user/my_articles', 'Mis Artículos', 'class="link-class"') ?>
                 </li>
                 <li class="active">Nuevo Artículo</li>
-                <?php
+                <li>
+                    <?php echo anchor('/article/assign_reviewer', 'Asignar Revisor', 'class="link-class"') ?>
+                </li>
 
+                <?php
                 if($this->session->userdata('roleid') == 1){
                     ?>
                     <li>

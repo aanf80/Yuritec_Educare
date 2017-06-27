@@ -21,7 +21,9 @@
                 <li>
                     <?php echo anchor('/article/new_article', 'Nuevo Artículo', 'class="link-class"') ?>
                 </li>
-
+                <li>
+                    <?php echo anchor('/article/new_article', 'Asignar Revisor', 'class="link-class"') ?>
+                </li>
                 <?php
 
                 if($this->session->userdata('roleid') == 1){
