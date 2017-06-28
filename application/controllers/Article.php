@@ -84,7 +84,7 @@ class Article extends CI_Controller {
                 'title' => $this->input->post('title'),
                 'content' => $this->input->post('content'),
                 'articledate' => $hoy,
-                'status' => 'En edición',
+                'status' => 'Enviado',
                 'resumen' => $this->input->post('resumen'),
                 'abstract' => $this->input->post('abstract'),
                 'palabrasclave' => $this->input->post('palabrasclave'),
@@ -131,9 +131,6 @@ class Article extends CI_Controller {
         echo json_encode($jsondata);
     }
 
-     public function getArticlesByVolume(){
-
-    }
     public function getArticlesByID(){
         $userid = $this->session->userdata('userid');
         $this->load->model('Model_Article');
@@ -156,6 +153,23 @@ class Article extends CI_Controller {
 
         $this->load->model('Model_Article');
         $data = $this->Model_Article->getArticlesByStatus("Aprobado");
+        $jsondata["code"] = 200;
+        $jsondata["msg"] = array();
+        foreach($data as $cat){
+            $jsondata["msg"][] = $cat;
+        }
+
+        $jsondata["details"] = "OK";
+
+
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata);
+    }
+    public function getSendedArticles(){
+
+        $this->load->model('Model_Article');
+        $data = $this->Model_Article->getArticlesByStatus("Enviado");
         $jsondata["code"] = 200;
         $jsondata["msg"] = array();
         foreach($data as $cat){

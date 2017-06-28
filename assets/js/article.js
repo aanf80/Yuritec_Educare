@@ -97,7 +97,7 @@ $(function(){
                 data:"status"
             },
             {
-                data:"cover"
+                data:"categoryid"
             }
         ]
     });//fin de datatable
