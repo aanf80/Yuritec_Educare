@@ -97,7 +97,7 @@ $(function(){
                 data:"status"
             },
             {
-                data:"categoryid"
+                data:"observations"
             }
         ]
     });//fin de datatable

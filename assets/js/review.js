@@ -69,6 +69,9 @@ $(function(){
 
     } );
 
+    $('#btnModificarEstado').on('click', function () {
+        setReview();
+    });
 
 
     var table2 =  $('#tbAssign').DataTable({
@@ -120,8 +123,71 @@ function showReviser(articleid) {
 }
 
 function showReviewArea(articleid) {
-    console.log("ID articulo: "+articleid);
+
     $('#articleid').val(articleid);
     $('#modalCheck').modal("show");
 
+}
+
+function setReview() {
+
+   console.log("articleid: "+$('#articleid').val());
+   console.log("status: "+$('#status').val());
+   console.log("observations: "+$('#observations').val());
+
+   var status = $('#status').val();
+   var msgStatus;
+   switch (status){
+       case "Aprobado":
+           msgStatus="aprobar"
+           break;
+       case "Aprobado con observaciones":
+           msgStatus="aprobar con observaciones";
+           break;
+       case "No Aprobado":
+           msgStatus ="no aprobar";
+           break;
+   }
+
+    swal(
+        {
+            title: "Advertencia", text: "¿Estás seguro de "+msgStatus+" este artículo?",
+            type: "warning", showCancelButton: true,
+            confirmButtonColor: "#F5B041", confirmButtonText: "Aceptar",
+            cancelButtonText: "Cancelar", closeOnConfirm: false,
+            closeOnCancel: false
+        }, function (isConfirm) {
+            if (isConfirm) {
+
+                $.ajax(
+                    {
+                        url: "/Yuritec_Educare/article/setReview",
+                        type: "post",
+                        data: {
+                            articleid: $('#articleid').val(),
+                            status: $('#status').val(),
+                            observations:$('#observations').val()}
+                    }
+                ).done(
+                    function (data) {
+
+                        if (data.code == 200) {
+
+                            $.growl.notice({message: data.msg + " " + data.details});
+                            swal("Agregado", "El artículo ha sido revisado correctamente", "success");
+                            $('#tbReview').dataTable().api().ajax.reload();
+
+                        } else {
+                            $.growl.error({message: data.msg});
+                        }
+                    }
+                ).fail(
+                    function () {
+                        $.growl.error({message: "El servidor no está disponible :("});
+                    }
+                );
+            } else {
+                swal("Cancelado", "Acción Cancelada", "error");
+            }
+        });
 }

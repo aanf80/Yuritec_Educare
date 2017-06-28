@@ -48,7 +48,7 @@
                     <th>Titulo</th>
                     <th>Fecha de Creación</th>
                     <th>Estado</th>
-                    <th>Apartado temático</th>
+                    <th>Observaciones</th>
                 </tr>
                 </thead>
             </table>

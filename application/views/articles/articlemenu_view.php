@@ -19,7 +19,7 @@
     <?php foreach($articles as $art) { ?>
     <div class="row">
         <div class="col-md-7">
-            <a href="portfolio-item.html">
+            <a href="<?php echo site_url('/magazine/article_view/' .$magazineid.'/'. $art->articleid) ?>">
                 <img class="img-responsive img-hover" src="http://placehold.it/700x300" alt="">
             </a>
         </div>

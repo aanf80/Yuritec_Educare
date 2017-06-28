@@ -138,7 +138,7 @@ function newMagazine(){
 }
 
 function setMagazine(articleid) {
-console.log("magaziine id: "+$('#magazineid').val())
+
     var revista = $('#magazineid option:selected').html();
     var status;
     if(magazineid == 0){

@@ -51,24 +51,20 @@
                 <div class="modal-body">
                     <form id="frmEditCheck">
                         <div class="form-group">
-                                <div id="status">
-                                    <div><label>Estado</label></div>
-                                    <label class="radio-inline">
-                                        <input type="radio" value="Aprobado" name="status" id="r1" checked> Aprobado
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" value="Aprobado con observaciones" name="status" id="r2"> Aprobado con observaciones
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" value="No Aprobado" name="status" id="r3"> No Aprobado
-                                    </label>
-                                </div>
-                                <input type="hidden" id="articleid" name="articleid">
-                        </div>
-             <label class="control-label" for="bio2">Obervaciones</label>
+                            <label class="control-label">Estado</label>
+                            <select name="status" id="status" class="form-control">
+                                <option>Aprobado</option>
+                                <option >Aprobado con observaciones</option>
+                                <option >No Aprobado</option>
+                            </select>
+                            <input type="hidden" id="articleid" name="articleid">
+                            <br/>
+                            <label class="control-label" for="observations">Obervaciones</label>
                             <div class="input-group">
                                 <textarea id="observations" name = "observations" rows="2" cols="100" class="form-control"></textarea>
                             </div>
+                        </div>
+
 
                     </form>
                 </div>
