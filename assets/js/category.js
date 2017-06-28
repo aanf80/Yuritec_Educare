@@ -105,7 +105,7 @@ $(function() {
             },
             {
                 data: function (row) {
-                    str = "<div >";
+                    str = "<div align='center' >";
                     str +="<button id='btnEditar' class='btn btn-success' onClick='showCategory(" + row['categoryid'] + ",\"" + row['categoryname'] + "\")'><i class=\"glyphicon glyphicon-edit\"></i> Editar</button>";
                     str += "&nbsp;<button id='btnBorrar' class='btn btn-danger' onClick='deleteCategory(" + row['categoryid'] + ")'><i class=\"glyphicon glyphicon-trash\"></i> Eliminar</button>";//trash
                     str += "</div>"

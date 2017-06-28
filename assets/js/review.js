@@ -24,7 +24,7 @@ $(function(){
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/Yuritec_Educare/article/getSendedArticles",
+            url:"/Yuritec_Educare/article/getArticlesByStatus/2",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -80,7 +80,7 @@ $(function(){
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/Yuritec_Educare/article/getArticlesByID",
+            url:"/Yuritec_Educare/article/getArticlesByStatus/1",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -99,13 +99,10 @@ $(function(){
                 data:"status"
             },
             {
-                data:"cover"
-            },
-            {
                 data: function (row) {
                     str = "<div align='center'>";
-                    str +="<button id='btnAsignar' class='btn btn-success' onClick='showReviser(" + row['articleid'] + ")'><i class=\"glyphicon glyphicon-check\"></i> Asignar Revisor</button>";//trash
-                    str +="&nbsp;<button id='btnDescargar' class='btn btn-warning'><i class=\"glyphicon glyphicon-download-alt\"></i> Descargar</button>";
+                    str +="<button id='btnAsignar' class='btn btn-success btn-block' onClick='showReviser(" + row['articleid'] + ")'><i class=\"glyphicon glyphicon-check\"></i> Asignar Revisor</button>";//trash
+                    str +="<br/><button id='btnDescargar' class='btn btn-warning btn-block'><i class=\"glyphicon glyphicon-download-alt\"></i> Descargar</button>";
                     str += "</div>"
                     return str;
                 }

@@ -85,7 +85,7 @@
                     <th>Fecha de Creación</th>
                     <th>Estado</th>
                     <th>Portada</th>
-                    <th>Descargar archivo</th>
+                    <th>Operaciones</th>
                 </tr>
                 </thead>
             </table>

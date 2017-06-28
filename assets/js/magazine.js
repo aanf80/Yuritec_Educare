@@ -70,7 +70,7 @@ $(function(){
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/Yuritec_Educare/article/getApprovedArticles",
+            url:"/Yuritec_Educare/article/getArticlesByStatus/3",
             dataSrc:function(json){
 
                 return json['msg'];

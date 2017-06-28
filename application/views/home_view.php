@@ -15,23 +15,23 @@
             <div class="carousel-inner">
                 <div class="item active">
                     <div class="fill"
-                         style="background-image:url('http://www.ittepic.edu.mx/images/2012/642/princ.jpg');"></div>
+                         style="background-image:url('https://scontent.fgdl4-1.fna.fbcdn.net/v/t31.0-8/11428208_10152820261541822_8073039043204813790_o.jpg?oh=4bccb8fa41686e668ddf6fd22c0a4974&oe=59D7C7C4');"></div>
                     <div class="carousel-caption">
-                        <h2>Caption 1</h2>
+                       <!-- <h2>Caption 1</h2>-->
                     </div>
                 </div>
                 <div class="item">
                     <div class="fill"
-                         style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+                         style="background-image:url('https://scontent.fgdl4-1.fna.fbcdn.net/v/t31.0-8/11895062_1637255889846263_6102864982220669516_o.jpg?oh=e02a6e4c4ade7a1e569644b22dce092d&oe=59C7D0B5');"></div>
                     <div class="carousel-caption">
-                        <h2>Caption 2</h2>
+                        <!-- <h2>Caption 1</h2>-->
                     </div>
                 </div>
                 <div class="item">
                     <div class="fill"
-                         style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
+                         style="background-image:url('https://scontent.fgdl4-1.fna.fbcdn.net/v/t31.0-8/10575302_1697472613824590_1400521813064864168_o.jpg?oh=006e7d5a84417290df6b36e5f818e85c&oe=59CE2FD2');"></div>
                     <div class="carousel-caption">
-                        <h2>Caption 3</h2>
+                        <!-- <h2>Caption 1</h2>-->
                     </div>
                 </div>
             </div>
@@ -92,69 +92,6 @@
     </div>
     <!-- /.row -->
 
-    <!-- Portfolio Section -->
-    <div class="row">
-        <div class="col-lg-12">
-            <h2 class="page-header">Portfolio Heading</h2>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <a href="portfolio-item.html">
-                <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-            </a>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <a href="portfolio-item.html">
-                <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-            </a>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <a href="portfolio-item.html">
-                <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-            </a>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <a href="portfolio-item.html">
-                <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-            </a>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <a href="portfolio-item.html">
-                <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-            </a>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <a href="portfolio-item.html">
-                <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-            </a>
-        </div>
-    </div>
-    <!-- /.row -->
-
-    <!-- Features Section -->
-    <div class="row">
-        <div class="col-lg-12">
-            <h2 class="page-header">Modern Business Features</h2>
-        </div>
-        <div class="col-md-6">
-            <p>The Modern Business template by Start Bootstrap includes:</p>
-            <ul>
-                <li><strong>Bootstrap v3.3.7</strong>
-                </li>
-                <li>jQuery v1.11.1</li>
-                <li>Font Awesome v4.2.0</li>
-                <li>Working PHP contact form with validation</li>
-                <li>Unstyled page elements for easy customization</li>
-                <li>17 HTML pages</li>
-            </ul>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id
-                reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia
-                dolorum ducimus unde.</p>
-        </div>
-        <div class="col-md-6">
-            <img class="img-responsive" src="http://placehold.it/700x450" alt="">
-        </div>
-    </div>
-    <!-- /.row -->
 
     <hr>
 

@@ -148,28 +148,22 @@ class Article extends CI_Controller {
         header("Cache-Control: no-store");
         echo json_encode($jsondata);
     }
-
-    public function getApprovedArticles(){
-
-        $this->load->model('Model_Article');
-        $data = $this->Model_Article->getArticlesByStatus("Aprobado");
-        $jsondata["code"] = 200;
-        $jsondata["msg"] = array();
-        foreach($data as $cat){
-            $jsondata["msg"][] = $cat;
+    public function getArticlesByStatus($status){
+        $estado= "";
+        switch($status){
+            case 1:
+                $estado = "Enviado";
+                break;
+            case 2:
+                $estado = "En revisión";
+                break;
+            case 3:
+                $estado = "Aprobado";
+                break;
         }
 
-        $jsondata["details"] = "OK";
-
-
-        header('Content-type: application/json; charset=utf-8');
-        header("Cache-Control: no-store");
-        echo json_encode($jsondata);
-    }
-    public function getSendedArticles(){
-
         $this->load->model('Model_Article');
-        $data = $this->Model_Article->getArticlesByStatus("Enviado");
+        $data = $this->Model_Article->getArticlesByStatus($estado);
         $jsondata["code"] = 200;
         $jsondata["msg"] = array();
         foreach($data as $cat){

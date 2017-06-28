@@ -24,7 +24,7 @@
                 </li>
 
 
-                <li class="active">Área de Revisión</li>
+                <li class="active">Asignar Revisor</li>
 
                 <?php
                 if($this->session->userdata('roleid') == 1){
@@ -80,7 +80,6 @@
                     <th>Titulo</th>
                     <th>Fecha de Creación</th>
                     <th>Estado</th>
-                    <th>Portada</th>
                     <th>Operaciones</th>
                 </tr>
                 </thead>
