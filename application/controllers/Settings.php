@@ -326,7 +326,7 @@ class Settings extends CI_Controller {
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
 
-
+//----------------------------------------------------------------------------------------------------------
     //Aqui empiezan las vistas!
     public function categories()
     {
@@ -401,6 +401,19 @@ class Settings extends CI_Controller {
         else {
             $this->load->view('header');
             $this->load->view('config/selectarticles_view');
+            $this->load->view('footer');
+        }
+
+    }
+    public function magazines()
+    {
+        $roleid = $this->session->userdata('roleid');
+        if($roleid != 1) {
+            redirect('home', 'refresh');
+        }
+        else {
+            $this->load->view('header');
+            $this->load->view('config/magazines_view');
             $this->load->view('footer');
         }
 

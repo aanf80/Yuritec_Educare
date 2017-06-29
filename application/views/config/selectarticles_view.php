@@ -16,7 +16,9 @@
                     <?php echo anchor('/settings/magazine', 'Nueva revista', 'class="link-class"') ?>
                 </li>
                 <li class="active">Seleccionar artículos</li>
-
+                <li>
+                    <?php echo anchor('/settings/magazines', 'Ver Revistas', 'class="link-class"') ?>
+                </li>
             </ol>
         </div>
     </div>
