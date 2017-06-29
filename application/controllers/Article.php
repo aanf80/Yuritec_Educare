@@ -14,6 +14,7 @@ class Article extends CI_Controller {
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->helper(array('download', 'file', 'url', 'html', 'form'));
 
     }
     public function index()
@@ -250,6 +251,33 @@ class Article extends CI_Controller {
         $data = array(
             'observations' => $this->input->post('observations'),
             'status' => $this->input->post('status')
+        );
+        if($this->session->userdata('userid')==null){
+            redirect('home', 'refresh');
+        }
+        $update = $this->Model_Article->updateArticle(array('articleid' => $this->input->post('articleid')), $data);
+        if($update == true){
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = "Se ha actualizado correctamente";
+            $jsondata["details"] = "OK";
+        }
+        else{
+            $jsondata["code"] = 500;
+            $jsondata["msg"] = "Error en el registro";
+            $jsondata["details"] = "OK";
+        }
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata, JSON_FORCE_OBJECT);
+    }
+   public function setReviewer(){
+
+        $this->load->model('Model_Article');
+        $jsondata = array();
+
+        $data = array(
+          //  'observations' => $this->input->post('observations'),
+            'status' => "En revisión"
         );
         if($this->session->userdata('userid')==null){
             redirect('home', 'refresh');

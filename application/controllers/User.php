@@ -138,6 +138,22 @@ class User extends CI_Controller
         echo json_encode($jsondata);
     }
 
+    public function getUsersByRole($roleid)
+    {
+        $this->load->model('Model_User');
+
+        $data = $this->Model_User->getUsersByRole($roleid);
+        $jsondata["code"] = 200;
+        $jsondata["msg"] = array();
+        foreach ($data as $user) {
+            $jsondata["msg"][] = $user;
+        }
+        $jsondata["details"] = "OK";
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata);
+    }
+
     public function updateUser()
     {
         $this->load->model('Model_User');

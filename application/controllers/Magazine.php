@@ -24,9 +24,6 @@ class Magazine extends CI_Controller
         $this->load->model('Model_Magazine');
         $data['magazines'] = $this->Model_Magazine->getPublishedMagazines();
 
-        $this->load->model('Categories');
-        $data['categories'] = $this->Categories->getCategories();
-
         $this->load->view('header');
         $this->load->view('magazine/publications_view', $data);
         $this->load->view('footer');
@@ -36,6 +33,35 @@ class Magazine extends CI_Controller
     {
         $this->load->model('Model_Article');
         $data['articles'] = $this->Model_Article->getArticlesByVolume($id);
+
+        $this->load->model('Model_User');
+        $users = $this->Model_User->getUsers();
+
+        foreach ($users as $user){
+            if ($user->userid == $data['articles'][0]->userid){
+                $data['autorname'] = $this->Model_User->getUserById($user->userid)[0]->username;
+                $data['autorlastname'] = $this->Model_User->getUserById($user->userid)[0]->lastname;
+                $data['autormoaternalsurname'] = $this->Model_User->getUserById($user->userid)[0]->maternalsurname;
+            }
+        }
+        $this->load->model('Model_Magazine');
+        $data['magazines'] = $this->Model_Magazine->getMagazines();
+
+        foreach ($data['magazines'] as $magazine){
+            if ($magazine->magazineid == $data['articles'][0]->magazineid){
+                $data['volume'] = $this->Model_Magazine->getMagazineByID($magazine->magazineid)[0]->volume;
+                $data['number'] = $this->Model_Magazine->getMagazineByID($magazine->magazineid)[0]->number;
+                $data['magazineid'] = $this->Model_Magazine->getMagazineByID($magazine->magazineid)[0]->magazineid;
+            }
+        }
+
+        $this->load->view('header');
+        $this->load->view('articles/articlemenu_view', $data);
+        $this->load->view('footer');
+    } public function articlesByCategory($category)
+    {
+        $this->load->model('Model_Article');
+        $data['articles'] = $this->Model_Article->getArticlesByCategory($category);
 
         $this->load->model('Model_User');
         $users = $this->Model_User->getUsers();
@@ -174,6 +200,7 @@ class Magazine extends CI_Controller
         $this->load->view('articles/article_view', $data);
         $this->load->view('footer');
     }
+
 
 
 

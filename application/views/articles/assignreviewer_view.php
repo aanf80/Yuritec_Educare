@@ -64,7 +64,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-primary btn-warning" id="btnModificar">Guardar</button>
+                    <button type="button" class="btn btn-sm btn-primary btn-warning" id="btnAsignarRev">Guardar</button>
                 </div>
             </div>
         </div>

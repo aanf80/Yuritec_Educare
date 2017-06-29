@@ -146,7 +146,7 @@
                         <ul class="list-unstyled">
 
                             <?php foreach($categories as $cat) { ?>
-                                <li><a href="#"><?php echo $cat->categoryname;  ?></a>
+                                <li><a href="<?php echo site_url('/magazine/articlesByCategory/' .$cat->categoryid) ?>"><?php echo $cat->categoryname;  ?></a>
                                 </li>
 
                                 <?php

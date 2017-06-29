@@ -67,7 +67,16 @@ class Model_Article extends CI_Model{
 
         return $query->result();
     }
+    public function getArticlesByCategory($category) //C
+    {
+        $this->db->from($this->table);
+        $this->db->where('categoryid',$category);
 
+        $query = $this->db->get();
+
+
+        return $query->result();
+    }
     public function getArticlesByStatus($status) //C
     {
         $this->db->from($this->table);

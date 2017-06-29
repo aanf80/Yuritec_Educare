@@ -4,7 +4,7 @@
 $(function(){
 
     $.ajax({
-        url: '/Yuritec_Educare/user/getUsers',
+        url: '/Yuritec_Educare/user/getUsersByRole/3',
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
@@ -49,7 +49,7 @@ $(function(){
                 data: function (row) {
                     str = "<div align='center'>";
                     str +="<button id='btnEditar' class='btn btn-warning'><i class=\"glyphicon glyphicon-download-alt\"></i> Descargar</button>";
-                    str +="&nbsp;<button id='btnCheck' class='btn btn-success' onClick='showReviewArea(" + row['articleid'] + ")'><i class=\"glyphicon glyphicon-check\"></i> Revisar Artículo</button>";//trash
+                    str +="&nbsp;<button id='btnCheck' class='btn btn-success' onClick='descargarArchivo(" + row['file'] + ")'><i class=\"glyphicon glyphicon-check\"></i> Revisar Artículo</button>";//trash
                     str += "</div>"
                     return str;
                 }
@@ -59,18 +59,20 @@ $(function(){
     });// fin datatable
 
     $('#tbReview tbody').on( 'click','.btn-warning',  function () {
-        if(table.row(this).child.isShown()){
-            var data = table.row(this).data();
-        }else{
-            var data = table.row($(this).closest('tr')).data();
+        if (table.row(this).child.isShown()) {
+            var data = table2.row(this).data();
+        } else {
+            var data = table2.row($(this).closest('tr')).data();
         }
+        window.location.href = '/Yuritec_Educare/upload/articles/'+data[Object.keys(data)[13]];
 
-        alert(data[Object.keys(data)[0]]+' s phone: '+data[Object.keys(data)[1]]);
-
-    } );
+    });
 
     $('#btnModificarEstado').on('click', function () {
         setReview();
+    });
+    $('#btnAsignarRev').on('click', function () {
+        //setReview();
     });
 
 
@@ -111,6 +113,17 @@ $(function(){
         ]
 
     });
+
+    $('#tbAssign tbody').on('click', '.btn-warning', function () {
+        if (table.row(this).child.isShown()) {
+            var data = table2.row(this).data();
+        } else {
+            var data = table2.row($(this).closest('tr')).data();
+        }
+        window.location.href = '/Yuritec_Educare/upload/articles/'+data[Object.keys(data)[13]];
+        //alert("nombre de archivo: "+data[Object.keys(data)[13]]);
+
+    });
 });
 
 function showReviser(articleid) {
@@ -119,13 +132,34 @@ function showReviser(articleid) {
 
 }
 
-function showReviewArea(articleid) {
 
-    $('#articleid').val(articleid);
-    $('#modalCheck').modal("show");
+function descargarArchivo (archivo) {
+
+    $.ajax({
+        url: "/Yuritec_Educare/article/downloadFile",
+        type: "post",
+        data: {
+            file: archivo
+        }
+    }).done(
+        function(data){
+            if(data.code === 200){
+                $.growl.notice({ message: data.msg });
+                $('#tbCategoria').dataTable().api().ajax.reload();
+                $('#nombreCategoria').val('');
+            }
+            else{
+                $.growl.error({ message: data.msg });
+            }
+
+        }
+    ).fail(
+        function(){
+            $.growl.error({ message: "No hay mensaje que mostrar" });
+        }
+    );
 
 }
-
 function setReview() {
 
    console.log("articleid: "+$('#articleid').val());
