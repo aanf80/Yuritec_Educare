@@ -49,13 +49,13 @@ class User extends CI_Controller
         if ($this->session->userdata('email') == null) {
             redirect('home', 'refresh');
         }
-        $carpeta = 'C:/var/webapp/images';
+        $carpeta = 'assets/images/';
         if (!file_exists($carpeta)) {
             mkdir($carpeta, 0777, true);
         }
 
-        if (!file_exists($carpeta . "/profile_default.png")) {
-            copy(base_url('assets/img/profile_default.png'), $carpeta . "/profile_default.png");
+        if (!file_exists($carpeta . "profile_default.png")) {
+            copy(base_url('assets/img/profile_default.png'), $carpeta . "profile_default.png");
         }
 
         $hoy = date("Y-m-d");
@@ -232,21 +232,20 @@ class User extends CI_Controller
 
         /*if($this->session->userdata('roleid') !== 1 ){
 
-            $carpeta = 'C:/var/webapp/images';
+            $carpeta = 'assets/images';
             if (!file_exists($carpeta)) {
                 mkdir($carpeta, 0777, true);
             }
-            $config['upload_path'] = 'C:/var/webapp/images';
+            $config['upload_path'] = 'assets/images';
             $config['allowed_types'] = 'gif|jpg|png';
 
             $this->load->library('upload', $config);
 
 
             if (!$this->upload->do_upload('photo')) {
-                echo $this->upload->display_errors();
                 if (!empty($_FILES['photo']['name'])) {
                     // Name isn't empty so a file must have been selected
-
+                    echo $this->upload->display_errors();
                 } else {
                     // No file selected - set default image
                     $data['photo'] = $user[0]->photo;
@@ -308,11 +307,11 @@ class User extends CI_Controller
 
     public function register()
     {
-        $carpeta = 'C:/var/webapp/images';
+        $carpeta = 'assets/images';
         if (!file_exists($carpeta)) {
             mkdir($carpeta, 0777, true);
         }
-        $config['upload_path'] = 'C:/var/webapp/images';
+        $config['upload_path'] = 'assets/images';
         $config['allowed_types'] = 'gif|jpg|png';
 
 

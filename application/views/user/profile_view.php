@@ -266,7 +266,7 @@
 
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 
-                <img src="<?php echo $userdata->photo;  ?>" class="img-responsive" width="1600" height="1600"/>
+                <img src="<?php echo base_url('/assets/images/').$userdata->photo;  ?>" class="img-responsive" width="1600" height="1600"/>
                 <br>
                 <br>
                 <button id="btnEditarProfile" class="btn btn-warning btn-block">Editar perfil</button>
