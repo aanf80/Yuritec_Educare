@@ -124,7 +124,7 @@
 
                     <?php
 
-                    if($this->session->userdata('roleid') == 1 || $this->session->userdata('roleid') == 2){
+                    if($this->session->userdata('roleid') == 1 || $this->session->userdata('roleid') == 2 || $this->session->userdata('roleid') == 3){
 
                         ?>
                         <li>

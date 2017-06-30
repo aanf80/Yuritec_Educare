@@ -15,18 +15,31 @@
             <h1 class="page-header">Perfil</h1>
             <ol class="breadcrumb">
                 <li class="active">Perfil</li>
-                <li>
-                    <?php echo anchor('/user/my_articles', 'Mis Artículos', 'class="link-class"') ?>
-                </li>
-                <li>
-                    <?php echo anchor('/article/new_article', 'Nuevo Artículo', 'class="link-class"') ?>
-                </li>
-                <li>
-                    <?php echo anchor('/article/new_article', 'Asignar Revisor', 'class="link-class"') ?>
-                </li>
+
+                <?php
+                if($this->session->userdata('roleid') == 2){
+                    ?>
+                    <li>
+                        <?php echo anchor('/user/my_articles', 'Mis Artículos', 'class="link-class"') ?>
+                    </li>
+                    <li>
+                        <?php echo anchor('/article/new_article', 'Nuevo Artículo', 'class="link-class"') ?>
+                    </li>
+                    <?php
+                }
+                ?>
+                <?php
+                if($this->session->userdata('roleid') == 1){
+                    ?>
+                    <li>
+                        <?php echo anchor('/article/assign_reviewer', 'Asignar Revisor', 'class="link-class"') ?>
+                    </li>
+                    <?php
+                }
+                ?>
                 <?php
 
-                if($this->session->userdata('roleid') == 1){
+                if($this->session->userdata('roleid') == 3){
                     ?>
                     <li>
                         <?php echo anchor('/article/review_area', 'Área de Revisión', 'class="link-class"') ?>
@@ -266,7 +279,7 @@
 
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 
-                <img src="<?php echo base_url('/assets/images/').$userdata->photo;  ?>" class="img-responsive" width="1600" height="1600"/>
+                <img src="<?php echo base_url('assets/images/').$userdata->photo;  ?>" class="img-responsive" width="1600" height="1600"/>
                 <br>
                 <br>
                 <button id="btnEditarProfile" class="btn btn-warning btn-block">Editar perfil</button>

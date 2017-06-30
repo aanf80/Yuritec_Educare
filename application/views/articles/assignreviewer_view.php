@@ -16,23 +16,32 @@
                 <li>
                     <?php echo anchor('/user/profile', 'Mi Perfil', 'class="link-class"') ?>
                 </li>
-                <li>
-                    <?php echo anchor('/user/my_articles', 'Mis Artículos', 'class="link-class"') ?>
-                </li>
-                <li>
-                    <?php echo anchor('/article/new_article', 'Nuevo Artículo', 'class="link-class"') ?>
-                </li>
-
-
-                <li class="active">Asignar Revisor</li>
-
+                <?php
+                if($this->session->userdata('roleid') == 2){
+                    ?>
+                    <li>
+                        <?php echo anchor('/user/my_articles', 'Mis Artículos', 'class="link-class"') ?>
+                    </li>
+                    <li>
+                        <?php echo anchor('/article/new_article', 'Nuevo Artículo', 'class="link-class"') ?>
+                    </li>
+                    <?php
+                }
+                ?>
                 <?php
                 if($this->session->userdata('roleid') == 1){
+                    ?>
+                    <li class="active">Asignar Revisor</li>
+                    <?php
+                }
                 ?>
-                <li>
-                    <?php echo anchor('/article/review_area', 'Área de Revisión', 'class="link-class"') ?>
-                </li>
                 <?php
+                if($this->session->userdata('roleid') == 3){
+                    ?>
+                    <li>
+                        <?php echo anchor('/article/review_area', 'Área de Revisión', 'class="link-class"') ?>
+                    </li>
+                    <?php
                 }
                 ?>
             </ol>
