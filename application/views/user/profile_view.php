@@ -62,7 +62,7 @@
                             </div>
 
                             <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label class="control-label" for="password2">Confirmar contraseña</label>
+                                <label class="control-label" for="confpassword2">Confirmar contraseña</label>
                                 <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-lock"></i>

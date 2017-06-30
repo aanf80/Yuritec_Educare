@@ -145,7 +145,7 @@ function newUser(){
         }
     ).fail(
         function(){
-            $.growl.error({ message: "Verifique que haya llenado correctamente los campos" });
+            $.growl.error({ message: "El servidor no se encuentra disponible" });
         }
     );
 }

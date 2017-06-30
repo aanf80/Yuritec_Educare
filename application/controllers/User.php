@@ -198,12 +198,19 @@ class User extends CI_Controller
         $userid = $this->session->userdata('userid');
         $user = $this->Model_User->getUserByID($userid);
 
+
+        $password = $user[0]->password;
+
+        if($user[0]->password !== $this->input->post('password')){
+            $password = md5((string)$this->input->post('password'));
+        }
+
         $data = array(
             'userid' => $this->input->post('userid'),
             'username' => $this->input->post('username'),
             'lastname' => $this->input->post('lastname'),
             'maternalsurname' => $this->input->post('maternalsurname'),
-            'password' => $this->input->post('password'),
+            'password' => $password,
             'position' => $this->input->post('position'),
             'institute' => $this->input->post('institute'),
             'gender' => $this->input->post('gender'),
@@ -312,17 +319,19 @@ class User extends CI_Controller
         $this->load->library('upload', $config);
         $hoy = date("Y-m-d");
 
+        $password = md5((string)$this->input->post('password'));
 
         if (!$this->upload->do_upload('photo')) {
             echo $this->upload->display_errors();
         } else {
             $datos = array('upload_data' => $this->upload->data());
             $this->load->model('Model_User');
+
             $data = array(
                 'username' => $this->input->post('username'),
                 'lastname' => $this->input->post('lastname'),
                 'maternalsurname' => $this->input->post('maternalsurname'),
-                'password' => $this->input->post('password'),
+                'password' => $password,
                 'email' => $this->input->post('email'),
                 'position' => $this->input->post('position'),
                 'institute' => $this->input->post('institute'),
