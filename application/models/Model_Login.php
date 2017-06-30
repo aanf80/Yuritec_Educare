@@ -31,6 +31,7 @@ class Model_Login extends CI_Model{
     }
 
     function validaLogin($username, $password){
+
         $roleid = 0;
         $userid = 0;
         $email = "";

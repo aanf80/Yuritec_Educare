@@ -35,19 +35,6 @@
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-
-                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label class="control-label" for="email2">Correo</label>
-                                <div class="input-group">
-                            <span class="input-group-addon">
-                                <i class="glyphicon glyphicon-envelope"></i>
-                            </span>
-                                    <input class="form-control" id="email2" name="email" placeholder="Email del Usuario">
-                                </div>
-                            </div>
-
-
-
                             <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label class="control-label" for="password2">Contraseña</label>
                                 <div class="input-group">
@@ -59,7 +46,7 @@
                             </div>
 
                             <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label class="control-label" for="confpassword2">Contraseña</label>
+                                <label class="control-label" for="confpassword2">Confirmar contraseña</label>
                                 <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-lock"></i>
@@ -69,7 +56,7 @@
                             </div>
 
                             <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label class="control-label" for="username2">Nombre del Usuario</label>
+                                <label class="control-label" for="username2">Nombre</label>
                                 <div class="input-group" >
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-user"></i>
@@ -218,20 +205,17 @@
                                 </div>
                             </div>
 
-
-
                             <!-- Sexta fila-->
-                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                           <!-- <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
                                 <label class="control-label" for="photo2">Enlace de fotografía:</label>
                                 <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-picture"></i>
                                 </span>
-                                    <!--    <input id="file2" name="file" type="file"  /> -->
                                     <input class="form-control" id="photo2" name="photo" placeholder="Fotografía">
                                 </div>
-                            </div>
+                            </div>-->
                             <!-- Séptima fila-->
                             <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label class="control-label" for="roleid2">Rol de usuario</label>

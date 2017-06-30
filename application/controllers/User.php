@@ -49,9 +49,17 @@ class User extends CI_Controller
         if ($this->session->userdata('email') == null) {
             redirect('home', 'refresh');
         }
-        $this->load->model('Model_User');
-        $jsondata = array();
+        $carpeta = 'assets/images/';
+        if (!file_exists($carpeta)) {
+            mkdir($carpeta, 0777, true);
+        }
+
+        if (!file_exists($carpeta . "profile_default.png")) {
+            copy(base_url('assets/img/profile_default.png'), $carpeta . "profile_default.png");
+        }
+
         $hoy = date("Y-m-d");
+        $this->load->model('Model_User');
 
         $data = array(
             'username' => $this->input->post('username'),
@@ -64,7 +72,7 @@ class User extends CI_Controller
             'gender' => $this->input->post('gender'),
             'initials' => $this->input->post('initials'),
             'sign' => $this->input->post('sign'),
-            'photo' => $this->input->post('photo'),
+            'photo' => 'profile_default.png',
             'roleid' => $this->input->post('roleid'),
             'status' => 'P',
             'registerdate' => $hoy,
@@ -79,15 +87,42 @@ class User extends CI_Controller
 
         );
 
+        $email = $this->input->post('email');
+        $username = $this->input->post('username');
+        $lastname = $this->input->post('lastname');
+
+        $query = $this->Model_User->userExists($email);
+
+        if ($query != 0) {
+            $jsondata["code"] = 402;
+            $jsondata["msg"] = "El correo ya se encuentra registrado.";
+            $jsondata["details"] = "Correo duplicado";
+
+            header('Content-type: application/json; charset=utf-8');
+            header("Cache-Control: no-store");
+            echo json_encode($jsondata, JSON_FORCE_OBJECT);
+
+            return;
+        }
+
         if ($data['username'] == null) {
             redirect('home', 'refresh');
         }
+
         $insert = $this->Model_User->newUser($data);
 
+        $user = $this->Model_User->getUserByEmail($email);
+        $emailcode = md5((string)$user[0]->emailcode);
+
         if ($insert == true) {
+
             $jsondata["code"] = 200;
-            $jsondata["msg"] = "Registrado correctamente.";
+            $jsondata["msg"] = "Registrado correctamente. Se ha enviado un correo de confirmación.
+            \nFavor de revisar su correo electrónico.";
             $jsondata["details"] = "OK";
+
+            //Enviar correo electrónico de confirmación
+            $this->sendEmail($email, $username, $lastname, $emailcode);
         } else {
             $jsondata["code"] = 500;
             $jsondata["msg"] = "Error en el registro";
@@ -160,19 +195,27 @@ class User extends CI_Controller
         $jsondata = array();
         $hoy = date("Y-m-d");
 
+        $userid = $this->session->userdata('userid');
+        $user = $this->Model_User->getUserByID($userid);
+
+
+        $password = $user[0]->password;
+
+        if($user[0]->password !== $this->input->post('password')){
+            $password = md5((string)$this->input->post('password'));
+        }
+
         $data = array(
             'userid' => $this->input->post('userid'),
             'username' => $this->input->post('username'),
             'lastname' => $this->input->post('lastname'),
             'maternalsurname' => $this->input->post('maternalsurname'),
-            'password' => $this->input->post('password'),
-            'email' => $this->input->post('email'),
+            'password' => $password,
             'position' => $this->input->post('position'),
             'institute' => $this->input->post('institute'),
             'gender' => $this->input->post('gender'),
             'initials' => $this->input->post('initials'),
             'sign' => $this->input->post('sign'),
-            'photo' => $this->input->post('photo'),
             'roleid' => $this->input->post('roleid'),
             'status' => $this->input->post('status'),
             'registerdate' => $hoy,
@@ -186,6 +229,33 @@ class User extends CI_Controller
             'zipcode' => $this->input->post('zipcode')
 
         );
+
+        /*if($this->session->userdata('roleid') !== 1 ){
+
+            $carpeta = 'assets/images';
+            if (!file_exists($carpeta)) {
+                mkdir($carpeta, 0777, true);
+            }
+            $config['upload_path'] = 'assets/images';
+            $config['allowed_types'] = 'gif|jpg|png';
+
+            $this->load->library('upload', $config);
+
+
+            if (!$this->upload->do_upload('photo')) {
+                if (!empty($_FILES['photo']['name'])) {
+                    // Name isn't empty so a file must have been selected
+                    echo $this->upload->display_errors();
+                } else {
+                    // No file selected - set default image
+                    $data['photo'] = $user[0]->photo;
+                }
+            } else {
+                $datos = array('upload_data' => $this->upload->data());
+                $data['photo'] = $datos['upload_data']['file_name'];
+
+            }
+        }*/
 
         if ($data['username'] == null) {
             redirect('home', 'refresh');
@@ -237,28 +307,30 @@ class User extends CI_Controller
 
     public function register()
     {
-        $carpeta = 'C:/var/webapp/images';
+        $carpeta = 'assets/images';
         if (!file_exists($carpeta)) {
             mkdir($carpeta, 0777, true);
         }
-        $config['upload_path'] = 'C:/var/webapp/images';
+        $config['upload_path'] = 'assets/images';
         $config['allowed_types'] = 'gif|jpg|png';
 
 
         $this->load->library('upload', $config);
         $hoy = date("Y-m-d");
 
+        $password = md5((string)$this->input->post('password'));
 
         if (!$this->upload->do_upload('photo')) {
             echo $this->upload->display_errors();
         } else {
             $datos = array('upload_data' => $this->upload->data());
             $this->load->model('Model_User');
+
             $data = array(
                 'username' => $this->input->post('username'),
                 'lastname' => $this->input->post('lastname'),
                 'maternalsurname' => $this->input->post('maternalsurname'),
-                'password' => $this->input->post('password'),
+                'password' => $password,
                 'email' => $this->input->post('email'),
                 'position' => $this->input->post('position'),
                 'institute' => $this->input->post('institute'),
@@ -379,7 +451,7 @@ class User extends CI_Controller
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_port' => 465,
             'smtp_user' => 'jess.pardo1811@gmail.com',
-            'smtp_pass' => 'jessly1811',
+            'smtp_pass' => 'hola1234',
             'mailtype' => 'html',
             'charset' => 'utf-8',
             'wordwrap' => TRUE

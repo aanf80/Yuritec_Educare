@@ -29,7 +29,7 @@
                 echo $autorname . " " . $autorlastname  . " " . $autormoaternalsurname; ?> </h4>
             <p><?php echo $art->resumen;?></p>
             <a class="btn btn-warning" href="<?php echo site_url('/magazine/article_view/' .$magazineid.'/'. $art->articleid) ?>">Ver Artículo <span class="glyphicon glyphicon-circle-arrow-right"></span></i></a>
-            <a class="btn btn-danger" href="<?php echo site_url('/magazine/generatePDF/' . $art->articleid) ?>" download>Descargar en PDF <span class="glyphicon glyphicon-download"></span></a>
+            <a class="btn btn-danger" href="<?php echo site_url('/magazine/generatePDF/' . $art->articleid) ?>" >Descargar en PDF <span class="glyphicon glyphicon-download"></span></a>
            <br/>
            <br/>
             <script src="https://apis.google.com/js/platform.js" async defer></script>

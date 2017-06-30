@@ -100,8 +100,9 @@ class Magazine extends CI_Controller
         $category = $this->Categories->getCategoryName($data['articles'][0]->categoryid);
         $autor = $this->Model_User->getUserById($data['articles'][0]->userid);
 
+        $html = "<br>";
         //add title
-        $html ="<h1>" . $data['articles'][0]->title . "</h1>";
+        $html .="<h1>" . $data['articles'][0]->title . "</h1>";
 
         //add autor
         $html .= "<p> " . $autor[0]->username . " " .$autor[0]->lastname . " " . $autor[0]->maternalsurname . "</p>";
@@ -144,7 +145,7 @@ class Magazine extends CI_Controller
         $pdf->SetKeywords($data['articles'][0]->palabrasclave);
 
         // set default header data
-        $pdf->SetHeaderData('yuritecbanner.png', PDF_HEADER_LOGO_WIDTH, "Yurítec Educare", "Instituto Tecnológico de Tepic");
+        $pdf->SetHeaderData('header_pdf.png', 180, "", "");
 
         // set header and footer fonts
         $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
@@ -155,7 +156,7 @@ class Magazine extends CI_Controller
 
         // set margins
         $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+
         $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
         // set auto page breaks

@@ -358,7 +358,6 @@ function newUser() {
                 $('#initials').val('');
                 $('#sign').val('');
                 $('#bio').val('');
-                $('#photo').val('');
                 $('#address').val('');
                 $('#neighborhood').val('');
                 $('#state').val('');
@@ -377,7 +376,7 @@ function newUser() {
         }
     ).fail(
         function () {
-            $.growl.error({message: "Verifique que haya llenado correctamente los campos"});
+            $.growl.error({message: "No se pudo conectar al servidor"});
         }
     );
 }

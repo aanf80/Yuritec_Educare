@@ -27,10 +27,12 @@ class Login extends CI_Controller {
         $insert = false;
 
         $username = $this->input->post('username');
-        $password = $this->input->post('password');
+
+        $password = $password = md5((string)$this->input->post('password'));
 
         $confirmed = $this->Model_Login->isConfirmed($username);
         if($confirmed[0]->status === 'C') {
+
             $result = $this->Model_Login->validaLogin($username, $password);
 
             if ($result['logueado']) {
