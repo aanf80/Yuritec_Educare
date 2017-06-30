@@ -4,6 +4,7 @@
 
 $cover = "";
 $ID=0;
+$articleid = 0;
 $(function(){
 
     $.ajax({
@@ -38,9 +39,13 @@ $(function(){
         $ID = this.value;
         if($ID == 0){
             cleanEditMagazine();
+            $('#articleid2').html('');
 
         }
         else{
+
+            $('#articleid2').html('');
+
             $.ajax({
                 url: '/Yuritec_Educare/magazine/getMagazineByID/'+$ID,
                 type: 'GET',
@@ -50,10 +55,10 @@ $(function(){
                 if(json.code===200)
                     $.each(json.msg, function(i,row){
                         showMagazine(row['volume'],row['number'],row['period'],row['year'],row['cover']);
-                        console.log("ID: "+$ID);
-
                     });
             });
+
+
         }
 
     });
@@ -143,12 +148,17 @@ $(function(){
 
             if(json.code===200)
                 $.each(json.msg, function(i,row){
-                    $('<option></option>', {text: row.title}).attr('value',row.magazineid).appendTo('#articleid2');
+
+                    $('<option></option>', {text: row.title}).attr('value',row.articleid).appendTo('#articleid2');
+
                 });
         });//fin de combobox
 
         $('#modalSelectedArticles').modal("show");
 
+    });
+    $('#btnQuitarArticulos').on('click', function () {
+        unsetMagazine();
     });
 
 
@@ -215,12 +225,8 @@ function setMagazine(articleid) {
 
     var revista = $('#magazineid option:selected').html();
     var status;
-    if(magazineid == 0){
-        status = "Aprobado"
-    }
-    else{
-        status = "Publicar"
-    }
+
+    status = "Publicar"
 
     swal(
         {
@@ -246,6 +252,53 @@ function setMagazine(articleid) {
                             $.growl.notice({message: data.msg + " " + data.details});
                             swal("Agregado", "El registro se agregó correctamente", "success");
                             $('#tbArticles').dataTable().api().ajax.reload();
+
+                        } else {
+                            $.growl.error({message: data.msg});
+                        }
+                    }
+                ).fail(
+                    function () {
+                        $.growl.error({message: "El servidor no está disponible :("});
+                    }
+                );
+            } else {
+                swal("Cancelado", "Acción Cancelada", "error");
+            }
+        });
+}
+
+function unsetMagazine() {
+
+    var revista = $('#magazineid2 option:selected').html();
+    var status = "Aprobado";
+
+
+    swal(
+        {
+            title: "Advertencia", text: "¿Estás seguro que deseas quitar este artículo a la revista "+revista+"?",
+            type: "warning", showCancelButton: true,
+            confirmButtonColor: "#FF0000", confirmButtonText: "Aceptar",
+            cancelButtonText: "Cancelar", closeOnConfirm: false,
+            closeOnCancel: false
+        }, function (isConfirm) {
+            if (isConfirm) {
+
+                $.ajax(
+                    {
+                        url: "/Yuritec_Educare/article/unsetMagazine",
+                        type: "post",
+                        data: {articleid: $('#articleid2').val() , status: status}
+                    }
+                ).done(
+                    function (data) {
+
+                        if (data.code == 200) {
+
+                            $.growl.notice({message: data.msg + " " + data.details});
+                            swal("Agregado", "Se ha quitado el artículo correctamente", "success");
+                            $('#modalSelectedArticles').modal("toggle");
+                            $('#articleid2').html('');
 
                         } else {
                             $.growl.error({message: data.msg});

@@ -48,7 +48,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-primary btn-warning" id="btnQuitarArticulos">Guardar</button>
+                    <button type="button" class="btn btn-sm btn-primary btn-danger" id="btnQuitarArticulos">
+                        <i class="glyphicon glyphicon-minus-sign"></i> Quitar</button>
                 </div>
             </div>
         </div>
