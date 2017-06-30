@@ -2,7 +2,8 @@
  * Created by Concurso18 on 23/06/2017.
  */
 
-
+$cover = "";
+$ID=0;
 $(function(){
 
     $.ajax({
@@ -16,7 +17,46 @@ $(function(){
 
                 $('<option></option>', {text: "Volumen "+row.volume+",  Número "+row.number+"   "+row.period+" "+row.year}).attr('value',row.magazineid).appendTo('#magazineid');
             });
-    });//fin de combobox
+    });//fin de combobox nueva revista
+
+    $.ajax({
+        url: '/Yuritec_Educare/magazine/getMagazines',
+        type: 'GET',
+        dataType: 'json'
+    }).done(function (json){
+
+        if(json.code===200)
+            $.each(json.msg, function(i,row){
+                $('<option></option>', {text: "Volumen "+row.volume+",  Número "+row.number+"   "+row.period+" "+row.year}).attr('value',row.magazineid).appendTo('#magazineid2');
+            });
+    });//fin de combobox editar revista
+
+
+
+
+    $('#magazineid2').on('change', function() {
+        $ID = this.value;
+        if($ID == 0){
+            cleanEditMagazine();
+
+        }
+        else{
+            $.ajax({
+                url: '/Yuritec_Educare/magazine/getMagazineByID/'+$ID,
+                type: 'GET',
+                dataType: 'json'
+            }).done(function (json){
+
+                if(json.code===200)
+                    $.each(json.msg, function(i,row){
+                        showMagazine(row['volume'],row['number'],row['period'],row['year'],row['cover']);
+                        console.log("ID: "+$ID);
+
+                    });
+            });
+        }
+
+    });
 
     $('#frmMagazine').validate({
         rules: {
@@ -58,12 +98,6 @@ $(function(){
         }
     });
 
-
-
-
-
-
-
     var table =  $('#tbArticles').DataTable({
         responsive: true,
         language:{
@@ -98,8 +132,48 @@ $(function(){
 
             }
         ]
-    });//fin de datatable
+    });//fin de datatable articulos para agregar
+
+    $('#btnVerArticulos').on('click', function () {
+        $.ajax({
+            url: '/Yuritec_Educare/article/getArticlesByVolume/'+$('#magazineid2').val(),
+            type: 'GET',
+            dataType: 'json'
+        }).done(function (json){
+
+            if(json.code===200)
+                $.each(json.msg, function(i,row){
+                    $('<option></option>', {text: row.title}).attr('value',row.magazineid).appendTo('#articleid2');
+                });
+        });//fin de combobox
+
+        $('#modalSelectedArticles').modal("show");
+
+    });
+
+
+
+
 });
+
+function showMagazine(volume,number,period,year,cover) {
+    $('#volume2').val(volume);
+    $('#number2').val(number);
+    $('#period2').val(period);
+    $('#year2').val(year);
+    $cover = cover;
+}
+
+
+function cleanEditMagazine() {
+    $('#volume2').val('');
+    $('#number2').val('');
+    $('#period2').val(0);
+    $('#year2').val('');
+
+
+}
+
 
 function newMagazine(){
     var form = $('form#frmMagazine')[0];

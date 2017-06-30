@@ -276,5 +276,22 @@ class Magazine extends CI_Controller
         echo json_encode($jsondata);
     }
 
+    public function getMagazineByID($id){
+
+        $this->load->model('Model_Magazine');
+        $data = $this->Model_Magazine->getMagazineByID($id);
+        $jsondata["code"] = 200;
+        $jsondata["msg"] = array();
+        foreach($data as $mag){
+            $jsondata["msg"][] = $mag;
+        }
+
+        $jsondata["details"] = "OK";
+
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata);
+    }
+
 
 }

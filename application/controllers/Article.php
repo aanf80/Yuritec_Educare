@@ -149,6 +149,23 @@ class Article extends CI_Controller {
         header("Cache-Control: no-store");
         echo json_encode($jsondata);
     }
+    public function getArticlesByVolume($volume){
+
+        $this->load->model('Model_Article');
+        $data = $this->Model_Article->getArticlesByVolume($volume);
+        $jsondata["code"] = 200;
+        $jsondata["msg"] = array();
+        foreach($data as $cat){
+            $jsondata["msg"][] = $cat;
+        }
+
+        $jsondata["details"] = "OK";
+
+
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata);
+    }
     public function getArticlesByStatus($status){
         $estado= "";
         switch($status){
