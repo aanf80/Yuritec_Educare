@@ -6,6 +6,8 @@
  * Time: 09:31 PM
  */
 ?>
+<script type="text/javascript" src="<?php echo base_url('assets/js/magazine.js'); ?>"></script>
+
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -22,89 +24,83 @@
         </div>
     </div>
 
+    <form id="frmMagazine" enctype="multipart/form-data">
 
-    <div class="row">
+        <div class="form-group">
+            <div class="col-lg-6">
 
-        <select>
-            <option>Seleccione una revista</option>
-        </select>
-        <br/>
-        <button class="btn btn-success"><span class="glyphicon glyphicon-edit"></span> Aceptar</button>
+                <label class="control-label">Revista</label>
+                <select name="magazineid" id="magazineid2" class="form-control">
+                    <option value="0">Seleccione una revista</option>
+                </select>
 
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <br/>
+
+                <!-- Datos Personales-->
+                <label class="control-label">Volumen</label>
+                <input type="text" class="form-control" id="volume2" name="volume">
+                <div class="help-block"></div>
+
+                <label class="control-label">Número</label>
+                <input type="text" class="form-control" id="number2" name="number">
+                <div class="help-block"></div>
+
+                <label class="control-label">Año</label>
+                <input type="text" class="form-control" id="year2" name="year">
+                <div class="help-block"></div>
 
 
+                <label class="control-label">Periodo</label>
+                <select name="period" id="period2" class="form-control">
+                    <option>Enero - Junio</option>
+                    <option>Agosto - Diciembre</option>
+                </select>
+                <div class="help-block"></div>
 
-            <img src="" class="img-responsive" width="100" height="100"/>
-            <br>
-            <br>
-            <button class="btn btn-success btn-block"><span class="glyphicon glyphicon-edit"></span> Editar</button>
-            <br/>
-            <button class="btn btn-danger btn-block"><span class="glyphicon glyphicon-trash"></span> Eliminar</button>
-            <br/>
-            <button class="btn btn-warning btn-block"><span class="glyphicon glyphicon-check"></span> Publicar</button>
-
-        </div>
-
-        <div class="col-lg-9 col-md-6 col-sm-6 col-xs-12">
-            <h1 class="text-center" id="nombre"><strong></strong></h1>
-            <hr>
-
-            <div class="col-lg-12 ">
-                <div class="col-lg-4">
-                    <h4><strong>Institución</strong></h4>
-                    <hr>
+                <div class="form-group">
+                    <label for="photo">Seleccionar foto de portada</label>
+                    <input type="file" id="cover"  name="cover">
                 </div>
-                <div class="col-lg-8">
-                    <h4 id="institucion"></h4>
-                    <hr>
+
+                <div class="form-group">
+                    <label for="photo">Seleccionar archivo PDF</label>
+                    <input type="file" id="file"  name="file">
                 </div>
+                <div class="help-block"></div>
+
+                <label>Artículos Seleccionados</label>
+            </div> <!-- tamaño de pantalla-->
+
+        </div> <!-- form group-->
+
+
+        <div class="row">
+            <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <table id="tbArticles2" class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Clave</th>
+                        <th>Titulo</th>
+                        <th>Fecha de Creación</th>
+                        <th>Estado</th>
+                        <th>Operaciones</th>
+
+                    </tr>
+                    </thead>
+                </table>
             </div>
-
-            <div class="col-lg-12">
-                <div class="col-lg-4">
-                    <h4><strong>E-mail</strong></h4>
-                    <hr>
-                </div>
-                <div class="col-lg-8">
-                    <h4 id="email"></h4>
-                    <hr>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="col-lg-4">
-                    <h4><strong>Firma</strong></h4>
-                    <hr>
-                </div>
-                <div class="col-lg-8">
-                    <h4 id="firma"></h4>
-                    <hr>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="col-lg-4">
-                    <h4><strong>País</strong></h4>
-                    <hr>
-                </div>
-                <div class="col-lg-8">
-                    <h4 id="country"></h4>
-                    <hr>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="col-lg-4">
-                    <h4><strong>Resumen<br>biográfico</strong></h4>
-                </div>
-                <div class="col-lg-8">
-                    <h4></h4>
-                </div>
-            </div>
-            <br/>
-
         </div>
 
 
 
-    </div>
+        <button id="btnPublicarRevista" class="btn btn-warning"><i class="glyphicon glyphicon-globe"></i> Publicar</button>
+        <button id="btnEditararRevista" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i> Editar</button>
+        <button id="btnEliminarRevista" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Eliminar</button>
+    </form>
 
     <hr>
+
+
+
+
+

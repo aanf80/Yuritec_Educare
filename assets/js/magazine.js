@@ -2,6 +2,7 @@
  * Created by Concurso18 on 23/06/2017.
  */
 
+$cover = "";
 
 $(function(){
 
@@ -17,6 +18,42 @@ $(function(){
                 $('<option></option>', {text: "Volumen "+row.volume+",  Número "+row.number+"   "+row.period+" "+row.year}).attr('value',row.magazineid).appendTo('#magazineid');
             });
     });//fin de combobox
+
+    $.ajax({
+        url: '/Yuritec_Educare/magazine/getMagazines',
+        type: 'GET',
+        dataType: 'json'
+    }).done(function (json){
+
+        if(json.code===200)
+            $.each(json.msg, function(i,row){
+                $('<option></option>', {text: "Volumen "+row.volume+",  Número "+row.number+"   "+row.period+" "+row.year}).attr('value',row.magazineid).appendTo('#magazineid2');
+            });
+    });//fin de combobox
+
+
+    $('#magazineid2').on('change', function() {
+        $ID = this.value;
+        if($ID == 0){
+            cleanEditMagazine();
+        }
+        else{
+            $.ajax({
+                url: '/Yuritec_Educare/magazine/getMagazineByID/'+$ID,
+                type: 'GET',
+                dataType: 'json'
+            }).done(function (json){
+
+                if(json.code===200)
+                    $.each(json.msg, function(i,row){
+                        showMagazine(row['volume'],row['number'],row['period'],row['year'],row['cover']);
+                        console.log("period "+row['period']+" ID: "+row['magazineid']);
+
+                    });
+            });
+        }
+
+    });
 
     $('#frmMagazine').validate({
         rules: {
@@ -99,7 +136,61 @@ $(function(){
             }
         ]
     });//fin de datatable
+
+    var table2 =  $('#tbArticles2').DataTable({
+        responsive: true,
+        language:{
+            url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
+        },
+        ajax:{
+            url:"/Yuritec_Educare/article/getArticlesByStatus/3",
+            dataSrc:function(json){
+
+                return json['msg'];
+            }
+        },
+        columns:[
+            {
+                data:"articleid"
+            },
+            {
+                data:"title"
+            },
+            {
+                data:"articledate"
+            }, {
+                data:"status"
+            },
+            {
+                data: function (row) {
+                    str = "<div align='center'>";
+                    str +="<button  class='btn btn-danger'><i class=\"glyphicon glyphicon-minus-sign\"></i> Quitar</button>";
+                    str += "</div>"
+                    return str;
+                }
+
+            }
+        ]
+    });//fin de datatable
 });
+
+function showMagazine(volume,number,period,year,cover) {
+    $('#volume2').val(volume);
+    $('#number2').val(number);
+    $('#period2').val(period);
+    $('#year2').val(year);
+    $cover = cover;
+
+    console.log("Portada: "+$('#cover').val());
+}
+
+function cleanEditMagazine() {
+    $('#volume2').val('');
+    $('#number2').val('');
+    $('#period2').val('');
+    $('#year2').val('');
+}
+
 
 function newMagazine(){
     var form = $('form#frmMagazine')[0];
