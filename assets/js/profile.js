@@ -34,9 +34,6 @@ $(function () {
             },
             zipcode:{
                 digits: true
-            },
-            photo:{
-                required: true
             }
         },
         messages:{
@@ -73,9 +70,6 @@ $(function () {
             zipcode:{
                 digits: "Introduzca sólo números"
             },
-            photo:{
-                required: "Necesita seleccionar una foto de perfil"
-            }
         },
         highlight: function (element){
             $(element).closest('.form-group').addClass('has-error');
@@ -118,7 +112,7 @@ $(function () {
                 $.each(json.msg, function(i,row){
                     showProfile(row['userid'],row['username'],row['lastname'],row['maternalsurname'],row['gender'],row['address'],row['streetnumber'],
                         row['neighborhood'],row['zipcode'],row['city'],row['state'],row['country'],row['email'],row['password'],row['sign'],row['position'],
-                        row['institute'],row['initials'],row['photo'],row['roleid'],row['bio'],row['status'],row['registerdate'])
+                        row['institute'],row['initials'], row['roleid'],row['bio'],row['status'],row['registerdate'])
 
                 });
         });
@@ -130,7 +124,7 @@ $(function () {
 
 
 function showProfile(userid, username, lastname, maternalsurname,gender,address,streetnumber,neighborhood,zipcode,
-                     city,state,country,email,password,sign,position,institute,initials,photo,roleid,bio, status, date) {
+                     city,state,country,email,password,sign,position,institute,initials,roleid,bio, status, date) {
     console.log("bio "+bio);
 
 
@@ -146,7 +140,7 @@ function showProfile(userid, username, lastname, maternalsurname,gender,address,
     $('#city2').val(city);
     $('#state2').val(state);
     $('#country2').val(country);
-    $('#photo2').val(photo);
+    //$('#photo2').val(photo);
     $('#bio2').val(bio);
     $('#email2').val(email);
     $('#password2').val(password);
@@ -181,7 +175,7 @@ function updateProfile() {
                     institute: $('#institute2').val(),
                     initials: $('#initials2').val(),
                     bio: $('#bio2').val(),
-                    photo: $('#photo2').val(),
+                    //photo: $('#photo2').val(),
                     address: $('#address2').val(),
                     streetnumber: $('#streetnumber2').val(),
                     neighborhood: $('#neighborhood2').val(),

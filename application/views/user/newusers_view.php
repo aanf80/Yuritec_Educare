@@ -30,7 +30,7 @@
                 <!-- Datos Personales-->
                 <label class="control-label">Correo Electrónico *</label>
                 <input type="text" class="form-control" id="email" name="email" placeholder="Ejemplo: jorge@ittepic.edu.mx">
-                <div class="help-block">Será su nombre de usuario</div>
+                <div class="help-block"></div>
 
                 <label class="control-label">Contraseña *</label>
                 <input type="password" class="form-control" id="password" name="password">
@@ -44,11 +44,11 @@
                 <select name="roleid" id="roleid" class="form-control"></select>
                 <div class="help-block"></div>
 
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label for="photo">Seleccionar foto de perfil</label>
                     <input type="file" id="photo"  name="photo">
                 </div>
-                <div class="help-block"></div>
+                <div class="help-block"></div>-->
 
                 <label class="control-label">Nombre: *</label>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Nombre(s)">
@@ -85,8 +85,8 @@
                 <div class="help-block"></div>
 
                 <label for="resumen">Resumen biográfico</label>
-                <textarea name="bio" id="bio" rows="6" class="form-control"></textarea>
-                <div class="help-block">Ej. Departamento y Rango</div>
+                <textarea name="bio" id="bio" rows="6" class="form-control" placeholder="Ej. Departamento y Rango"></textarea>
+                <div class="help-block"></div>
 
                 <h4><strong>Domicilio</strong></h4>
 

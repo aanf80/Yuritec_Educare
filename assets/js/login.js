@@ -1,6 +1,15 @@
 $(function(){
     $('#frmLogin').validate({
 
+        rules:{
+            username: {required: true},
+            password: {required: true}
+        },
+        messages:{
+            username: {required: "Introduzca su correo electrónico"},
+            password: {required: "Introduzca su contraseña"}
+        },
+
         highlight: function (element){
             $(element).closest('.form-group').addClass('has-error');
         },
