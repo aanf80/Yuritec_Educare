@@ -152,7 +152,7 @@ class Article extends CI_Controller {
     public function getArticlesByVolume($volume){
 
         $this->load->model('Model_Article');
-        $data = $this->Model_Article->getArticleByVolume($volume);
+        $data = $this->Model_Article->getArticlesByVolume($volume);
         $jsondata["code"] = 200;
         $jsondata["msg"] = array();
         foreach($data as $cat){

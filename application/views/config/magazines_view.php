@@ -24,18 +24,45 @@
         </div>
     </div>
 
+    <div id="modalSelectedArticles" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h3>Artículos Seleccionados</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="frmEditSelectedArticles">
+                        <div class="form-group">
+                            <label class="control-label" for="articleid2">Artículos Seleccionados</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-file"></i>
+                                </span>
+                                <select name="articleid" id="articleid2" class="form-control"></select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-primary btn-warning" id="btnQuitarArticulos">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <form id="frmMagazine" enctype="multipart/form-data">
 
         <div class="form-group">
             <div class="col-lg-6">
-
                 <label class="control-label">Revista</label>
                 <select name="magazineid" id="magazineid2" class="form-control">
                     <option value="0">Seleccione una revista</option>
                 </select>
-
-                <br/>
-
                 <!-- Datos Personales-->
                 <label class="control-label">Volumen</label>
                 <input type="text" class="form-control" id="volume2" name="volume">
@@ -52,6 +79,7 @@
 
                 <label class="control-label">Periodo</label>
                 <select name="period" id="period2" class="form-control">
+                    <option value="0">Seleccione un periodo</option>
                     <option>Enero - Junio</option>
                     <option>Agosto - Diciembre</option>
                 </select>
@@ -59,46 +87,33 @@
 
                 <div class="form-group">
                     <label for="photo">Seleccionar foto de portada</label>
-                    <input type="file" id="cover"  name="cover">
-                </div>
-
-                <div class="form-group">
-                    <label for="photo">Seleccionar archivo PDF</label>
-                    <input type="file" id="file"  name="file">
+                    <input type="file" id="cover2"  name="cover">
                 </div>
                 <div class="help-block"></div>
 
-                <label>Artículos Seleccionados</label>
+                <div class="form-group">
+                    <label for="photo">Seleccionar revista PDF de la revista</label>
+                    <input type="file" id="file2"  name="file">
+                </div>
+                <div class="help-block"></div>
+
+
             </div> <!-- tamaño de pantalla-->
 
         </div> <!-- form group-->
 
+        <div class="row">&nbsp;</div>
+        <div class="row">&nbsp;</div>
 
-        <div class="row">
-            <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <table id="tbArticles2" class="table table-striped table-bordered">
-                    <thead>
-                    <tr>
-                        <th>Clave</th>
-                        <th>Titulo</th>
-                        <th>Fecha de Creación</th>
-                        <th>Estado</th>
-                        <th>Operaciones</th>
-
-                    </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
-
-
-
-        <button id="btnPublicarRevista" class="btn btn-warning"><i class="glyphicon glyphicon-globe"></i> Publicar</button>
-        <button id="btnEditararRevista" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i> Editar</button>
-        <button id="btnEliminarRevista" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Eliminar</button>
     </form>
 
-    <hr>
+    <button id="btnPublicarRevista" class="btn btn-warning"><i class="glyphicon glyphicon-globe"></i> Publicar</button>
+    <button id="btnEditararRevista" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i> Editar</button>
+    <button id="btnEliminarRevista" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Eliminar</button>
+    <button id="btnVerArticulos" class="btn btn-primary"><i class="glyphicon glyphicon-file"></i> Ver artículos</button>
+
+
+
 
 
 

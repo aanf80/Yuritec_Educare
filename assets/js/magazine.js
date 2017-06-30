@@ -3,7 +3,7 @@
  */
 
 $cover = "";
-
+$ID=0;
 $(function(){
 
     $.ajax({
@@ -17,7 +17,7 @@ $(function(){
 
                 $('<option></option>', {text: "Volumen "+row.volume+",  Número "+row.number+"   "+row.period+" "+row.year}).attr('value',row.magazineid).appendTo('#magazineid');
             });
-    });//fin de combobox
+    });//fin de combobox nueva revista
 
     $.ajax({
         url: '/Yuritec_Educare/magazine/getMagazines',
@@ -29,13 +29,16 @@ $(function(){
             $.each(json.msg, function(i,row){
                 $('<option></option>', {text: "Volumen "+row.volume+",  Número "+row.number+"   "+row.period+" "+row.year}).attr('value',row.magazineid).appendTo('#magazineid2');
             });
-    });//fin de combobox
+    });//fin de combobox editar revista
+
+
 
 
     $('#magazineid2').on('change', function() {
         $ID = this.value;
         if($ID == 0){
             cleanEditMagazine();
+
         }
         else{
             $.ajax({
@@ -47,7 +50,7 @@ $(function(){
                 if(json.code===200)
                     $.each(json.msg, function(i,row){
                         showMagazine(row['volume'],row['number'],row['period'],row['year'],row['cover']);
-                        console.log("period "+row['period']+" ID: "+row['magazineid']);
+                        console.log("ID: "+$ID);
 
                     });
             });
@@ -95,12 +98,6 @@ $(function(){
         }
     });
 
-
-
-
-
-
-
     var table =  $('#tbArticles').DataTable({
         responsive: true,
         language:{
@@ -135,43 +132,28 @@ $(function(){
 
             }
         ]
-    });//fin de datatable
+    });//fin de datatable articulos para agregar
 
-    var table2 =  $('#tbArticles2').DataTable({
-        responsive: true,
-        language:{
-            url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
-        },
-        ajax:{
-            url:"/Yuritec_Educare/article/getArticlesByStatus/3",
-            dataSrc:function(json){
+    $('#btnVerArticulos').on('click', function () {
+        $.ajax({
+            url: '/Yuritec_Educare/article/getArticlesByVolume/'+$('#magazineid2').val(),
+            type: 'GET',
+            dataType: 'json'
+        }).done(function (json){
 
-                return json['msg'];
-            }
-        },
-        columns:[
-            {
-                data:"articleid"
-            },
-            {
-                data:"title"
-            },
-            {
-                data:"articledate"
-            }, {
-                data:"status"
-            },
-            {
-                data: function (row) {
-                    str = "<div align='center'>";
-                    str +="<button  class='btn btn-danger'><i class=\"glyphicon glyphicon-minus-sign\"></i> Quitar</button>";
-                    str += "</div>"
-                    return str;
-                }
+            if(json.code===200)
+                $.each(json.msg, function(i,row){
+                    $('<option></option>', {text: row.title}).attr('value',row.magazineid).appendTo('#articleid2');
+                });
+        });//fin de combobox
 
-            }
-        ]
-    });//fin de datatable
+        $('#modalSelectedArticles').modal("show");
+
+    });
+
+
+
+
 });
 
 function showMagazine(volume,number,period,year,cover) {
@@ -180,15 +162,16 @@ function showMagazine(volume,number,period,year,cover) {
     $('#period2').val(period);
     $('#year2').val(year);
     $cover = cover;
-
-    console.log("Portada: "+$('#cover').val());
 }
+
 
 function cleanEditMagazine() {
     $('#volume2').val('');
     $('#number2').val('');
-    $('#period2').val('');
+    $('#period2').val(0);
     $('#year2').val('');
+
+
 }
 
 
