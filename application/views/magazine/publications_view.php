@@ -21,7 +21,7 @@
     <div class="row">
 
         <!-- Blog Entries Column -->
-        <div class="col-md-12">
+        <div class="col-md-8">
 
             <!-- First Blog Post -->
             <?php foreach($magazines as $magazine) { ?>
@@ -53,6 +53,22 @@
                     <a href="#">Newer &rarr;</a>
                 </li>
             </ul>
+        </div>
+        <!-- Blog Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+            <!-- Blog Search Well -->
+            <div class="well">
+                <h4>Buscar</h4>
+                <div class="input-group">
+                    <input type="text" class="form-control">
+                    <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                        </span>
+                </div>
+                <!-- /.input-group -->
+            </div>
+
 
         </div>
 

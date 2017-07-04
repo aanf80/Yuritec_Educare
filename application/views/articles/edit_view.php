@@ -57,12 +57,32 @@
             <select name="categoryid" id="categoryid" class="form-control"></select>
             <div class="row">&nbsp;</div>
 
+            <h3>Tipo de artículo</h3>
+            <select name="articletypeid" id="articletypeid" class="form-control"></select>
+            <div class="row">&nbsp;</div>
+
+            <h3>Propósito del artículo</h3>
+            <textarea name="purpouse" id="purpouse"></textarea>
+            <div class="row">&nbsp;</div>
+
             <h3>Resumen</h3>
             <textarea name="resumen" id="resumen"></textarea>
             <div class="row">&nbsp;</div>
 
             <h3>Palabras Clave</h3>
             <input type="text" class="form-control" name="palabrasclave" id="palabrasclave">
+            <div class="row">&nbsp;</div>
+
+            <h3>Problemas a resolver</h3>
+            <textarea name="problems" id="Problems"></textarea>
+            <div class="row">&nbsp;</div>
+
+            <h3>Impacto del artículo en la generación del artículo</h3>
+            <textarea name="problems" id="Problems"></textarea>
+            <div class="row">&nbsp;</div>
+
+            <h3>Resultados alcanzados</h3>
+            <textarea name="problems" id="Problems"></textarea>
             <div class="row">&nbsp;</div>
 
             <hr>

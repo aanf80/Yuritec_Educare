@@ -48,21 +48,21 @@ $(function(){
             {
                 data: function (row) {
                     str = "<div align='center'>";
-                    str +="<button id='btnEditar' class='btn btn-warning'><i class=\"glyphicon glyphicon-download-alt\"></i> Descargar</button>";
-                    str +="&nbsp;<button id='btnCheck' class='btn btn-success' onClick='descargarArchivo(" + row['file'] + ")'><i class=\"glyphicon glyphicon-check\"></i> Revisar Artículo</button>";//trash
+                    str +="<button class='btn btn-warning btn-block'><i class=\"glyphicon glyphicon-download-alt\"></i> Descargar</button>";
+                    str +="<br/><button id='btnCheck' class='btn btn-success btn-block' onClick='showReview()'><i class=\"glyphicon glyphicon-check\"></i> Revisar Artículo</button>";
                     str += "</div>"
                     return str;
                 }
 
             }
         ]
-    });// fin datatable
+    });// fin datatable de REVISOR
 
     $('#tbReview tbody').on( 'click','.btn-warning',  function () {
         if (table.row(this).child.isShown()) {
-            var data = table2.row(this).data();
+            var data = table.row(this).data();
         } else {
-            var data = table2.row($(this).closest('tr')).data();
+            var data = table.row($(this).closest('tr')).data();
         }
         window.location.href = '/Yuritec_Educare/upload/articles/'+data[Object.keys(data)[13]];
 
@@ -71,10 +71,8 @@ $(function(){
     $('#btnModificarEstado').on('click', function () {
         setReview();
     });
-    $('#btnAsignarRev').on('click', function () {
-        //setReview();
-    });
 
+//-----------------------------------REVISION DE ARTICULO--------------------------------------------------------------------
 
     var table2 =  $('#tbAssign').DataTable({
         responsive: true,
@@ -112,54 +110,38 @@ $(function(){
             }
         ]
 
-    });
+    }); // fin de datatable ASIGNAR REVISOR
 
     $('#tbAssign tbody').on('click', '.btn-warning', function () {
-        if (table.row(this).child.isShown()) {
+        if (table2.row(this).child.isShown()) {
             var data = table2.row(this).data();
         } else {
             var data = table2.row($(this).closest('tr')).data();
         }
         window.location.href = '/Yuritec_Educare/upload/articles/'+data[Object.keys(data)[13]];
-        //alert("nombre de archivo: "+data[Object.keys(data)[13]]);
+    });// DESCARGAR ARCHIVO TABLA ASIGNAR REVISOR
 
+    $('#btnAsignarRev').on('click', function () {
+        //setReview();
     });
 });
 
 function showReviser(articleid) {
     $('#articleid').val(articleid);
     $('#modalAssign').modal("show");
-
 }
 
 
-function descargarArchivo (archivo) {
 
-    $.ajax({
-        url: "/Yuritec_Educare/article/downloadFile",
-        type: "post",
-        data: {
-            file: archivo
-        }
-    }).done(
-        function(data){
-            if(data.code === 200){
-                $.growl.notice({ message: data.msg });
-                $('#tbCategoria').dataTable().api().ajax.reload();
-                $('#nombreCategoria').val('');
-            }
-            else{
-                $.growl.error({ message: data.msg });
-            }
 
-        }
-    ).fail(
-        function(){
-            $.growl.error({ message: "No hay mensaje que mostrar" });
-        }
-    );
 
+
+//-------------------------------------------------  ASIGNAR REVISOR-------------------------------------------------
+
+function showReview() {
+    $('#modalCheck').modal("show");
 }
+
 function setReview() {
 
    console.log("articleid: "+$('#articleid').val());
@@ -168,7 +150,7 @@ function setReview() {
 
    var status = $('#status').val();
    var msgStatus;
-   switch (status){
+    switch (status){
        case "Aprobado":
            msgStatus="aprobar"
            break;

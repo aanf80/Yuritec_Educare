@@ -19,6 +19,9 @@
                     <?php echo anchor('/about/objectives', 'Objetivos', 'class="link-class"') ?>
                 </li>
                 <li class="active">Políticas de Operación</li>
+                <li>
+                    <?php echo anchor('/about/terms', 'Políticas de Evaluación', 'class="link-class"') ?>
+                </li>
             </ol>
         </div>
     </div>

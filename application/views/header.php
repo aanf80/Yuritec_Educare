@@ -75,7 +75,9 @@
                     <li>
                         <?php echo anchor('/about', 'Acerca de', 'class="link-class"') ?>
                     </li>
-
+                    <li>
+                        <a href="map.php">Comité Editorial</a>
+                    </li>
                     <li>
                         <?php echo anchor('/contact', 'Contacto', 'class="link-class"') ?>
                     </li>
@@ -92,10 +94,16 @@
                                     <?php echo anchor('/settings/categories', 'Apartados temáticos', 'class="link-class"') ?>
                                 </li>
                                 <li>
+                                    <?php echo anchor('/settings/categories', 'Contacto', 'class="link-class"') ?>
+                                </li>
+                                <li>
                                     <?php echo anchor('/settings/objectives', 'Objetivos', 'class="link-class"') ?>
                                 </li>
                                 <li>
                                     <?php echo anchor('/settings/terms', 'Página Principal', 'class="link-class"') ?>
+                                </li>
+                                <li>
+                                    <?php echo anchor('/settings/terms', 'Políticas de Evaluación', 'class="link-class"') ?>
                                 </li>
                                 <li>
                                     <?php echo anchor('/settings/terms', 'Políticas de Operación ', 'class="link-class"') ?>
@@ -105,6 +113,9 @@
                                 </li>
                                 <li>
                                     <?php echo anchor('/settings/roles', 'Roles de usuario', 'class="link-class"') ?>
+                                </li>
+                                <li>
+                                    <?php echo anchor('/settings/roles', 'Tipos de artículos', 'class="link-class"') ?>
                                 </li>
                                 <li>
                                     <?php echo anchor('/user/users_new', 'Usuarios', 'class="link-class"') ?>
@@ -118,10 +129,6 @@
                     <li>
                         <?php echo anchor('/magazine', 'Ejemplares', 'class="link-class"') ?>
                     </li>
-                    <li>
-                        <a href="map.php">Mapa del Sitio</a>
-                    </li>
-
                     <?php
 
                     if($this->session->userdata('roleid') == 1 || $this->session->userdata('roleid') == 2 || $this->session->userdata('roleid') == 3){

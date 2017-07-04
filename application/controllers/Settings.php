@@ -73,7 +73,7 @@ class Settings extends CI_Controller {
     }
     public function getCategories(){
         $roleid = $this->session->userdata('roleid');
-        if($roleid != 1) {
+        if($roleid == null) {
             redirect('home', 'refresh');
         }
         else{
