@@ -231,10 +231,10 @@ class Settings extends CI_Controller {
     }
 
 //Aqui empiezan las politicas de operación
-    public function getTerms(){
+    public function getTermsByID($ID){
 
         $this->load->model('Model_Terms');
-        $data = $this->Model_Terms->getTerms();
+        $data = $this->Model_Terms->getTermsByID($ID);
         $jsondata["code"] = 200;
         $jsondata["msg"] = array();
         foreach($data as $term){
@@ -247,6 +247,10 @@ class Settings extends CI_Controller {
         header("Cache-Control: no-store");
         echo json_encode($jsondata);
     }
+
+
+
+
 
     public function updateTerms(){
 
@@ -362,6 +366,18 @@ class Settings extends CI_Controller {
         else {
             $this->load->view('header');
             $this->load->view('config/adminterms_view');
+            $this->load->view('footer');
+        }
+    }
+    public function evaluation_terms()
+    {
+        $roleid = $this->session->userdata('roleid');
+        if($roleid != 1) {
+            redirect('home', 'refresh');
+        }
+        else {
+            $this->load->view('header');
+            $this->load->view('config/adminevaluationterms_view');
             $this->load->view('footer');
         }
     }

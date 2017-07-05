@@ -3,6 +3,20 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
+            <h1 class="page-header">Políticas</h1>
+            <ol class="breadcrumb">
+                <li class="active">Políticas de Operación</li>
+                <li>
+                    <?php echo anchor('/settings/evaluation_terms', 'Políticas de Evaluación', 'class="link-class"') ?>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
             <h3 class="page-header">Políticas de Operación</h3>
         </div>
 

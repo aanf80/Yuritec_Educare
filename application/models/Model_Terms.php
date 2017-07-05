@@ -23,6 +23,16 @@ class Model_Terms extends CI_Model{
         $query=$this->db->get();
         return $query->result();
     }
+
+    public function getTermsByID($id) //C
+    {
+        $this->db->from($this->table);
+        $this->db->where('termsid',$id);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+
     public function updateTerms($where,$data){// U
         $this->db->update($this->table, $data, $where);
         return true;

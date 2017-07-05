@@ -1,5 +1,5 @@
 /**
- * Created by Concurso18 on 08/06/2017.
+ * Created by Armando_Navarro on 04/07/2017.
  */
 var $termid, $content;
 $(function () {
@@ -18,7 +18,7 @@ $(function () {
     });
 
     $.ajax({
-        url: '/Yuritec_Educare/settings/getTermsByID/1',
+        url: '/Yuritec_Educare/settings/getTermsByID/2',
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
@@ -43,7 +43,7 @@ function showTerms(termsid,content){
 
 
 function updateTerms() {
-$content = tinyMCE.activeEditor.getContent();
+    $content = tinyMCE.activeEditor.getContent();
     $.ajax(
         {
             url:"/Yuritec_Educare/settings/updateTerms" ,
