@@ -123,6 +123,86 @@ class Settings extends CI_Controller {
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
 
+    //Aqui empiezan los tipos de artículos
+
+    public function newArticleType(){
+
+        $this->load->model('Model_ArticleType');
+        $jsondata = array();
+        $insert = false;
+        $data = array(
+            'article_typename' => $this->input->post('article_typename')
+        );
+        if($data['article_typename']==null){
+            redirect('home', 'refresh');
+        }
+        $insert = $this->Model_ArticleType->newArticleType($data);
+        if($insert == true){
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = "Registrado correctamente";
+            $jsondata["details"] = "OK";
+        }
+        else{
+            $jsondata["code"] = 500;
+            $jsondata["msg"] = "Error en el registro";
+            $jsondata["details"] = "OK";
+        }
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata, JSON_FORCE_OBJECT);
+    }
+
+    public function getArticleTypes(){
+        $roleid = $this->session->userdata('roleid');
+        if($roleid == null) {
+            redirect('home', 'refresh');
+        }
+        else{
+            $this->load->model('Model_ArticleType');
+            $data = $this->Model_ArticleType->getArticleTypes();
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = array();
+            foreach($data as $cat){
+                $jsondata["msg"][] = $cat;
+            }
+
+            $jsondata["details"] = "OK";
+
+
+            header('Content-type: application/json; charset=utf-8');
+            header("Cache-Control: no-store");
+            echo json_encode($jsondata);
+        }
+
+    }
+    public function deleteArticleType()    {
+
+        $this->load->model('Model_ArticleType');
+        $jsondata = array();
+        $data = array(
+            'article_typeid' => $this->input->post('article_typeid')
+        );
+
+        if($data['article_typeid']==null){
+            redirect('home', 'refresh');
+        }
+
+        $delete =  $this->Model_ArticleType->deleteArticleType($data['article_typeid']);
+        if($delete == true){
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = "Eliminado correctamente";
+            $jsondata["details"] = "OK";
+        }
+        else{
+            $jsondata["code"] = 500;
+            $jsondata["msg"] = "Error en el registro";
+            $jsondata["details"] = "OK";
+        }
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata, JSON_FORCE_OBJECT);
+    }
+
     //Aqui empiezan los roles de usuario
 
     public function insertRole(){
@@ -353,6 +433,18 @@ class Settings extends CI_Controller {
         else {
             $this->load->view('header');
             $this->load->view('config/roles_view');
+            $this->load->view('footer');
+        }
+    }
+    public function article_type()
+    {
+        $roleid = $this->session->userdata('roleid');
+        if($roleid != 1) {
+            redirect('home', 'refresh');
+        }
+        else {
+            $this->load->view('header');
+            $this->load->view('config/articletype_view');
             $this->load->view('footer');
         }
     }

@@ -115,7 +115,7 @@
                                     <?php echo anchor('/settings/roles', 'Roles de usuario', 'class="link-class"') ?>
                                 </li>
                                 <li>
-                                    <?php echo anchor('/settings/roles', 'Tipos de artículos', 'class="link-class"') ?>
+                                    <?php echo anchor('/settings/article_type', 'Tipos de artículos', 'class="link-class"') ?>
                                 </li>
                                 <li>
                                     <?php echo anchor('/user/users_new', 'Usuarios', 'class="link-class"') ?>
