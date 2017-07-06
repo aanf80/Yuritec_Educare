@@ -126,34 +126,7 @@ function showArticle_Type(article_typeid, nombrearticle_type) {
     $('#modalArticle_Type').modal("show");
 
 }
-function updateArticle_Type() {
 
-    $.ajax(
-        {
-            url:"/Yuritec_Educare/settings/updateArticle_Type" ,
-            type: "post",
-            data: {
-                article_typeid: $('#article_typeid').val(),
-                article_typename: $('#nombreTipo_Articulo2').val()
-            }
-        }
-    ).done(
-        function (data) {
-
-            if (data.code == 200) {
-                $.growl.notice({message: data.msg});
-                $('#tbTipo_Articulo').dataTable().api().ajax.reload();
-                $('#modalArticle_Type').modal("toggle");
-            } else {
-                $.growl.error({message: data.msg});
-            }
-        }
-    ).fail(
-        function () {
-            $.growl.error({message: "El servidor no está disponible"});
-        }
-    );
-}
 function newArticle_Type(){
 
     $.ajax({
@@ -181,6 +154,34 @@ function newArticle_Type(){
     );
 }
 
+function updateArticle_Type() {
+
+    $.ajax(
+        {
+            url:"/Yuritec_Educare/settings/updateArticleType" ,
+            type: "post",
+            data: {
+                article_typeid: $('#article_typeid').val(),
+                article_typename: $('#nombreTipo_Articulo2').val()
+            }
+        }
+    ).done(
+        function (data) {
+
+            if (data.code == 200) {
+                $.growl.notice({message: data.msg});
+                $('#tbTipo_Articulo').dataTable().api().ajax.reload();
+                $('#modalArticle_Type').modal("toggle");
+            } else {
+                $.growl.error({message: data.msg});
+            }
+        }
+    ).fail(
+        function () {
+            $.growl.error({message: "El servidor no está disponible"});
+        }
+    );
+}
 function deleteArticle_Type(article_typeid) {
 
     swal(
@@ -199,7 +200,7 @@ function deleteArticle_Type(article_typeid) {
                 ///Comienza a Borrar
                 $.ajax(
                     {
-                        url: "/Yuritec_Educare/settings/deleteArticle_Type",
+                        url: "/Yuritec_Educare/settings/deleteArticleType",
                         type: "post",
                         data: {article_typeid: article_typeid}
                     }
@@ -212,7 +213,6 @@ function deleteArticle_Type(article_typeid) {
                             swal("Eliminado!", "El registro se elimino correctamente", "success");
                             $('#tbTipo_Articulo').dataTable().api().ajax.reload();
                             $('#article_typeid').val('');
-                            $('#modalArticle_Type').modal("toggle");
                         } else {
                             $.growl.error({message: data.msg});
                         }

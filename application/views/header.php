@@ -103,10 +103,7 @@
                                     <?php echo anchor('/settings/terms', 'Página Principal', 'class="link-class"') ?>
                                 </li>
                                 <li>
-                                    <?php echo anchor('/settings/terms', 'Políticas de Evaluación', 'class="link-class"') ?>
-                                </li>
-                                <li>
-                                    <?php echo anchor('/settings/terms', 'Políticas de Operación ', 'class="link-class"') ?>
+                                    <?php echo anchor('/settings/terms', 'Políticas', 'class="link-class"') ?>
                                 </li>
                                 <li>
                                     <?php echo anchor('/settings/magazine', 'Revista', 'class="link-class"') ?>
