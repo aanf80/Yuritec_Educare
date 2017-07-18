@@ -53,7 +53,7 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4><i class="fa fa-fw fa-check"></i> Bootstrap v3.3.7</h4>
+                    <h4><i class="fa fa-fw fa-check"></i>Convocatorias</h4>
                 </div>
                 <div class="panel-body">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla
@@ -66,26 +66,24 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4><i class="fa fa-fw fa-gift"></i> Free &amp; Open Source</h4>
+                    <h4><i class="fa fa-fw fa-gift"></i>Noticias</h4>
                 </div>
                 <div class="panel-body">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla
                         aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus
                         eveniet incidunt dicta nostrum quod?</p>
-                    <a href="#" class="btn btn-default">Learn More</a>
+                    <a href="#" class="btn btn-warning">Learn More</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4><i class="fa fa-fw fa-compass"></i> Easy to Use</h4>
+                    <h4><i class="fa fa-fw fa-compass"></i>Academia Journals</h4>
                 </div>
                 <div class="panel-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla
-                        aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus
-                        eveniet incidunt dicta nostrum quod?</p>
-                    <a href="#" class="btn btn-default">Learn More</a>
+                    <p>El Instituto Tecnológico de Tepic será sede del Congreso Internacional de Investigación Academia Journals Tepic 2018 que se realizará del 14 al 16 de febrero del 2018</p>
+                    <a href="http://www.academiajournals.com/tepic" class="btn btn-warning">Ir al sitio</a>
                 </div>
             </div>
         </div>

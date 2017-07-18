@@ -36,24 +36,33 @@ class Model_Magazine extends CI_Model{
         return $query->result();
     }//R
 
-     public function getPublishedMagazines()
+     public function getMagazineByStatus($status)
     {
         $this->db->from($this->table);
-        $this->db->where('status','publicada');
+        $this->db->where('status',$status);
         $query = $this->db->get();
 
 
         return $query->result();
     }//R
 
-    function updateMagazine($where, $data){
+    public function updateMagazine($where, $data){
         $this->db->update($this->table, $data, $where);
         return true;
     } //U
 
-    function deleteMagazine($id){
+    public function deleteMagazine($id){
         $this->db->where('magazineid', $id);
         $this->db->delete($this->table);
         return true;
     } //D
+
+    public function get_magazines($porpagina,$desde){
+
+        $this->db->where('status','publicada');
+        $query = $this->db->get($this->table,$porpagina,$desde);
+
+
+        return $query->result();
+    }
 }
