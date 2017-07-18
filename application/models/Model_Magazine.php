@@ -62,7 +62,13 @@ class Model_Magazine extends CI_Model{
         $this->db->where('status','publicada');
         $query = $this->db->get($this->table,$porpagina,$desde);
 
+        if( $query -> num_rows() > 0 ){
+            return $query->result();
+        }
+        else{
+            return false;
+        }
 
-        return $query->result();
+
     }
 }

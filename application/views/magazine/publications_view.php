@@ -27,6 +27,7 @@
 
 
             <?php
+            if($magazines != false){
                 foreach ($magazines as $magazine) { ?>
                     <h2>
                         <a href="<?php echo site_url('/magazine/articles/' . $magazine->magazineid) ?>"><?php echo "Volumen " . $magazine->volume . " Número " . $magazine->number ?></a>
@@ -48,6 +49,12 @@
 
                     <hr>
                     <?php
+                }
+            }
+            else{
+
+                echo " <img class=\"img-responsive img-hover\" src=\"/Yuritec_Educare/assets/img/not-found.png\" ";
+
             }
             ?>
             <!-- Pager -->
