@@ -293,5 +293,65 @@ class Magazine extends CI_Controller
         echo json_encode($jsondata);
     }
 
+    public function updateMagazine(){
 
+        $this->load->model('Model_Magazine');
+        $jsondata = array();
+
+        $data = array(
+            'volume' => $this->input->post('volume'),
+            'number' => $this->input->post('number'),
+            'date' => $this->input->post('date'),
+            'status' => $this->input->post('status'),
+            'period' => $this->input->post('period'),
+            'year' => $this->input->post('year'),
+            'file' => $this->input->post('file'),
+            'cover' => $this->input->post('cover')
+        );
+        if($data['volume']==null){
+            redirect('home', 'refresh');
+        }
+        $update = $this->Model_Magazine->updateMagazine(array('magazineid' => $this->input->post('magazineid')), $data);
+        if($update == true){
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = "Registrado correctamente";
+            $jsondata["details"] = "OK";
+        }
+        else{
+            $jsondata["code"] = 500;
+            $jsondata["msg"] = "Error en el registro";
+            $jsondata["details"] = "OK";
+        }
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata, JSON_FORCE_OBJECT);
+    }
+
+
+    public function deleteMagazine(){
+        $this->load->model('Model_Magazine');
+        $jsondata = array();
+
+        $data = array(
+            'magazineid' => $this->input->post('magazineid')
+        );
+
+        if ($data['magazineid'] == null) {
+            redirect('home', 'refresh');
+        }
+
+        $delete = $this->Model_Magazine->deleteMagazine($data['magazineid']);
+        if ($delete == true) {
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = "Eliminado correctamente";
+            $jsondata["details"] = "OK";
+        } else {
+            $jsondata["code"] = 500;
+            $jsondata["msg"] = "Error en el registro";
+            $jsondata["details"] = "OK";
+        }
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata, JSON_FORCE_OBJECT);
+    }
 }

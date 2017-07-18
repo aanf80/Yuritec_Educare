@@ -56,7 +56,7 @@
     </div>
 
 
-    <form id="frmMagazine" enctype="multipart/form-data">
+    <form id="frmEditMagazine" enctype="multipart/form-data">
 
         <div class="form-group">
             <div class="col-lg-6">
@@ -98,6 +98,15 @@
                 </div>
                 <div class="help-block"></div>
 
+                <label class="control-label">Estado</label>
+                <select name="period" id="period2" class="form-control">
+                    <option value="sin publicar">Sin Publicar</option>
+                    <option value="publicada">Publicada</option>
+
+
+                </select>
+                <div class="help-block"></div>
+
 
             </div> <!-- tamaño de pantalla-->
 
@@ -108,10 +117,9 @@
 
     </form>
 
-    <button id="btnPublicarRevista" class="btn btn-warning"><i class="glyphicon glyphicon-globe"></i> Publicar</button>
-    <button id="btnEditararRevista" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i> Editar</button>
+    <button id="btnEditarRevista" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i> Editar</button>
     <button id="btnEliminarRevista" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Eliminar</button>
-    <button id="btnVerArticulos" class="btn btn-primary"><i class="glyphicon glyphicon-file"></i> Ver artículos</button>
+    <button id="btnVerArticulos" class="btn btn-warning"><i class="glyphicon glyphicon-file"></i> Ver artículos</button>
 
 
 

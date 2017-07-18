@@ -277,7 +277,6 @@ class User extends CI_Controller
 
     public function deleteUser()
     {
-
         $this->load->model('Model_User');
         $jsondata = array();
 

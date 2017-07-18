@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <h3 class="page-header">Objetivos</h3>
+            <h1 class="page-header">Objetivos</h1>
         </div>
 
     </div>

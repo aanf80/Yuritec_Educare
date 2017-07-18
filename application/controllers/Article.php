@@ -214,7 +214,7 @@ class Article extends CI_Controller {
             'magazineid' => 0,
             'categoryid' => $this->input->post('categoryid'),
         );
-        if($data['username']==null){
+        if($data['title']==null){
             redirect('home', 'refresh');
         }
         $update = $this->Model_Article->updateArticle(array('articleid' => $this->input->post('articleid')), $data);

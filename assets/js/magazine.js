@@ -15,10 +15,11 @@ $(function(){
 
         if(json.code===200)
             $.each(json.msg, function(i,row){
-
                 $('<option></option>', {text: "Volumen "+row.volume+",  Número "+row.number+"   "+row.period+" "+row.year}).attr('value',row.magazineid).appendTo('#magazineid');
             });
     });//fin de combobox nueva revista
+
+
 
     $.ajax({
         url: '/Yuritec_Educare/magazine/getMagazines',
@@ -32,18 +33,13 @@ $(function(){
             });
     });//fin de combobox editar revista
 
-
-
-
     $('#magazineid2').on('change', function() {
         $ID = this.value;
         if($ID == 0){
             cleanEditMagazine();
             $('#articleid2').html('');
-
         }
         else{
-
             $('#articleid2').html('');
 
             $.ajax({
@@ -57,10 +53,7 @@ $(function(){
                         showMagazine(row['volume'],row['number'],row['period'],row['year'],row['cover']);
                     });
             });
-
-
         }
-
     });
 
     $('#frmMagazine').validate({
@@ -154,11 +147,26 @@ $(function(){
                 });
         });//fin de combobox
 
-        $('#modalSelectedArticles').modal("show");
+        var idmagazine = $('#magazineid2').val();
 
+        if( idmagazine == 0){
+            $.growl.error({message: "No ha seleccionado alguna revista"});
+        }
+        else{
+            $('#modalSelectedArticles').modal("show");
+        }
     });
+
     $('#btnQuitarArticulos').on('click', function () {
         unsetMagazine();
+    });
+
+    $('#btnEliminarRevista').on('click', function () {
+        deleteMagazine($('#magazineid2').val());
+    });
+
+    $('#btnEditarRevista').on('click', function () {
+        updateMagazine();
     });
 
 
@@ -221,6 +229,88 @@ function newMagazine(){
     );
 }
 
+function updateMagazine(){
+    var idmagazine = $('#magazineid2').val();
+
+    if( idmagazine == 0){
+        $.growl.error({message: "No ha seleccionado alguna revista"});
+    }
+    else{
+        $.ajax(
+            {
+                url: "/Yuritec_Educare/magazine/updateMagazine",
+                type: "post",
+                data: $('#frmEditMagazine').serialize()
+            }
+        ).done(
+            function (data) {
+
+                if (data.code == 200) {
+                    $.growl.notice({message: data.msg});
+                } else {
+                    $.growl.error({message: data.msg});
+                }
+            }
+        ).fail(
+            function () {
+                $.growl.error({message: "El servidor no está disponible"});
+            }
+        );
+    }
+}
+
+
+function deleteMagazine(magazineid){
+    if(magazineid == 0){
+        $.growl.error({message: "No ha seleccionado alguna revista"});
+    }
+    else{
+        swal(
+            {
+                title: "¿Estas seguro que deseas eliminar esta revista?", text: "",
+                type: "warning", showCancelButton: true,
+                confirmButtonColor: "#DD6B55", confirmButtonText: "Aceptar!",
+                cancelButtonText: "Cancelar", closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+
+                    $.ajax(
+                        {
+                            url: "/Yuritec_Educare/magazine/deleteMagazine",
+                            type: "post",
+                            data: {magazineid: magazineid}
+                        }
+                    ).done(
+                        function (data) {
+                            //alert("Se realizó correctamente "+data.code);
+                            if (data.code == 200) {
+                                //$.growl.notice({message: data.msg});
+                                $.growl.notice({message: data.msg + " " + data.details});
+                                swal("Eliminado!", "La revista se eliminó correctamente", "success");
+                                location.reload();
+                            } else {
+                                $.growl.error({message: data.msg});
+                            }
+                        }
+                    ).fail(
+                        function () {
+                            $.growl.error({message: "El servidor no está disponible :("});
+                        }
+                    );
+                } else {
+                    swal("Cancelado", "Accion Cancelada", "error");
+                }
+            });
+    }
+
+
+
+}
+
+
+//Operaiones de los artículos con las revistas
+
 function setMagazine(articleid) {
 
     var revista = $('#magazineid option:selected').html();
@@ -270,47 +360,48 @@ function setMagazine(articleid) {
 
 function unsetMagazine() {
 
-    var revista = $('#magazineid2 option:selected').html();
-    var status = "Aprobado";
+        var revista = $('#magazineid2 option:selected').html();
+        var status = "Aprobado";
 
 
-    swal(
-        {
-            title: "Advertencia", text: "¿Estás seguro que deseas quitar este artículo a la revista "+revista+"?",
-            type: "warning", showCancelButton: true,
-            confirmButtonColor: "#FF0000", confirmButtonText: "Aceptar",
-            cancelButtonText: "Cancelar", closeOnConfirm: false,
-            closeOnCancel: false
-        }, function (isConfirm) {
-            if (isConfirm) {
+        swal(
+            {
+                title: "Advertencia", text: "¿Estás seguro que deseas quitar este artículo a la revista "+revista+"?",
+                type: "warning", showCancelButton: true,
+                confirmButtonColor: "#FF0000", confirmButtonText: "Aceptar",
+                cancelButtonText: "Cancelar", closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
 
-                $.ajax(
-                    {
-                        url: "/Yuritec_Educare/article/unsetMagazine",
-                        type: "post",
-                        data: {articleid: $('#articleid2').val() , status: status}
-                    }
-                ).done(
-                    function (data) {
-
-                        if (data.code == 200) {
-
-                            $.growl.notice({message: data.msg + " " + data.details});
-                            swal("Agregado", "Se ha quitado el artículo correctamente", "success");
-                            $('#modalSelectedArticles').modal("toggle");
-                            $('#articleid2').html('');
-
-                        } else {
-                            $.growl.error({message: data.msg});
+                    $.ajax(
+                        {
+                            url: "/Yuritec_Educare/article/unsetMagazine",
+                            type: "post",
+                            data: {articleid: $('#articleid2').val() , status: status}
                         }
-                    }
-                ).fail(
-                    function () {
-                        $.growl.error({message: "El servidor no está disponible :("});
-                    }
-                );
-            } else {
-                swal("Cancelado", "Acción Cancelada", "error");
-            }
-        });
+                    ).done(
+                        function (data) {
+
+                            if (data.code == 200) {
+
+                                $.growl.notice({message: data.msg + " " + data.details});
+                                swal("Agregado", "Se ha quitado el artículo correctamente", "success");
+                                $('#modalSelectedArticles').modal("toggle");
+                                $('#articleid2').html('');
+
+                            } else {
+                                $.growl.error({message: data.msg});
+                            }
+                        }
+                    ).fail(
+                        function () {
+                            $.growl.error({message: "El servidor no está disponible :("});
+                        }
+                    );
+                } else {
+                    swal("Cancelado", "Acción Cancelada", "error");
+                }
+            });
+
 }

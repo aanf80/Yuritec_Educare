@@ -439,6 +439,60 @@ class Settings extends CI_Controller {
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
 
+    //Aqui empieza contact
+
+    public function getContact(){
+
+        $this->load->model('Model_Contact');
+        $data = $this->Model_Contact->getContact();
+        $jsondata["code"] = 200;
+        $jsondata["msg"] = array();
+        foreach($data as $contact){
+            $jsondata["msg"][] = $contact;
+        }
+
+        $jsondata["details"] = "OK";
+
+
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata);
+    }
+
+    public function updateContact(){
+
+        $this->load->model('Model_Contact');
+        $jsondata = array();
+
+        $data = array(
+            'contactid' => $this->input->post('contactid'),
+            'extension' => $this->input->post('extension'),
+            'email' => $this->input->post('email'),
+            'phone' => $this->input->post('phone'),
+            'schedule' => $this->input->post('schedule'),
+            'address' => $this->input->post('address')
+        );
+        if($data['contactid']==null){
+            redirect('home', 'refresh');
+        }
+        $update = $this->Model_Contact->updateContact(array('contactid' => $this->input->post('contactid')), $data);
+
+        if($update == true){
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = "Registrado correctamente";
+            $jsondata["details"] = "OK";
+        }
+        else{
+            $jsondata["code"] = 500;
+            $jsondata["msg"] = "Error en el registro";
+            $jsondata["details"] = "OK";
+        }
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata, JSON_FORCE_OBJECT);
+    }
+
+
 //----------------------------------------------------------------------------------------------------------
     //Aqui empiezan las vistas!
     public function categories()
@@ -450,6 +504,18 @@ class Settings extends CI_Controller {
         else {
             $this->load->view('header');
             $this->load->view('config/categories_view');
+            $this->load->view('footer');
+        }
+    }
+    public function contact()
+    {
+        $roleid = $this->session->userdata('roleid');
+        if($roleid != 1) {
+            redirect('home', 'refresh');
+        }
+        else {
+            $this->load->view('header');
+            $this->load->view('config/admincontact_view');
             $this->load->view('footer');
         }
     }
