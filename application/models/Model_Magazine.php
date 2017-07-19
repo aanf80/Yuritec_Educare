@@ -69,6 +69,5 @@ class Model_Magazine extends CI_Model{
             return false;
         }
 
-
     }
 }

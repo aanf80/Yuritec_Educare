@@ -58,12 +58,14 @@
             }
             ?>
             <!-- Pager -->
-            <ul class="pagination">
-                <?php
-                /* Se imprimen los números de página */
-                echo $this->pagination->create_links();
-                ?>
-            </ul>
+            <div class="row text-center">
+                <ul class="pagination">
+                    <?php
+                    /* Se imprimen los números de página */
+                    echo $this->pagination->create_links();
+                    ?>
+                </ul>
+            </div>
         </div>
         <!-- Blog Sidebar Widgets Column -->
         <div class="col-md-4">
