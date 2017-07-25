@@ -27,7 +27,7 @@
                     <p><?php echo $mem->ec_bio?></p>
                     <ul class="list-inline">
                         <li><a href="<?php echo $mem->ec_fbaccount ?>"><i class="fa fa-2x fa-facebook-square"></i></a></li>
-                        <li><a href="#"><i class="fa fa-2x fa-twitter-square"></i></a></li>
+                        <li><a href="<?php echo $mem->ec_twaccount ?>"><i class="fa fa-2x fa-twitter-square"></i></a></li>
                     </ul>
                 </div>
             </div>
