@@ -94,6 +94,9 @@
                                     <?php echo anchor('/settings/categories', 'Apartados temáticos', 'class="link-class"') ?>
                                 </li>
                                 <li>
+                                    <?php echo anchor('/committee/new_member', 'Comité editorial', 'class="link-class"') ?>
+                                </li>
+                                <li>
                                     <?php echo anchor('/settings/contact', 'Contacto', 'class="link-class"') ?>
                                 </li>
                                 <li>

@@ -29,12 +29,7 @@
                 <input type="password" class="form-control" id="confpassword" name="confpassword">
                 <div class="help-block" id="equalpasswd"></div>
 
-               <!-- <label class="control-label">Foto de perfil</label>
-                <input type="text" class="form-control" id="photo" name="photo" placeholder="Escriba el enlace de la imagen">
-                <div class="help-block"></div>
 
-
--->
                 <div class="form-group">
                     <label for="photo">Seleccionar foto de perfil</label>
                      <input type="file" id="photo"  name="photo">

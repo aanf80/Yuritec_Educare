@@ -84,9 +84,7 @@
                 <input type="text" class="form-control" id="institute" name="institute" placeholder="Ejemplo: Instituto Tecnológico de Tepic">
                 <div class="help-block"></div>
 
-                <label for="resumen">Resumen biográfico</label>
-                <textarea name="bio" id="bio" rows="6" class="form-control" placeholder="Ej. Departamento y Rango"></textarea>
-                <div class="help-block"></div>
+
 
                 <h4><strong>Domicilio</strong></h4>
 

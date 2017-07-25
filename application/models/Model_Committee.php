@@ -13,12 +13,12 @@ class Model_Committee extends CI_Model{
         parent::__construct();
         $this->load->database();
     }
-    public function  newECMember($data){
+    public function  newMember($data){
         $this->db->insert($this->table, $data);
         return true;
     }
 
-    public function getECMember(){//R
+    public function getMembers(){//R
         $this->db->from('ec_member');
         $query=$this->db->get();
         return $query->result();
