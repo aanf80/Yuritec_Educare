@@ -76,7 +76,7 @@
                         <?php echo anchor('/about', 'Acerca de', 'class="link-class"') ?>
                     </li>
                     <li>
-                        <a href="map.php">Comité Editorial</a>
+                        <?php echo anchor('/committee', 'Comité Editorial', 'class="link-class"') ?>
                     </li>
                     <li>
                         <?php echo anchor('/contact', 'Contacto', 'class="link-class"') ?>

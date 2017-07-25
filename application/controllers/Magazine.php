@@ -68,7 +68,7 @@ class Magazine extends CI_Controller
         $config['base_url'] = base_url().'magazine/articles/'.$id."/";
         $config['total_rows'] = count($this->Model_Article->getArticlesByVolume($id));
         /*Obtiene el numero de registros a mostrar por pagina */
-        $config['per_page'] = 1;
+        $config['per_page'] = 2;
         $config["uri_segment"] = 4;
         /*Se personaliza la paginación para que se adapte a bootstrap*/
         $config['cur_tag_open'] = '<li class="active"><a href="#">';

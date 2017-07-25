@@ -17,12 +17,6 @@ class Article extends CI_Controller {
         $this->load->helper(array('download', 'file', 'url', 'html', 'form'));
 
     }
-    public function index()
-    {
-        $this->load->view('header');
-        $this->load->view('contact');
-        $this->load->view('footer');
-    }
     public function new_article()
     {
 
