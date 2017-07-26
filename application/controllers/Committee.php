@@ -29,6 +29,12 @@ class Committee extends CI_Controller
         $this->load->view('config/admincommittee_view');
         $this->load->view('footer');
     }
+    public function members()
+    {
+        $this->load->view('header');
+        $this->load->view('config/members_view');
+        $this->load->view('footer');
+    }
 
     // FUNCIONES DE BASE DE DATOS
 
@@ -80,6 +86,56 @@ class Committee extends CI_Controller
 
         }
 
+    }//new member
+
+    public function getMembers(){
+        $roleid = $this->session->userdata('roleid');
+        if($roleid == null) {
+            redirect('home', 'refresh');
+        }
+        else{
+            $this->load->model('Model_Committee');
+            $data = $this->Model_Committee->getMembers();
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = array();
+            foreach($data as $cat){
+                $jsondata["msg"][] = $cat;
+            }
+
+            $jsondata["details"] = "OK";
+
+
+            header('Content-type: application/json; charset=utf-8');
+            header("Cache-Control: no-store");
+            echo json_encode($jsondata);
+        }
+    }
+
+    public function deleteMember(){
+        $this->load->model('Model_Committee');
+        $jsondata = array();
+        $data = array(
+            'ec_memberid' => $this->input->post('ec_memberid')
+        );
+
+        if($data['ec_memberid']==null){
+            redirect('home', 'refresh');
+        }
+
+        $delete =  $this->Model_Committee->deleteMember($data['ec_memberid']);
+        if($delete == true){
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = "Eliminado correctamente";
+            $jsondata["details"] = "OK";
+        }
+        else{
+            $jsondata["code"] = 500;
+            $jsondata["msg"] = "Error en el registro";
+            $jsondata["details"] = "OK";
+        }
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
 
 

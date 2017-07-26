@@ -9,7 +9,7 @@
 
 
 <!-- Team Members -->
-<div class="container"
+<div class="container">
 <div class="row">
     <div class="col-lg-12">
         <h2 class="page-header">Comité Editorial</h2>

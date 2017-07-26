@@ -115,7 +115,7 @@ $(function() {
             }
 
         ]
-    });
+    }); // FIN D
 
 
 });
@@ -212,7 +212,6 @@ function deleteCategory(categoryid) {
                             swal("Eliminado!", "El registro se elimino correctamente", "success");
                             $('#tbCategoria').dataTable().api().ajax.reload();
                             $('#categoryid').val('');
-                            $('#modalCategory').modal("toggle");
                         } else {
                             $.growl.error({message: data.msg});
                         }

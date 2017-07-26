@@ -23,10 +23,10 @@
         <div class="col-lg-12">
             <h1 class="page-header">Nuevo Miembro <small>Comité Editorial</small></h1>
             <ol class="breadcrumb">
+                <li class="active">Nuevo Miembro</li>
                 <li>
-                    <?php echo anchor('/user/users_new', 'Nuevo Miembro', 'class="link-class"') ?>
+                    <?php echo anchor('/committee/members', 'Consulta de miembros del comité', 'class="link-class"') ?>
                 </li>
-                <li class="active">Consulta de miembros del comité</li>
 
             </ol>
         </div>

@@ -28,7 +28,7 @@ class Model_Committee extends CI_Model{
         return true;
     }
 
-    public function deleteECMember($id){
+    public function deleteMember($id){
         $this->db->where('ec_memberid', $id);
         $this->db->delete($this->table);
         return true;
