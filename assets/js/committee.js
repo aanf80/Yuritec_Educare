@@ -99,6 +99,39 @@ $(function () {
         }
     });//FIN DE FORMULARIO DE NUEVO MIEMBRO
 
+    $('#frmChangeMemberPhoto').validate({
+        rules:{
+            ec_photo:{
+                required: true
+            }
+        },
+        messages:{
+            ec_photo:{
+                required: "Necesita seleccionar una foto de perfil"
+            }
+        },
+        highlight: function (element){
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function (element){
+            $(element).closest('.form-group').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'alert-danger',
+        errorPlacement: function(error, element){
+            if(element.parent('.input-group').length){
+                error.insertAfter(element.parent());
+            }else{
+                error.insertAfter(element);
+            }
+        },
+        submitHandler: function(form){
+            changePhoto();
+            return false;
+        }
+    });//FIN DE FORMULARIO DE NUEVO MIEMBRO
+
+
 
 
     var table = $('#tbMembers').DataTable({
@@ -137,7 +170,7 @@ $(function () {
                     str = "<div align='center' >";
                     str +="<button class='btn btn-success' ><i class=\"glyphicon glyphicon-edit\"></i></button>";
                     str += "&nbsp;<button class='btn btn-danger' onClick='deleteMember(" + row['ec_memberid'] + ")'><i class=\"glyphicon glyphicon-trash\"></i> </button>";//trash
-                    str += "&nbsp;<button class='btn btn-warning' onClick='deleteCategory(" + row['categoryid'] + ")'><i class=\"glyphicon glyphicon-camera\"></i></button>";//trash
+                    str += "&nbsp;<button class='btn btn-warning' onClick='showEditPhoto(" + row['ec_memberid'] + ")'><i class=\"glyphicon glyphicon-camera\"></i></button>";//trash
                     str += "</div>"
                     return str;
                 }
@@ -160,10 +193,13 @@ $(function () {
 
 
     $('#btnModificarMiembro').on('click', function () {
-
         $('#frmEditMember').submit();
-
     });
+
+    $('#btnCambiarFotoMiembro').on('click', function () {
+        $('#frmChangeMemberPhoto').submit();
+    });
+
 
 
 });
@@ -176,6 +212,11 @@ function showECMember(memberid,name,position,bio,facebook,twitter) {
     $('#ec_fbaccount2').val(facebook);
     $('#ec_twaccount2').val(twitter);
     $('#modalMembers').modal("show");
+}
+
+function showEditPhoto(memberid) {
+    $('#ec_memberid2').val(memberid);
+    $('#modalImageMember').modal("show");
 }
 
 function newMember(){
@@ -221,14 +262,7 @@ function updateMember() {
         {
             url: "/Yuritec_Educare/committee/updateMember",
             type: "post",
-            data: {
-                ec_memberid: $('#ec_memberid').val(),
-                ec_name: $('#ec_name2').val(),
-                ec_bio2: $('#ec_bio2').val(),
-                ec_position: $('#ec_position2').val(),
-                ec_fbaccount: $('#ec_fbaccount2').val(),
-                ec_twaccount: $('#ec_twaccount2').val()
-            }
+            data: $('#frmEditMember').serialize()
         }
     ).done(
         function (data) {
@@ -248,6 +282,39 @@ function updateMember() {
     );
 }
 
+
+function changePhoto() {
+
+    var form = $('form#frmChangeMemberPhoto')[0];
+    var data = new FormData(form);
+
+    $.ajax({
+        url: "/Yuritec_Educare/committee/changeMemberPhoto",
+        type: "post",
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false
+
+    }).done(
+        function(data){
+            console.log(data.code);
+            if(data.code === 200){
+                $.growl.notice({ message: data.msg });
+                $('#tbMembers').dataTable().api().ajax.reload();
+                $('#modalImageMember').modal("toggle");
+            }
+            else{
+                $.growl.error({ message: data.msg });
+            }
+        }
+    ).fail(
+        function(){
+            $.growl.error({ message: "El servidor no se encuentra disponible" });
+        }
+    );
+}
+
 function deleteMember(ec_memberid) {
 
     swal(
@@ -259,7 +326,6 @@ function deleteMember(ec_memberid) {
             closeOnCancel: false
         }, function (isConfirm) {
             if (isConfirm) {
-
                 var para = {
                     "ec_memberid": ec_memberid
                 };

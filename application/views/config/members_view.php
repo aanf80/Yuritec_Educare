@@ -71,7 +71,41 @@
                 </div>
             </div>
         </div>
+    </div> <!-- Fin modal editar miembro-->
+
+    <div id="modalImageMember" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h3>Cambiar Fotografía</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="frmChangeMemberPhoto" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="control-label" for="ec_photo2">Seleccione fotografía</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-picture"></i>
+                                </span>
+                                <input type="file" id="ec_photo2"  name="ec_photo">
+                            </div>
+
+                            <input type="hidden" id="ec_memberid2" name="ec_memberid">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="btnCambiarFotoMiembro" type="button" class="btn btn-sm btn-warning ">Guardar</button>
+                </div>
+            </div>
+        </div>
     </div>
+
+
 
 
 

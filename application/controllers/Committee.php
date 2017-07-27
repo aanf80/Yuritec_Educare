@@ -141,6 +141,48 @@ class Committee extends CI_Controller
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
 
+    public function changeMemberPhoto(){
+        $carpeta = 'assets/images';
+        if (!file_exists($carpeta)) {
+            mkdir($carpeta, 0777, true);
+        }
+        $config['upload_path'] = 'assets/images';
+        $config['allowed_types'] = 'gif|jpg|png';
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('ec_photo')) {
+            echo $this->upload->display_errors();
+        } else {
+            $datos = array('upload_data' => $this->upload->data());
+            $this->load->model('Model_Committee');
+            $jsondata = array();
+            $data = array(
+                'ec_memberid' => $this->input->post('ec_memberid'),
+                'ec_photo' => $datos['upload_data'] ['file_name']
+            );
+            if($data['ec_photo']==null){
+                redirect('home', 'refresh');
+            }
+            $update = $this->Model_Committee->updateMember(array('ec_memberid' => $this->input->post('ec_memberid')), $data);
+            if($update == true){
+                $jsondata["code"] = 200;
+                $jsondata["msg"] = "Actiualizado correctamente";
+                $jsondata["details"] = "OK";
+            }
+            else{
+                $jsondata["code"] = 500;
+                $jsondata["msg"] = "Error en el registro";
+                $jsondata["details"] = "OK";
+            }
+            header('Content-type: application/json; charset=utf-8');
+            header("Cache-Control: no-store");
+
+            echo json_encode($jsondata, JSON_FORCE_OBJECT);
+        }
+
+    }
+
     public function deleteMember(){
         $this->load->model('Model_Committee');
         $jsondata = array();

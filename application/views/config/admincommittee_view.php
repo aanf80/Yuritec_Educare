@@ -1,15 +1,6 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Armando_Navarro
- * Date: 24/07/2017
- * Time: 08:33 PM
- */
-?>
-
-<?php
-/**
- * Created by PhpStorm.
  * User: Concurso18
  * Date: 12/06/2017
  * Time: 01:46 PM
