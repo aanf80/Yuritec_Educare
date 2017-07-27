@@ -24,6 +24,56 @@
         </div>
     </div>
 
+    <div id="modalMembers" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h3>Modificar Miembros</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="frmEditMember">
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <!-- Datos Personales-->
+                            <input  type="hidden" class="form-control" id="ec_memberid" name="ec_memberid">
+
+                            <label class="control-label">Nombre</label>
+                            <input type="text" class="form-control" id="ec_name2" name="ec_name">
+                            <div class="help-block"></div>
+
+                            <label class="control-label">Puesto</label>
+                            <input type="text" class="form-control" id="ec_position2" name="ec_position">
+                            <div class="help-block"></div>
+
+                            <label for="resumen">Resumen biográfico</label>
+                            <textarea name="ec_bio" id="ec_bio2" rows="6" class="form-control" placeholder="Ej. Departamento y Rango"></textarea>
+                            <div class="help-block"></div>
+
+                            <label class="control-label">Cuenta de Facebook</label>
+                            <input type="text" class="form-control" id="ec_fbaccount2" name="ec_fbaccount">
+                            <div class="help-block"></div>
+
+                            <label class="control-label">Cuenta de Twitter</label>
+                            <input type="text" class="form-control" id="ec_twaccount2" name="ec_twaccount">
+                            <div class="help-block"></div>
+
+
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="btnModificarMiembro" type="button" class="btn btn-sm btn-warning ">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <div class="row">
         <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">

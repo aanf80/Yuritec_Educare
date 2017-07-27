@@ -38,6 +38,7 @@
             <div class="col-lg-6">
 
                 <!-- Datos Personales-->
+
                 <label class="control-label">Nombre</label>
                 <input type="text" class="form-control" id="ec_name" name="ec_name">
                 <div class="help-block"></div>
@@ -63,7 +64,6 @@
                 <label class="control-label">Cuenta de Twitter</label>
                 <input type="text" class="form-control" id="ec_twaccount" name="ec_twaccount">
                 <div class="help-block"></div>
-
 
             </div> <!-- tamaño de pantalla-->
 

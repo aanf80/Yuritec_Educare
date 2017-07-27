@@ -23,7 +23,7 @@ class Model_Committee extends CI_Model{
         $query=$this->db->get();
         return $query->result();
     }
-    public function updateContact($where,$data){// U
+    public function updateMember($where,$data){// U
         $this->db->update($this->table, $data, $where);
         return true;
     }

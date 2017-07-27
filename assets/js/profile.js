@@ -98,9 +98,6 @@ $(function () {
 
     });
 
-
-
-
     $('#btnEditarProfile').on('click', function () {
         $.ajax({
             url: '/Yuritec_Educare/user/getUserById',

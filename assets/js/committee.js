@@ -53,9 +53,55 @@ $(function () {
             newMember();
             return false;
         }
-    });
+    });//FIN DE FORMULARIO DE NUEVO MIEMBRO
 
-    $('#tbMembers').DataTable({
+    $('#frmEditMember').validate({
+        rules:{
+
+            ec_name:{
+                required: true
+            },
+            ec_position:{
+                required: true,
+            }
+        },
+        messages:{
+
+            ec_name: {
+                minlength: "Introduzca al menos tres caracteres",
+                maxlength: "Introduzca máximo 20 caracteres",
+                required: "Capture el nombre del nuevo miembro"
+            },
+            ec_position: {
+                minlength: "Introduzca al menos tres caracteres",
+                maxlength: "Introduzca máximo 20 caracteres",
+                required: "Capture el puesto del nuevo miembro"
+            }
+        },
+        highlight: function (element){
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function (element){
+            $(element).closest('.form-group').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'alert-danger',
+        errorPlacement: function(error, element){
+            if(element.parent('.input-group').length){
+                error.insertAfter(element.parent());
+            }else{
+                error.insertAfter(element);
+            }
+        },
+        submitHandler: function(form){
+            updateMember();
+            return false;
+        }
+    });//FIN DE FORMULARIO DE NUEVO MIEMBRO
+
+
+
+    var table = $('#tbMembers').DataTable({
         responsive: true,
         language:{
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
@@ -89,7 +135,7 @@ $(function () {
             {
                 data: function (row) {
                     str = "<div align='center' >";
-                    str +="<button class='btn btn-success' onClick='showCategory(" + row['categoryid'] + ",\"" + row['categoryname'] + "\")'><i class=\"glyphicon glyphicon-edit\"></i></button>";
+                    str +="<button class='btn btn-success' ><i class=\"glyphicon glyphicon-edit\"></i></button>";
                     str += "&nbsp;<button class='btn btn-danger' onClick='deleteMember(" + row['ec_memberid'] + ")'><i class=\"glyphicon glyphicon-trash\"></i> </button>";//trash
                     str += "&nbsp;<button class='btn btn-warning' onClick='deleteCategory(" + row['categoryid'] + ")'><i class=\"glyphicon glyphicon-camera\"></i></button>";//trash
                     str += "</div>"
@@ -99,10 +145,38 @@ $(function () {
             }
 
         ]
+    });//FIN DATATABE
+
+    $('#tbMembers tbody').on('click', '.btn-success', function () {
+        if (table.row(this).child.isShown()) {
+            var data = table.row(this).data();
+        } else {
+            var data = table.row($(this).closest('tr')).data();
+        }
+
+        showECMember(data[Object.keys(data)[0]], data[Object.keys(data)[1]], data[Object.keys(data)[2]], data[Object.keys(data)[3]], data[Object.keys(data)[5]], data[Object.keys(data)[6]]);
+
+    });//funcion de botones de datatable
+
+
+    $('#btnModificarMiembro').on('click', function () {
+
+        $('#frmEditMember').submit();
+
     });
+
 
 });
 
+function showECMember(memberid,name,position,bio,facebook,twitter) {
+    $('#ec_memberid').val(memberid);
+    $('#ec_name2').val(name);
+    $('#ec_bio2').val(bio);
+    $('#ec_position2').val(position);
+    $('#ec_fbaccount2').val(facebook);
+    $('#ec_twaccount2').val(twitter);
+    $('#modalMembers').modal("show");
+}
 
 function newMember(){
     var form = $('form#frmCommittee')[0];
@@ -142,7 +216,37 @@ function newMember(){
     );
 }
 
+function updateMember() {
+    $.ajax(
+        {
+            url: "/Yuritec_Educare/committee/updateMember",
+            type: "post",
+            data: {
+                ec_memberid: $('#ec_memberid').val(),
+                ec_name: $('#ec_name2').val(),
+                ec_bio2: $('#ec_bio2').val(),
+                ec_position: $('#ec_position2').val(),
+                ec_fbaccount: $('#ec_fbaccount2').val(),
+                ec_twaccount: $('#ec_twaccount2').val()
+            }
+        }
+    ).done(
+        function (data) {
 
+            if (data.code == 200) {
+                $.growl.notice({message: data.msg});
+                $('#tbMembers').dataTable().api().ajax.reload();
+                $('#modalMembers').modal("toggle");
+            } else {
+                $.growl.error({message: data.msg});
+            }
+        }
+    ).fail(
+        function () {
+            $.growl.error({message: "El servidor no está disponible"});
+        }
+    );
+}
 
 function deleteMember(ec_memberid) {
 

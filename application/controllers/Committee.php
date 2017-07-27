@@ -111,6 +111,36 @@ class Committee extends CI_Controller
         }
     }
 
+    public function updateMember(){
+        $this->load->model('Model_Committee');
+        $jsondata = array();
+        $data = array(
+            'ec_memberid' => $this->input->post('ec_memberid'),
+            'ec_name' => $this->input->post('ec_name'),
+            'ec_position' => $this->input->post('ec_position'),
+            'ec_bio' => $this->input->post('ec_bio'),
+            'ec_fbaccount' => $this->input->post('ec_fbaccount'),
+            'ec_twaccount' => $this->input->post('ec_twaccount')
+        );
+        if($data['ec_name']==null){
+            redirect('home', 'refresh');
+        }
+        $update = $this->Model_Committee->updateMember(array('ec_memberid' => $this->input->post('ec_memberid')), $data);
+        if($update == true){
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = "Actiualizado correctamente";
+            $jsondata["details"] = "OK";
+        }
+        else{
+            $jsondata["code"] = 500;
+            $jsondata["msg"] = "Error en el registro";
+            $jsondata["details"] = "OK";
+        }
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata, JSON_FORCE_OBJECT);
+    }
+
     public function deleteMember(){
         $this->load->model('Model_Committee');
         $jsondata = array();
