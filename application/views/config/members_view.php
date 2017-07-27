@@ -115,6 +115,7 @@
                 <thead>
                 <tr>
                     <th>Clave</th>
+                    <th>Fotografía</th>
                     <th>Nombre</th>
                     <th>Puesto</th>
                     <th>Descripción</th>

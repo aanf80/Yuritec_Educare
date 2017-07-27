@@ -150,6 +150,13 @@ $(function () {
             {
                 data:"ec_memberid"
             },
+            {data: function (row) {
+                str = "<div align = 'center'>";
+                str += "&nbsp <img src='/Yuritec_Educare/assets/images/" + row['ec_photo'] + "' width='100' height='100'>";
+                str += "</div>"
+                return str;
+            }
+            },
             {
                 data:"ec_name"
             },

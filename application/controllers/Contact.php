@@ -18,8 +18,10 @@ class Contact extends CI_Controller
 
     public function index()
     {
+        $this->load->model('Model_Contact');
+        $data['contact'] = $this->Model_Contact->getContact();
         $this->load->view('header');
-        $this->load->view('contact_view');
+        $this->load->view('contact_view',$data);
         $this->load->view('footer');
     }
 

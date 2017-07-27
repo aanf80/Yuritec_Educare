@@ -177,7 +177,6 @@ class Committee extends CI_Controller
             }
             header('Content-type: application/json; charset=utf-8');
             header("Cache-Control: no-store");
-
             echo json_encode($jsondata, JSON_FORCE_OBJECT);
         }
 

@@ -23,24 +23,33 @@
             <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3712.691934808465!2d-104.86708748592687!3d21.480601077577123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842737499a6b4f7d%3A0x35752706336de29a!2sInstituto+Tecnologico+de+Tepic!5e0!3m2!1sen!2smx!4v1488425951200"></iframe>
         </div>
         <!-- Contact Details Column -->
-        <div class="col-md-4">
-            <h3>Detalles de contacto</h3>
-            <p>
-                Av. Tecnológico # 2595, Col. Lagos Del Country. <br>Tepic, Nayarit. México. C.P. 63175<br>
-            </p>
-            <p><i class="fa fa-phone"></i>
-                <abbr title="Telefono">P</abbr>:(311) 211 94 00 </p>
-            <p><i class="fa fa-envelope-o"></i>
-                <abbr title="Correo electrónico">E</abbr>: <a href="mailto:comunicacion@ittepic.edu.mx">comunicacion@ittepic.edu.mx</a>
-            </p>
-            <p><i class="fa fa-clock-o"></i>
-                <abbr title="Horario de atención">H</abbr>: Lunes - Viernes: 9:00 AM a 3:00 PM</p>
-            <ul class="list-unstyled list-inline list-social-icons">
-                <li>
-                    <a href="https://www.facebook.com/Tecnol%C3%B3gico-de-Tepic-Comunicaci%C3%B3n-1637242433180942/"><i class="fa fa-facebook-square fa-2x"></i></a>
-                </li>
-            </ul>
-        </div>
+
+        <?php
+        //if($magazines != false){
+        foreach ($contact as $con) { ?>
+            <div class="col-md-4">
+                <h3>Detalles de contacto</h3>
+                <p>
+                    <?php echo $con->address ?>
+                </p>
+                <p><i class="fa fa-phone"></i>
+                    <abbr title="Telefono">P</abbr>:<?php echo $con->phone ?>  Ext. <?php echo $con->extension ?>  </p>
+                <p><i class="fa fa-envelope-o"></i>
+                    <abbr title="Correo electrónico">E</abbr>: <a href="mailto:comunicacion@ittepic.edu.mx">comunicacion@ittepic.edu.mx</a>
+                </p>
+                <p><i class="fa fa-clock-o"></i>
+                    <abbr title="Horario de atención">H</abbr>: <?php echo $con->schedule ?></p>
+                <ul class="list-unstyled list-inline list-social-icons">
+                    <li>
+                        <a href="https://www.facebook.com/Tecnol%C3%B3gico-de-Tepic-Comunicaci%C3%B3n-1637242433180942/"><i
+                                class="fa fa-facebook-square fa-2x"></i></a>
+                    </li>
+                </ul>
+            </div>
+
+            <?php
+        }
+        ?>
     </div>
     <!-- /.row -->
 
