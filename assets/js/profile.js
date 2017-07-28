@@ -90,11 +90,49 @@ $(function () {
             updateProfile();
             return false;
         }
-    });
+    }); //FIN DE FORMULARIO EDITAR PERFIL
+
+    $('#frmChangeProfilePhoto').validate({
+        rules:{
+            photo:{
+                required: true
+            }
+        },
+        messages:{
+            photo:{
+                required: "Necesita seleccionar una foto de perfil"
+            }
+        },
+        highlight: function (element){
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function (element){
+            $(element).closest('.form-group').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'alert-danger',
+        errorPlacement: function(error, element){
+            if(element.parent('.input-group').length){
+                error.insertAfter(element.parent());
+            }else{
+                error.insertAfter(element);
+            }
+        },
+        submitHandler: function(form){
+            changePhoto();
+            return false;
+        }
+    });//FIN DE FORMULARIO DE NUEVO MIEMBRO
 
     $('#btnModificarProfile').on('click', function () {
 
         $('#frmEditProfile').submit();
+
+    });$
+
+    ('#btnCambiarFotoPerfil').on('click', function () {
+
+        $('#frmChangeProfilePhoto').submit();
 
     });
 
@@ -111,6 +149,21 @@ $(function () {
                         row['neighborhood'],row['zipcode'],row['city'],row['state'],row['country'],row['email'],row['password'],row['sign'],row['position'],
                         row['institute'],row['initials'], row['roleid'],row['bio'],row['status'],row['registerdate'])
 
+                });
+        });
+
+    });
+
+    $('#btnEditarFotoPerfil').on('click', function () {
+        $.ajax({
+            url: '/Yuritec_Educare/user/getUserById',
+            type: 'GET',
+            dataType: 'json'
+        }).done(function (json){
+
+            if(json.code===200)
+                $.each(json.msg, function(i,row){
+                    showEditPhoto(row['userid'])
                 });
         });
 
@@ -152,6 +205,12 @@ function showProfile(userid, username, lastname, maternalsurname,gender,address,
 
     $('#modalProfile').modal("show");
 }
+
+function showEditPhoto(memberid) {
+    $('#userid2').val(memberid);
+    $('#modalImageProfile').modal("show");
+}
+
 function updateProfile() {
 
     $.ajax(
@@ -205,6 +264,37 @@ function updateProfile() {
     ).fail(
         function () {
             $.growl.error({message: "El servidor no está disponible"});
+        }
+    );
+}
+
+function changePhoto() {
+
+    var form = $('form#frmChangeProfilePhoto')[0];
+    var data = new FormData(form);
+
+    $.ajax({
+        url: "/Yuritec_Educare/user/changeUserPhoto",
+        type: "post",
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false
+
+    }).done(
+        function(data){
+            console.log(data.code);
+            if(data.code === 200){
+                $('#modalImageProfile').modal("toggle");
+                location.reload();
+            }
+            else{
+                $.growl.error({ message: data.msg });
+            }
+        }
+    ).fail(
+        function(){
+            $.growl.error({ message: "El servidor no se encuentra disponible" });
         }
     );
 }

@@ -234,16 +234,6 @@
 
                             <!-- Sexta fila-->
                             <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label class="control-label" for="photo2">Fotografía:</label>
-                                <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-picture"></i>
-                                </span>
-                                    <input class="form-control" type="file" id="photo2" name="photo" ">
-                                </div>
-                            </div>
-                            <!-- Séptima fila-->
-                            <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label class="control-label" for="country2">País</label>
                                 <div class="input-group">
                                 <span class="input-group-addon">
@@ -265,14 +255,48 @@
                     </form>
                 </div>
 
-
-
                 <div class="modal-footer">
                     <button id="btnModificarProfile" type="button" class="btn btn-sm btn-warning ">Guardar</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Fin de modal Editar Usuario-->
+
+    <div id="modalImageProfile" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h3>Cambiar Fotografía</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="frmChangeProfilePhoto" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="control-label" for="photo2">Seleccione fotografía</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-picture"></i>
+                                </span>
+                                <input type="file" id="photo2"  name="photo">
+                            </div>
+
+                            <input type="hidden" id="userid2" name="userid">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="btnCambiarFotoPerfil" type="button" class="btn btn-sm btn-warning ">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin de modal de cambiar foto-->
+
 
     <div class="row">
         <?php foreach($user as $userdata) { ?>
@@ -282,7 +306,8 @@
                 <img src="<?php echo base_url('assets/images/').$userdata->photo;  ?>" class="img-responsive" width="1600" height="1600"/>
                 <br>
                 <br>
-                <button id="btnEditarProfile" class="btn btn-warning btn-block">Editar perfil</button>
+                <button id="btnEditarProfile" class="btn btn-warning btn-block"><span class="glyphicon glyphicon-edit"></span> Editar perfil</button>
+                <button id="btnEditarFotoPerfil" class="btn btn-warning btn-block"><span class="glyphicon glyphicon-camera"></span> Cambiar foto de perfil</button>
             </div>
 
             <div class="col-lg-9 col-md-6 col-sm-6 col-xs-12">

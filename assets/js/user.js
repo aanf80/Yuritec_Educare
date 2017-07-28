@@ -233,6 +233,49 @@ $(function () {
 
     });
 
+    $('#btnCambiarFotoUsuario').on('click', function () {
+
+        $('#frmChangeUserPhoto').submit();
+
+    });
+
+
+    $('#frmChangeUserPhoto').validate({
+        rules:{
+            photo:{
+                required: true
+            }
+        },
+        messages:{
+            photo:{
+                required: "Necesita seleccionar una foto de perfil"
+            }
+        },
+        highlight: function (element){
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function (element){
+            $(element).closest('.form-group').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'alert-danger',
+        errorPlacement: function(error, element){
+            if(element.parent('.input-group').length){
+                error.insertAfter(element.parent());
+            }else{
+                error.insertAfter(element);
+            }
+        },
+        submitHandler: function(form){
+            changePhoto();
+            return false;
+        }
+    });//FIN DE FORMULARIO DE NUEVO MIEMBRO
+
+
+
+
+
 // FIN SECCION FORMULARIO MODAL
 
     var table = $('#tbUsers').DataTable({
@@ -308,6 +351,7 @@ $(function () {
                     str = "<div align='left'>";
                     str += "<button id='btnEditar' class='btn btn-success'><i class=\"glyphicon glyphicon-edit\"></i></button>";
                     str += "&nbsp;<button id='btnBorrar' class='btn btn-danger' onClick='deleteUser(" + row['userid'] + ")'><i class=\"glyphicon glyphicon-trash\"></i> </button>";//trash
+                    str += "&nbsp;<button  class='btn btn-warning' onClick='showEditPhoto(" + row['userid'] + ")'><i class=\"glyphicon glyphicon-camera\"></i> </button>";//trash
                     str += "</div>"
                     return str;
                 }
@@ -381,6 +425,15 @@ function newUser() {
     );
 }
 
+
+
+
+
+function showEditPhoto(userid) {
+    $('#userid2').val(userid);
+    $('#modalImageUser').modal("show");
+}
+
 function showUser(userid, username, lastname, maternalsurname, gender, address, streetnumber, neighborhood, zipcode,
                   city, state, country, email, password, sign, position, institute, initials, roleid, photo, bio, status, date) {
     $('#userid').val(userid);
@@ -433,6 +486,37 @@ function updateUser() {
     ).fail(
         function () {
             $.growl.error({message: "El servidor no está disponible"});
+        }
+    );
+}
+
+function changePhoto() {
+
+    var form = $('form#frmChangeImagePhoto')[0];
+    var data = new FormData(form);
+
+    $.ajax({
+        url: "/Yuritec_Educare/user/changeUserPhoto",
+        type: "post",
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false
+
+    }).done(
+        function(data){
+            console.log(data.code);
+            if(data.code === 200){
+                $('#modalImageUser').modal("toggle");
+                location.reload();
+            }
+            else{
+                $.growl.error({ message: data.msg });
+            }
+        }
+    ).fail(
+        function(){
+            $.growl.error({ message: "El servidor no se encuentra disponible" });
         }
     );
 }

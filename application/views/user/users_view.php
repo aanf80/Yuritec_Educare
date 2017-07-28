@@ -205,17 +205,6 @@
                                 </div>
                             </div>
 
-                            <!-- Sexta fila-->
-                           <!-- <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
-
-                                <label class="control-label" for="photo2">Enlace de fotografía:</label>
-                                <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-picture"></i>
-                                </span>
-                                    <input class="form-control" id="photo2" name="photo" placeholder="Fotografía">
-                                </div>
-                            </div>-->
                             <!-- Séptima fila-->
                             <div class="form-group col col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label class="control-label" for="roleid2">Rol de usuario</label>
@@ -246,9 +235,6 @@
 
                     </form>
                 </div>
-
-
-
                 <div class="modal-footer">
                     <button id="btnModificarUser" type="button" class="btn btn-sm btn-warning ">Guardar</button>
                 </div>
@@ -256,7 +242,42 @@
         </div>
     </div>
 
-    <!-- Aqui inicia el formulario-->
+    <!-- Aqui Termina el formulario Editar Usuario-->
+
+    <div id="modalImageUser" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h3>Cambiar Fotografía</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="frmChangeUserPhoto" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="control-label" for="photo2">Seleccione fotografía</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-picture"></i>
+                                </span>
+                                <input type="file" id="photo2"  name="photo">
+                            </div>
+
+                            <input type="hidden" id="userid2" name="userid">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="btnCambiarFotoUsuario" type="button" class="btn btn-sm btn-warning ">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin de modal de cambiar foto-->
+
+
 
     <br/>
     <div class="row">

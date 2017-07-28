@@ -127,9 +127,9 @@ $(function () {
         },
         submitHandler: function(form){
             changePhoto();
-            return false;
+
         }
-    });//FIN DE FORMULARIO DE NUEVO MIEMBRO
+    });//FIN DE FORMULARIO DE CAMBIAR FOTO
 
 
 

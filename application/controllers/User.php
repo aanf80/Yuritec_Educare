@@ -275,6 +275,48 @@ class User extends CI_Controller
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
 
+    public function changeUserPhoto(){
+
+        $carpeta = 'assets/images';
+        if (!file_exists($carpeta)) {
+            mkdir($carpeta, 0777, true);
+        }
+        $config['upload_path'] = 'assets/images';
+        $config['allowed_types'] = 'gif|jpg|png';
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('photo')) {
+            echo $this->upload->display_errors();
+        } else {
+            $datos = array('upload_data' => $this->upload->data());
+            $this->load->model('Model_User');
+            $jsondata = array();
+            $data = array(
+                'userid' => $this->input->post('userid'),
+                'photo' => $datos['upload_data'] ['file_name']
+            );
+            if($data['photo']==null){
+                redirect('home', 'refresh');
+            }
+            $update = $this->Model_User->updateUser(array('userid' => $this->input->post('userid')), $data);
+            if($update == true){
+                $jsondata["code"] = 200;
+                $jsondata["msg"] = "Actiualizado correctamente";
+                $jsondata["details"] = "OK";
+            }
+            else{
+                $jsondata["code"] = 500;
+                $jsondata["msg"] = "Error en el registro";
+                $jsondata["details"] = "OK";
+            }
+            header('Content-type: application/json; charset=utf-8');
+            header("Cache-Control: no-store");
+            echo json_encode($jsondata, JSON_FORCE_OBJECT);
+        }
+
+    }
+
     public function deleteUser()
     {
         $this->load->model('Model_User');
