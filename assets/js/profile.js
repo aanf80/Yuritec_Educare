@@ -212,12 +212,11 @@ function showEditPhoto(memberid) {
 }
 
 function updateProfile() {
-
     $.ajax(
         {
             url:"/Yuritec_Educare/user/updateUser" ,
             type: "post",
-            data: /*$('#frmEditProfile').serialize()*/
+            data:
                 {
                     userid: $userid,
                     username : $('#username2').val(),
@@ -231,7 +230,6 @@ function updateProfile() {
                     institute: $('#institute2').val(),
                     initials: $('#initials2').val(),
                     bio: $('#bio2').val(),
-                    //photo: $('#photo2').val(),
                     address: $('#address2').val(),
                     streetnumber: $('#streetnumber2').val(),
                     neighborhood: $('#neighborhood2').val(),

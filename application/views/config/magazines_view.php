@@ -54,6 +54,38 @@
             </div>
         </div>
     </div>
+    <div id="modalImageCover" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h3>Cambiar Portada de la revista</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="frmChangeCoverPhoto" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="control-label" for="cover2">Seleccione fotografía</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-picture"></i>
+                                </span>
+                                <input type="file" id="cover2"  name="cover">
+                            </div>
+
+                            <input type="hidden" id="magazineid3" name="magazineid">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="btnCambiarFotoUsuario" type="button" class="btn btn-sm btn-warning ">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin de modal de cambiar foto-->
 
 
     <form id="frmEditMagazine" enctype="multipart/form-data">
@@ -86,16 +118,9 @@
                 </select>
                 <div class="help-block"></div>
 
-                <div class="form-group">
-                    <label for="photo">Seleccionar foto de portada</label>
-                    <input type="file" id="cover2"  name="cover">
-                </div>
-                <div class="help-block"></div>
+                <button id="btnChangeCoverPhoto" class="btn btn-warning"><i class="glyphicon glyphicon-picture"></i> Cambiar foto de portada</button>
+                &nbsp; <button id="btnChangePDF" class="btn btn-warning"><i class="glyphicon glyphicon-cloud-upload"></i> Agregar/Cambiar archivo PDF</button>
 
-                <div class="form-group">
-                    <label for="photo">Seleccionar revista PDF de la revista</label>
-                    <input type="file" id="file2"  name="file">
-                </div>
                 <div class="help-block"></div>
 
                 <label class="control-label">Estado</label>
@@ -109,6 +134,10 @@
 
 
             </div> <!-- tamaño de pantalla-->
+
+            <div class="col-lg-6">
+                <img src="<?php echo base_url('assets/img/imgabout.png'); ?>" class="img-responsive" width="450" height=450" alt=""/>
+            </div>
 
         </div> <!-- form group-->
 

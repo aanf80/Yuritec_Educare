@@ -492,7 +492,7 @@ function updateUser() {
 
 function changePhoto() {
 
-    var form = $('form#frmChangeImagePhoto')[0];
+    var form = $('form#frmChangeUserPhoto')[0];
     var data = new FormData(form);
 
     $.ajax({
@@ -507,8 +507,10 @@ function changePhoto() {
         function(data){
             console.log(data.code);
             if(data.code === 200){
+                $.growl.notice({message: data.msg});
+                $('#tbUsers').dataTable().api().ajax.reload();
                 $('#modalImageUser').modal("toggle");
-                location.reload();
+
             }
             else{
                 $.growl.error({ message: data.msg });
