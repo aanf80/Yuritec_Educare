@@ -53,26 +53,29 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4><i class="fa fa-fw fa-check"></i>Convocatorias</h4>
+                    <h4><i class="fa fa-fw fa-university"></i>Instituto Tecnológico de Tepic</h4>
                 </div>
                 <div class="panel-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla
-                        aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus
-                        eveniet incidunt dicta nostrum quod?</p>
-                    <a href="#" class="btn btn-default">Learn More</a>
+                    <div align="center">
+                        <img src="http://www.ittepic.edu.mx/images/escudo_itt_200x200.png">
+                    </div>
+
+                    <a href="http://ittepic.edu.mx/" class="btn btn-warning">Ir al sitio</a>
+
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4><i class="fa fa-fw fa-gift"></i>Noticias</h4>
+                    <h4><i class="fa fa-fw fa-university"></i>Tecnológico Nacional de México</h4>
                 </div>
                 <div class="panel-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla
-                        aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus
-                        eveniet incidunt dicta nostrum quod?</p>
-                    <a href="#" class="btn btn-warning">Learn More</a>
+                    <div align="center">
+                        <img src="https://i2.wp.com/itstacambaro.edu.mx/archivo/uploads/2017/05/tecn-nuevo-logo.png?resize=706%2C390" height="200" width="300">
+                    </div>
+
+                    <a href="http://www.tecnm.mx/" class="btn btn-warning">Ir al sitio</a>
                 </div>
             </div>
         </div>
@@ -82,7 +85,7 @@
                     <h4><i class="fa fa-fw fa-compass"></i>Academia Journals</h4>
                 </div>
                 <div class="panel-body">
-                    <p>El Instituto Tecnológico de Tepic será sede del Congreso Internacional de Investigación Academia Journals Tepic 2018 que se realizará del 14 al 16 de febrero del 2018</p>
+                    <img src="http://static1.squarespace.com/static/55564587e4b0d1d3fb1eda6b/t/55c55db6e4b0760916a1277c/1501254981985/?format=1500w" height="200" width="300">
                     <a href="http://www.academiajournals.com/tepic" class="btn btn-warning">Ir al sitio</a>
                 </div>
             </div>
