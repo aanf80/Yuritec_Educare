@@ -54,6 +54,8 @@
             </div>
         </div>
     </div>
+
+
     <div id="modalImageCover" class="modal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -80,7 +82,40 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button id="btnCambiarFotoUsuario" type="button" class="btn btn-sm btn-warning ">Guardar</button>
+                    <button id="btnUploadCover" type="button" class="btn btn-sm btn-warning ">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin de modal de cambiar foto-->
+
+    <div id="modalUploadPDF" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h3>Subir archivo PDF de la revista</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="frmChangePDF" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="control-label" for="file2">Seleccione archivo PDF de la revista</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-picture"></i>
+                                </span>
+                                <input type="file" id="file2"  name="file">
+                            </div>
+
+                            <input type="hidden" id="magazineid4" name="magazineid">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="btnUploadPDF" type="button" class="btn btn-sm btn-warning ">Guardar</button>
                 </div>
             </div>
         </div>
@@ -117,14 +152,10 @@
                     <option>Agosto - Diciembre</option>
                 </select>
                 <div class="help-block"></div>
-
-                <button id="btnChangeCoverPhoto" class="btn btn-warning"><i class="glyphicon glyphicon-picture"></i> Cambiar foto de portada</button>
-                &nbsp; <button id="btnChangePDF" class="btn btn-warning"><i class="glyphicon glyphicon-cloud-upload"></i> Agregar/Cambiar archivo PDF</button>
-
                 <div class="help-block"></div>
 
                 <label class="control-label">Estado</label>
-                <select name="period" id="period2" class="form-control">
+                <select name="status" id="status2" class="form-control">
                     <option value="sin publicar">Sin Publicar</option>
                     <option value="publicada">Publicada</option>
 
@@ -146,6 +177,10 @@
 
     </form>
 
+    <button id="btnChangeCoverPhoto" class="btn btn-warning"><i class="glyphicon glyphicon-picture"></i> Cambiar foto de portada</button>
+    &nbsp; <button id="btnChangePDF" class="btn btn-warning"><i class="glyphicon glyphicon-cloud-upload"></i> Agregar/Cambiar archivo PDF</button>
+    <br/>
+    <br/>
     <button id="btnEditarRevista" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i> Editar</button>
     <button id="btnEliminarRevista" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Eliminar</button>
     <button id="btnVerArticulos" class="btn btn-warning"><i class="glyphicon glyphicon-file"></i> Ver artículos</button>

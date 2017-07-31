@@ -147,7 +147,7 @@ $(function () {
                 $.each(json.msg, function(i,row){
                     showProfile(row['userid'],row['username'],row['lastname'],row['maternalsurname'],row['gender'],row['address'],row['streetnumber'],
                         row['neighborhood'],row['zipcode'],row['city'],row['state'],row['country'],row['email'],row['password'],row['sign'],row['position'],
-                        row['institute'],row['initials'], row['roleid'],row['bio'],row['status'],row['registerdate'])
+                        row['institute'],row['initials'], row['roleid'],row['bio'],row['status'],row['registerdate']);
 
                 });
         });

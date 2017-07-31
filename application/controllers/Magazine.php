@@ -21,6 +21,14 @@ class Magazine extends CI_Controller
     public function index()
     {
 
+        $this->load->model('Categories');
+        $data['categories'] = $this->Categories->getCategories();
+
+        $this->load->model('Model_ArticleType');
+        $data['articletypes'] = $this->Model_ArticleType->getArticleTypes();
+
+
+
         $this->load->model('Model_Magazine');
 //se carga la biblioteca de pagincacion
         $this->load->library('pagination');
@@ -248,6 +256,10 @@ class Magazine extends CI_Controller
         $this->load->model('Categories');
         $data['categories'] = $this->Categories->getCategories();
 
+        $this->load->model('Model_ArticleType');
+        $data['articletypes'] = $this->Model_ArticleType->getArticleTypes();
+
+
         $data['magazineid'] = $magazineid;
 
         $this->load->model('Model_Article');
@@ -264,7 +276,88 @@ class Magazine extends CI_Controller
     }
 
 
+    public function changeCoverPhoto(){
 
+        $carpeta = 'assets/images';
+        if (!file_exists($carpeta)) {
+            mkdir($carpeta, 0777, true);
+        }
+        $config['upload_path'] = 'assets/images';
+        $config['allowed_types'] = 'gif|jpg|png';
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('cover')) {
+            echo $this->upload->display_errors();
+        } else {
+            $datos = array('upload_data' => $this->upload->data());
+            $this->load->model('Model_Magazine');
+            $jsondata = array();
+            $data = array(
+                'magazineid' => $this->input->post('magazineid'),
+                'cover' => $datos['upload_data'] ['file_name']
+            );
+            if($data['magazineid']==null){
+                redirect('home', 'refresh');
+            }
+            $update = $this->Model_Magazine->updateMagazine(array('magazineid' => $this->input->post('magazineid')), $data);
+            if($update == true){
+                $jsondata["code"] = 200;
+                $jsondata["msg"] = "Actiualizado correctamente";
+                $jsondata["details"] = "OK";
+            }
+            else{
+                $jsondata["code"] = 500;
+                $jsondata["msg"] = "Error en el registro";
+                $jsondata["details"] = "OK";
+            }
+            header('Content-type: application/json; charset=utf-8');
+            header("Cache-Control: no-store");
+            echo json_encode($jsondata, JSON_FORCE_OBJECT);
+        }
+
+    }
+    public function changePDF(){
+
+        $carpeta = 'assets/magazine';
+        if (!file_exists($carpeta)) {
+            mkdir($carpeta, 0777, true);
+        }
+        $config['upload_path'] = 'assets/images';
+        $config['allowed_types'] = 'pdf';
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('file')) {
+            echo $this->upload->display_errors();
+        } else {
+            $datos = array('upload_data' => $this->upload->data());
+            $this->load->model('Model_Magazine');
+            $jsondata = array();
+            $data = array(
+                'magazineid' => $this->input->post('magazineid'),
+                'file' => $datos['upload_data'] ['file_name']
+            );
+            if($data['magazineid']==null){
+                redirect('home', 'refresh');
+            }
+            $update = $this->Model_Magazine->updateMagazine(array('magazineid' => $this->input->post('magazineid')), $data);
+            if($update == true){
+                $jsondata["code"] = 200;
+                $jsondata["msg"] = "Actiualizado correctamente";
+                $jsondata["details"] = "OK";
+            }
+            else{
+                $jsondata["code"] = 500;
+                $jsondata["msg"] = "Error en el registro";
+                $jsondata["details"] = "OK";
+            }
+            header('Content-type: application/json; charset=utf-8');
+            header("Cache-Control: no-store");
+            echo json_encode($jsondata, JSON_FORCE_OBJECT);
+        }
+
+    }
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -365,9 +458,7 @@ class Magazine extends CI_Controller
             'date' => $this->input->post('date'),
             'status' => $this->input->post('status'),
             'period' => $this->input->post('period'),
-            'year' => $this->input->post('year'),
-            'file' => $this->input->post('file'),
-            'cover' => $this->input->post('cover')
+            'year' => $this->input->post('year')
         );
         if($data['volume']==null){
             redirect('home', 'refresh');

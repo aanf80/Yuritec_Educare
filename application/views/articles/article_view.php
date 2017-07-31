@@ -53,7 +53,7 @@
             <img class="img-responsive" src="http://placehold.it/900x300" alt="">
             <br/>
             <div class="fb-share-button" data-href="http://appempre-aanf.esy.es/Yuritec_Educare/magazine/article_view" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Compartir</a></div>
-           <br/>
+            <br/>
             <!-- Post Content -->
 
             <?php echo $art->content;?>
@@ -161,7 +161,27 @@
                 <!-- /.row -->
             </div>
 
-           </div>
+            <div class="well">
+                <h4>Tipos de artículo</h4>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="list-unstyled">
+
+                            <?php foreach($articletypes as $artype) { ?>
+                                <li><a href="<?php echo site_url('/magazine/articlesByCategory/' .$artype->article_typeid) ?>"><?php echo $artype->article_typename;  ?></a>
+                                </li>
+
+                                <?php
+                            }
+                            ?>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- /.row -->
+            </div>
+
+        </div>
 
     </div>
     <!-- /.row -->

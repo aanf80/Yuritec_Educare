@@ -82,8 +82,50 @@
                 <!-- /.input-group -->
             </div>
 
+            <div class="well">
+                <h4>Apartados Temáticos</h4>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="list-unstyled">
 
+                            <?php foreach($categories as $cat) { ?>
+                                <li><a href="<?php echo site_url('/magazine/articlesByCategory/' .$cat->categoryid) ?>"><?php echo $cat->categoryname;  ?></a>
+                                </li>
+
+                                <?php
+                            }
+                            ?>
+
+
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="well">
+                <h4>Tipos de artículo</h4>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="list-unstyled">
+
+                            <?php foreach($articletypes as $artype) { ?>
+                                <li><a href="<?php echo site_url('/magazine/articlesByCategory/' .$artype->article_typeid) ?>"><?php echo $artype->article_typename;  ?></a>
+                                </li>
+
+                                <?php
+                            }
+                            ?>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- /.row -->
+            </div>
         </div>
+
+
 
         <!-- Blog Sidebar Widgets Column -->
 

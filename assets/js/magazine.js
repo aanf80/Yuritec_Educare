@@ -50,7 +50,7 @@ $(function(){
 
                 if(json.code===200)
                     $.each(json.msg, function(i,row){
-                        showMagazine(row['volume'],row['number'],row['period'],row['year'],row['cover']);
+                        showMagazine(row['volume'],row['number'],row['period'],row['year'],row['cover'],row['status']);
                     });
             });
         }
@@ -96,6 +96,71 @@ $(function(){
         }
     });
 
+    $('#frmChangeCoverPhoto').validate({
+        rules:{
+            cover:{
+                required: true
+            }
+        },
+        messages:{
+            cover:{
+                required: "Necesita seleccionar una foto de perfil"
+            }
+        },
+        highlight: function (element){
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function (element){
+            $(element).closest('.form-group').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'alert-danger',
+        errorPlacement: function(error, element){
+            if(element.parent('.input-group').length){
+                error.insertAfter(element.parent());
+            }else{
+                error.insertAfter(element);
+            }
+        },
+        submitHandler: function(form){
+            changePhoto();
+            return false;
+        }
+    });//FIN DE FORMULARIO DE NUEVO MIEMBRO$
+
+     $('#frmChangePDF').validate({
+        rules:{
+            cover:{
+                required: true
+            }
+        },
+        messages:{
+            cover:{
+                required: "Necesita seleccionar un archivo PDF"
+            }
+        },
+        highlight: function (element){
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function (element){
+            $(element).closest('.form-group').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'alert-danger',
+        errorPlacement: function(error, element){
+            if(element.parent('.input-group').length){
+                error.insertAfter(element.parent());
+            }else{
+                error.insertAfter(element);
+            }
+        },
+        submitHandler: function(form){
+            changePDF();
+
+            return false;
+        }
+    });//FIN DE FORMULARIO DE NUEVO MIEMBRO
+
     var table =  $('#tbArticles').DataTable({
         responsive: true,
         language:{
@@ -134,7 +199,7 @@ $(function(){
 
     $('#btnVerArticulos').on('click', function () {
         $.ajax({
-            url: '/Yuritec_Educare/article/getArticlesByVolume/'+$('#magazineid2').val(),
+            url: '/Yuritec_Educare/article/getArticlesByVolume/'+$ID,
             type: 'GET',
             dataType: 'json'
         }).done(function (json){
@@ -168,28 +233,46 @@ $(function(){
     $('#btnEditarRevista').on('click', function () {
         updateMagazine();
     });
+    $('#btnChangeCoverPhoto').on('click', function () {
+        showCoverPhoto($('#magazineid2').val());
+    });
+    $('#btnChangePDF').on('click', function () {
+        showPDFFILE($('#magazineid2').val());
+    });
+    $('#btnUploadCover').on('click', function () {
+        $('#frmChangeCoverPhoto').submit();
+    });
 
-
-
+    $('#btnUploadPDF').on('click', function () {
+        $('#frmChangePDF').submit();
+    });
 
 });
 
-function showMagazine(volume,number,period,year,cover) {
+function showMagazine(volume,number,period,year,cover,status) {
     $('#volume2').val(volume);
     $('#number2').val(number);
     $('#period2').val(period);
     $('#year2').val(year);
+    $('#status2').val(status);
     $cover = cover;
 }
 
+function showCoverPhoto(magazineid){
+    $('#magazineid3').val(magazineid);
+    $('#modalImageCover').modal("show");
+}
+
+function showPDFFILE(magazineid){
+    $('#magazineid4').val(magazineid);
+    $('#modalUploadPDF').modal("show");
+}
 
 function cleanEditMagazine() {
     $('#volume2').val('');
     $('#number2').val('');
     $('#period2').val(0);
     $('#year2').val('');
-
-
 }
 
 
@@ -247,6 +330,7 @@ function updateMagazine(){
 
                 if (data.code == 200) {
                     $.growl.notice({message: data.msg});
+                    location.reload();
                 } else {
                     $.growl.error({message: data.msg});
                 }
@@ -259,6 +343,71 @@ function updateMagazine(){
     }
 }
 
+
+function changePhoto() {
+
+    var form = $('form#frmChangeCoverPhoto')[0];
+    var data = new FormData(form);
+
+    $.ajax({
+        url: "/Yuritec_Educare/magazine/changeCoverPhoto",
+        type: "post",
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false
+
+    }).done(
+        function(data){
+            console.log(data.code);
+            if(data.code === 200){
+                $.growl.notice({message: data.msg});
+                $('#modalImageCover').modal("toggle");
+                location.reload();
+
+            }
+            else{
+                $.growl.error({ message: data.msg });
+            }
+        }
+    ).fail(
+        function(){
+            $.growl.error({ message: "El servidor no se encuentra disponible" });
+        }
+    );
+}
+function changePDF() {
+
+    var form = $('form#frmChangePDF')[0];
+    var data = new FormData(form);
+
+    $.ajax({
+        url: "/Yuritec_Educare/magazine/changePDF",
+        type: "post",
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false
+
+    }).done(
+        function(data){
+            console.log(data.code);
+            if(data.code === 200){
+                $('#modalUploadPDF').modal("toggle");
+                $.growl.notice({message: data.msg});
+                location.reload();
+
+            }
+            else{
+                $.growl.error({ message: data.msg });
+            }
+        }
+    ).fail(
+        function(){
+            $.growl.error({ message: "El servidor no se encuentra disponible" });
+        }
+    );
+}
 
 function deleteMagazine(magazineid){
     if(magazineid == 0){
@@ -283,9 +432,9 @@ function deleteMagazine(magazineid){
                         }
                     ).done(
                         function (data) {
-                            //alert("Se realizó correctamente "+data.code);
+
                             if (data.code == 200) {
-                                //$.growl.notice({message: data.msg});
+                            //    $.growl.notice({message: data.msg});
                                 $.growl.notice({message: data.msg + " " + data.details});
                                 swal("Eliminado!", "La revista se eliminó correctamente", "success");
                                 location.reload();
@@ -360,48 +509,48 @@ function setMagazine(articleid) {
 
 function unsetMagazine() {
 
-        var revista = $('#magazineid2 option:selected').html();
-        var status = "Aprobado";
+    var revista = $('#magazineid2 option:selected').html();
+    var status = "Aprobado";
 
 
-        swal(
-            {
-                title: "Advertencia", text: "¿Estás seguro que deseas quitar este artículo a la revista "+revista+"?",
-                type: "warning", showCancelButton: true,
-                confirmButtonColor: "#FF0000", confirmButtonText: "Aceptar",
-                cancelButtonText: "Cancelar", closeOnConfirm: false,
-                closeOnCancel: false
-            }, function (isConfirm) {
-                if (isConfirm) {
+    swal(
+        {
+            title: "Advertencia", text: "¿Estás seguro que deseas quitar este artículo a la revista "+revista+"?",
+            type: "warning", showCancelButton: true,
+            confirmButtonColor: "#FF0000", confirmButtonText: "Aceptar",
+            cancelButtonText: "Cancelar", closeOnConfirm: false,
+            closeOnCancel: false
+        }, function (isConfirm) {
+            if (isConfirm) {
 
-                    $.ajax(
-                        {
-                            url: "/Yuritec_Educare/article/unsetMagazine",
-                            type: "post",
-                            data: {articleid: $('#articleid2').val() , status: status}
+                $.ajax(
+                    {
+                        url: "/Yuritec_Educare/article/unsetMagazine",
+                        type: "post",
+                        data: {articleid: $('#articleid2').val() , status: status}
+                    }
+                ).done(
+                    function (data) {
+
+                        if (data.code == 200) {
+
+                            $.growl.notice({message: data.msg + " " + data.details});
+                            swal("Agregado", "Se ha quitado el artículo correctamente", "success");
+                            $('#modalSelectedArticles').modal("toggle");
+                            $('#articleid2').html('');
+
+                        } else {
+                            $.growl.error({message: data.msg});
                         }
-                    ).done(
-                        function (data) {
-
-                            if (data.code == 200) {
-
-                                $.growl.notice({message: data.msg + " " + data.details});
-                                swal("Agregado", "Se ha quitado el artículo correctamente", "success");
-                                $('#modalSelectedArticles').modal("toggle");
-                                $('#articleid2').html('');
-
-                            } else {
-                                $.growl.error({message: data.msg});
-                            }
-                        }
-                    ).fail(
-                        function () {
-                            $.growl.error({message: "El servidor no está disponible :("});
-                        }
-                    );
-                } else {
-                    swal("Cancelado", "Acción Cancelada", "error");
-                }
-            });
+                    }
+                ).fail(
+                    function () {
+                        $.growl.error({message: "El servidor no está disponible :("});
+                    }
+                );
+            } else {
+                swal("Cancelado", "Acción Cancelada", "error");
+            }
+        });
 
 }
