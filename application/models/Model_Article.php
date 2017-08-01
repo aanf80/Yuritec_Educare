@@ -74,17 +74,31 @@ class Model_Article extends CI_Model
 
         return $query->result();
     }
-
-    public function getArticlesByCategory($category) //C
+    public function getArticlesByTheme($category) //C
     {
         $this->db->from($this->table);
         $this->db->where('categoryid', $category);
+        $this->db->where('magazineid != ',0,FALSE);
 
         $query = $this->db->get();
 
 
         return $query->result();
     }
+
+    public function getArticlesByCategory($id, $porpagina, $desde)
+{
+    $this->db->where('categoryid', $id);
+    $this->db->where('magazineid != ',0,FALSE);
+    $query = $this->db->get($this->table, $porpagina, $desde);
+
+    if ($query->num_rows() > 0) {
+        return $query->result();
+    } else {
+        return false;
+    }
+}
+
 
     public function getArticlesByStatus($status) //C
     {
@@ -113,7 +127,6 @@ class Model_Article extends CI_Model
 
     public function getArticlesByMagazine($id, $porpagina, $desde)
     {
-
         $this->db->where('magazineid', $id);
         $query = $this->db->get($this->table, $porpagina, $desde);
 

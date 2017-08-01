@@ -104,7 +104,7 @@
                             <label class="control-label" for="file2">Seleccione archivo PDF de la revista</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-picture"></i>
+                                    <i class="glyphicon glyphicon-file"></i>
                                 </span>
                                 <input type="file" id="file2"  name="file">
                             </div>
@@ -167,7 +167,7 @@
             </div> <!-- tamaño de pantalla-->
 
             <div class="col-lg-6">
-                <img src="<?php echo base_url('assets/img/imgabout.png'); ?>" class="img-responsive" width="450" height=450" alt=""/>
+                <img id="imgCover" src="" class="img-responsive" width="300" height=300" alt=""/>
             </div>
 
         </div> <!-- form group-->

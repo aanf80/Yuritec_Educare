@@ -2,7 +2,6 @@
  * Created by Concurso18 on 23/06/2017.
  */
 
-$cover = "";
 $ID=0;
 $articleid = 0;
 $(function(){
@@ -128,15 +127,17 @@ $(function(){
         }
     });//FIN DE FORMULARIO DE NUEVO MIEMBRO$
 
-     $('#frmChangePDF').validate({
+    $('#frmChangePDF').validate({
         rules:{
-            cover:{
-                required: true
+            file:{
+                required: true,
+                extension: "pdf"
             }
         },
         messages:{
-            cover:{
-                required: "Necesita seleccionar un archivo PDF"
+            file:{
+                required: "Necesita seleccionar un archivo PDF",
+                extension: "Sólo se aceptan archivos PDF"
             }
         },
         highlight: function (element){
@@ -216,6 +217,7 @@ $(function(){
 
         if( idmagazine == 0){
             $.growl.error({message: "No ha seleccionado alguna revista"});
+            $('#magazineid2').focus();
         }
         else{
             $('#modalSelectedArticles').modal("show");
@@ -255,17 +257,35 @@ function showMagazine(volume,number,period,year,cover,status) {
     $('#period2').val(period);
     $('#year2').val(year);
     $('#status2').val(status);
-    $cover = cover;
+    $('#imgCover').attr("src","/Yuritec_Educare/assets/images/"+cover);
 }
 
 function showCoverPhoto(magazineid){
-    $('#magazineid3').val(magazineid);
-    $('#modalImageCover').modal("show");
+    var idmagazine = $('#magazineid2').val();
+
+    if( idmagazine == 0){
+        $.growl.error({message: "No ha seleccionado alguna revista"});
+        $('#magazineid2').focus();
+    }
+    else{
+        $('#magazineid3').val(magazineid);
+        $('#modalImageCover').modal("show");
+        $('#magazineid2').focus();
+    }
+
 }
 
 function showPDFFILE(magazineid){
-    $('#magazineid4').val(magazineid);
-    $('#modalUploadPDF').modal("show");
+    var idmagazine = $('#magazineid2').val();
+
+    if( idmagazine == 0){
+        $.growl.error({message: "No ha seleccionado alguna revista"});
+        $('#magazineid2').focus();
+    }
+    else {
+        $('#magazineid4').val(magazineid);
+        $('#modalUploadPDF').modal("show");
+    }
 }
 
 function cleanEditMagazine() {
@@ -273,6 +293,7 @@ function cleanEditMagazine() {
     $('#number2').val('');
     $('#period2').val(0);
     $('#year2').val('');
+    $('#imgCover').attr("src","");
 }
 
 
@@ -317,6 +338,7 @@ function updateMagazine(){
 
     if( idmagazine == 0){
         $.growl.error({message: "No ha seleccionado alguna revista"});
+        $('#magazineid2').focus();
     }
     else{
         $.ajax(
@@ -412,6 +434,7 @@ function changePDF() {
 function deleteMagazine(magazineid){
     if(magazineid == 0){
         $.growl.error({message: "No ha seleccionado alguna revista"});
+        $('#magazineid2').focus();
     }
     else{
         swal(
@@ -434,7 +457,7 @@ function deleteMagazine(magazineid){
                         function (data) {
 
                             if (data.code == 200) {
-                            //    $.growl.notice({message: data.msg});
+                                //    $.growl.notice({message: data.msg});
                                 $.growl.notice({message: data.msg + " " + data.details});
                                 swal("Eliminado!", "La revista se eliminó correctamente", "success");
                                 location.reload();

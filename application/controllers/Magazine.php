@@ -98,6 +98,7 @@ class Magazine extends CI_Controller
         $desde = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 
         $data['articles'] = $this->Model_Article->getArticlesByMagazine($id,$config['per_page'],$desde);
+        //$data['articles'] = $this->Model_Article->getArticlesByCategory($category,$config['per_page'],$desde);
 
         if($data['articles'] != false){
             $this->load->model('Model_User');
@@ -127,35 +128,66 @@ class Magazine extends CI_Controller
         $this->load->view('footer');
 
     }
-    public function articlesByCategory($category)
+    public function articlesByCategory($id)
     {
         $this->load->model('Model_Article');
-        $data['articles'] = $this->Model_Article->getArticlesByCategory($category);
+        $this->load->library('pagination');
 
-        $this->load->model('Model_User');
-        $users = $this->Model_User->getUsers();
+        $config['base_url'] = base_url().'magazine/articlesByCategory/'.$id."/";
+        $config['total_rows'] = count($this->Model_Article->getArticlesByTheme($id));
+        /*Obtiene el numero de registros a mostrar por pagina */
+        $config['per_page'] = 2;
+        $config["uri_segment"] = 4;
+        /*Se personaliza la paginación para que se adapte a bootstrap*/
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $config['last_link'] = FALSE;
+        $config['first_link'] = FALSE;
+        $config['next_link'] = '&raquo;';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['prev_link'] = '&laquo;';
+        $config['prev_tag_open'] = '<li>';
+        $config['prev_tag_close'] = '</li>';
 
-        foreach ($users as $user){
-            if ($user->userid == $data['articles'][0]->userid){
-                $data['autorname'] = $this->Model_User->getUserById($user->userid)[0]->username;
-                $data['autorlastname'] = $this->Model_User->getUserById($user->userid)[0]->lastname;
-                $data['autormoaternalsurname'] = $this->Model_User->getUserById($user->userid)[0]->maternalsurname;
+        /* Se inicializa la paginacion*/
+        $this->pagination->initialize($config);
+
+        $desde = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+
+        //$data['articles'] = $this->Model_Article->getArticlesByMagazine($id,$config['per_page'],$desde);
+        $data['articles'] = $this->Model_Article->getArticlesByCategory($id,$config['per_page'],$desde);
+
+        if($data['articles'] != false){
+            $this->load->model('Model_User');
+            $users = $this->Model_User->getUsers();
+
+            foreach ($users as $user){
+                if ($user->userid == $data['articles'][0]->userid){
+                    $data['autorname'] = $this->Model_User->getUserById($user->userid)[0]->username;
+                    $data['autorlastname'] = $this->Model_User->getUserById($user->userid)[0]->lastname;
+                    $data['autormoaternalsurname'] = $this->Model_User->getUserById($user->userid)[0]->maternalsurname;
+                }
             }
-        }
-        $this->load->model('Model_Magazine');
-        $data['magazines'] = $this->Model_Magazine->getMagazines();
+            $this->load->model('Model_Magazine');
+            $data['magazines'] = $this->Model_Magazine->getMagazines();
 
-        foreach ($data['magazines'] as $magazine){
-            if ($magazine->magazineid == $data['articles'][0]->magazineid){
-                $data['volume'] = $this->Model_Magazine->getMagazineByID($magazine->magazineid)[0]->volume;
-                $data['number'] = $this->Model_Magazine->getMagazineByID($magazine->magazineid)[0]->number;
-                $data['magazineid'] = $this->Model_Magazine->getMagazineByID($magazine->magazineid)[0]->magazineid;
+            foreach ($data['magazines'] as $magazine){
+                if ($magazine->magazineid == $data['articles'][0]->magazineid){
+                    $data['volume'] = $this->Model_Magazine->getMagazineByID($magazine->magazineid)[0]->volume;
+                    $data['number'] = $this->Model_Magazine->getMagazineByID($magazine->magazineid)[0]->number;
+                    $data['magazineid'] = $this->Model_Magazine->getMagazineByID($magazine->magazineid)[0]->magazineid;
+                }
             }
         }
 
         $this->load->view('header');
         $this->load->view('articles/articlemenu_view', $data);
         $this->load->view('footer');
+
+
     }
 
 

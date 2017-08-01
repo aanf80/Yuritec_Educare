@@ -26,7 +26,13 @@ class Categories extends CI_Model{
     public function getCategories(){
         $this->db->from('category');
         $query=$this->db->get();
-        return $query->result();
+
+        if( $query -> num_rows() > 0 ){
+            return $query->result();
+        }
+        else{
+            return false;
+        }
     }
 
     public function getCategoryName($id){

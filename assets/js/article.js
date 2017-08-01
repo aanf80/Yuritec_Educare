@@ -93,7 +93,8 @@ $(function(){
             },
             {
                 data:"articledate"
-            }, {
+            },
+            {
                 data:"status"
             },
             {

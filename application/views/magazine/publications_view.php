@@ -25,7 +25,6 @@
 
             <!-- First Blog Post -->
 
-
             <?php
             if($magazines != false){
                 foreach ($magazines as $magazine) { ?>
@@ -38,8 +37,8 @@
                     <hr>
                     <div align="center">
                         <a href="<?php echo site_url('/magazine/articles/' . $magazine->magazineid) ?>">
-                            <img class="img-responsive img-hover" src="/Yuritec_Educare/assets/img/imgabout.png" width="400" height=100"
-                                 alt="">
+
+                            <img class="img-responsive" src="<?php echo "/Yuritec_Educare/assets/images/".$magazine->cover?>" width="400" height=100" alt="" >
                         </a>
                     </div>
                     <br/>
