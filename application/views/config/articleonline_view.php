@@ -24,7 +24,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Mostrar artículo en línea</h1>
+            <h1 class="page-header">Artículo en línea</h1>
             <ol class="breadcrumb">
                 <li>
                     <?php echo anchor('/settings/magazine', 'Nueva revista', 'class="link-class"') ?>
@@ -35,7 +35,7 @@
                 <li>
                     <?php echo anchor('/settings/magazines', 'Ver Revistas', 'class="link-class"') ?>
                 </li>
-                <li class="active">Mostrar artículo en línea</li>
+                <li class="active">Artículo en línea</li>
 
             </ol>
         </div>

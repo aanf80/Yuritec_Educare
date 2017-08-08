@@ -22,14 +22,18 @@
                 </div>
                 <div class="item">
                     <div class="fill"
-                         style="background-image:url('https://scontent.fgdl4-1.fna.fbcdn.net/v/t31.0-8/11895062_1637255889846263_6102864982220669516_o.jpg?oh=e02a6e4c4ade7a1e569644b22dce092d&oe=59C7D0B5');"></div>
+                         style="background-image:url('https://scontent.fgdl5-1.fna.fbcdn.net/v/t1.0-9/10609604_1697472613824590_1400521813064864168_n.jpg?oh=4bb6a9b2eb7bdd3e7aa60e5e5945c02e&oe=5A250C5A');"></div>
                     <div class="carousel-caption">
                         <!-- <h2>Caption 1</h2>-->
                     </div>
                 </div>
                 <div class="item">
-                    <div class="fill"
-                         style="background-image:url('https://scontent.fgdl4-1.fna.fbcdn.net/v/t31.0-8/10575302_1697472613824590_1400521813064864168_o.jpg?oh=006e7d5a84417290df6b36e5f818e85c&oe=59CE2FD2');"></div>
+<div class="fill">
+    <a href="#">
+        <img class="img-responsive" src="<?php echo "/Yuritec_Educare/assets/img/imgabout.png"?>" alt="" >
+    </a>
+</div>
+
                     <div class="carousel-caption">
                         <!-- <h2>Caption 1</h2>-->
                     </div>

@@ -36,7 +36,7 @@
                         <label class="checkbox pull-left" style="margin-left: 25px"><input type="checkbox" value="remember-me">Recordarme</label>
 
                         <div id="link">
-                            <a href="#" class="pull-right clearfix" style="margin-top: 10px; margin-right: 5px">¿Olvidaste tú contraseña?</a>
+                            <a href="<?php echo site_url('/user/forgotten_password') ?>" class="pull-right clearfix" style="margin-top: 10px; margin-right: 5px">¿Olvidaste tú contraseña?</a>
                             <a href="<?php echo site_url('/user/sign_up') ?>" class="text-center center-block col-lg-12">Registrarse </a>
                         </div>
                     </div>

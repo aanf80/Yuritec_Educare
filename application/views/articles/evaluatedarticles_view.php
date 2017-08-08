@@ -1,17 +1,18 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Concurso18
- * Date: 12/06/2017
- * Time: 01:14 PM
+ * User: Armando_Navarro
+ * Date: 08/08/2017
+ * Time: 01:03 AM
  */
 ?>
+
 <script type="text/javascript" src="<?php echo base_url('assets/js/review.js'); ?>"></script>
 <div class="container">
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Asignar Revisor</h1>
+            <h1 class="page-header">Artículos evaluados</h1>
             <ol class="breadcrumb">
                 <li>
                     <?php echo anchor('/user/profile', 'Mi Perfil', 'class="link-class"') ?>
@@ -31,17 +32,20 @@
                 <?php
                 if($this->session->userdata('roleid') == 1){
                     ?>
-                    <li class="active">Asignar Revisor</li>
-                    <li><?php echo anchor('/article/evaluated_articles', 'Artículos evaluados', 'class="link-class"') ?></li>
+                    <li>
+                        <?php echo anchor('/article/assign_reviewer', 'Asignar Revisor', 'class="link-class"') ?>
+                    </li>
+                    <li class="active">Artículos evaluados</li>
+
                     <?php
                 }
                 ?>
                 <?php
+
                 if($this->session->userdata('roleid') == 3){
                     ?>
-                    <li>
-                        <?php echo anchor('/article/review_area', 'Área de Revisión', 'class="link-class"') ?>
-                    </li>
+                    <?php echo anchor('/article/review_area', 'Área de Revisión', 'class="link-class"') ?>
+
                     <?php
                 }
                 ?>
@@ -49,7 +53,8 @@
         </div>
     </div>
 
-    <div id="modalAssign" class="modal">
+
+    <div id="modalChangeState" class="modal">
         <div class="modal-dialog">
             <div class="modal-content">
 
@@ -57,33 +62,36 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         &times;
                     </button>
-                    <h3>Asignar Revisor</h3>
+                    <h3>Cambiar estado de artículo</h3>
                 </div>
                 <div class="modal-body">
-                    <form id="frmEditAssign">
+                    <form id="frmEditCheck">
                         <div class="form-group">
-                            <label class="control-label" for="reviserid">Revisor</label>
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-user"></i>
-                                </span>
-                                <select name="reviserid" id="reviserid" class="form-control"></select>
-                                <input type="hidden" id="articleid" name="articleid">
-                            </div>
+                            <label class="control-label">Estado</label>
+                            <select name="status" id="status" class="form-control">
+                                <option>Aprobado</option>
+                                <option >Aprobado con observaciones</option>
+                                <option >No Aprobado</option>
+                            </select>
+
+                            <input type="hidden" id="articleid" name="articleid">
+                            <br/>
+
                         </div>
+
+
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-primary btn-warning" id="btnAsignarRev">Guardar</button>
+                    <button type="button" class="btn btn-sm btn-primary btn-warning" id="btnModificarEstado">Guardar</button>
                 </div>
             </div>
         </div>
     </div>
 
-
     <div class="row">
         <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <table id="tbAssign" class="table table-striped table-bordered">
+            <table id="tbEvaluatedArticles" class="table table-striped table-bordered">
                 <thead>
                 <tr>
                     <th>Clave</th>
@@ -96,3 +104,4 @@
             </table>
         </div>
     </div>
+

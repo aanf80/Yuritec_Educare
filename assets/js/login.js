@@ -30,6 +30,8 @@ $(function(){
             return false;
         }
     });
+});
+
     function login(){
         $.ajax({
             url: "/Yuritec_Educare/login/validaLogin",
@@ -56,5 +58,5 @@ $(function(){
     }
 
 
-});
+
 

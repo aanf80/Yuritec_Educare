@@ -26,6 +26,12 @@ class User extends CI_Controller
         $this->load->view('user/signup_view');
         $this->load->view('footer');
     }
+    public function forgotten_password()
+    {
+        $this->load->view('header');
+        $this->load->view('user/forgottenpwd_view');
+        $this->load->view('footer');
+    }
 
     public function users_new()
     {

@@ -32,6 +32,7 @@
                 <li>
                     <?php echo anchor('/article/assign_reviewer', 'Asignar Revisor', 'class="link-class"') ?>
                 </li>
+                    <li><?php echo anchor('/article/evaluated_articles', 'Artículos evaluados', 'class="link-class"') ?></li>
                     <?php
                 }
                 ?>
@@ -47,6 +48,39 @@
             </ol>
         </div>
     </div>
+    <div id="modalCoautor" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h3>Agregar coautores</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="frmEditCoautor">
+                        <div class="form-group">
+                            <label class="control-label" for="reviserid">Nombre del primer coautor</label>
+                            <input type="text" class="form-control" name="title" id="title">
+
+                            <label class="control-label" for="reviserid">Nombre del segundo coautor</label>
+                            <input type="text" class="form-control" name="title" id="title">
+
+                            <label class="control-label" for="reviserid">Nombre del tercer coautor</label>
+                            <input type="text" class="form-control" name="title" id="title">
+                                <input type="hidden" id="articleid" name="articleid">
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-primary btn-warning" id="btnAsignarRev">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <form id="frmArticle">
         <div class="form-group" enctype="multipart/form-data">
             <h3>Título</h3>
@@ -90,8 +124,10 @@
             <input type="file" id="file"  name="file">
             <br/>
             <br/>
-            <button type="submit" class="btn btn-warning" id="btnGuardar"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+
+            &nbsp;<button type="submit" class="btn btn-warning" id="btnGuardar"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
         </div>
+        <button class="btn btn-warning" id="btnCoautor"><span class="glyphicon glyphicon-plus-sign"></span> Agregar coautores</button>
     </form>
 
 

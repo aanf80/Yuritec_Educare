@@ -102,6 +102,10 @@ $(function(){
             }
         ]
     });//fin de datatable
+
+    $('#btnCoautor').on('click', function () {
+        $('#modalCoautor').modal("show");
+    });
 });
 
 

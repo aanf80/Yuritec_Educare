@@ -20,9 +20,6 @@
                     <?php echo anchor('/settings/select_articles', 'Seleccionar articulos', 'class="link-class"') ?>
                 </li>
                 <li class="active">Ver Revistas</li>
-                <li>
-                    <?php echo anchor('/magazine/article_editor', 'Mostrar artículo en línea', 'class="link-class"') ?>
-                </li>
             </ol>
         </div>
     </div>

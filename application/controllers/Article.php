@@ -24,6 +24,13 @@ class Article extends CI_Controller {
         $this->load->view('articles/edit_view');
         $this->load->view('footer');
     }
+ public function evaluated_articles()
+    {
+
+        $this->load->view('header');
+        $this->load->view('articles/evaluatedarticles_view');
+        $this->load->view('footer');
+    }
 
     public function edit_article()
     {
@@ -171,6 +178,9 @@ class Article extends CI_Controller {
                 break;
             case 3:
                 $estado = "Aprobado";
+                break;
+            case 4:
+                $estado = "Revisado";
                 break;
         }
 

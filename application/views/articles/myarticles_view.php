@@ -34,6 +34,7 @@
                 <li>
                     <?php echo anchor('/article/assign_reviewer', 'Asignar Revisor', 'class="link-class"') ?>
                 </li>
+                    <li><?php echo anchor('/article/evaluated_articles', 'Artículos evaluados', 'class="link-class"') ?> </li>
                     <?php
                 }
                 ?>

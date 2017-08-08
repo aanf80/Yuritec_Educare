@@ -20,7 +20,7 @@
                     <?php echo anchor('/settings/magazines', 'Ver Revistas', 'class="link-class"') ?>
                 </li>
                 <li>
-                    <?php echo anchor('/magazine/article_editor', 'Mostrar artículo en línea', 'class="link-class"') ?>
+                    <?php echo anchor('/magazine/article_editor', 'Artículo en línea', 'class="link-class"') ?>
                 </li>
             </ol>
         </div>
