@@ -32,8 +32,6 @@
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
-
-
     <div class="row">
 
 
@@ -54,6 +52,16 @@
             <br/>
             <div class="fb-share-button" data-href="http://appempre-aanf.esy.es/Yuritec_Educare/magazine/article_view" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Compartir</a></div>
             <br/>
+            <script src="https://apis.google.com/js/platform.js" async defer></script>
+            <div class="g-savetodrive"
+                 data-src="/Yuritec_Educare/politicas.pdf"
+                 data-filename="politicas_de_operacion.pdf"
+                 data-sitename="Yuritec Educare">
+            </div>
+
+            <br/>
+            <br/>
+
             <!-- Post Content -->
 
             <?php echo $art->content;?>

@@ -110,7 +110,7 @@
                         <ul class="list-unstyled">
 
                             <?php foreach($articletypes as $artype) { ?>
-                                <li><a href="<?php echo site_url('/magazine/articlesByCategory/' .$artype->article_typeid) ?>"><?php echo $artype->article_typename;  ?></a>
+                                <li><a href="<?php echo site_url('/magazine/articlesByType/' .$artype->article_typeid) ?>"><?php echo $artype->article_typename;  ?></a>
                                 </li>
 
                                 <?php

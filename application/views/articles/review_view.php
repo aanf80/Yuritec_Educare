@@ -49,6 +49,7 @@
         </div>
     </div>
 
+
     <div id="modalCheck" class="modal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -57,17 +58,24 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         &times;
                     </button>
-                    <h3>Revisión de artículo</h3>
+                    <h3>Evaluación de artículo</h3>
                 </div>
                 <div class="modal-body">
                     <form id="frmEditCheck">
                         <div class="form-group">
-                            <label class="control-label">Estado</label>
+<!--                            <label class="control-label">Estado</label>
                             <select name="status" id="status" class="form-control">
                                 <option>Aprobado</option>
                                 <option >Aprobado con observaciones</option>
                                 <option >No Aprobado</option>
-                            </select>
+                            </select>-->
+                            <label>Seleccionar la evaluación del artículo</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-file"></i>
+                                </span>
+                                <input type="file" id="photo2"  name="photo">
+                            </div>
                             <input type="hidden" id="articleid" name="articleid">
                             <br/>
                             <label class="control-label" for="observations">Obervaciones</label>
@@ -80,12 +88,23 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-primary btn-warning" id="btnModificarEstado">Guardar</button>
+                    <button type="button" class="btn btn-sm btn-primary btn-warning" id="btnModificarEstado">Enviar Evaluación</button>
                 </div>
             </div>
         </div>
     </div>
 
+
+<h4>¿Cómo realizar la evaluación del artículo?</h4>
+    <ol>
+        <li>Descargar Formato de evaluación dando clic al botón "Descargar Formato"</li>
+        <li>Llenar formato (a mano o a computadora)</li>
+        <li>Firmar formato</li>
+        <li>Escanear formato lleno</li>
+        <li>Subir el formato escaneado al sistema dando clic al botón "Subir Evaluación"</li>
+        <li>Dar clic a "Enviar Evaluación"</li>
+    </ol>
+    <p>*En ¨caso de haber observaciones, escribirlas en el campo de texto</p>
     <div class="row">
         <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <table id="tbReview" class="table table-striped table-bordered">

@@ -45,7 +45,7 @@
 
 <div align="center">
     <!-- <img src="http://www.ittepic.edu.mx/images/header2.jpg" class="img-responsive" alt=""/> -->
-    <img src="<?php echo base_url('assets/img/banner.jpg'); ?>" class="img-responsive" alt=""/>
+    <img src="<?php echo base_url('assets/img/header3.jpg'); ?>" class="img-responsive" alt=""/>
 </div>
 <div id="nav">
 

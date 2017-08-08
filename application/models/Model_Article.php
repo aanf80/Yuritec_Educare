@@ -98,6 +98,30 @@ class Model_Article extends CI_Model
         return false;
     }
 }
+public function getArticlesByArt_Type($category) //C
+    {
+        $this->db->from($this->table);
+        $this->db->where('article_typeid', $category);
+        $this->db->where('magazineid != ',0,FALSE);
+
+        $query = $this->db->get();
+
+
+        return $query->result();
+    }
+
+    public function getArticlesByType($id, $porpagina, $desde)
+{
+    $this->db->where('categoryid', $id);
+    $this->db->where('magazineid != ',0,FALSE);
+    $query = $this->db->get($this->table, $porpagina, $desde);
+
+    if ($query->num_rows() > 0) {
+        return $query->result();
+    } else {
+        return false;
+    }
+}
 
 
     public function getArticlesByStatus($status) //C

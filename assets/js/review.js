@@ -48,8 +48,9 @@ $(function(){
             {
                 data: function (row) {
                     str = "<div align='center'>";
-                    str +="<button class='btn btn-warning btn-block'><i class=\"glyphicon glyphicon-download-alt\"></i> Descargar</button>";
-                    str +="<br/><button id='btnCheck' class='btn btn-success btn-block' onClick='showReview()'><i class=\"glyphicon glyphicon-check\"></i> Revisar Artículo</button>";
+                    str +="<button class='btn btn-warning btn-block'><i class=\"glyphicon glyphicon-download-alt\"></i> Descargar Artículo</button>";
+                    str +="<button class='btn btn-info btn-block'><i class=\"glyphicon glyphicon-download-alt\"></i> Descargar Formato</button>";
+                    str +="<button id='btnCheck' class='btn btn-primary btn-block' onClick='showReview()'><i class=\"glyphicon glyphicon-cloud-upload\"></i> Subir Evaluación</button>";
                     str += "</div>"
                     return str;
                 }

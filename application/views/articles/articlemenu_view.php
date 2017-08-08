@@ -41,13 +41,7 @@
                     <a class="btn btn-danger" href="<?php echo site_url('/magazine/generatePDF/' . $art->articleid) ?>">Descargar
                         en PDF <span class="glyphicon glyphicon-download"></span></a>
                     <br/>
-                    <br/>
-                    <script src="https://apis.google.com/js/platform.js" async defer></script>
-                    <div class="g-savetodrive"
-                         data-src="/Yuritec_Educare/politicas.pdf"
-                         data-filename="politicas_de_operacion.pdf"
-                         data-sitename="Yuritec Educare">
-                    </div>
+
                     <hr>
                 </div>
             </div>
