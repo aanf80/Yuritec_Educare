@@ -28,6 +28,7 @@ $(function () {
         if(json.code===200)
             $.each(json.msg, function(i,row){
                 showObjectives(row['objectiveid'],row['objectivecontent']);
+
             });
     });
 

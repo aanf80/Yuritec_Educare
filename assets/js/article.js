@@ -78,7 +78,7 @@ $(function(){
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/Yuritec_Educare/article/getArticlesByID",
+            url:"/Yuritec_Educare/article/getArticlesByUser",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -99,6 +99,20 @@ $(function(){
             },
             {
                 data:"observations"
+            },
+            {
+                data: function (row) {
+                    str = "<div align='center'>";
+                    if(row['status']=="Aprobado con observaciones"){
+                        str +="<button id='btnCheck' class='btn btn-warning btn-block' onClick='showModalUploadArt()'><i class=\"glyphicon glyphicon-upload\"></i> Subir Artículo</button>";
+                    }else{
+                        str = "<p>No hay operaciones que mostrar</p>";
+                    }
+
+                    str += "</div>"
+                    return str;
+                }
+
             }
         ]
     });//fin de datatable
@@ -108,7 +122,9 @@ $(function(){
     });
 });
 
-
+function showModalUploadArt() {
+    $('#modalUploadArt').modal("show");
+}
 
 function newArticle(){
 

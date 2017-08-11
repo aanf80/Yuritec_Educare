@@ -39,8 +39,8 @@ $(function () {
         },
         messages:{
 
-            username: {
-                required: "Capture el nombre de usuario"
+            name: {
+                required: "Capture el nombre de contacto"
             },
             email: {
                 required: "Capture un email de contacto"

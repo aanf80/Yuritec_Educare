@@ -63,19 +63,11 @@
                         <div class="form-group">
                             <label class="control-label" for="reviserid">Nombre del primer coautor</label>
                             <input type="text" class="form-control" name="title" id="title">
-
-                            <label class="control-label" for="reviserid">Nombre del segundo coautor</label>
-                            <input type="text" class="form-control" name="title" id="title">
-
-                            <label class="control-label" for="reviserid">Nombre del tercer coautor</label>
-                            <input type="text" class="form-control" name="title" id="title">
-                                <input type="hidden" id="articleid" name="articleid">
-
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-primary btn-warning" id="btnAsignarRev">Guardar</button>
+                    <button type="button" class="btn btn-sm btn-primary btn-warning" id="btnAsignarRev">Agregar</button>
                 </div>
             </div>
         </div>
@@ -92,12 +84,15 @@
             <div class="row">&nbsp;</div>
 
             <h3>Tipo de artículo</h3>
-            <select name="articletypeid" id="articletypeid" class="form-control"></select>
+            <select name="articletypeid" id="articletypeid" class="form-control">
+                <option>Investigación experimental/empírica</option>
+            </select>
+
             <div class="row">&nbsp;</div>
 
-            <h3>Propósito del artículo</h3>
+            <!--<h3>Propósito del artículo</h3>
             <textarea name="purpouse" id="purpouse"></textarea>
-            <div class="row">&nbsp;</div>
+            <div class="row">&nbsp;</div>-->
 
             <h3>Resumen</h3>
             <textarea name="resumen" id="resumen"></textarea>
@@ -107,17 +102,25 @@
             <input type="text" class="form-control" name="palabrasclave" id="palabrasclave">
             <div class="row">&nbsp;</div>
 
-            <h3>Problemas a resolver</h3>
-            <textarea name="problems" id="Problems"></textarea>
+            <h3>Coautores**</h3>
+
+            <input type="text" class="form-control" name="palabrasclave" id="palabrasclave">
             <div class="row">&nbsp;</div>
 
-            <h3>Impacto del artículo en la generación del artículo</h3>
+            <p>**Nota: Este campo se llena únicamente si la elaboración del artículo fue colaborativa</p>
+            <p>Ingresar el nombre de hasta un máximo de 3 coautores separados por coma</p>
+
+            <!--<h3>Problemas a resolver</h3>
+            <textarea name="problems" id="Problems"></textarea>
+            <div class="row">&nbsp;</div> -->
+
+            <!-- <h3>Impacto del artículo en la generación del artículo</h3>
             <textarea name="problems" id="Problems"></textarea>
             <div class="row">&nbsp;</div>
 
             <h3>Resultados alcanzados</h3>
             <textarea name="problems" id="Problems"></textarea>
-            <div class="row">&nbsp;</div>
+            <div class="row">&nbsp;</div>-->
 
             <hr>
             <h3>Seleccionar archivo</h3>
@@ -125,9 +128,9 @@
             <br/>
             <br/>
 
-            &nbsp;<button type="submit" class="btn btn-warning" id="btnGuardar"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+          <button type="submit" class="btn btn-warning" id="btnGuardar"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
         </div>
-        <button class="btn btn-warning" id="btnCoautor"><span class="glyphicon glyphicon-plus-sign"></span> Agregar coautores</button>
+
     </form>
 
 

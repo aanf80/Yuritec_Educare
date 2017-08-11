@@ -57,10 +57,7 @@ class Model_Article extends CI_Model
     {
         $this->db->from($this->table);
         $this->db->where('articleid', $id);
-
         $query = $this->db->get();
-
-
         return $query->result();
     }
 

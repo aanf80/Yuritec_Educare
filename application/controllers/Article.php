@@ -133,7 +133,7 @@ class Article extends CI_Controller {
         echo json_encode($jsondata);
     }
 
-    public function getArticlesByID(){
+    public function getArticlesByUser(){
         $userid = $this->session->userdata('userid');
         $this->load->model('Model_Article');
         $data = $this->Model_Article->getArticleByID($userid);
@@ -150,6 +150,25 @@ class Article extends CI_Controller {
         header("Cache-Control: no-store");
         echo json_encode($jsondata);
     }
+
+    public function getArticlesByID($id){
+
+        $this->load->model('Model_Article');
+        $data = $this->Model_Article->getArticle($id);
+        $jsondata["code"] = 200;
+        $jsondata["msg"] = array();
+        foreach($data as $cat){
+            $jsondata["msg"][] = $cat;
+        }
+
+        $jsondata["details"] = "OK";
+
+
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata);
+    }
+
     public function getArticlesByVolume($volume){
 
         $this->load->model('Model_Article');

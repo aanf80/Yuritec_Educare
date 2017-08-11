@@ -3,6 +3,7 @@
  */
 
 $ID=0;
+$ID2=0;
 $articleid = 0;
 $(function(){
 
@@ -53,7 +54,63 @@ $(function(){
                     });
             });
         }
+    }); // EDITAR REVISTA
+
+
+    $('#magazineid5').on('change', function() {
+        $ID2 = this.value;
+        if($ID2 == 0){
+            $('#articleid3').html('');
+            cleanContent();
+        }
+        else{
+            $('#articleid3').html('');
+            $.ajax({
+                url: '/Yuritec_Educare/article/getArticlesByVolume/'+$ID2,
+                type: 'GET',
+                dataType: 'json'
+            }).done(function (json){
+
+                if(json.code===200)
+                    $.each(json.msg, function(i,row){
+                        $('<option></option>', {text: row.title}).attr('value',row.articleid).appendTo('#articleid3');
+                    });
+            });//fin de combobox
+
+
+
+
+        }
+    }); // EDITAR REVISTA
+
+    $('#articleid3').on('change', function() {
+        cleanContent();
+        $.ajax({
+            url: '/Yuritec_Educare/article/getArticlesByID/'+this.value,
+            type: 'GET',
+            dataType: 'json'
+        }).done(function (json){
+
+            if(json.code===200)
+                $.each(json.msg, function(i,row){
+
+                    showContent(row['articleid'],row['content']);
+
+                });
+        });//fin de combobox
     });
+
+    $.ajax({
+        url: '/Yuritec_Educare/magazine/getMagazines',
+        type: 'GET',
+        dataType: 'json'
+    }).done(function (json){
+
+        if(json.code===200)
+            $.each(json.msg, function(i,row){
+                $('<option></option>', {text: "Volumen "+row.volume+",  Número "+row.number+"   "+row.period+" "+row.year}).attr('value',row.magazineid).appendTo('#magazineid5');
+            });
+    });//fin de combobox nueva revista
 
     $('#frmMagazine').validate({
         rules: {
@@ -244,12 +301,18 @@ $(function(){
     $('#btnUploadCover').on('click', function () {
         $('#frmChangeCoverPhoto').submit();
     });
+    $('#btnGuardarContenido').on('click', function () {
+        cleanContent();
+    });
 
     $('#btnUploadPDF').on('click', function () {
         $('#frmChangePDF').submit();
     });
-
 });
+function showContent(articlesid,content){
+    $objectiveid = articlesid;
+    tinyMCE.activeEditor.setContent(content);
+}
 
 function showMagazine(volume,number,period,year,cover,status) {
     $('#volume2').val(volume);
@@ -296,6 +359,9 @@ function cleanEditMagazine() {
     $('#imgCover').attr("src","");
 }
 
+function cleanContent() {
+    tinyMCE.activeEditor.setContent("");
+}
 
 function newMagazine(){
     var form = $('form#frmMagazine')[0];

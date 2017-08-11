@@ -50,7 +50,37 @@
             </ol>
         </div>
     </div>
+    <div id="modalUploadArt" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
 
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h3>Subir artículo</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="frmUploadArt" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="control-label" for="photo2">Seleccione archivo</label>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-picture"></i>
+                                </span>
+                                <input type="file" id="photo2"  name="photo">
+                            </div>
+
+                            <input type="hidden" id="userid2" name="userid">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-primary btn-warning" id="btnAsignarRev">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <table id="tbArticle" class="table table-striped table-bordered">
@@ -61,6 +91,7 @@
                     <th>Fecha de Creación</th>
                     <th>Estado</th>
                     <th>Observaciones</th>
+                    <th>Operaciones</th>
                 </tr>
                 </thead>
             </table>

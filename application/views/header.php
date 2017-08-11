@@ -103,9 +103,6 @@
                                     <?php echo anchor('/settings/objectives', 'Objetivos', 'class="link-class"') ?>
                                 </li>
                                 <li>
-                                    <?php echo anchor('/settings/terms', 'Página Principal', 'class="link-class"') ?>
-                                </li>
-                                <li>
                                     <?php echo anchor('/settings/terms', 'Políticas', 'class="link-class"') ?>
                                 </li>
                                 <li>

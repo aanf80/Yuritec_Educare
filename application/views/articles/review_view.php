@@ -102,8 +102,8 @@
         <li>Descargar Formato de evaluación dando clic al botón "Descargar Formato"</li>
         <li>Llenar formato (a mano o a computadora)</li>
         <li>Firmar formato</li>
-        <li>Escanear formato lleno</li>
-        <li>Subir el formato escaneado al sistema dando clic al botón "Subir Evaluación"</li>
+        <li>Digitalizar el formato lleno</li>
+        <li>Subir el formato firmado al sistema dando clic al botón "Subir Evaluación"</li>
         <li>Dar clic a "Enviar Evaluación"</li>
     </ol>
     <p>*En ¨caso de haber observaciones, escribirlas en el campo de texto</p>

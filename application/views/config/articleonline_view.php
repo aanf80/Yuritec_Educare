@@ -46,24 +46,20 @@
 
 
                 <label class="control-label">Revista</label>
-                <select name="period" id="period" class="form-control">
+                <select name="magazineid" id="magazineid5" class="form-control">
                     <option>Seleccione una revista</option>
-                    <option>Volumen 0, número 1 Enero - Junio 2017</option>
-                    <option>Volumen 1, número 1Agosto - Diciembre 2017</option>
                 </select>
 
                 <label class="control-label">Artículo</label>
-                <select name="period" id="period" class="form-control">
+                <select name="articleid" id="articleid3" class="form-control">
                     <option>Seleccione un artículo</option>
-                    <option>Volumen 0, número 1 Enero - Junio 2017</option>
-                    <option>Volumen 1, número 1Agosto - Diciembre 2017</option>
                 </select>
 
                 <h3>Contenido</h3>
                 <textarea name="content" id="content"></textarea>
                 <div class="row">&nbsp;</div>
                 <div class="row">&nbsp;</div>
-                <button type="submit" class="btn btn-warning" id="btnGuardar"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+                <button class="btn btn-warning" id="btnGuardarContenido"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
 
 
         <div class="row">&nbsp;</div>
