@@ -42,12 +42,9 @@
     </div>
 
 
-
-
-
                 <label class="control-label">Revista</label>
                 <select name="magazineid" id="magazineid5" class="form-control">
-                    <option>Seleccione una revista</option>
+                    <option value=0>Seleccione una revista</option>
                 </select>
 
                 <label class="control-label">Artículo</label>
@@ -56,10 +53,10 @@
                 </select>
 
                 <h3>Contenido</h3>
-                <textarea name="content" id="content"></textarea>
+                <textarea name="content" id="contentAO"></textarea>
                 <div class="row">&nbsp;</div>
                 <div class="row">&nbsp;</div>
-                <button class="btn btn-warning" id="btnGuardarContenido"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+                <button id="btnGuardarContenido" class="btn btn-warning"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
 
 
         <div class="row">&nbsp;</div>

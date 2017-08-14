@@ -60,11 +60,11 @@ $(function(){
     $('#magazineid5').on('change', function() {
         $ID2 = this.value;
         if($ID2 == 0){
-            $('#articleid3').html('');
+            $('#articleid3').html('<option value = 0 >Seleccione un artículo</option>');
             cleanContent();
         }
         else{
-            $('#articleid3').html('');
+            $('#articleid3').html('<option value = 0>Seleccione un artículo</option>');
             $.ajax({
                 url: '/Yuritec_Educare/article/getArticlesByVolume/'+$ID2,
                 type: 'GET',
@@ -302,7 +302,7 @@ $(function(){
         $('#frmChangeCoverPhoto').submit();
     });
     $('#btnGuardarContenido').on('click', function () {
-        cleanContent();
+   updateContent(tinymce.activeEditor.getContent(),$('#articleid3').val());
     });
 
     $('#btnUploadPDF').on('click', function () {
@@ -398,7 +398,35 @@ function newMagazine(){
         }
     );
 }
+function updateContent(content,articleid){
 
+    $.ajax(
+        {
+            url: "/Yuritec_Educare/article/updateContent",
+            type: "post",
+            data: {
+                articleid: articleid,
+                content: content
+            }
+        }
+    ).done(
+        function (data) {
+
+            if (data.code == 200) {
+                $.growl.notice({message: data.msg});
+                cleanContent();
+                $('#magazineid5').val(0);
+                $('#articleid3').val(0);
+            } else {
+                $.growl.error({message: data.msg});
+            }
+        }
+    ).fail(
+        function () {
+            $.growl.error({message: "El servidor no está disponible"});
+        }
+    );
+}
 function updateMagazine(){
     var idmagazine = $('#magazineid2').val();
 

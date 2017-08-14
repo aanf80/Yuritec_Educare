@@ -218,6 +218,31 @@ class Article extends CI_Controller {
         header("Cache-Control: no-store");
         echo json_encode($jsondata);
     }
+    public function updateContent(){
+        $this->load->model('Model_Article');
+        $jsondata = array();
+        $articleid = $this->input->post('articleid');
+        $data = array(
+            'content' => $this->input->post('content'),
+        );
+        if($articleid == null){
+            redirect('home', 'refresh');
+        }
+        $update = $this->Model_Article->updateArticle(array('articleid' => $articleid), $data);
+        if($update == true){
+            $jsondata["code"] = 200;
+            $jsondata["msg"] = "Registrado correctamente";
+            $jsondata["details"] = "OK";
+        }
+        else{
+            $jsondata["code"] = 500;
+            $jsondata["msg"] = "Error en el registro";
+            $jsondata["details"] = "OK";
+        }
+        header('Content-type: application/json; charset=utf-8');
+        header("Cache-Control: no-store");
+        echo json_encode($jsondata, JSON_FORCE_OBJECT);
+    }
     public function updateArticle(){
 
         $this->load->model('Model_Article');
