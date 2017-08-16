@@ -156,7 +156,7 @@ $(function(){
                 data: function (row) {
                     str = "<div align='center'>";
                     str +="<button class='btn btn-warning btn-block'><i class=\"glyphicon glyphicon-download-alt\"></i> Descargar Evaluación</button>";
-                    str +="<button id='btnCheck' class='btn btn-primary btn-block' onClick='showModalChangeStatus()'><i class=\"glyphicon glyphicon-check\"></i> Cambiar de estado</button>";
+                    str +="<button id='btnCheck' class='btn btn-primary btn-block' onClick='showModalChangeStatus(" + row['articleid'] + ")'><i class=\"glyphicon glyphicon-check\"></i> Cambiar de estado</button>";
                     str += "</div>"
                     return str;
                 }
@@ -182,7 +182,8 @@ function showReviser(articleid) {
     $('#articleid').val(articleid);
     $('#modalAssign').modal("show");
 }
-function showModalChangeStatus() {
+function showModalChangeStatus(articleid) {
+    $('#articleid').val(articleid);
     $('#modalChangeState').modal("show");
 }
 
@@ -198,9 +199,8 @@ function showReview() {
 
 function setReview() {
 
-   console.log("articleid: "+$('#articleid').val());
-   console.log("status: "+$('#status').val());
-   console.log("observations: "+$('#observations').val());
+   //alert("articleid: "+$('#articleid').val()+" status: "+$('#status').val());
+
 
    var status = $('#status').val();
    var msgStatus;
@@ -232,17 +232,18 @@ function setReview() {
                         type: "post",
                         data: {
                             articleid: $('#articleid').val(),
-                            status: $('#status').val(),
-                            observations:$('#observations').val()}
+                            status: $('#status').val()
+                            }
                     }
                 ).done(
                     function (data) {
 
                         if (data.code == 200) {
 
-                            $.growl.notice({message: data.msg + " " + data.details});
+                            $.growl.notice({message: data.msg});
                             swal("Agregado", "El artículo ha sido revisado correctamente", "success");
-                            $('#tbReview').dataTable().api().ajax.reload();
+                            $('#tbEvaluatedArticles').dataTable().api().ajax.reload();
+                            $('#modalChangeState').modal("toggle");
 
                         } else {
                             $.growl.error({message: data.msg});

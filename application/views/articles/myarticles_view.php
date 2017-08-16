@@ -63,27 +63,27 @@
                 <div class="modal-body">
                     <form id="frmUploadArt" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label class="control-label" for="photo2">Seleccione archivo</label>
+                            <label class="control-label" for="file2">Seleccione archivo</label>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-picture"></i>
                                 </span>
-                                <input type="file" id="photo2"  name="photo">
+                                <input type="file" id="file2"  name="file">
                             </div>
 
-                            <input type="hidden" id="userid2" name="userid">
+                            <input type="hidden" id="articleid2" name="articleid">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-primary btn-warning" id="btnAsignarRev">Guardar</button>
+                    <button type="button" class="btn btn-sm btn-primary btn-warning" id="btnUploadCorrectedFile">Guardar Cambios</button>
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <table id="tbArticle" class="table table-striped table-bordered">
+            <table id="tbMyArticle" class="table table-striped table-bordered">
                 <thead>
                 <tr>
                     <th>Clave</th>

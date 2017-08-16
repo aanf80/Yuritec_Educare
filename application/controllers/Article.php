@@ -243,6 +243,49 @@ class Article extends CI_Controller {
         header("Cache-Control: no-store");
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
+    public function changeArticle(){
+
+        $carpeta = './upload/articles';
+        if (!file_exists($carpeta)) {
+            mkdir($carpeta, 0777, true);
+        }
+        $config['upload_path'] = './upload/articles';
+        $config['allowed_types'] = 'doc|docx';
+
+        $this->load->library('upload', $config);
+
+
+        if (!$this->upload->do_upload('file')) {
+            echo $this->upload->display_errors();
+        }
+        else {
+            $datos = array('upload_data' => $this->upload->data());
+            $this->load->model('Model_Article');
+            $jsondata = array();
+            $data = array(
+                'status' => 'Enviado',
+                'file' => $datos['upload_data'] ['file_name']
+            );
+            if($data['file']==null){
+                redirect('home', 'refresh');
+            }
+            $update = $this->Model_Article->updateArticle(array('articleid' => $this->input->post('articleid')), $data);
+            if($update == true){
+                $jsondata["code"] = 200;
+                $jsondata["msg"] = "Registrado correctamente";
+                $jsondata["details"] = "OK";
+            }
+            else{
+                $jsondata["code"] = 500;
+                $jsondata["msg"] = "Error en el registro";
+                $jsondata["details"] = "OK";
+            }
+            header('Content-type: application/json; charset=utf-8');
+            header("Cache-Control: no-store");
+            echo json_encode($jsondata, JSON_FORCE_OBJECT);
+        }
+
+    }
     public function updateArticle(){
 
         $this->load->model('Model_Article');

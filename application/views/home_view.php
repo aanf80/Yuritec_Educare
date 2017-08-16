@@ -29,9 +29,9 @@
                 </div>
                 <div class="item">
 <div class="fill">
-    <a href="#">
+
         <img class="img-responsive" src="<?php echo "/Yuritec_Educare/assets/img/imgabout.png"?>" alt="" >
-    </a>
+
 </div>
 
                     <div class="carousel-caption">
@@ -51,9 +51,12 @@
 
         <div class="col-lg-12">
             <h1 class="page-header">
-                Bienvenido a Yurítec Educare
+                ¡Bienvenido a Yurítec Educare!
             </h1>
         </div>
+
+
+        <h3>Sitios de Interés</h3>
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -61,10 +64,13 @@
                 </div>
                 <div class="panel-body">
                     <div align="center">
-                        <img src="http://www.ittepic.edu.mx/images/escudo_itt_200x200.png">
+                        <a href="http://ittepic.edu.mx/">
+                            <img src="http://www.ittepic.edu.mx/images/escudo_itt_200x200.png">
+                        </a>
+
                     </div>
 
-                    <a href="http://ittepic.edu.mx/" class="btn btn-warning">Ir al sitio</a>
+
 
                 </div>
             </div>
@@ -76,10 +82,12 @@
                 </div>
                 <div class="panel-body">
                     <div align="center">
-                        <img src="https://i2.wp.com/itstacambaro.edu.mx/archivo/uploads/2017/05/tecn-nuevo-logo.png?resize=706%2C390" height="200" width="300">
+                        <a href="http://www.tecnm.mx/">
+                            <img src="https://i2.wp.com/itstacambaro.edu.mx/archivo/uploads/2017/05/tecn-nuevo-logo.png?resize=706%2C390" height="200" width="300">
+                        </a>
                     </div>
 
-                    <a href="http://www.tecnm.mx/" class="btn btn-warning">Ir al sitio</a>
+
                 </div>
             </div>
         </div>
@@ -89,8 +97,9 @@
                     <h4><i class="fa fa-fw fa-compass"></i>Academia Journals</h4>
                 </div>
                 <div class="panel-body">
-                    <img src="http://static1.squarespace.com/static/55564587e4b0d1d3fb1eda6b/t/55c55db6e4b0760916a1277c/1501254981985/?format=1500w" height="200" width="300">
-                    <a href="http://www.academiajournals.com/tepic" class="btn btn-warning">Ir al sitio</a>
+                    <a href="http://www.academiajournals.com/tepic">
+                        <img src="http://static1.squarespace.com/static/55564587e4b0d1d3fb1eda6b/t/55c55db6e4b0760916a1277c/1501254981985/?format=1500w" height="200" width="300">
+                    </a>
                 </div>
             </div>
         </div>

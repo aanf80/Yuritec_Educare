@@ -72,7 +72,7 @@ $(function(){
         }
     });//fin de formulario
 
-    var table =  $('#tbArticle').DataTable({
+    var table =  $('#tbMyArticle').DataTable({
         responsive: true,
         language:{
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
@@ -104,7 +104,7 @@ $(function(){
                 data: function (row) {
                     str = "<div align='center'>";
                     if(row['status']=="Aprobado con observaciones"){
-                        str +="<button id='btnCheck' class='btn btn-warning btn-block' onClick='showModalUploadArt()'><i class=\"glyphicon glyphicon-upload\"></i> Subir Artículo</button>";
+                        str +="<button id='btnCheck' class='btn btn-warning btn-block' onClick='showModalUploadArt(" + row['articleid']  + ")'><i class=\"glyphicon glyphicon-upload\"></i> Subir Artículo</button>";
                     }else{
                         str = "<p>No hay operaciones que mostrar</p>";
                     }
@@ -120,10 +120,47 @@ $(function(){
     $('#btnCoautor').on('click', function () {
         $('#modalCoautor').modal("show");
     });
+
+    $('#btnUploadCorrectedFile').on('click', function () {
+        uploadCorrectedFile();
+    });
+
+
 });
 
-function showModalUploadArt() {
+function showModalUploadArt(articleid) {
+    $('#articleid2').val(articleid);
     $('#modalUploadArt').modal("show");
+}
+
+function uploadCorrectedFile() {
+    var form = $('form#frmUploadArt')[0];
+    var data = new FormData(form);
+    $.ajax({
+        url: "/Yuritec_Educare/article/changeArticle",
+        type: "post",
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false
+
+    }).done(
+        function(data){
+            console.log(data.code);
+            if(data.code === 200){
+                $.growl.notice({message: data.msg});
+                $('#modalUploadArt').modal("toggle");
+                $('#tbMyArticle').dataTable().api().ajax.reload();
+            }
+            else{
+                $.growl.error({ message: data.msg });
+            }
+        }
+    ).fail(
+        function(){
+            $.growl.error({ message: "El servidor no se encuentra disponible" });
+        }
+    );
 }
 
 function newArticle(){

@@ -52,7 +52,7 @@
         }
     }
     else{
-        echo " <img class=\"img-responsive img-hover\" src=\"/Yuritec_Educare/assets/img/not-found.png\" ";
+        echo "<h3>No se encontraron resultados</h3>";
     }
     ?>
     <hr>
