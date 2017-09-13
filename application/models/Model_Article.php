@@ -87,6 +87,7 @@ class Model_Article extends CI_Model
 {
     $this->db->where('categoryid', $id);
     $this->db->where('magazineid != ',0,FALSE);
+    $this->db->order_by("articledate", "desc");
     $query = $this->db->get($this->table, $porpagina, $desde);
 
     if ($query->num_rows() > 0) {
@@ -111,6 +112,7 @@ public function getArticlesByArt_Type($category) //C
 {
     $this->db->where('categoryid', $id);
     $this->db->where('magazineid != ',0,FALSE);
+    $this->db->order_by("articledate", "desc");
     $query = $this->db->get($this->table, $porpagina, $desde);
 
     if ($query->num_rows() > 0) {
@@ -149,6 +151,7 @@ public function getArticlesByArt_Type($category) //C
     public function getArticlesByMagazine($id, $porpagina, $desde)
     {
         $this->db->where('magazineid', $id);
+        $this->db->order_by("articledate", "desc");
         $query = $this->db->get($this->table, $porpagina, $desde);
 
         if ($query->num_rows() > 0) {

@@ -8,25 +8,30 @@
 ?>
 
 <div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Políticas de Operación</h1>
-            <ol class="breadcrumb">
-                <li>
-                    <?php echo anchor('/about', 'Acerca de Yúritec Educare ', 'class="link-class"') ?>
-                </li>
-                <li>
-                    <?php echo anchor('/about/objectives', 'Objetivos', 'class="link-class"') ?>
-                </li>
-                <li class="active">Políticas de Operación</li>
-                <li>
-                    <?php echo anchor('/about/evaluation_terms', 'Políticas de Evaluación', 'class="link-class"') ?>
-                </li>
-            </ol>
+   <br/>
+<div class="business">
+    <h3>Políticas de Operación</h3>
+    <div class="grid_3 grid_5">
+
+        <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+            <ul id="myTab" class="nav nav-tabs" role="tablist">
+                <li role="presentation" ><?php echo anchor('/about', 'Acerca de Yúritec Educare ', 'class="link-class"') ?></li>
+                <li role="presentation"><?php echo anchor('/about/objectives', 'Objetivos', 'class="link-class"') ?></li>
+                <li role="presentation" class="active"><?php echo anchor('/about/terms', 'Políticas de Operación', 'class="link-class"') ?></li>
+                <li role="presentation"><?php echo anchor('/about/evaluation_terms', 'Políticas de Evaluación', 'class="link-class"') ?></li>
+            </ul>
+
         </div>
     </div>
+
+    <br/>
 
     <?php foreach($terms as $ter) {
         echo $ter->content;
     }
     ?>
+
+</div>
+
+
+    <br/>

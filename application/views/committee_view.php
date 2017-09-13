@@ -10,32 +10,42 @@
 
 <!-- Team Members -->
 <div class="container">
-<div class="row">
-    <div class="col-lg-12">
-        <h2 class="page-header">Comité Editorial</h2>
-    </div>
-    <?php
-    //if($magazines != false){
-    foreach ($member as $mem) { ?>
-        <div class="col-md-4 text-center">
-            <div class="thumbnail">
-                <img class="img-responsive" src="<?php echo "assets/images/".$mem->ec_photo?>" width="150" height=150" alt="" >
-                <div class="caption">
-                    <h3><?php echo $mem->ec_name ?><br>
-                        <small><?php echo $mem->ec_position ?></small>
-                    </h3>
-                    <p><?php echo $mem->ec_bio?></p>
-                    <ul class="list-inline">
-                        <li><a href="<?php echo $mem->ec_fbaccount ?>"><i class="fa fa-2x fa-facebook-square"></i></a></li>
-                        <li><a href="<?php echo $mem->ec_twaccount ?>"><i class="fa fa-2x fa-twitter-square"></i></a></li>
-                    </ul>
-                </div>
+    <br/>
+    <div class="business">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Comité Editorial</h2>
             </div>
-        </div>
-        <?php
-    }
-    ?>
+            <?php
+            //if($magazines != false){
+            foreach ($member as $mem) { ?>
 
-</div>
+                <div class="col-md-4 text-center">
+                    <div class="soci">
+                        <ul>
+                            <li><a href="<?php echo $mem->ec_twaccount ?>" class="facebook-1"> </a></li>
+                            <li><a href="<?php echo $mem->ec_fbaccount ?>" class="facebook-1 chrome"> </a></li>
+                        </ul>
+                    </div>
+                    <div class="thumbnail">
+                        <img class="img-responsive" src="<?php echo "assets/images/".$mem->ec_photo?>" width="150" height=150" alt="" >
+                        <div class="caption">
+                            <h3><?php echo $mem->ec_name ?><br>
+                                <small><?php echo $mem->ec_position ?></small>
+                            </h3>
+                            <p><?php echo $mem->ec_bio?></p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <?php
+            }
+            ?>
+        </div>
+    </div>
+
+    <br/>
+
 <!-- /.row -->
 

@@ -1,18 +1,10 @@
 <script type="text/javascript" src="<?php echo base_url('assets/js/contact.js'); ?>"></script>
 <div class="container">
 
-    <!-- Page Heading/Breadcrumbs -->
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Contacto
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="index.html">Inicio</a>
-                </li>
-                <li class="active">Contacto</li>
-            </ol>
-        </div>
-    </div>
+    <br>
+    <!-- Content Row -->
+    <div class="business">
+        <h3>Contacto</h3>
     <!-- /.row -->
 
     <!-- Content Row -->
@@ -92,5 +84,5 @@
 
     </div>
     <!-- /.row -->
-
-    <hr>
+    </div>
+    <br/>

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery.growl.css'); ?>">
     <link href="<?php echo base_url('assets/css/modern-business.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/css/style.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/bootstrap-datetimepicker.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/font-awesome/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/jquery.dataTables.min.css'); ?>">
@@ -42,36 +43,34 @@
 
 </head>
 <body>
-
-<div align="center">
-    <!-- <img src="http://www.ittepic.edu.mx/images/header2.jpg" class="img-responsive" alt=""/> -->
-    <img src="<?php echo base_url('assets/img/header3.jpg'); ?>" class="img-responsive" alt=""/>
-</div>
-<div id="nav">
-
-
-    <nav class="navbar navbar-inverse ">
-
+<div class="header">
+    <div class="header-top">
         <div class="container">
-            <script>
-                $('.carousel').carousel({
-                    interval: 5000 //changes the speed
-                })
-            </script>
-            <div class="navbar-header">
+            <div class="logo">
+                <a href="<?php echo base_url('home'); ?>"><img src="<?php echo base_url('assets/img/header3.jpg'); ?>" alt=""/></a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
 
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1">
+    <!--head-bottom-->
+    <div class="head-bottom">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo site_url('/home') ?>">Inicio</a>
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
+
+
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="<?php echo site_url('/home') ?>"><span class="glyphicon glyphicon-home"></span></a>
+                    </li>
                     <li>
                         <?php echo anchor('/about', 'Acerca de', 'class="link-class"') ?>
                     </li>
@@ -103,6 +102,9 @@
                                     <?php echo anchor('/settings/objectives', 'Objetivos', 'class="link-class"') ?>
                                 </li>
                                 <li>
+                                    <?php echo anchor('/user/profile', 'Perfil', 'class="link-class"') ?>
+                                </li>
+                                <li>
                                     <?php echo anchor('/settings/terms', 'Políticas', 'class="link-class"') ?>
                                 </li>
                                 <li>
@@ -117,6 +119,9 @@
                                 <li>
                                     <?php echo anchor('/user/users_new', 'Usuarios', 'class="link-class"') ?>
                                 </li>
+
+
+
                             </ul>
                         </li>
                         <?php
@@ -126,17 +131,6 @@
                     <li>
                         <?php echo anchor('/magazine', 'Ejemplares', 'class="link-class"') ?>
                     </li>
-                    <?php
-
-                    if($this->session->userdata('roleid') == 1 || $this->session->userdata('roleid') == 2 || $this->session->userdata('roleid') == 3){
-
-                        ?>
-                        <li>
-                            <?php echo anchor('/user/profile', 'Mi Perfil', 'class="link-class"') ?>
-                        </li>
-                        <?php
-                    }
-                    ?>
                     <?php
                     //  echo "<li> jejeje".$this->session->userdata('id')."</li>";
                     if($this->session->userdata('roleid') == ""){
@@ -157,9 +151,13 @@
                     ?>
 
                 </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+            </div><!--/.nav-collapse -->
         </div>
-        <!-- /.container -->
-    </nav>
-</div>
+    </div>
+    <!--head-bottom-->
+</div> <!-- /header -->
+
+
+
+
+

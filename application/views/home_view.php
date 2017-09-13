@@ -1,66 +1,57 @@
 
+
 <div class="container">
     <!-- Marketing Icons Section -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
 
-    <div class="row">
-        <header id="myCarousel" class="carousel slide">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-                <div class="item active">
-                    <div class="fill"
-                         style="background-image:url('https://scontent.fgdl4-1.fna.fbcdn.net/v/t31.0-8/11428208_10152820261541822_8073039043204813790_o.jpg?oh=4bccb8fa41686e668ddf6fd22c0a4974&oe=59D7C7C4');"></div>
-                    <div class="carousel-caption">
-                       <!-- <h2>Caption 1</h2>-->
-                    </div>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="fill"
+                     style="background-image:url('https://scontent.fgdl4-1.fna.fbcdn.net/v/t31.0-8/11428208_10152820261541822_8073039043204813790_o.jpg?oh=4bccb8fa41686e668ddf6fd22c0a4974&oe=59D7C7C4');"></div>
+                <div class="carousel-caption">
+                    <h2>¡Bienvenido a Yurítec Educare!</h2>
                 </div>
-                <div class="item">
-                    <div class="fill"
-                         style="background-image:url('https://scontent.fgdl5-1.fna.fbcdn.net/v/t1.0-9/10609604_1697472613824590_1400521813064864168_n.jpg?oh=4bb6a9b2eb7bdd3e7aa60e5e5945c02e&oe=5A250C5A');"></div>
-                    <div class="carousel-caption">
-                        <!-- <h2>Caption 1</h2>-->
-                    </div>
+            </div>
+            <div class="item">
+                <div class="fill"
+                     style="background-image:url('https://scontent.fgdl5-1.fna.fbcdn.net/v/t1.0-9/10609604_1697472613824590_1400521813064864168_n.jpg?oh=4bb6a9b2eb7bdd3e7aa60e5e5945c02e&oe=5A250C5A');"></div>
+                <div class="carousel-caption">
+                    <h2>¡Bienvenido a Yurítec Educare!</h2>
                 </div>
-                <div class="item">
-<div class="fill">
-
-        <img class="img-responsive" src="<?php echo "/Yuritec_Educare/assets/img/imgabout.png"?>" alt="" >
-
-</div>
-
-                    <div class="carousel-caption">
-                        <!-- <h2>Caption 1</h2>-->
-                    </div>
+            </div>
+            <div class="item">
+                <div class="fill"
+                     style="background-image:url('https://scontent.ftpq1-1.fna.fbcdn.net/v/t31.0-8/11950157_1637255886512930_8385275946316650418_o.jpg?oh=081fa552c57613ea680cb5b37988f995&oe=5A50CFAE');"></div>
+                <div class="carousel-caption">
+                    <h2>¡Bienvenido a Yurítec Educare!</h2>
                 </div>
             </div>
 
-            <!-- Controls -->
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="icon-prev"></span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="icon-next"></span>
-            </a>
-        </header>
-
-        <div class="col-lg-12">
-            <h1 class="page-header">
-                ¡Bienvenido a Yurítec Educare!
-            </h1>
         </div>
 
 
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+    </header>
+<div class="business">
+    <div class="row">
         <h3>Sitios de Interés</h3>
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4><i class="fa fa-fw fa-university"></i>Instituto Tecnológico de Tepic</h4>
+                    <p><i class="fa fa-fw fa-university"></i>Instituto Tecnológico de Tepic</p>
                 </div>
                 <div class="panel-body">
                     <div align="center">
@@ -78,7 +69,7 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4><i class="fa fa-fw fa-university"></i>Tecnológico Nacional de México</h4>
+                    <p><i class="fa fa-fw fa-university"></i>Tecnológico Nacional de México</p>
                 </div>
                 <div class="panel-body">
                     <div align="center">
@@ -94,7 +85,7 @@
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4><i class="fa fa-fw fa-compass"></i>Academia Journals</h4>
+                    <p><i class="fa fa-fw fa-compass"></i>Academia Journals</p>
                 </div>
                 <div class="panel-body">
                     <a href="http://www.academiajournals.com/tepic">
@@ -105,13 +96,9 @@
         </div>
     </div>
     <!-- /.row -->
+</div>
 
 
-    <hr>
-
-    <!-- Call to Action Section -->
-    
-    <hr>
     <script>
         $('.carousel').carousel({
             interval: 5000 //changes the speed

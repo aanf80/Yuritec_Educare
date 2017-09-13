@@ -1,19 +1,20 @@
-<footer>
-
-    <div class="well">
-        <div class="row">
-            <div class="col-md-12">
-                <p class="text-center">YURITEC EDUCARE.
-                    AV. TECNOLÓGICO # 2595, COL. LAGOS DEL COUNTRY. TEPIC, NAYARIT. MÉXICO. C.P. 63175. TEL: (311) 211 94 00. COMUNICACION@ITTEPIC.EDU.MX</p>
-            </div>
-
-        </div>
+</div><!-- /container-->
+<div class="foot-nav">
+    <div class="container">
+        <ul>
+            <div class="clearfix"></div>
+        </ul>
     </div>
+</div>
+<!-- footer-bottom -->
+<div class="copyright">
+    <div class="container">
+        <p>© 2017 Yuritec Educare: Revista Científica del Instituto Tecnológico de Tepic. Todos los derechos reservados.</p>
 
-</footer>
 
+    </div>
 </div>
 
-</body>
 
+</body>
 </html>

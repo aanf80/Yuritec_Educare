@@ -60,6 +60,7 @@ class Model_Magazine extends CI_Model{
     public function get_magazines($porpagina,$desde){
 
         $this->db->where('status','publicada');
+        $this->db->order_by("date", "desc");
         $query = $this->db->get($this->table,$porpagina,$desde);
 
         if( $query -> num_rows() > 0 ){

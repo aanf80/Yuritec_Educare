@@ -10,63 +10,58 @@
 <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Publicaciones
-            </h1>
-        </div>
-    </div>
-    <!-- /.row -->
+    <br/>
 
-    <div class="row">
+
 
         <!-- Blog Entries Column -->
-        <div class="col-md-8">
 
-            <!-- First Blog Post -->
-
-            <?php
-            if($magazines != false){
-                foreach ($magazines as $magazine) { ?>
-                    <h2>
-                        <a href="<?php echo site_url('/magazine/articles/' . $magazine->magazineid) ?>"><?php echo "Volumen " . $magazine->volume . " Número " . $magazine->number ?></a>
-                        <small><?php echo $magazine->period . " " . $magazine->year ?></small>
-                    </h2>
-
-                    <p><i class="fa fa-clock-o"></i> <?php echo "Fecha de publicación: " . $magazine->date ?></p>
-                    <hr>
-                    <div align="center">
-                        <a href="<?php echo site_url('/magazine/articles/' . $magazine->magazineid) ?>">
-
-                            <img class="img-responsive" src="<?php echo "/Yuritec_Educare/assets/images/".$magazine->cover?>" width="400" height=100" alt="" >
-                        </a>
-                    </div>
-                    <br/>
-                    <a class="btn btn-warning"
-                       href="<?php echo site_url('/magazine/articles/' . $magazine->magazineid) ?>">Ver artículos <i
-                            class="fa fa-angle-right"></i></a>
-
+            <div class="col-md-8">
+                <div class="business">
+                <!-- First Blog Post -->
+                    <h2>Publicaciones</h2>
                     <hr>
                     <?php
-                }
-            }
-            else{
+                    if($magazines != false){
+                        foreach ($magazines as $magazine) { ?>
+                            <div class="row">
 
-                echo " <img class=\"img-responsive img-hover\" src=\"/Yuritec_Educare/assets/img/not-found.png\" ";
+                            </div>
+                            <h2>
+                                <a href="<?php echo site_url('/magazine/articles/' . $magazine->magazineid) ?>"><?php echo "Volumen " . $magazine->volume . " Número " . $magazine->number ?></a>
+                                <small><?php echo $magazine->period . " " . $magazine->year ?></small>
+                            </h2>
 
-            }
-            ?>
-            <!-- Pager -->
-            <div class="row text-center">
-                <ul class="pagination">
-                    <?php
-                    /* Se imprimen los números de página */
-                    echo $this->pagination->create_links();
+                            <p><i class="fa fa-calendar"></i> <?php echo "Fecha de publicación: " . $magazine->date ?></p>
+
+                            <div align="center">
+                                <a href="<?php echo site_url('/magazine/articles/' . $magazine->magazineid) ?>">
+
+                                    <img class="img-responsive" src="<?php echo "/Yuritec_Educare/assets/images/".$magazine->cover?>" width="400" height=100" alt="" >
+                                </a>
+                            </div>
+                            <hr>
+                            <?php
+                        }
+                    }
+                    else{
+                        echo " <img class=\"img-responsive img-hover\" src=\"/Yuritec_Educare/assets/img/not-found.png\" ";
+                    }
                     ?>
-                </ul>
-            </div>
-        </div>
+                </div><!-- BUSSINESS -->
+
+                <div class="row text-center">
+                    <ul class="pagination">
+                        <?php
+                        /* Se imprimen los números de página */
+                        echo $this->pagination->create_links();
+                        ?>
+                    </ul>
+                </div>
+             </div>
         <!-- Blog Sidebar Widgets Column -->
+
+
         <div class="col-md-4">
 
             <!-- Blog Search Well -->
@@ -124,12 +119,12 @@
             </div>
         </div>
 
-
-
         <!-- Blog Sidebar Widgets Column -->
-
-
     </div>
     <!-- /.row -->
+
+<!-- Pager -->
+
+
 
     <hr>
