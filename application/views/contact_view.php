@@ -31,12 +31,11 @@
                 </p>
                 <p><i class="fa fa-clock-o"></i>
                     <abbr title="Horario de atención">H</abbr>: <?php echo $con->schedule ?></p>
-                <ul class="list-unstyled list-inline list-social-icons">
-                    <li>
-                        <a href="https://www.facebook.com/Tecnol%C3%B3gico-de-Tepic-Comunicaci%C3%B3n-1637242433180942/"><i
-                                class="fa fa-facebook-square fa-2x"></i></a>
-                    </li>
-                </ul>
+                <div class="soci">
+                    <ul>
+                        <li><a href="https://www.facebook.com/Tecnol%C3%B3gico-de-Tepic-Comunicaci%C3%B3n-1637242433180942/?fref=ts" class="facebook-1 chrome"> </a></li>
+                    </ul>
+                </div>
             </div>
 
             <?php
@@ -44,7 +43,7 @@
         ?>
     </div>
     <!-- /.row -->
-
+<br/>
     <!-- Contact Form -->
     <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
     <div class="row">

@@ -32,8 +32,13 @@
                 </div>
                 <div class="col-md-5">
                     <h3><?php echo $art->title; ?></h3>
-                    <h4>Autor: <?php
-                        echo $autorname . " " . $autorlastname . " " . $autormoaternalsurname; ?> </h4>
+                    <h4>Autor:  <?php
+                        foreach($users as $user) {
+                            if($user->userid == $art->userid){
+                                echo $user->username." ".$user->lastname." ".$user->maternalsurname;
+                            }
+                        }
+                        ?> </h4>
                     <p><?php echo $art->resumen; ?></p>
                     <a class="btn btn-warning"
                        href="<?php echo site_url('/magazine/article_view/' . $magazineid . '/' . $art->articleid) ?>">Ver

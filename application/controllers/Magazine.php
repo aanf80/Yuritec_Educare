@@ -104,15 +104,12 @@ class Magazine extends CI_Controller
             $this->load->model('Model_User');
             $users = $this->Model_User->getUsers();
 
-            foreach ($users as $user){
-                if ($user->userid == $data['articles'][0]->userid){
-                    $data['autorname'] = $this->Model_User->getUserById($user->userid)[0]->username;
-                    $data['autorlastname'] = $this->Model_User->getUserById($user->userid)[0]->lastname;
-                    $data['autormoaternalsurname'] = $this->Model_User->getUserById($user->userid)[0]->maternalsurname;
-                }
-            }
+            $this->load->model('Model_User');
+            $data['users'] = $this->Model_User->getUsers();
+
             $this->load->model('Model_Magazine');
             $data['magazines'] = $this->Model_Magazine->getMagazines();
+
 
             foreach ($data['magazines'] as $magazine){
                 if ($magazine->magazineid == $data['articles'][0]->magazineid){
