@@ -47,7 +47,7 @@
     <div class="header-top">
         <div class="container">
             <div class="logo">
-                <a href="<?php echo base_url('home'); ?>"><img src="<?php echo base_url('assets/img/header3.jpg'); ?>" alt=""/></a>
+                <a href="<?php echo base_url('home'); ?>"><img src="<?php echo base_url('assets/img/header3.jpg'); ?>" class="img-responsive" alt=""/></a>
             </div>
             <div class="clearfix"></div>
         </div>

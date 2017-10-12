@@ -1,90 +1,80 @@
-<div class="container">
 
-    <!-- Page Heading/Breadcrumbs -->
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Artículos
-                <?php
-                if($articles != false){
-                echo "<small>Volumen " . $volume . " Número " . $number ?></small>
-                <?php
-                }?>
 
-            </h1>
-            <ol class="breadcrumb">
-                <li> <?php echo anchor('/magazine', 'Ejemplares', 'class="link-class"') ?></li>
-                <li class="active">Artículos</li>
-            </ol>
-        </div>
-    </div>
-    <!-- /.row -->
+    <div class="technology">
+        <div class="container">
+<br/>
+<br/>
 
-    <!-- Project One -->
+    <div class="col-md-12 technology-left">
 
-    <?php
-    if($articles != false){
-        foreach($articles as $art) { ?>
-            <div class="row">
-                <div class="col-md-7">
-                    <a href="<?php echo site_url('/magazine/article_view/' . $magazineid . '/' . $art->articleid) ?>">
-                        <img class="img-responsive img-hover" src="http://placehold.it/700x300" alt="">
-                    </a>
-                </div>
-                <div class="col-md-5">
-                    <h3><?php echo $art->title; ?></h3>
-                    <h4>Autor:  <?php
-                        foreach($users as $user) {
-                            if($user->userid == $art->userid){
-                                echo $user->username." ".$user->lastname." ".$user->maternalsurname;
-                            }
-                        }
-                        ?> </h4>
-                    <p><?php echo $art->resumen; ?></p>
-                    <a class="btn btn-warning"
-                       href="<?php echo site_url('/magazine/article_view/' . $magazineid . '/' . $art->articleid) ?>">Ver
-                        Artículo <span class="glyphicon glyphicon-circle-arrow-right"></span></i></a>
-                    <a class="btn btn-danger" href="<?php echo site_url('/magazine/generatePDF/' . $art->articleid) ?>">Descargar
-                        en PDF <span class="glyphicon glyphicon-download"></span></a>
-                    <br/>
-
-                    <hr>
-                </div>
-            </div>
-
-            <!-- /.row -->
-            <hr>
+        <div class="tech-no">
+            <!-- technology-top -->
+            <br/>
+           <?php  echo "<h2>Volumen " . $volume . " Número " . $number."</h2>";?>
+            <br/>
             <?php
-        }
-    }
-    else{
-        echo "<h3>No se encontraron resultados</h3>";
-    }
-    ?>
-    <hr>
+            if($articles != false){
+
+                foreach($articles as $art) {?>
+                    <div class="soci">
+                        <ul>
+                            <li><a href="<?php echo site_url('/magazine/generatePDF/' . $art->articleid) ?>"><i class="glyphicon glyphicon-print"> </i></a></li>
+                        </ul>
+                    </div>
+                    <div class="tc-ch">
+
+                        <div class="tch-img">
+                            <a href="<?php echo site_url('/magazine/article_view/' . $magazineid . '/' . $art->articleid) ?>">
+                                <img class="img-responsive img-hover" src="http://placehold.it/700x300" alt="">
+                            </a>
+                        </div>
+                        <a class="blog orn"><?php
+                            foreach($categories as $cat) {
+                                if($cat->categoryid == $art->categoryid){
+                                    echo $cat->categoryname;
+                                }
+                            }
+                            ?></a>
+                        <h3><a href="<?php echo site_url('/magazine/article_view/' . $magazineid . '/' . $art->articleid) ?>"> <?php echo $art->title ?></a></h3>
+                        <?php echo $art->resumen ?>
 
 
-    <hr>
-
-    <!-- Pagination -->
-    <div class="row text-center">
-        <div class="col-lg-12">
-            <ul class="pagination">
-                <?php
-                /* Se imprimen los números de página */
-                echo $this->pagination->create_links();
-                ?>
-            </ul>
-        </div>
-    </div>
-    <!-- /.row -->
-
-    <hr>
-
-    <!-- Footer -->
-    <footer>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Copyright &copy; Your Website 2014</p>
+                        <div class="blog-poast-info">
+                            <ul>
+                                <li><i class="glyphicon glyphicon-user"> </i><a class="admin" href="#"> <?php
+                                        foreach($users as $user) {
+                                            if($user->userid == $art->userid){
+                                                echo $user->username." ".$user->lastname." ".$user->maternalsurname;
+                                            }
+                                        }
+                                        ?></a></li>
+                                <li><i class="glyphicon glyphicon-calendar"> </i><?php echo $art->articledate ?> </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- technology-top -->
+                    <!-- technology-top -->
+                    <?php
+                }//foreach
+            }
+            else{
+                echo "<h3>No se encontraron resultados</h3>";
+            }
+            ?>
+            <!-- Pagination -->
+            <div class="row text-center">
+                <div class="col-lg-12">
+                    <ul class="pagination">
+                        <?php
+                        /* Se imprimen los números de página */
+                        echo $this->pagination->create_links();
+                        ?>
+                    </ul>
+                </div>
             </div>
         </div>
-    </footer>
+
+    </div>
+
+        </div>

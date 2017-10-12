@@ -8,7 +8,7 @@
 ?>
 <script type="text/javascript" src="<?php echo base_url('assets/js/role.js'); ?>"></script>
 <div class="container">
-    <h2>Roles de usuario</h2>
+
 
     <div id="modalRole" class="modal">
         <div class="modal-dialog">
@@ -48,23 +48,28 @@
 
 
     <!-- Aqui inicia el formulario-->
-    <div class="col-md-8">
-        <form id="frmRole">
-            <label>Nombre</label>
+    <div class="col-md-10">
 
-            <input type="text" class="form-control" id="rolename" name="rolename"
-                   placeholder="Nombre del rol de usuario">
-            <div class="row">&nbsp;</div>
-            <button type="submit" class="btn btn btn-warning"><span
-                    class="glyphicon glyphicon-floppy-save"></span>
-                Guardar
-            </button>
+            <div class="business">
+                <h2>Roles de usuario</h2>
+                <form id="frmRole">
+                <label>Nombre</label>
+
+                <input type="text" class="form-control" id="rolename" name="rolename"
+                       placeholder="Nombre del rol de usuario">
+                <div class="row">&nbsp;</div>
+                <button type="submit" class="btn btn btn-warning"><span
+                            class="glyphicon glyphicon-floppy-save"></span>
+                    Guardar
+                </button>
         </form>
-    </div>
+            </div>
+
+
+
     <br/><br/>
-    <br/><br/>
-    <div class="row">
-        <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+        <div class="business">
             <table id="tbRole" class="table table-striped table-bordered">
                 <thead>
                 <tr>

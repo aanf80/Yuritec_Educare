@@ -76,7 +76,7 @@ class Magazine extends CI_Controller
         $config['base_url'] = base_url().'magazine/articles/'.$id."/";
         $config['total_rows'] = count($this->Model_Article->getArticlesByVolume($id));
         /*Obtiene el numero de registros a mostrar por pagina */
-        $config['per_page'] = 2;
+        $config['per_page'] = 5;
         $config["uri_segment"] = 4;
         /*Se personaliza la paginación para que se adapte a bootstrap*/
         $config['cur_tag_open'] = '<li class="active"><a href="#">';
@@ -110,6 +110,8 @@ class Magazine extends CI_Controller
             $this->load->model('Model_Magazine');
             $data['magazines'] = $this->Model_Magazine->getMagazines();
 
+            $this->load->model('Categories');
+            $data['categories'] = $this->Categories->getCategories();
 
             foreach ($data['magazines'] as $magazine){
                 if ($magazine->magazineid == $data['articles'][0]->magazineid){
@@ -133,7 +135,7 @@ class Magazine extends CI_Controller
         $config['base_url'] = base_url().'magazine/articlesByCategory/'.$id."/";
         $config['total_rows'] = count($this->Model_Article->getArticlesByTheme($id));
         /*Obtiene el numero de registros a mostrar por pagina */
-        $config['per_page'] = 2;
+        $config['per_page'] = 5;
         $config["uri_segment"] = 4;
         /*Se personaliza la paginación para que se adapte a bootstrap*/
         $config['cur_tag_open'] = '<li class="active"><a href="#">';
@@ -161,13 +163,8 @@ class Magazine extends CI_Controller
             $this->load->model('Model_User');
             $users = $this->Model_User->getUsers();
 
-            foreach ($users as $user){
-                if ($user->userid == $data['articles'][0]->userid){
-                    $data['autorname'] = $this->Model_User->getUserById($user->userid)[0]->username;
-                    $data['autorlastname'] = $this->Model_User->getUserById($user->userid)[0]->lastname;
-                    $data['autormoaternalsurname'] = $this->Model_User->getUserById($user->userid)[0]->maternalsurname;
-                }
-            }
+            $this->load->model('Model_User');
+            $data['users'] = $this->Model_User->getUsers();
             $this->load->model('Model_Magazine');
             $data['magazines'] = $this->Model_Magazine->getMagazines();
 
@@ -179,6 +176,8 @@ class Magazine extends CI_Controller
                 }
             }
         }
+        $this->load->model('Categories');
+        $data['categories'] = $this->Categories->getCategories();
 
         $this->load->view('header');
         $this->load->view('articles/articlemenu_view', $data);

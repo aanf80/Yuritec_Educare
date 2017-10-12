@@ -29,9 +29,8 @@ class Contact extends CI_Controller
     public function sendContactEmail()
     {
         $jsondata = array();
-
-        $emailFrom = "jess.pardo1811@gmail.com";
-        $emailTo = "jess.pardo1811@gmail.com";
+        $emailFrom = "armando.navarroflores94@gmail.com";
+        $emailTo = "nrubin@ittepic.edu.mx";
 
         $emailMessage = '<p>' . $this->input->post('message') . '</p>';
         $emailMessage .= "<p> Número de contacto: " . $this->input->post('phone') . '</p>';
@@ -55,8 +54,8 @@ class Contact extends CI_Controller
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_port' => 465,
-            'smtp_user' => 'jess.pardo1811@gmail.com',
-            'smtp_pass' => 'jessly1811',
+            'smtp_user' => 'armando.navarroflores94@gmail.com',
+            'smtp_pass' => 'Chivas1906',
             'mailtype' => 'html',
             'charset' => 'utf-8',
             'wordwrap' => TRUE

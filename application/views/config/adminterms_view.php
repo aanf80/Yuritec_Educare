@@ -14,14 +14,15 @@
     </div>
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <h3 class="page-header">Políticas de Operación</h3>
-        </div>
 
+    <div class="col-lg-12">
+        <div class="business">
+            <h3 class="page-header">Políticas de Operación</h3>
+
+            <textarea name="content" id="content" rows="6" class="form-control"></textarea>
+            <div class="row">&nbsp;</div>
+            <button id="btnGuardarPoliticas" class="btn btn-warning"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+        </div>
     </div>
 
-    <textarea name="content" id="content" rows="6" class="form-control"></textarea>
-    <div class="row">&nbsp;</div>
-     <button id="btnGuardarPoliticas" class="btn btn-warning"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+

@@ -45,58 +45,60 @@
             <span class="icon-next"></span>
         </a>
     </header>
-<div class="business">
-    <div class="row">
-        <h3>Sitios de Interés</h3>
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <p><i class="fa fa-fw fa-university"></i>Instituto Tecnológico de Tepic</p>
-                </div>
-                <div class="panel-body">
-                    <div align="center">
-                        <a href="http://ittepic.edu.mx/">
-                            <img src="http://www.ittepic.edu.mx/images/escudo_itt_200x200.png">
-                        </a>
+
+
+    <div class="business">
+        <div class="row">
+            <h3>Sitios de Interés</h3>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <p><i class="fa fa-fw fa-university"></i>Instituto Tecnológico de Tepic</p>
+                    </div>
+                    <div class="panel-body">
+                        <div align="center">
+                            <a href="http://ittepic.edu.mx/">
+                                <img src="http://www.ittepic.edu.mx/images/escudo_itt_200x200.png">
+                            </a>
+
+                        </div>
+
+
 
                     </div>
-
-
-
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <p><i class="fa fa-fw fa-university"></i>Tecnológico Nacional de México</p>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <p><i class="fa fa-fw fa-university"></i>Tecnológico Nacional de México</p>
+                    </div>
+                    <div class="panel-body">
+                        <div align="center">
+                            <a href="http://www.tecnm.mx/">
+                                <img src="https://i2.wp.com/itstacambaro.edu.mx/archivo/uploads/2017/05/tecn-nuevo-logo.png?resize=706%2C390" height="200" width="300">
+                            </a>
+                        </div>
+
+
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <div align="center">
-                        <a href="http://www.tecnm.mx/">
-                            <img src="https://i2.wp.com/itstacambaro.edu.mx/archivo/uploads/2017/05/tecn-nuevo-logo.png?resize=706%2C390" height="200" width="300">
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <p><i class="fa fa-fw fa-compass"></i>Academia Journals</p>
+                    </div>
+                    <div class="panel-body">
+                        <a href="http://www.academiajournals.com/tepic">
+                            <img src="http://static1.squarespace.com/static/55564587e4b0d1d3fb1eda6b/t/55c55db6e4b0760916a1277c/1501254981985/?format=1500w" height="200" width="300">
                         </a>
                     </div>
-
-
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <p><i class="fa fa-fw fa-compass"></i>Academia Journals</p>
-                </div>
-                <div class="panel-body">
-                    <a href="http://www.academiajournals.com/tepic">
-                        <img src="http://static1.squarespace.com/static/55564587e4b0d1d3fb1eda6b/t/55c55db6e4b0760916a1277c/1501254981985/?format=1500w" height="200" width="300">
-                    </a>
-                </div>
-            </div>
-        </div>
+        <!-- /.row -->
     </div>
-    <!-- /.row -->
-</div>
 
 
     <script>
@@ -104,3 +106,4 @@
             interval: 5000 //changes the speed
         })
     </script>
+

@@ -9,8 +9,6 @@
 <div class="container">
     <br/>
     <div class="business">
-        <h3>Políticas de Evaluación</h3>
-        <div class="grid_3 grid_5">
 
             <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
                 <ul id="myTab" class="nav nav-tabs" role="tablist">
@@ -21,9 +19,10 @@
                 </ul>
 
             </div>
-        </div>
+
 
         <br/>
+        <h3>Políticas de Evaluación</h3>
 
         <?php foreach($terms as $ter) {
             echo $ter->content;

@@ -8,7 +8,7 @@
 ?>
 <script type="text/javascript" src="<?php echo base_url('assets/js/articletype.js'); ?>"></script>
 <div class="container">
-    <h2>Tipo de Artículos</h2>
+
 
     <div id="modalArticle_Type" class="modal">
         <div class="modal-dialog">
@@ -43,26 +43,30 @@
 
 
     <!-- Aqui inicia el formulario-->
-    <div class="col-md-8">
-        <form id="frmTipo_Articulo">
-            <label>Nombre</label>
+    <div class="col-md-10">
+        <div class="business">
+            <h2>Tipo de Artículos</h2
+            <form id="frmTipo_Articulo">
+                <label>Nombre</label>
 
-            <input type="text" class="form-control" id="nombreTipo_Articulo" name="nombreTipo_Articulo"
-                   placeholder="Nombre del apartado temático">
-            <div class="row">&nbsp;</div>
-            <button type="submit" class="btn btn btn-warning"><span
-                    class="glyphicon glyphicon-floppy-save"></span>
-                Guardar
-            </button>
-        </form>
-    </div>
+                <input type="text" class="form-control" id="nombreTipo_Articulo" name="nombreTipo_Articulo"
+                       placeholder="Nombre del apartado temático">
+                <div class="row">&nbsp;</div>
+                <button type="submit" class="btn btn btn-warning"><span
+                            class="glyphicon glyphicon-floppy-save"></span>
+                    Guardar
+                </button>
+            </form>
+
+        </div>
 
 
     <br/><br/>
-    <br/><br/>
 
-    <div class="row">
-        <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+
+        <div class="business">
+            <h2>Ver Tipo de Artículos</h2>
             <table id="tbTipo_Articulo" class="table table-striped table-bordered">
                 <thead>
                 <tr>

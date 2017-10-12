@@ -7,8 +7,8 @@
  */
 ?>
 <script type="text/javascript" src="<?php echo base_url('assets/js/category.js'); ?>"></script>
+
 <div class="container">
-    <h2>Apartados Temáticos</h2>
 
     <div id="modalCategory" class="modal">
         <div class="modal-dialog">
@@ -43,10 +43,11 @@
 
 
     <!-- Aqui inicia el formulario-->
-    <div class="col-md-8">
+    <div class="col-md-10">
+        <div class="business">
         <form id="frmCategoria">
+            <h2>Nuevo Apartado Temático</h2>
             <label>Nombre</label>
-
             <input type="text" class="form-control" id="nombreCategoria" name="nombreCategoria"
                    placeholder="Nombre del apartado temático">
             <div class="row">&nbsp;</div>
@@ -58,20 +59,22 @@
     </div>
 
 
-    <br/><br/>
-    <br/><br/>
+    <br/>
+    <br/>
 
-    <div class="row">
-        <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+
+        <div class="business">
+            <h3>Ver Apartados Temáticos</h3>
             <table id="tbCategoria" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>Clave</th>
+                     <th>Clave</th>
                     <th>Apartado Temático</th>
                     <th>Operaciones</th>
                 </tr>
                 </thead>
             </table>
+
         </div>
     </div>
-

@@ -9,13 +9,13 @@
 
 <script type="text/javascript" src="<?php echo base_url('assets/js/objectives.js'); ?>"></script>
 <div class="container">
-    <div class="row">
+
         <div class="col-lg-12">
-            <h1 class="page-header">Objetivos</h1>
+            <div class="business">
+                <h2 class="page-header">Modificar Objetivos</h2>
+
+                <textarea name="content" id="content" rows="6" class="form-control"></textarea>
+                <br/>
+                <button id="btnGuardarObj" class="btn btn-warning"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+            </div>
         </div>
-
-    </div>
-
-    <textarea name="content" id="content" rows="6" class="form-control"></textarea>
-    <div class="row">&nbsp;</div>
-    <button id="btnGuardarObj" class="btn btn-warning"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
