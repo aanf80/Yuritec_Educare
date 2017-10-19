@@ -9,23 +9,6 @@
 <script type="text/javascript" src="<?php echo base_url('assets/js/magazine.js'); ?>"></script>
 
 <div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Ver revistas</h1>
-            <ol class="breadcrumb">
-                <li>
-                    <?php echo anchor('/settings/magazine', 'Nueva revista', 'class="link-class"') ?>
-                </li>
-                <li>
-                    <?php echo anchor('/settings/select_articles', 'Seleccionar articulos', 'class="link-class"') ?>
-                </li>
-                <li class="active">Ver Revistas</li>
-                <li>
-                    <?php echo anchor('/magazine/article_editor', 'Artículo en línea', 'class="link-class"') ?>
-                </li>
-            </ol>
-        </div>
-    </div>
 
     <div id="modalSelectedArticles" class="modal">
         <div class="modal-dialog">
@@ -124,10 +107,20 @@
         </div>
     </div>
     <!-- Fin de modal de cambiar foto-->
+<div class="business">
+    <h2 class="page-header">Ver revistas</h2>
+
+    <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+        <ul id="myTab" class="nav nav-tabs" role="tablist">
+            <li role="presentation"  > <?php echo anchor('/settings/magazine', 'Nueva revista', 'class="link-class"') ?></li></li>
+            <li role="presentation" > <?php echo anchor('/settings/select_articles', 'Seleccionar articulos', 'class="link-class"') ?></li>
+            <li role="presentation" class="active" > <?php echo anchor('/settings/magazines', 'Ver Revistas', 'class="link-class"') ?></li>
+            <li role="presentation" ><?php echo anchor('/magazine/article_editor', 'Artículo en línea', 'class="link-class"') ?></li>
+        </ul>
+    </div>
 
 
     <form id="frmEditMagazine" enctype="multipart/form-data">
-
         <div class="form-group">
             <div class="col-lg-6">
                 <label class="control-label">Revista</label>
@@ -187,11 +180,4 @@
     <button id="btnEditarRevista" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i> Editar</button>
     <button id="btnEliminarRevista" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i> Eliminar</button>
     <button id="btnVerArticulos" class="btn btn-warning"><i class="glyphicon glyphicon-file"></i> Ver artículos</button>
-
-
-
-
-
-
-
-
+</div>

@@ -6,6 +6,19 @@ $ID=0;
 $ID2=0;
 $articleid = 0;
 $(function(){
+    tinymce.init({
+        selector: "textarea",
+        language : "es_MX",
+        plugins: [
+            "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+            "save table contextmenu directionality emoticons template paste textcolor"
+        ],
+        toolbar1: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | sizeselect | fontselect |  fontsizeselect | forecolor backcolor',
+        //toolbar2: " | bold italic | ",
+        fontsize_formats: "8pt 10pt 12pt 14pt 18pt 24pt 36pt",
+        save_enablewhendirty: true
+    });
 
     $.ajax({
         url: '/Yuritec_Educare/magazine/getMagazines',

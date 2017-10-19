@@ -33,9 +33,6 @@ $(function () {
             },
             zipcode:{
                 digits: true
-            },
-            photo:{
-                required: true
             }
         },
         messages:{
@@ -71,10 +68,8 @@ $(function () {
             },
             zipcode:{
                 digits: "Introduzca sólo números"
-            },
-            photo:{
-                required: "Necesita seleccionar una foto de perfil"
             }
+
         },
         highlight: function (element){
             $(element).closest('.form-group').addClass('has-error');
@@ -126,7 +121,6 @@ function newUser(){
                 $('#institute').val('');
                 $('#inititals').val('');
                 $('#sign').val('');
-                $('#photo').val('');
                 $('#address').val('');
                 $('#neighborhood').val('');
                 $('#state').val('');

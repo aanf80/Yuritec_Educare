@@ -482,7 +482,7 @@ class User extends CI_Controller
 
     public function sendEmail($email, $username, $lastname, $emailcode)
     {
-        $emailFrom = "jess.pardo1811@gmail.com";
+        $emailFrom = "armando.navarroflores94@gmail.com";
         $emailTo = $email;
         $emailSubject = "Confirme su cuenta de Yurítec Educare";
         $headers = 'From: ' . 'Revista Yurítec Educare' . "\r\n" .
@@ -497,8 +497,8 @@ class User extends CI_Controller
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_port' => 465,
-            'smtp_user' => 'jess.pardo1811@gmail.com',
-            'smtp_pass' => 'hola1234',
+            'smtp_user' => 'armando.navarroflores94@gmail.com',
+            'smtp_pass' => 'Chivas1906',
             'mailtype' => 'html',
             'charset' => 'utf-8',
             'wordwrap' => TRUE

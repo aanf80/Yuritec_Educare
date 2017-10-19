@@ -9,7 +9,7 @@
 
 <script type="text/javascript" src="<?php echo base_url('assets/js/register.js'); ?>"></script>
 <div class="container">
-
+<div class="business">
     <h3 class="page-header">Registrarse</h3>
 
     <form id="frmRegister" enctype="multipart/form-data">
@@ -29,16 +29,10 @@
                 <input type="password" class="form-control" id="confpassword" name="confpassword">
                 <div class="help-block" id="equalpasswd"></div>
 
-
-                <div class="form-group">
-                    <label for="photo">Seleccionar foto de perfil</label>
-                     <input type="file" id="photo"  name="photo">
-                </div>
-
                 <label class="control-label">Nombre: *</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="Nombre(s)">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Nombre(s)*">
                 <div class="help-block"></div>
-                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Apellido Paterno">
+                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Apellido Paterno*">
                 <div class="help-block"></div>
                 <input type="text" class="form-control" id="maternalsurname" name="maternalsurname" placeholder="Apellido Materno">
                 <div class="help-block"></div>
@@ -74,7 +68,7 @@
                 <textarea id="bio" name = "bio" rows="6" class="form-control" placeholder="Ejemplo: Departamento y Rango"></textarea>
                 <div class="help-block"></div>
 
-                <h4><strong>Domicilio</strong></h4>
+                <h3><strong>Domicilio</strong></h3>
 
 
                 <label class="control-label">Calle</label>
@@ -125,4 +119,6 @@
     </form>
 
 
+
+</div>
 

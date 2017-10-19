@@ -56,25 +56,23 @@
                 Guardar
             </button>
         </form>
-    </div>
 
-
-    <br/>
-    <br/>
-
-
-
-        <div class="business">
             <h3>Ver Apartados Temáticos</h3>
             <table id="tbCategoria" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                     <th>Clave</th>
+                    <th>Clave</th>
                     <th>Apartado Temático</th>
                     <th>Operaciones</th>
                 </tr>
                 </thead>
             </table>
+    </div>
 
-        </div>
+
+
+
+
+
+
     </div>

@@ -30,7 +30,7 @@ class Contact extends CI_Controller
     {
         $jsondata = array();
         $emailFrom = "armando.navarroflores94@gmail.com";
-        $emailTo = "nrubin@ittepic.edu.mx";
+        $emailTo = "arannavarrofl@ittepic.edu.mx";
 
         $emailMessage = '<p>' . $this->input->post('message') . '</p>';
         $emailMessage .= "<p> Número de contacto: " . $this->input->post('phone') . '</p>';

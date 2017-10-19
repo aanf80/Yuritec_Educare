@@ -9,18 +9,6 @@
 <script type="text/javascript" src="<?php echo base_url('assets/js/user.js'); ?>"></script>
 <div class="container">
 
-    <div class="row">
-        <div class="col-lg-12">
-            <h3 class="page-header">Consulta de Usuarios</h3>
-            <ol class="breadcrumb">
-                <li>
-                    <?php echo anchor('/user/users_new', 'Nuevo Usuario', 'class="link-class"') ?>
-                </li>
-                <li class="active">Consulta de usuarios</li>
-
-            </ol>
-        </div>
-    </div>
     <div id="modalUser" class="modal">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -277,11 +265,17 @@
     </div>
     <!-- Fin de modal de cambiar foto-->
 
+    <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="business">
+            <h2 class="page-header">Consulta de Usuarios</h2>
 
+            <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                <ul id="myTab" class="nav nav-tabs" role="tablist">
+                    <li role="presentation" >  <?php echo anchor('/user/users_new', 'Nuevo Usuario', 'class="link-class"') ?></li>
+                    <li role="presentation" class="active" > <?php echo anchor('/user/users', 'Consulta de usuarios', 'class="link-class"') ?></li></li>
+                </ul>
+            </div>
 
-    <br/>
-    <div class="row">
-        <div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <table id="tbUsers" class="table table-striped table-bordered">
                 <thead>
                 <tr>
@@ -305,5 +299,6 @@
                 </thead>
             </table>
         </div>
+
     </div>
 
