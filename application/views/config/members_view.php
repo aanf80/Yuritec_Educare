@@ -103,7 +103,7 @@
             <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
                 <ul id="myTab" class="nav nav-tabs" role="tablist">
                     <li role="presentation" > <?php echo anchor('/committee/new_member', 'Nuevo Miembro', 'class="link-class"') ?></li>
-                    <li role="presentation" class="active" ><?php echo anchor('/committee/members', 'Consulta de miembros del comité', 'class="link-class"') ?></li></li>
+                    <li role="presentation" class="active" ><?php echo anchor('/committee/members', 'Consulta de miembros del comité', 'class="link-class"') ?></li>
                 </ul>
             </div>
 
