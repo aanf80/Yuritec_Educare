@@ -265,14 +265,14 @@ i.glyphicon.glyphicon-comment {
 	text-decoration:none;
 }
 .blog-poast-info ul li a:hover {
-	color:#ff5301;
+	color: #f58220;
 }
 .blog-section {
   padding: 4em 0;
   position: relative;
 }
 .tc-ch h3 a {
-    color: #ff5301;
+    color: #f58220;
     font-weight: 700;
 	font-family: 'Roboto Condensed', sans-serif;
 }
@@ -359,7 +359,7 @@ i.glyphicon.glyphicon-print {
     font-size: 1.3em;
 }
 i.glyphicon.glyphicon-plus{
-    background: #f8694d;
+    background: #f58220;
      width: 42px;
     height: 42px;
     top: -1px;
@@ -380,7 +380,7 @@ i.glyphicon.glyphicon-plus{
   -webkit-appearance: none;
 }
 .blo-top form input[type="submit"] {
-  background:#f53f1a; 
+  background:#f58220;
   padding: .3em 1em;
   color: #fff;
   font-size: 14px;
@@ -454,7 +454,7 @@ i.glyphicon.glyphicon-plus{
 }
 .footer h6 {
     font-size: 1.7em;
-    background: #ff5301;
+    background: #f58220;
     padding: 0.5em 1.7em;
     font-weight: 700;
     color: #fff;
@@ -469,7 +469,7 @@ i.glyphicon.glyphicon-plus{
     margin: 0;
 }
 .footer-middle a {
-    color: #ff5301;
+    color: #f58220;
 }
 .footer h4 {
     font-size: 1.7em;
@@ -490,7 +490,7 @@ i.glyphicon.glyphicon-plus{
     line-height: 1.8em;
 }
 .footer-right li a:hover{
-    color: #ff5301;
+    color: #f58220;
 }
 .footer-right li {
 	display:block;
@@ -512,7 +512,7 @@ i.glyphicon.glyphicon-plus{
 	font-weight:700;
 }
 .foot-nav {
-    background: #ff5301;
+    background: #f58220;
 }
 .foot-nav ul {
     padding: 0.65em 0;
@@ -572,7 +572,7 @@ min-height: 300px;
     font-size: 1.7em;
 }
 .technology-1 h3 a {
-    color: #ff5301;
+    color: #f58220;
     font-weight: 700;
     font-family: 'Roboto Condensed', sans-serif;
 }
@@ -596,22 +596,22 @@ min-height: 300px;
     line-height: 2em;
 }
 .business h3 {
-    color: #f53f1a;
+    color: #f58220;
     font-size: 1.7em;
     font-weight: 700;
     margin: 0 0 0.5em;
 }
 .business h2 {
-    color: #f53f1a;
+    color: #f58220;
     font-size: 1.7em;
     font-weight: 700;
     margin: 0.5em 0;
 } 
 .business h2  a{
-    color: #f53f1a;
+    color: #f58220;
 }
 .business h4{
-    color: #f53f1a;
+    color: #f58220;
     font-size: 1.7em;
     font-weight: 700;
     margin: 0.5em 0;
@@ -713,11 +713,11 @@ min-height: 300px;
 .contact-grids input[type="submit"]{
 	outline:none;
 	border:none;
-	background:#f53f1a;
+	background:#f58220;
 	width: 16%;
 	display: block;
 	padding: 8px 0px;
-	border:2px solid #f53f1a;
+	border:2px solid #f58220;
 	color:#fff;
 	font-size:16px;
 	font-weight:700;
@@ -785,7 +785,7 @@ h4.media-heading {
 .comment-bottom input[type="submit"] {
   width: 11%;
   font-size: 1.1em;
-  background: #ff5301;
+  background: #f58220;
   padding: 0.5em 1em;
   text-align: center;
   color: #fff;
@@ -803,7 +803,7 @@ h4.media-heading {
 	background:#333333;
 }
 .comment h3, .comment-top h2 {
-    color: #f53f1a;
+    color:#f58220;
     font-size: 2.5em;
     text-align: left;
     padding: 0 0 0.5em;
@@ -815,7 +815,7 @@ h4.media-heading {
 .blog-text h5 {
     font-size: 1.7em;
     margin: 0.6em 0;
-	color:#f53f1a;
+	color:#f58220;
 	font-weight:700;
 }
 /*--//single--*/
@@ -832,7 +832,7 @@ h4.media-heading {
 	font-weight:700;
 }
 .copyright p a:hover{
-    color:#ff5301;
+    color:#f58220;
 }
 /*-- responsive-design --*/
 @media (max-width: 1024px){

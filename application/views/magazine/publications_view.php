@@ -24,28 +24,30 @@
                     <?php
                     if($magazines != false){
                         foreach ($magazines as $magazine) { ?>
-                            <div class="row">
-
+                            <div class="soci">
+                                <ul>
+                                    <li><a href="#"><i class="glyphicon glyphicon-print"> </i></a></li>
+                                </ul>
                             </div>
-                            <h2>
-                                <a href="<?php echo site_url('/magazine/articles/' . $magazine->magazineid) ?>"><?php echo "Volumen " . $magazine->volume . " Número " . $magazine->number ?></a>
-                                <small><?php echo $magazine->period . " " . $magazine->year ?></small>
-                            </h2>
+                            <div class="tc-ch">
 
-                            <p><i class="fa fa-calendar"></i> <?php echo "Fecha de publicación: " . $magazine->date ?></p>
+                                <div class="tch-img">
+                                    <div align="center">
+                                        <a href="<?php echo site_url('/magazine/articles/' . $magazine->magazineid) ?>">
+                                            <img class="img-responsive" src="<?php echo "/Yuritec_Educare/assets/images/".$magazine->cover?>" width="400" height=100" alt="" >
+                                        </a>
+                                    </div>
 
-                            <div align="center">
-                                <a href="<?php echo site_url('/magazine/articles/' . $magazine->magazineid) ?>">
-
-                                    <img class="img-responsive" src="<?php echo "/Yuritec_Educare/assets/images/".$magazine->cover?>" width="400" height=100" alt="" >
-                                </a>
+                                </div>
                             </div>
-                            <hr>
+                            <div class="clearfix"></div>
+                            <!-- technology-top -->
+                            <!-- technology-top -->
                             <?php
                         }
                     }
                     else{
-                        echo " <img class=\"img-responsive img-hover\" src=\"/Yuritec_Educare/assets/img/not-found.png\" ";
+                        echo "<h3>No se encontraron resultados</h3> ";
                     }
                     ?>
                 </div><!-- BUSSINESS -->
