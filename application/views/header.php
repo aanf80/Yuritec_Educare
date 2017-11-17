@@ -80,13 +80,19 @@
                     <li>
                         <?php echo anchor('/contact', 'Contacto', 'class="link-class"') ?>
                     </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuraciones<b
-                                    class="caret"></b></a>
+
+                        <?php
+
+                        if($this->session->userdata('roleid') != null){
+
+                        ?><li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuraciones<b
+                                        class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <?php echo anchor('/user/profile', 'Perfil', 'class="link-class"') ?>
                             </li>
+
                     <?php
 
                     if($this->session->userdata('roleid') == 1){
@@ -130,11 +136,14 @@
 
                         </ul>
                     </li>
+                    <?php
+                    }
+                    ?>
                     <li>
                         <?php echo anchor('/magazine', 'Ejemplares', 'class="link-class"') ?>
                     </li>
                     <?php
-                    //  echo "<li> jejeje".$this->session->userdata('id')."</li>";
+
                     if($this->session->userdata('roleid') == ""){
 
                         ?>

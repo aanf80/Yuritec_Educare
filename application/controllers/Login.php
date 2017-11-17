@@ -28,7 +28,7 @@ class Login extends CI_Controller {
 
         $username = $this->input->post('username');
 
-        $password = $password = md5((string)$this->input->post('password'));
+        $password = md5((string)$this->input->post('password'));
 
         $confirmed = $this->Model_Login->isConfirmed($username);
         if($confirmed[0]->status === 'C') {

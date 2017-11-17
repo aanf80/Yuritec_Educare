@@ -221,11 +221,55 @@ $(function () {
         },
         submitHandler: function (form) {
            updateUser();
-            console.log("Actualizado");
-            return false;
+           return false;
         }
     });
 
+
+    $('#frmChangepassword').validate({
+        rules:{
+            password:{
+                required: true,
+                minlength: 5
+            },
+            confpassword:{
+                required: true,
+                minlength: 5,
+                equalTo: '#password'
+            }
+        },
+        messages:{
+
+            password:{
+                required: "Capture su contraseña",
+                minlength: "Introduzca mínimo 5 caracteres"
+            },
+            confpassword:{
+                required: "Confirme su contraseña",
+                minlength: "Introduzca mínimo 5 caracteres",
+                equalTo: "Las contraseñas no coinciden"
+            }
+        },
+        highlight: function (element){
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function (element){
+            $(element).closest('.form-group').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'alert-danger',
+        errorPlacement: function(error, element){
+            if(element.parent('.input-group').length){
+                error.insertAfter(element.parent());
+            }else{
+                error.insertAfter(element);
+            }
+        },
+        submitHandler: function (form) {
+            Changepassword();
+            return false;
+        }
+    });
 
     $('#btnModificarUser').on('click', function () {
 
@@ -239,6 +283,9 @@ $(function () {
 
     });
 
+    $('#btnForPass').on('click', function () {
+                forgottenPassword();
+    });
 
     $('#frmChangeUserPhoto').validate({
         rules:{
@@ -425,10 +472,6 @@ function newUser() {
     );
 }
 
-
-
-
-
 function showEditPhoto(userid) {
     $('#userid2').val(userid);
     $('#modalImageUser').modal("show");
@@ -461,8 +504,60 @@ function showUser(userid, username, lastname, maternalsurname, gender, address, 
     $('#address2').val(address);
     $('#neighborhood2').val(neighborhood);
     $('#modalUser').modal("show");
-
 }
+
+function forgottenPassword() {
+    
+        $.ajax(
+            {
+                url: "/Yuritec_Educare/user/password_request",
+                type: "post",
+                data: {
+                    email : $('#email').val()
+                }
+            }
+        ).done(
+            function (data) {
+    
+                if (data.code == 200) {
+                    $.growl.notice({message: data.msg});
+                    $('#tbUsers').dataTable().api().ajax.reload();
+                    $('#modalUser').modal("toggle");
+                } else {
+                    $.growl.error({message: data.msg});
+                }
+            }
+        ).fail(
+            function () {
+                $.growl.error({message: "El servidor no está disponible"});
+            }
+        );
+    }
+
+    function Changepassword(){
+        $.ajax(
+            {
+                url: "/Yuritec_Educare/user/changePassword",
+                type: "post",
+                data: {
+                    password : $('#password').val()
+                }
+            }
+        ).done(
+            function (data) {
+    
+                if (data.code == 200) {
+                    $.growl.notice({message: data.msg});
+                } else {
+                    $.growl.error({message: data.msg});
+                }
+            }
+        ).fail(
+            function () {
+                $.growl.error({message: "El servidor no está disponible"});
+            }
+        );
+    }
 
 function updateUser() {
 

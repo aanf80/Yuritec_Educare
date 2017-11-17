@@ -6,16 +6,18 @@
  * Time: 12:06 AM
  */
 ?>
-
+<script type="text/javascript" src="<?php echo base_url('assets/js/user.js'); ?>"></script>
 <div class="container">
-    <h3 class="page-header">¿Olvidaste tu contraseña?</h3>
+<br/>
+<div class="business">
+<h3 class="page-header">¿Olvidaste tu contraseña?</h3>
 
         <div class="form-group">
             <div class="col-lg-6">
 
                 <!-- Datos Personales-->
                 <label class="control-label">Ingrese su cuenta de correo asociada</label>
-                <input type="text" class="form-control" id="volume" name="volume">
+                <input type="text" class="form-control" id="email" name="email">
                 <div class="help-block"></div>
 
 
@@ -27,7 +29,10 @@
         <div class="row">&nbsp;</div>
         <div class="row">&nbsp;</div>
 
-        <button type="submit" class="btn btn-warning"><i class="glyphicon glyphicon-check"></i> Aceptar</button>
+        <button type="button" id="btnForPass" class="btn btn-warning"><i class="glyphicon glyphicon-check"></i> Aceptar</button>
+</div>
+<br/>
+   
 
 
 

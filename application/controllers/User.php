@@ -32,6 +32,12 @@ class User extends CI_Controller
         $this->load->view('user/forgottenpwd_view');
         $this->load->view('footer');
     }
+    public function change_password()
+    {
+        $this->load->view('header');
+        $this->load->view('user/changepassword_view');
+        $this->load->view('footer');
+    }
 
     public function users_new()
     {
@@ -139,6 +145,7 @@ class User extends CI_Controller
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
 
+    
     public function getUsers()
     {
         $roleid = $this->session->userdata('roleid');
@@ -194,7 +201,39 @@ class User extends CI_Controller
         header("Cache-Control: no-store");
         echo json_encode($jsondata);
     }
+    public function changePassword(){
+        $carpeta = 'assets/images';
+        if (!file_exists($carpeta)) {
+            mkdir($carpeta, 0777, true);
+        }
+     
+           
+            $this->load->model('Model_User');
+            $jsondata = array();
+            $data = array(
+                'userid' => $this->input->post('userid'),
+                'password' => $this->input->post('password')
+            );
+            if($data['photo']==null){
+                redirect('home', 'refresh');
+            }
+            $update = $this->Model_User->updateUser(array('userid' => $this->input->post('userid')), $data);
+            if($update == true){
+                $jsondata["code"] = 200;
+                $jsondata["msg"] = "Actiualizado correctamente";
+                $jsondata["details"] = "OK";
+            }
+            else{
+                $jsondata["code"] = 500;
+                $jsondata["msg"] = "Error en el registro";
+                $jsondata["details"] = "OK";
+            }
+            header('Content-type: application/json; charset=utf-8');
+            header("Cache-Control: no-store");
+            echo json_encode($jsondata, JSON_FORCE_OBJECT);
+        
 
+    }
     public function updateUser()
     {
         $this->load->model('Model_User');
@@ -350,6 +389,85 @@ class User extends CI_Controller
         header("Cache-Control: no-store");
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
+
+    public function password_request(){
+        
+     $this->load->model('Model_User');
+      $email = $this->input->post('email');
+    
+        $data['username'] = $this->Model_User->getUserByEmail($email)[0]->username;
+        $data['lastname'] = $this->Model_User->getUserByEmail($email)[0]->lastname;
+        $data['paswword'] = $this->Model_User->getUserByEmail($email)[0]->password;
+        $pass =md5($data['paswword']); 
+
+     
+    $jsondata = array();
+    $emailFrom = "armando.navarroflores94@gmail.com";
+    $emailTo =  $email;
+
+
+    $emailMessage = "<h2>Solicitud de contraseña </h2>";
+    $emailMessage .= "<h3>Hola ". $data['username']." ". $data['lastname']."</h3>";
+    $emailMessage .= "<p>Su contraseña es: ".$pass."</p>";
+
+    $emailSubject = "Solicitud de contraseña Yurítec Educare";
+
+    $data = Array(
+        'name' => $this->input->post('email'),
+        'emailFrom' => $emailFrom,
+        'emailTo' => $emailTo,
+        'message' => $emailMessage,
+        'subject' => $emailSubject
+
+    );
+
+    $headers = 'From: ' . $data['name'] . "\r\n" .
+        'Reply-To: ' . $data['emailFrom'] . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+
+    $config = Array(
+        'protocol' => 'smtp',
+        'smtp_host' => 'ssl://smtp.googlemail.com',
+        'smtp_port' => 465,
+        'smtp_user' => 'armando.navarroflores94@gmail.com',
+        'smtp_pass' => 'Chivas1906',
+        'mailtype' => 'html',
+        'charset' => 'utf-8',
+        'wordwrap' => TRUE
+    );
+
+    $this->load->library('email', $config);
+    $this->email->set_newline("\r\n");
+    $email_setting = array('mailtype' => 'html');
+    $this->email->initialize($email_setting);
+    $this->email->from($data['emailFrom'], $data['name']);
+    $this->email->to($data['emailTo']);
+
+    $this->email->subject($data['subject']);
+    $this->email->message($data['message']);
+    $this->email->set_header("Headers", $headers);
+
+    if ($this->email->send() == true) {
+
+        $jsondata["code"] = 200;
+        $jsondata["msg"] = "Su mensaje se ha enviado correctamente.";
+        $jsondata["details"] = "OK";
+
+    } else {
+        $jsondata["code"] = 500;
+        $jsondata["msg"] = "Ocurrió un error al enviar el mensaje, intente más tarde";
+        $jsondata["details"] = "OK";
+    }
+    header('Content-type: application/json; charset=utf-8');
+    header("Cache-Control: no-store");
+    echo json_encode($jsondata, JSON_FORCE_OBJECT);
+
+    
+    }
+
+
+
+
 
 
     public function register()
