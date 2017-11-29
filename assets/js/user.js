@@ -8,7 +8,7 @@ $(function () {
     $('#roleid').trigger('click');
 
     $.ajax({
-        url: '/Yuritec_Educare/settings/getRoles',
+        url: '/settings/getRoles',
         type: 'GET',
         dataType: 'json'
     }).done(function (json) {
@@ -21,7 +21,7 @@ $(function () {
     });
 
     $.ajax({
-        url: '/Yuritec_Educare/settings/getRoles',
+        url: '/settings/getRoles',
         type: 'GET',
         dataType: 'json'
     }).done(function (json) {

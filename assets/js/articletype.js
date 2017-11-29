@@ -90,7 +90,7 @@ $(function() {
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/Yuritec_Educare/settings/getArticleTypes",
+            url:"/settings/getArticleTypes",
             dataSrc:function(json){
 
                 return json['msg'];

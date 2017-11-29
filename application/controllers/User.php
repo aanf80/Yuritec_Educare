@@ -32,7 +32,7 @@ class User extends CI_Controller
         $this->load->view('user/forgottenpwd_view');
         $this->load->view('footer');
     }
-    public function change_password()
+    public function change_password($email,$password)
     {
         $this->load->view('header');
         $this->load->view('user/changepassword_view');
@@ -201,39 +201,7 @@ class User extends CI_Controller
         header("Cache-Control: no-store");
         echo json_encode($jsondata);
     }
-    public function changePassword(){
-        $carpeta = 'assets/images';
-        if (!file_exists($carpeta)) {
-            mkdir($carpeta, 0777, true);
-        }
-     
-           
-            $this->load->model('Model_User');
-            $jsondata = array();
-            $data = array(
-                'userid' => $this->input->post('userid'),
-                'password' => $this->input->post('password')
-            );
-            if($data['photo']==null){
-                redirect('home', 'refresh');
-            }
-            $update = $this->Model_User->updateUser(array('userid' => $this->input->post('userid')), $data);
-            if($update == true){
-                $jsondata["code"] = 200;
-                $jsondata["msg"] = "Actiualizado correctamente";
-                $jsondata["details"] = "OK";
-            }
-            else{
-                $jsondata["code"] = 500;
-                $jsondata["msg"] = "Error en el registro";
-                $jsondata["details"] = "OK";
-            }
-            header('Content-type: application/json; charset=utf-8');
-            header("Cache-Control: no-store");
-            echo json_encode($jsondata, JSON_FORCE_OBJECT);
-        
-
-    }
+    
     public function updateUser()
     {
         $this->load->model('Model_User');
@@ -389,7 +357,33 @@ class User extends CI_Controller
         header("Cache-Control: no-store");
         echo json_encode($jsondata, JSON_FORCE_OBJECT);
     }
+    public function changePassword(){
+        
+         $this->load->model('Model_User');
 
+         $userid = $this->Model_User->getUserByEmail($email)[0]->userid;
+
+         $jsondata = array();
+         $data = array(
+             'userid' => $userid,
+             'password' => $this->input->post('password')
+         );
+     
+         $update = $this->Model_User->updateUser(array('userid' => $userid), $data);
+         if($update == true){
+             $jsondata["code"] = 200;
+             $jsondata["msg"] = "Actiualizado correctamente";
+             $jsondata["details"] = "OK";
+         }
+         else{
+             $jsondata["code"] = 500;
+             $jsondata["msg"] = "Error en el registro";
+             $jsondata["details"] = "OK";
+         }
+         header('Content-type: application/json; charset=utf-8');
+         header("Cache-Control: no-store");
+         echo json_encode($jsondata, JSON_FORCE_OBJECT);
+ }
     public function password_request(){
         
      $this->load->model('Model_User');
@@ -397,8 +391,8 @@ class User extends CI_Controller
     
         $data['username'] = $this->Model_User->getUserByEmail($email)[0]->username;
         $data['lastname'] = $this->Model_User->getUserByEmail($email)[0]->lastname;
-        $data['paswword'] = $this->Model_User->getUserByEmail($email)[0]->password;
-        $pass =md5($data['paswword']); 
+        $data['password'] = $this->Model_User->getUserByEmail($email)[0]->password;
+        $pass =md5($data['password']); 
 
      
     $jsondata = array();
@@ -408,7 +402,7 @@ class User extends CI_Controller
 
     $emailMessage = "<h2>Solicitud de contraseña </h2>";
     $emailMessage .= "<h3>Hola ". $data['username']." ". $data['lastname']."</h3>";
-    $emailMessage .= "<p>Su contraseña es: ".$pass."</p>";
+    $emailMessage .= "<p>Ingrese a la siguiente dirección para cambiar su contraseña: ".base_url()."user/change_password/".$email."/".$data['password'];
 
     $emailSubject = "Solicitud de contraseña Yurítec Educare";
 
@@ -464,11 +458,6 @@ class User extends CI_Controller
 
     
     }
-
-
-
-
-
 
     public function register()
     {

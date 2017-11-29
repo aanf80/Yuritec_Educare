@@ -34,7 +34,7 @@ $(function(){
 
     function login(){
         $.ajax({
-            url: "/Yuritec_Educare/login/validaLogin",
+            url: "/login/validaLogin",
             type: "post",
             data: {username : $('#username').val(),
                 password : $('#password').val()}
