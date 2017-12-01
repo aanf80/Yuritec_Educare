@@ -18,7 +18,7 @@ $(function () {
     });
 
     $.ajax({
-        url: '/Yuritec_Educare/settings/getTermsByID/1',
+        url: '/settings/getTermsByID/1',
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
@@ -46,7 +46,7 @@ function updateTerms() {
 $content = tinyMCE.activeEditor.getContent();
     $.ajax(
         {
-            url:"/Yuritec_Educare/settings/updateTerms" ,
+            url:"/settings/updateTerms" ,
             type: "post",
             data: {
                 termsid: $termid,

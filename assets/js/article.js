@@ -17,7 +17,7 @@ $(function(){
     });//fin de editor
 
     $.ajax({
-        url: '/Yuritec_Educare/settings/getCategories',
+        url: '/settings/getCategories',
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
@@ -78,7 +78,7 @@ $(function(){
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/Yuritec_Educare/article/getArticlesByUser",
+            url:"/article/getArticlesByUser",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -137,7 +137,7 @@ function uploadCorrectedFile() {
     var form = $('form#frmUploadArt')[0];
     var data = new FormData(form);
     $.ajax({
-        url: "/Yuritec_Educare/article/changeArticle",
+        url: "/article/changeArticle",
         type: "post",
         data: data,
         cache: false,
@@ -169,7 +169,7 @@ function newArticle(){
     var form = $('form#frmArticle')[0];
     var data = new FormData(form);
     $.ajax({
-        url: "/Yuritec_Educare/article/newArticle",
+        url: "/article/newArticle",
         type: "post",
         data: data,
         cache: false,

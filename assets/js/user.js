@@ -331,7 +331,7 @@ $(function () {
             url: "http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax: {
-            url: "/Yuritec_Educare/user/getUsers",
+            url: "/user/getUsers",
             dataSrc: function (json) {
 
                 return json['msg'];
@@ -430,7 +430,7 @@ $(function () {
 
 function newUser() {
     $.ajax({
-        url: "/Yuritec_Educare/user/newUser",
+        url: "/user/newUser",
         type: "post",
         data: $('#frmUser').serialize()
     }).done(
@@ -510,7 +510,7 @@ function forgottenPassword() {
     
         $.ajax(
             {
-                url: "/Yuritec_Educare/user/password_request",
+                url: "/user/password_request",
                 type: "post",
                 data: {
                     email : $('#email').val()
@@ -537,7 +537,7 @@ function forgottenPassword() {
     function Changepassword(){
         $.ajax(
             {
-                url: "/Yuritec_Educare/user/changePassword",
+                url: "/user/changePassword",
                 type: "post",
                 data: {
                     password : $('#password').val()
@@ -563,7 +563,7 @@ function updateUser() {
 
     $.ajax(
         {
-            url: "/Yuritec_Educare/user/updateUser",
+            url: "/user/updateUser",
             type: "post",
             data: $('#frmEditUser').serialize()
         }
@@ -591,7 +591,7 @@ function changePhoto() {
     var data = new FormData(form);
 
     $.ajax({
-        url: "/Yuritec_Educare/user/changeUserPhoto",
+        url: "/user/changeUserPhoto",
         type: "post",
         data: data,
         cache: false,
@@ -632,7 +632,7 @@ function deleteUser(userid) {
 
                 $.ajax(
                     {
-                        url: "/Yuritec_Educare/user/deleteUser",
+                        url: "/user/deleteUser",
                         type: "post",
                         data: {userid: userid}
                     }

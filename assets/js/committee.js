@@ -140,7 +140,7 @@ $(function () {
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/Yuritec_Educare/committee/getMembers",
+            url:"/committee/getMembers",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -152,7 +152,7 @@ $(function () {
             },
             {data: function (row) {
                 str = "<div align = 'center'>";
-                str += "&nbsp <img src='/Yuritec_Educare/assets/images/" + row['ec_photo'] + "' width='100' height='100'>";
+                str += "&nbsp <img src='/assets/images/" + row['ec_photo'] + "' width='100' height='100'>";
                 str += "</div>"
                 return str;
             }
@@ -230,7 +230,7 @@ function newMember(){
     var form = $('form#frmCommittee')[0];
     var data = new FormData(form);
     $.ajax({
-        url: "/Yuritec_Educare/committee/newMember",
+        url: "/committee/newMember",
         type: "post",
         data: data,
         cache: false,
@@ -267,7 +267,7 @@ function newMember(){
 function updateMember() {
     $.ajax(
         {
-            url: "/Yuritec_Educare/committee/updateMember",
+            url: "/committee/updateMember",
             type: "post",
             data: $('#frmEditMember').serialize()
         }
@@ -296,7 +296,7 @@ function changePhoto() {
     var data = new FormData(form);
 
     $.ajax({
-        url: "/Yuritec_Educare/committee/changeMemberPhoto",
+        url: "/committee/changeMemberPhoto",
         type: "post",
         data: data,
         cache: false,
@@ -339,7 +339,7 @@ function deleteMember(ec_memberid) {
                 ///Comienza a Borrar
                 $.ajax(
                     {
-                        url: "/Yuritec_Educare/committee/deleteMember",
+                        url: "/committee/deleteMember",
                         type: "post",
                         data: {ec_memberid: ec_memberid}
                     }

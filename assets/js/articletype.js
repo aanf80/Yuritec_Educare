@@ -130,7 +130,7 @@ function showArticle_Type(article_typeid, nombrearticle_type) {
 function newArticle_Type(){
 
     $.ajax({
-        url: "/Yuritec_Educare/settings/newArticleType",
+        url: "/settings/newArticleType",
         type: "post",
         data: {
             article_typename: $('#nombreTipo_Articulo').val()
@@ -158,7 +158,7 @@ function updateArticle_Type() {
 
     $.ajax(
         {
-            url:"/Yuritec_Educare/settings/updateArticleType" ,
+            url:"/settings/updateArticleType" ,
             type: "post",
             data: {
                 article_typeid: $('#article_typeid').val(),
@@ -200,7 +200,7 @@ function deleteArticle_Type(article_typeid) {
                 ///Comienza a Borrar
                 $.ajax(
                     {
-                        url: "/Yuritec_Educare/settings/deleteArticleType",
+                        url: "/settings/deleteArticleType",
                         type: "post",
                         data: {article_typeid: article_typeid}
                     }

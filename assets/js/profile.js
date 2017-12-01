@@ -138,7 +138,7 @@ $(function () {
 
     $('#btnEditarProfile').on('click', function () {
         $.ajax({
-            url: '/Yuritec_Educare/user/getUserById',
+            url: '/user/getUserById',
             type: 'GET',
             dataType: 'json'
         }).done(function (json){
@@ -156,7 +156,7 @@ $(function () {
 
     $('#btnEditarFotoPerfil').on('click', function () {
         $.ajax({
-            url: '/Yuritec_Educare/user/getUserById',
+            url: '/user/getUserById',
             type: 'GET',
             dataType: 'json'
         }).done(function (json){
@@ -214,7 +214,7 @@ function showEditPhoto(memberid) {
 function updateProfile() {
     $.ajax(
         {
-            url:"/Yuritec_Educare/user/updateUser" ,
+            url:"/user/updateUser" ,
             type: "post",
             data:
                 {
@@ -247,7 +247,7 @@ function updateProfile() {
 
             if (data.code == 200) {
 
-                var url = "/Yuritec_Educare/home";
+                var url = "/home";
                 $(location).attr('href',url);
 
                 $.growl.notice({message: data.msg});
@@ -272,7 +272,7 @@ function changePhoto() {
     var data = new FormData(form);
 
     $.ajax({
-        url: "/Yuritec_Educare/user/changeUserPhoto",
+        url: "/user/changeUserPhoto",
         type: "post",
         data: data,
         cache: false,

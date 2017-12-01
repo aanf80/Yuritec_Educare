@@ -21,7 +21,7 @@ $(function(){
     });
 
     $.ajax({
-        url: '/Yuritec_Educare/magazine/getMagazines',
+        url: '/magazine/getMagazines',
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
@@ -35,7 +35,7 @@ $(function(){
 
 
     $.ajax({
-        url: '/Yuritec_Educare/magazine/getMagazines',
+        url: '/magazine/getMagazines',
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
@@ -56,7 +56,7 @@ $(function(){
             $('#articleid2').html('');
 
             $.ajax({
-                url: '/Yuritec_Educare/magazine/getMagazineByID/'+$ID,
+                url: '/magazine/getMagazineByID/'+$ID,
                 type: 'GET',
                 dataType: 'json'
             }).done(function (json){
@@ -79,7 +79,7 @@ $(function(){
         else{
             $('#articleid3').html('<option value = 0>Seleccione un artículo</option>');
             $.ajax({
-                url: '/Yuritec_Educare/article/getArticlesByVolume/'+$ID2,
+                url: '/article/getArticlesByVolume/'+$ID2,
                 type: 'GET',
                 dataType: 'json'
             }).done(function (json){
@@ -99,7 +99,7 @@ $(function(){
     $('#articleid3').on('change', function() {
         cleanContent();
         $.ajax({
-            url: '/Yuritec_Educare/article/getArticlesByID/'+this.value,
+            url: '/article/getArticlesByID/'+this.value,
             type: 'GET',
             dataType: 'json'
         }).done(function (json){
@@ -114,7 +114,7 @@ $(function(){
     });
 
     $.ajax({
-        url: '/Yuritec_Educare/magazine/getMagazines',
+        url: '/magazine/getMagazines',
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
@@ -238,7 +238,7 @@ $(function(){
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/Yuritec_Educare/article/getArticlesByStatus/3",
+            url:"/article/getArticlesByStatus/3",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -270,7 +270,7 @@ $(function(){
 
     $('#btnVerArticulos').on('click', function () {
         $.ajax({
-            url: '/Yuritec_Educare/article/getArticlesByVolume/'+$ID,
+            url: '/article/getArticlesByVolume/'+$ID,
             type: 'GET',
             dataType: 'json'
         }).done(function (json){
@@ -333,7 +333,7 @@ function showMagazine(volume,number,period,year,cover,status) {
     $('#period2').val(period);
     $('#year2').val(year);
     $('#status2').val(status);
-    $('#imgCover').attr("src","/Yuritec_Educare/assets/images/"+cover);
+    $('#imgCover').attr("src","/assets/images/"+cover);
 }
 
 function showCoverPhoto(magazineid){
@@ -381,7 +381,7 @@ function newMagazine(){
     var data = new FormData(form);
 
     $.ajax({
-        url: "/Yuritec_Educare/magazine/newMagazine",
+        url: "/magazine/newMagazine",
         type: "post",
         data: data,
         cache: false,
@@ -415,7 +415,7 @@ function updateContent(content,articleid){
 
     $.ajax(
         {
-            url: "/Yuritec_Educare/article/updateContent",
+            url: "/article/updateContent",
             type: "post",
             data: {
                 articleid: articleid,
@@ -450,7 +450,7 @@ function updateMagazine(){
     else{
         $.ajax(
             {
-                url: "/Yuritec_Educare/magazine/updateMagazine",
+                url: "/magazine/updateMagazine",
                 type: "post",
                 data: $('#frmEditMagazine').serialize()
             }
@@ -479,7 +479,7 @@ function changePhoto() {
     var data = new FormData(form);
 
     $.ajax({
-        url: "/Yuritec_Educare/magazine/changeCoverPhoto",
+        url: "/magazine/changeCoverPhoto",
         type: "post",
         data: data,
         cache: false,
@@ -511,7 +511,7 @@ function changePDF() {
     var data = new FormData(form);
 
     $.ajax({
-        url: "/Yuritec_Educare/magazine/changePDF",
+        url: "/magazine/changePDF",
         type: "post",
         data: data,
         cache: false,
@@ -556,7 +556,7 @@ function deleteMagazine(magazineid){
 
                     $.ajax(
                         {
-                            url: "/Yuritec_Educare/magazine/deleteMagazine",
+                            url: "/magazine/deleteMagazine",
                             type: "post",
                             data: {magazineid: magazineid}
                         }
@@ -609,7 +609,7 @@ function setMagazine(articleid) {
 
                 $.ajax(
                     {
-                        url: "/Yuritec_Educare/article/setMagazine",
+                        url: "/article/setMagazine",
                         type: "post",
                         data: {articleid: articleid, magazineid: $('#magazineid').val(), status: status}
                     }
@@ -655,7 +655,7 @@ function unsetMagazine() {
 
                 $.ajax(
                     {
-                        url: "/Yuritec_Educare/article/unsetMagazine",
+                        url: "/article/unsetMagazine",
                         type: "post",
                         data: {articleid: $('#articleid2').val() , status: status}
                     }

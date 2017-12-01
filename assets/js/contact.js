@@ -7,7 +7,7 @@ $(function () {
 
     //VISTA DE ADMIN
     $.ajax({
-        url: '/Yuritec_Educare/settings/getContact',
+        url: '/settings/getContact',
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
@@ -84,7 +84,7 @@ $('#adminSchedule').val(schedule);
 
 function sendMessage(){
     $.ajax({
-        url: "/Yuritec_Educare/Contact/sendContactEmail",
+        url: "/Contact/sendContactEmail",
         type: "post",
         data: $('#frmContact').serialize()
     }).done(
@@ -116,7 +116,7 @@ function sendMessage(){
 function updateContact(){
     $.ajax(
         {
-            url:"/Yuritec_Educare/settings/updateContact" ,
+            url:"/settings/updateContact" ,
             type: "post",
             data: {
                 contactid: $contactid,

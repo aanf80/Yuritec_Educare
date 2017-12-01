@@ -98,7 +98,7 @@ function newUser(){
     var form = $('form#frmRegister')[0];
     var data = new FormData(form);
     $.ajax({
-        url: "/Yuritec_Educare/user/register",
+        url: "/user/register",
         type: "post",
         data: data,
         cache: false,

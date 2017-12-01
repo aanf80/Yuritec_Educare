@@ -90,7 +90,7 @@ $(function() {
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/Yuritec_Educare/settings/getRoles",
+            url:"/settings/getRoles",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -130,7 +130,7 @@ function updateRole() {
 
     $.ajax(
         {
-            url:"/Yuritec_Educare/settings/updateRole" ,
+            url:"/settings/updateRole" ,
             type: "post",
             data: {
                 roleid: $('#roleid').val(),
@@ -157,7 +157,7 @@ function updateRole() {
 function newRole(){
 
     $.ajax({
-        url: "/Yuritec_Educare/settings/insertRole",
+        url: "/settings/insertRole",
         type: "post",
         data: {
             rolename: $('#rolename').val()
@@ -199,7 +199,7 @@ function deleteRole(roleid) {
                 ///Comienza a Borrar
                 $.ajax(
                     {
-                        url: "/Yuritec_Educare/settings/deleteRole",
+                        url: "/settings/deleteRole",
                         type: "post",
                         data: {roleid: roleid}
                     }

@@ -90,7 +90,7 @@ $(function() {
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/Yuritec_Educare/settings/getCategories",
+            url:"/settings/getCategories",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -130,7 +130,7 @@ function updateCategory() {
 
     $.ajax(
         {
-            url:"/Yuritec_Educare/settings/updateCategory" ,
+            url:"/settings/updateCategory" ,
             type: "post",
             data: {
                 categoryid: $('#categoryid').val(),
@@ -157,7 +157,7 @@ function updateCategory() {
 function newCategory(){
 
     $.ajax({
-        url: "/Yuritec_Educare/settings/insertCategory",
+        url: "/settings/insertCategory",
         type: "post",
         data: {
             categoryname: $('#nombreCategoria').val()
@@ -199,7 +199,7 @@ function deleteCategory(categoryid) {
                 ///Comienza a Borrar
                 $.ajax(
                     {
-                        url: "/Yuritec_Educare/settings/deleteCategory",
+                        url: "/settings/deleteCategory",
                         type: "post",
                         data: {categoryid: categoryid}
                     }

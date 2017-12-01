@@ -4,7 +4,7 @@
 $(function(){
 
     $.ajax({
-        url: '/Yuritec_Educare/user/getUsersByRole/3',
+        url: '/user/getUsersByRole/3',
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
@@ -24,7 +24,7 @@ $(function(){
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/Yuritec_Educare/article/getArticlesByStatus/2",
+            url:"/article/getArticlesByStatus/2",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -65,7 +65,7 @@ $(function(){
         } else {
             var data = table.row($(this).closest('tr')).data();
         }
-        window.location.href = '/Yuritec_Educare/upload/articles/'+data[Object.keys(data)[13]];
+        window.location.href = '/upload/articles/'+data[Object.keys(data)[13]];
 
     });
 
@@ -81,7 +81,7 @@ $(function(){
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/Yuritec_Educare/article/getArticlesByStatus/1",
+            url:"/article/getArticlesByStatus/1",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -120,7 +120,7 @@ $(function(){
         } else {
             var data = table2.row($(this).closest('tr')).data();
         }
-        window.location.href = '/Yuritec_Educare/upload/articles/'+data[Object.keys(data)[13]];
+        window.location.href = '/upload/articles/'+data[Object.keys(data)[13]];
     });// DESCARGAR ARCHIVO TABLA ASIGNAR REVISOR
 
     $('#btnAsignarRev').on('click', function () {
@@ -134,7 +134,7 @@ $(function(){
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/Yuritec_Educare/article/getArticlesByStatus/4",
+            url:"/article/getArticlesByStatus/4",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -171,7 +171,7 @@ $(function(){
         } else {
             var data = tblEval.row($(this).closest('tr')).data();
         }
-        window.location.href = '/Yuritec_Educare/upload/articles/'+data[Object.keys(data)[13]];
+        window.location.href = '/upload/articles/'+data[Object.keys(data)[13]];
 
     });
 
@@ -228,7 +228,7 @@ function setReview() {
 
                 $.ajax(
                     {
-                        url: "/Yuritec_Educare/article/setReview",
+                        url: "/article/setReview",
                         type: "post",
                         data: {
                             articleid: $('#articleid').val(),

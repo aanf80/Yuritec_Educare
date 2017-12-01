@@ -20,7 +20,7 @@ $(function () {
     });
 
     $.ajax({
-        url: '/Yuritec_Educare/settings/getObjectives',
+        url: '/settings/getObjectives',
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
@@ -49,7 +49,7 @@ function updateObjectives() {
     $content = tinyMCE.activeEditor.getContent();
     $.ajax(
         {
-            url:"/Yuritec_Educare/settings/updateObjectives" ,
+            url:"/settings/updateObjectives" ,
             type: "post",
             data: {
                 objectiveid: $objectiveid,
