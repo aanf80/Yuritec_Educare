@@ -1,7 +1,7 @@
 /**
  * Created by Armando_Navarro on 06/12/2016.
  */
-
+$sitio = "Yuritec_Educare"
 $(function() {
 
     $('#frmRole').validate({
@@ -90,7 +90,7 @@ $(function() {
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/settings/getRoles",
+            url: "/"+$sitio+"/settings/getRoles",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -130,7 +130,7 @@ function updateRole() {
 
     $.ajax(
         {
-            url:"/settings/updateRole" ,
+            url: "/"+$sitio+"/settings/updateRole" ,
             type: "post",
             data: {
                 roleid: $('#roleid').val(),
@@ -157,7 +157,7 @@ function updateRole() {
 function newRole(){
 
     $.ajax({
-        url: "/settings/insertRole",
+        url: "/"+$sitio+"/settings/insertRole",
         type: "post",
         data: {
             rolename: $('#rolename').val()
@@ -199,7 +199,7 @@ function deleteRole(roleid) {
                 ///Comienza a Borrar
                 $.ajax(
                     {
-                        url: "/settings/deleteRole",
+                        url: "/"+$sitio+"/settings/deleteRole",
                         type: "post",
                         data: {roleid: roleid}
                     }

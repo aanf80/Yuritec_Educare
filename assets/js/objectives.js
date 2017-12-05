@@ -2,7 +2,7 @@
  * Created by Concurso18 on 08/06/2017.
  */
 
-
+$sitio = "Yuritec_Educare"
 var $objectiveid, $content;
 $(function () {
     tinymce.init({
@@ -20,7 +20,7 @@ $(function () {
     });
 
     $.ajax({
-        url: '/settings/getObjectives',
+        url: "/"+$sitio+"/settings/getObjectives",
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
@@ -49,7 +49,7 @@ function updateObjectives() {
     $content = tinyMCE.activeEditor.getContent();
     $.ajax(
         {
-            url:"/settings/updateObjectives" ,
+            url: "/"+$sitio+"/settings/updateObjectives" ,
             type: "post",
             data: {
                 objectiveid: $objectiveid,

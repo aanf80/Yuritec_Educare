@@ -1,6 +1,7 @@
 /**
  * Created by Armando_Navarro on 04/07/2017.
  */
+$sitio = "Yuritec_Educare"
 var $termid, $content;
 $(function () {
     tinymce.init({
@@ -18,7 +19,7 @@ $(function () {
     });
 
     $.ajax({
-        url: '/settings/getTermsByID/2',
+        url: "/"+$sitio+"/settings/getTermsByID/2",
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
@@ -46,7 +47,7 @@ function updateTerms() {
     $content = tinyMCE.activeEditor.getContent();
     $.ajax(
         {
-            url:"/settings/updateTerms" ,
+            url: "/"+$sitio+"/settings/updateTerms" ,
             type: "post",
             data: {
                 termsid: $termid,

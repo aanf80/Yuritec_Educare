@@ -32,7 +32,7 @@ class User extends CI_Controller
         $this->load->view('user/forgottenpwd_view');
         $this->load->view('footer');
     }
-    public function change_password($email,$password)
+    public function change_password() //($email,$password
     {
         $this->load->view('header');
         $this->load->view('user/changepassword_view');
@@ -84,7 +84,7 @@ class User extends CI_Controller
             'gender' => $this->input->post('gender'),
             'initials' => $this->input->post('initials'),
             'sign' => $this->input->post('sign'),
-            'photo' => 'profile_default.png',
+            'photo' => $carpeta . 'profile_default.png',
             'roleid' => $this->input->post('roleid'),
             'status' => 'P',
             'registerdate' => $hoy,
@@ -424,7 +424,7 @@ class User extends CI_Controller
         'smtp_host' => 'ssl://smtp.googlemail.com',
         'smtp_port' => 465,
         'smtp_user' => 'armando.navarroflores94@gmail.com',
-        'smtp_pass' => 'Chivas1906',
+        'smtp_pass' => '*****',
         'mailtype' => 'html',
         'charset' => 'utf-8',
         'wordwrap' => TRUE

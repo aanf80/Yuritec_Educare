@@ -10,6 +10,7 @@
 <div class="container">
     <br/>
     <div class="business">
+    <h3 class="page-header">Objetivos</h3>
             <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
                 <ul id="myTab" class="nav nav-tabs" role="tablist">
                     <li role="presentation" ><?php echo anchor('/about', 'Acerca de Yúritec Educare ', 'class="link-class"') ?></li>
@@ -20,7 +21,7 @@
 
             </div>
 <br/>
-        <h3>Objetivos</h3>
+      
 
 
 <br/>

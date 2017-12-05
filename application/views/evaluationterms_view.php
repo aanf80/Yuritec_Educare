@@ -9,7 +9,7 @@
 <div class="container">
     <br/>
     <div class="business">
-
+    <h3 class="page-header">Políticas de Evaluación</h3>
             <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
                 <ul id="myTab" class="nav nav-tabs" role="tablist">
                     <li role="presentation" ><?php echo anchor('/about', 'Acerca de Yúritec Educare ', 'class="link-class"') ?></li>
@@ -22,7 +22,7 @@
 
 
         <br/>
-        <h3>Políticas de Evaluación</h3>
+        
 
         <?php foreach($terms as $ter) {
             echo $ter->content;

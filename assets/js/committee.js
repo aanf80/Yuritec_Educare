@@ -1,7 +1,7 @@
 /**
  * Created by Armando_Navarro on 24/07/2017.
  */
-
+$sitio = "Yuritec_Educare"
 $(function () {
 
     $('#frmCommittee').validate({
@@ -140,7 +140,7 @@ $(function () {
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/committee/getMembers",
+            url: "/"+$sitio+"/committee/getMembers",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -230,7 +230,7 @@ function newMember(){
     var form = $('form#frmCommittee')[0];
     var data = new FormData(form);
     $.ajax({
-        url: "/committee/newMember",
+        url: "/"+$sitio+"/committee/newMember",
         type: "post",
         data: data,
         cache: false,
@@ -267,7 +267,7 @@ function newMember(){
 function updateMember() {
     $.ajax(
         {
-            url: "/committee/updateMember",
+            url: "/"+$sitio+"/committee/updateMember",
             type: "post",
             data: $('#frmEditMember').serialize()
         }
@@ -296,7 +296,7 @@ function changePhoto() {
     var data = new FormData(form);
 
     $.ajax({
-        url: "/committee/changeMemberPhoto",
+        url: "/"+$sitio+"/committee/changeMemberPhoto",
         type: "post",
         data: data,
         cache: false,
@@ -339,7 +339,7 @@ function deleteMember(ec_memberid) {
                 ///Comienza a Borrar
                 $.ajax(
                     {
-                        url: "/committee/deleteMember",
+                        url: "/"+$sitio+"/committee/deleteMember",
                         type: "post",
                         data: {ec_memberid: ec_memberid}
                     }

@@ -1,6 +1,7 @@
 /**
  * Created by Armando_Navarro on 06/12/2016.
  */
+$sitio = "Yuritec_Educare"
 
 $(function() {
 
@@ -90,7 +91,7 @@ $(function() {
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/settings/getCategories",
+            url: "/"+$sitio+"/settings/getCategories",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -130,7 +131,7 @@ function updateCategory() {
 
     $.ajax(
         {
-            url:"/settings/updateCategory" ,
+            url: "/"+$sitio+"/settings/updateCategory" ,
             type: "post",
             data: {
                 categoryid: $('#categoryid').val(),
@@ -157,7 +158,7 @@ function updateCategory() {
 function newCategory(){
 
     $.ajax({
-        url: "/settings/insertCategory",
+        url: "/"+$sitio+"/settings/insertCategory",
         type: "post",
         data: {
             categoryname: $('#nombreCategoria').val()
@@ -199,7 +200,7 @@ function deleteCategory(categoryid) {
                 ///Comienza a Borrar
                 $.ajax(
                     {
-                        url: "/settings/deleteCategory",
+                        url: "/"+$sitio+"/settings/deleteCategory",
                         type: "post",
                         data: {categoryid: categoryid}
                     }

@@ -1,4 +1,4 @@
-
+$sitio = "Yuritec_Educare"
 $(function(){
 
     tinymce.init({
@@ -17,7 +17,7 @@ $(function(){
     });//fin de editor
 
     $.ajax({
-        url: '/settings/getCategories',
+        url: '/'+$sitio+'/settings/getCategories',
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
@@ -78,7 +78,7 @@ $(function(){
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/article/getArticlesByUser",
+            url: "/"+$sitio+"/article/getArticlesByUser",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -137,7 +137,7 @@ function uploadCorrectedFile() {
     var form = $('form#frmUploadArt')[0];
     var data = new FormData(form);
     $.ajax({
-        url: "/article/changeArticle",
+        url: "/"+$sitio+"/article/changeArticle",
         type: "post",
         data: data,
         cache: false,
@@ -169,7 +169,7 @@ function newArticle(){
     var form = $('form#frmArticle')[0];
     var data = new FormData(form);
     $.ajax({
-        url: "/article/newArticle",
+        url: "/"+$sitio+"/article/newArticle",
         type: "post",
         data: data,
         cache: false,

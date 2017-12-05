@@ -1,14 +1,14 @@
 /**
  * Created by Armando_Navarro on 11/04/2017.
  */
-
+$sitio = "Yuritec_Educare"
 var info = [];
 $(function () {
 
     $('#roleid').trigger('click');
 
     $.ajax({
-        url: '/settings/getRoles',
+        url: "/"+$sitio+"/settings/getRoles",
         type: 'GET',
         dataType: 'json'
     }).done(function (json) {
@@ -21,7 +21,7 @@ $(function () {
     });
 
     $.ajax({
-        url: '/settings/getRoles',
+        url: "/"+$sitio+"/settings/getRoles",
         type: 'GET',
         dataType: 'json'
     }).done(function (json) {
@@ -331,7 +331,7 @@ $(function () {
             url: "http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax: {
-            url: "/user/getUsers",
+            url: "/"+$sitio+"/user/getUsers",
             dataSrc: function (json) {
 
                 return json['msg'];
@@ -430,7 +430,7 @@ $(function () {
 
 function newUser() {
     $.ajax({
-        url: "/user/newUser",
+        url: "/"+$sitio+"/user/newUser",
         type: "post",
         data: $('#frmUser').serialize()
     }).done(
@@ -510,7 +510,7 @@ function forgottenPassword() {
     
         $.ajax(
             {
-                url: "/user/password_request",
+                url: "/"+$sitio+"/user/password_request",
                 type: "post",
                 data: {
                     email : $('#email').val()
@@ -537,7 +537,7 @@ function forgottenPassword() {
     function Changepassword(){
         $.ajax(
             {
-                url: "/user/changePassword",
+                url: "/"+$sitio+"/user/changePassword",
                 type: "post",
                 data: {
                     password : $('#password').val()
@@ -563,7 +563,7 @@ function updateUser() {
 
     $.ajax(
         {
-            url: "/user/updateUser",
+            url: "/"+$sitio+"/user/updateUser",
             type: "post",
             data: $('#frmEditUser').serialize()
         }
@@ -591,7 +591,7 @@ function changePhoto() {
     var data = new FormData(form);
 
     $.ajax({
-        url: "/user/changeUserPhoto",
+        url: "/"+$sitio+"/user/changeUserPhoto",
         type: "post",
         data: data,
         cache: false,
@@ -632,7 +632,7 @@ function deleteUser(userid) {
 
                 $.ajax(
                     {
-                        url: "/user/deleteUser",
+                        url: "/"+$sitio+"/user/deleteUser",
                         type: "post",
                         data: {userid: userid}
                     }

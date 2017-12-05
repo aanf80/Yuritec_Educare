@@ -2,6 +2,7 @@
 <br/>
     <!-- Intro Content -->
     <div class="business">
+    <h3 class="page-header">Acerca de Yúritec Educare</h3>
             <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
                 <ul id="myTab" class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active"><?php echo anchor('/about', 'Acerca de Yúritec Educare ', 'class="link-class"') ?></li>
@@ -12,7 +13,7 @@
 
             </div>
         <br/>
-        <h3>Acerca de Yúritec Educare</h3>
+       
         <div class="row">
             <div class="col-md-6">
                 <img src="<?php echo base_url('assets/img/logo_naranja.png'); ?>" class="img-responsive" width="750" height=450" alt=""/>

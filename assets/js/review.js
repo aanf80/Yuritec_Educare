@@ -1,10 +1,11 @@
 /**
  * Created by Concurso18 on 22/06/2017.
  */
+$sitio = "Yuritec_Educare"
 $(function(){
 
     $.ajax({
-        url: '/user/getUsersByRole/3',
+        url: "/"+$sitio+"/user/getUsersByRole/3",
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
@@ -24,7 +25,7 @@ $(function(){
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/article/getArticlesByStatus/2",
+            url: "/"+$sitio+"/article/getArticlesByStatus/2",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -81,7 +82,7 @@ $(function(){
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/article/getArticlesByStatus/1",
+            url: "/"+$sitio+"/article/getArticlesByStatus/1",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -134,7 +135,7 @@ $(function(){
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/article/getArticlesByStatus/4",
+            url: "/"+$sitio+"/article/getArticlesByStatus/4",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -228,7 +229,7 @@ function setReview() {
 
                 $.ajax(
                     {
-                        url: "/article/setReview",
+                        url: "/"+$sitio+"/article/setReview",
                         type: "post",
                         data: {
                             articleid: $('#articleid').val(),

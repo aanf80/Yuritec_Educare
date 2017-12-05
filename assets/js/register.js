@@ -1,6 +1,8 @@
 /**
  * Created by Armando_Navarro on 11/04/2017.
  */
+
+$sitio = "Yuritec_Educare"
 $(function () {
 
     $('#frmRegister').validate({
@@ -98,7 +100,7 @@ function newUser(){
     var form = $('form#frmRegister')[0];
     var data = new FormData(form);
     $.ajax({
-        url: "/user/register",
+        url: "/"+$sitio+"/user/register",
         type: "post",
         data: data,
         cache: false,

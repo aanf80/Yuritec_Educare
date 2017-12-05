@@ -14,14 +14,14 @@
         <div class="carousel-inner">
             <div class="item active">
                 <div class="fill"
-                     style="background-image:url('https://scontent.fgdl4-1.fna.fbcdn.net/v/t31.0-8/11428208_10152820261541822_8073039043204813790_o.jpg?oh=4bccb8fa41686e668ddf6fd22c0a4974&oe=59D7C7C4');"></div>
+                     style="background-image:url('https://scontent.ftpq1-1.fna.fbcdn.net/v/t1.0-9/16142280_1834230760148774_1762039721905079297_n.jpg?oh=dfd568124354fd39183015bbcc441be6&oe=5AD560AE');"></div>
                 <div class="carousel-caption">
                     <h2>¡Bienvenido a Yurítec Educare!</h2>
                 </div>
             </div>
             <div class="item">
                 <div class="fill"
-                     style="background-image:url('https://scontent.fgdl5-1.fna.fbcdn.net/v/t1.0-9/10609604_1697472613824590_1400521813064864168_n.jpg?oh=4bb6a9b2eb7bdd3e7aa60e5e5945c02e&oe=5A250C5A');"></div>
+                     style="background-image:url('https://scontent.ftpq1-1.fna.fbcdn.net/v/t1.0-9/10609604_1697472613824590_1400521813064864168_n.jpg?oh=12c7cde9ef9f6c76fff040deb7fc84de&oe=5A9BB35A');"></div>
                 <div class="carousel-caption">
                     <h2>¡Bienvenido a Yurítec Educare!</h2>
                 </div>
@@ -90,9 +90,11 @@
                         <p><i class="fa fa-fw fa-compass"></i>Academia Journals</p>
                     </div>
                     <div class="panel-body">
-                        <a href="http://www.academiajournals.com/tepic">
+                    <div align="center">
+                    <a href="http://www.academiajournals.com/tepic">
                             <img src="http://static1.squarespace.com/static/55564587e4b0d1d3fb1eda6b/t/55c55db6e4b0760916a1277c/1501254981985/?format=1500w" height="200" width="300">
                         </a>
+                    </div>
                     </div>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+$sitio = "Yuritec_Educare"
 $(function(){
     $('#frmLogin').validate({
 
@@ -34,7 +35,7 @@ $(function(){
 
     function login(){
         $.ajax({
-            url: "/login/validaLogin",
+            url: "/"+$sitio+"/login/validaLogin",
             type: "post",
             data: {username : $('#username').val(),
                 password : $('#password').val()}

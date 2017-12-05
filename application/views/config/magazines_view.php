@@ -163,7 +163,7 @@
             </div> <!-- tamaño de pantalla-->
 
             <div class="col-lg-6">
-                <img id="imgCover" src="" class="img-responsive" width="300" height="300" alt=""/>
+                <img id="imgCover" src="../assets/images/no_disponible.png" class="img-responsive" width="300" height="300" alt=""/>
             </div>
 
         </div> <!-- form group-->

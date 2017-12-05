@@ -1,7 +1,7 @@
 /**
  * Created by Armando_Navarro on 06/12/2016.
  */
-
+$sitio = "Yuritec_Educare"
 $(function() {
 
     $('#frmTipo_Articulo').validate({
@@ -90,7 +90,7 @@ $(function() {
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/settings/getArticleTypes",
+            url:"/"+$sitio+"/settings/getArticleTypes",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -130,7 +130,7 @@ function showArticle_Type(article_typeid, nombrearticle_type) {
 function newArticle_Type(){
 
     $.ajax({
-        url: "/settings/newArticleType",
+        url: "/"+$sitio+"/settings/newArticleType",
         type: "post",
         data: {
             article_typename: $('#nombreTipo_Articulo').val()
@@ -158,7 +158,7 @@ function updateArticle_Type() {
 
     $.ajax(
         {
-            url:"/settings/updateArticleType" ,
+            url:"/"+$sitio+"/settings/updateArticleType" ,
             type: "post",
             data: {
                 article_typeid: $('#article_typeid').val(),
@@ -200,7 +200,7 @@ function deleteArticle_Type(article_typeid) {
                 ///Comienza a Borrar
                 $.ajax(
                     {
-                        url: "/settings/deleteArticleType",
+                        url: "/"+$sitio+"/settings/deleteArticleType",
                         type: "post",
                         data: {article_typeid: article_typeid}
                     }

@@ -1,13 +1,13 @@
 /**
  * Created by Jessica Lizbeth on 14/06/2017.
  */
-
+$sitio = "Yuritec_Educare"
 var $contactid;
 $(function () {
 
     //VISTA DE ADMIN
     $.ajax({
-        url: '/settings/getContact',
+        url: "/"+$sitio+"/settings/getContact",
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
@@ -84,7 +84,7 @@ $('#adminSchedule').val(schedule);
 
 function sendMessage(){
     $.ajax({
-        url: "/Contact/sendContactEmail",
+        url: "/"+$sitio+"/Contact/sendContactEmail",
         type: "post",
         data: $('#frmContact').serialize()
     }).done(
@@ -116,7 +116,7 @@ function sendMessage(){
 function updateContact(){
     $.ajax(
         {
-            url:"/settings/updateContact" ,
+            url: "/"+$sitio+"/settings/updateContact" ,
             type: "post",
             data: {
                 contactid: $contactid,

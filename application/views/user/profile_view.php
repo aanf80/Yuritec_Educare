@@ -302,7 +302,7 @@
 
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                 <?php
-                if($userdata->photo == null){ ?>
+                if($userdata->photo == null || !file_exists(base_url('assets/images/').$userdata->photo)){ ?>
                     <img src="<?php echo base_url('assets/images/profile_default.png');  ?>" class="img-responsive" width="300" height="300"/>
                     <?php
                 }
@@ -328,7 +328,7 @@
                         <hr>
                     </div>
                     <div class="col-lg-8">
-                        <h4 id="institucion"><?php echo $userdata->institute;?></h4>
+                        <label id="institucion"><?php echo $userdata->institute;?></label>
                         <hr>
                     </div>
                 </div>
@@ -339,7 +339,7 @@
                         <hr>
                     </div>
                     <div class="col-lg-8">
-                        <h4 id="email"><?php echo $userdata->email;?></h4>
+                        <label id="email"><?php echo $userdata->email;?></label>
                         <hr>
                     </div>
                 </div>
@@ -349,7 +349,7 @@
                         <hr>
                     </div>
                     <div class="col-lg-8">
-                        <h4 id="firma"><?php echo $userdata->sign;?></h4>
+                        <label id="firma"><?php echo $userdata->sign;?></label>
                         <hr>
                     </div>
                 </div>
@@ -359,7 +359,7 @@
                         <hr>
                     </div>
                     <div class="col-lg-8">
-                        <h4 id="country"><?php echo $userdata->country;?></h4>
+                        <label id="country"><?php echo $userdata->country;?></h4>
                         <hr>
                     </div>
                 </div>
@@ -368,7 +368,7 @@
                         <h4><strong>Resumen<br>biográfico</strong></h4>
                     </div>
                     <div class="col-lg-8">
-                        <h4><?php echo $userdata->bio;?></h4>
+                        <label><?php echo $userdata->bio;?></label>
                     </div>
                 </div>
             </div>

@@ -55,7 +55,7 @@ class Contact extends CI_Controller
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_port' => 465,
             'smtp_user' => 'armando.navarroflores94@gmail.com',
-            'smtp_pass' => 'Chivas1906',
+            'smtp_pass' => '********',
             'mailtype' => 'html',
             'charset' => 'utf-8',
             'wordwrap' => TRUE

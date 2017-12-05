@@ -1,6 +1,7 @@
 /**
  * Created by Concurso18 on 16/05/2017.
  */
+$sitio = "Yuritec_Educare"
 var $roleid, $userid, $registerdate, $status;
 $(function () {
 
@@ -138,7 +139,7 @@ $(function () {
 
     $('#btnEditarProfile').on('click', function () {
         $.ajax({
-            url: '/user/getUserById',
+            url: "/"+$sitio+"/user/getUserById",
             type: 'GET',
             dataType: 'json'
         }).done(function (json){
@@ -156,7 +157,7 @@ $(function () {
 
     $('#btnEditarFotoPerfil').on('click', function () {
         $.ajax({
-            url: '/user/getUserById',
+            url: "/"+$sitio+"/user/getUserById",
             type: 'GET',
             dataType: 'json'
         }).done(function (json){
@@ -214,7 +215,7 @@ function showEditPhoto(memberid) {
 function updateProfile() {
     $.ajax(
         {
-            url:"/user/updateUser" ,
+            url: "/"+$sitio+"/user/updateUser" ,
             type: "post",
             data:
                 {
@@ -247,7 +248,7 @@ function updateProfile() {
 
             if (data.code == 200) {
 
-                var url = "/home";
+                var url = "/"+$sitio+"/home";
                 $(location).attr('href',url);
 
                 $.growl.notice({message: data.msg});
@@ -272,7 +273,7 @@ function changePhoto() {
     var data = new FormData(form);
 
     $.ajax({
-        url: "/user/changeUserPhoto",
+        url: "/"+$sitio+"/user/changeUserPhoto",
         type: "post",
         data: data,
         cache: false,

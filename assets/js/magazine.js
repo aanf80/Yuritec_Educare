@@ -1,7 +1,7 @@
 /**
  * Created by Concurso18 on 23/06/2017.
  */
-
+$sitio = "Yuritec_Educare"
 $ID=0;
 $ID2=0;
 $articleid = 0;
@@ -21,7 +21,7 @@ $(function(){
     });
 
     $.ajax({
-        url: '/magazine/getMagazines',
+        url: "/"+$sitio+"/magazine/getMagazines",
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
@@ -35,7 +35,7 @@ $(function(){
 
 
     $.ajax({
-        url: '/magazine/getMagazines',
+        url: "/"+$sitio+"/magazine/getMagazines",
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
@@ -56,7 +56,7 @@ $(function(){
             $('#articleid2').html('');
 
             $.ajax({
-                url: '/magazine/getMagazineByID/'+$ID,
+                url: "/"+$sitio+"/magazine/getMagazineByID/"+$ID,
                 type: 'GET',
                 dataType: 'json'
             }).done(function (json){
@@ -79,7 +79,7 @@ $(function(){
         else{
             $('#articleid3').html('<option value = 0>Seleccione un artículo</option>');
             $.ajax({
-                url: '/article/getArticlesByVolume/'+$ID2,
+                url: "/"+$sitio+"/article/getArticlesByVolume/"+$ID2,
                 type: 'GET',
                 dataType: 'json'
             }).done(function (json){
@@ -99,7 +99,7 @@ $(function(){
     $('#articleid3').on('change', function() {
         cleanContent();
         $.ajax({
-            url: '/article/getArticlesByID/'+this.value,
+            url: "/"+$sitio+"/article/getArticlesByID/"+this.value,
             type: 'GET',
             dataType: 'json'
         }).done(function (json){
@@ -114,7 +114,7 @@ $(function(){
     });
 
     $.ajax({
-        url: '/magazine/getMagazines',
+        url: "/"+$sitio+"/magazine/getMagazines",
         type: 'GET',
         dataType: 'json'
     }).done(function (json){
@@ -238,7 +238,7 @@ $(function(){
             url:"http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax:{
-            url:"/article/getArticlesByStatus/3",
+            url: "/"+$sitio+"/article/getArticlesByStatus/3",
             dataSrc:function(json){
 
                 return json['msg'];
@@ -270,7 +270,7 @@ $(function(){
 
     $('#btnVerArticulos').on('click', function () {
         $.ajax({
-            url: '/article/getArticlesByVolume/'+$ID,
+            url: "/"+$sitio+"/article/getArticlesByVolume/"+$ID,
             type: 'GET',
             dataType: 'json'
         }).done(function (json){
@@ -333,7 +333,16 @@ function showMagazine(volume,number,period,year,cover,status) {
     $('#period2').val(period);
     $('#year2').val(year);
     $('#status2').val(status);
-    $('#imgCover').attr("src","/assets/images/"+cover);
+   
+   
+    $.get("../assets/images/"+cover)
+    .done(function() { 
+        $('#imgCover').attr("src","../assets/images/"+cover);
+
+    }).fail(function() { 
+        $('#imgCover').attr("src","../assets/images/no_disponible.png");
+    })
+   
 }
 
 function showCoverPhoto(magazineid){
@@ -369,7 +378,7 @@ function cleanEditMagazine() {
     $('#number2').val('');
     $('#period2').val(0);
     $('#year2').val('');
-    $('#imgCover').attr("src","");
+    $('#imgCover').attr("src","../assets/images/no_disponible.png");
 }
 
 function cleanContent() {
@@ -381,7 +390,7 @@ function newMagazine(){
     var data = new FormData(form);
 
     $.ajax({
-        url: "/magazine/newMagazine",
+        url: "/"+$sitio+"/magazine/newMagazine",
         type: "post",
         data: data,
         cache: false,
@@ -415,7 +424,7 @@ function updateContent(content,articleid){
 
     $.ajax(
         {
-            url: "/article/updateContent",
+            url: "/"+$sitio+"/article/updateContent",
             type: "post",
             data: {
                 articleid: articleid,
@@ -450,7 +459,7 @@ function updateMagazine(){
     else{
         $.ajax(
             {
-                url: "/magazine/updateMagazine",
+                url: "/"+$sitio+"/magazine/updateMagazine",
                 type: "post",
                 data: $('#frmEditMagazine').serialize()
             }
@@ -459,7 +468,7 @@ function updateMagazine(){
 
                 if (data.code == 200) {
                     $.growl.notice({message: data.msg});
-                    location.reload();
+                   
                 } else {
                     $.growl.error({message: data.msg});
                 }
@@ -479,7 +488,7 @@ function changePhoto() {
     var data = new FormData(form);
 
     $.ajax({
-        url: "/magazine/changeCoverPhoto",
+        url: "/"+$sitio+"/magazine/changeCoverPhoto",
         type: "post",
         data: data,
         cache: false,
@@ -511,7 +520,7 @@ function changePDF() {
     var data = new FormData(form);
 
     $.ajax({
-        url: "/magazine/changePDF",
+        url: "/"+$sitio+"/magazine/changePDF",
         type: "post",
         data: data,
         cache: false,
@@ -556,7 +565,7 @@ function deleteMagazine(magazineid){
 
                     $.ajax(
                         {
-                            url: "/magazine/deleteMagazine",
+                            url: "/"+$sitio+"/magazine/deleteMagazine",
                             type: "post",
                             data: {magazineid: magazineid}
                         }
@@ -609,7 +618,7 @@ function setMagazine(articleid) {
 
                 $.ajax(
                     {
-                        url: "/article/setMagazine",
+                        url: "/"+$sitio+"/article/setMagazine",
                         type: "post",
                         data: {articleid: articleid, magazineid: $('#magazineid').val(), status: status}
                     }
@@ -655,7 +664,7 @@ function unsetMagazine() {
 
                 $.ajax(
                     {
-                        url: "/article/unsetMagazine",
+                        url: "/"+$sitio+"/article/unsetMagazine",
                         type: "post",
                         data: {articleid: $('#articleid2').val() , status: status}
                     }
