@@ -41,6 +41,15 @@ class Categories extends CI_Model{
         $query=$this->db->get();
         return $query->result();
     }
+    public function getCategoryByID($id) //C
+    {
+        $this->db->from($this->table);
+        $this->db->where('categoryid', $id);
+        $query = $this->db->get();
+
+
+        return $query->result();
+    }
 
     public function updateCategory($where,$data){
         $this->db->update($this->table, $data, $where);

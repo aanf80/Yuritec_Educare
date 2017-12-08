@@ -32,7 +32,7 @@
 
 
     <script src="<?php echo base_url('assets/js/plugins/bootstrap.min.js'); ?>"></script>
-    <script src="//cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script src="//cloud.tinymce.com/stable/tinymce.min.js?apiKey=wd5ais8s28oo78v3hm9ywtrmyg52wlht7rl6egacitp5lfzu"></script>
     <script src="<?php echo base_url('assets/js/plugins/jqBootstrapValidation.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/plugins/Moment.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/plugins/sweetalert.min.js'); ?>"></script>

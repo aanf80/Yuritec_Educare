@@ -10,7 +10,16 @@
         <div class="tech-no">
             <!-- technology-top -->
             <br/>
-           <?php  echo "<h2>Volumen " . $volume . " Número " . $number."</h2>";?>
+           <?php  
+           switch($tipo){
+                case 0: 
+                  echo "<h2>Volumen " . $volume . " Número " . $number."</h2>";
+                  break;
+                case 1:
+                  echo "<h2>".$category."</h2>";
+                  break;
+           }
+          ?>
             <br/>
             <?php
             if($articles != false){

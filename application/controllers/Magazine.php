@@ -112,7 +112,7 @@ class Magazine extends CI_Controller
 
             $this->load->model('Categories');
             $data['categories'] = $this->Categories->getCategories();
-
+            $data['tipo']=0;
             foreach ($data['magazines'] as $magazine){
                 if ($magazine->magazineid == $data['articles'][0]->magazineid){
                     $data['volume'] = $this->Model_Magazine->getMagazineByID($magazine->magazineid)[0]->volume;
@@ -127,6 +127,8 @@ class Magazine extends CI_Controller
         $this->load->view('footer');
 
     }
+
+    
     public function articlesByCategory($id)
     {
         $this->load->model('Model_Article');
@@ -170,14 +172,15 @@ class Magazine extends CI_Controller
 
             foreach ($data['magazines'] as $magazine){
                 if ($magazine->magazineid == $data['articles'][0]->magazineid){
-                    $data['volume'] = $this->Model_Magazine->getMagazineByID($magazine->magazineid)[0]->volume;
-                    $data['number'] = $this->Model_Magazine->getMagazineByID($magazine->magazineid)[0]->number;
+                  
                     $data['magazineid'] = $this->Model_Magazine->getMagazineByID($magazine->magazineid)[0]->magazineid;
                 }
             }
         }
         $this->load->model('Categories');
         $data['categories'] = $this->Categories->getCategories();
+        $data['category'] = $this->Categories->getCategoryByID($id)[0]->categoryname;
+        $data['tipo']=1;
 
         $this->load->view('header');
         $this->load->view('articles/articlemenu_view', $data);

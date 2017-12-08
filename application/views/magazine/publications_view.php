@@ -34,7 +34,7 @@
                                 <div class="tch-img">
                                     <div align="center">
                                         <a href="<?php echo site_url('/magazine/articles/' . $magazine->magazineid) ?>">
-                                            <img class="img-responsive" src="<?php echo "/Yuritec_Educare/assets/images/".$magazine->cover?>" width="400" height=100" alt="" >
+                                            <img class="img-responsive" src="<?php echo base_url('assets/images/'.$magazine->cover)?>" width="400" height="100" alt="" >
                                         </a>
                                     </div>
 

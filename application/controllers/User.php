@@ -424,7 +424,7 @@ class User extends CI_Controller
         'smtp_host' => 'ssl://smtp.googlemail.com',
         'smtp_port' => 465,
         'smtp_user' => 'armando.navarroflores94@gmail.com',
-        'smtp_pass' => '*****',
+        'smtp_pass' => 'Chivascampeon.12',
         'mailtype' => 'html',
         'charset' => 'utf-8',
         'wordwrap' => TRUE
@@ -461,23 +461,13 @@ class User extends CI_Controller
 
     public function register()
     {
-        $carpeta = 'assets/images';
-        if (!file_exists($carpeta)) {
-            mkdir($carpeta, 0777, true);
-        }
-        $config['upload_path'] = 'assets/images';
-        $config['allowed_types'] = 'gif|jpg|png';
-
-
-        $this->load->library('upload', $config);
+  
+      
         $hoy = date("Y-m-d");
 
         $password = md5((string)$this->input->post('password'));
 
-        if (!$this->upload->do_upload('photo')) {
-            echo $this->upload->display_errors();
-        } else {
-            $datos = array('upload_data' => $this->upload->data());
+      
             $this->load->model('Model_User');
 
             $data = array(
@@ -486,16 +476,14 @@ class User extends CI_Controller
                 'maternalsurname' => $this->input->post('maternalsurname'),
                 'password' => $password,
                 'email' => $this->input->post('email'),
-                'position' => $this->input->post('position'),
                 'institute' => $this->input->post('institute'),
                 'gender' => $this->input->post('gender'),
                 'initials' => $this->input->post('initials'),
                 'sign' => $this->input->post('sign'),
-                'photo' => $datos['upload_data']['file_name'],
                 'roleid' => 2,
                 'status' => 'P',
                 'registerdate' => $hoy,
-                'address' => $this->input->post('address'),
+                'street' => $this->input->post('address'),
                 'bio' => $this->input->post('bio'),
                 'country' => $this->input->post('country'),
                 'neighborhood' => $this->input->post('neighborhood'),
@@ -551,7 +539,7 @@ class User extends CI_Controller
             header("Cache-Control: no-store");
             echo json_encode($jsondata, JSON_FORCE_OBJECT);
 
-        }
+        
 
     }
 
@@ -605,7 +593,7 @@ class User extends CI_Controller
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_port' => 465,
             'smtp_user' => 'armando.navarroflores94@gmail.com',
-            'smtp_pass' => 'Chivas1906',
+            'smtp_pass' => 'Chivascampeon.12',
             'mailtype' => 'html',
             'charset' => 'utf-8',
             'wordwrap' => TRUE
