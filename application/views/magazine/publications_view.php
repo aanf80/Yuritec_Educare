@@ -19,7 +19,7 @@
             <div class="col-md-8">
                 <div class="business">
                 <!-- First Blog Post -->
-                    <h2>Publicaciones</h2>
+                    <h2><?php echo $pub_title; ?></h2>
                     <hr>
                     <?php
                     if($magazines != false){

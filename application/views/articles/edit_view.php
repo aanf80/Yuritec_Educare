@@ -107,11 +107,12 @@
 
             <h3>Coautores**</h3>
 
-            <input type="text" class="form-control" name="palabrasclave" id="palabrasclave">
+            <input type="text" class="form-control" name="coautors" id="coautors">
             <div class="row">&nbsp;</div>
 
             <p>**Nota: Este campo se llena únicamente si la elaboración del artículo fue colaborativa</p>
-            <p>Ingresar el nombre de hasta un máximo de 3 coautores separados por coma</p>
+            <p>Ingresar el nombre y apellido de hasta un máximo de 3 coautores separados por coma</p>
+            <p>Ej. Juan Pérez, María González, Pedro Jímenez</p>
 
             <!--<h3>Problemas a resolver</h3>
             <textarea name="problems" id="Problems"></textarea>

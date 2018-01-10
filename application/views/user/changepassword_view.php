@@ -21,6 +21,7 @@
                 <label class="control-label">Confirme nueva contraseña</label>
                 <input type="password" class="form-control" id="confpassword" name="confpassword">
                 <div class="help-block"></div>
+                <input  type="hidden" class="form-control" id="key" name="key" value="<?php echo $key ?>" >
 
             </div> <!-- tamaño de pantalla-->
 
@@ -29,7 +30,7 @@
         <div class="row">&nbsp;</div>
         <div class="row">&nbsp;</div>
 
-        <button type="submit"  class="btn btn-warning"><i class="glyphicon glyphicon-check"></i> Aceptar</button>
+        <button type="submit"  class="btn btn-warning"><i class="glyphicon glyphicon-check"></i>Guardar</button>
     </div>
         </form>
    

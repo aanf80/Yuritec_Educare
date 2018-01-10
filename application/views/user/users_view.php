@@ -291,7 +291,6 @@
                     <th>Contraseña
                     </th>
                     <th>Firma</th>
-                    <th>Posición</th>
                     <th>Instituto</th>
                     <th>Rol de usuario</th>
                     <th>Operaciones</th>

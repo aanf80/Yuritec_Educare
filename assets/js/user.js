@@ -1,14 +1,14 @@
 /**
  * Created by Armando_Navarro on 11/04/2017.
  */
-$sitio = "Yuritec_Educare"
+$sitio = "/Yuritec_Educare"
 var info = [];
 $(function () {
 
     $('#roleid').trigger('click');
 
     $.ajax({
-        url: "/"+$sitio+"/settings/getRoles",
+        url: $sitio+"/settings/getRoles",
         type: 'GET',
         dataType: 'json'
     }).done(function (json) {
@@ -21,7 +21,7 @@ $(function () {
     });
 
     $.ajax({
-        url: "/"+$sitio+"/settings/getRoles",
+        url: $sitio+"/settings/getRoles",
         type: 'GET',
         dataType: 'json'
     }).done(function (json) {
@@ -266,7 +266,7 @@ $(function () {
             }
         },
         submitHandler: function (form) {
-            Changepassword();
+            changepassword();
             return false;
         }
     });
@@ -331,7 +331,7 @@ $(function () {
             url: "http://cdn.datatables.net/plug-ins/1.10.12/i18n/Spanish.json"
         },
         ajax: {
-            url: "/"+$sitio+"/user/getUsers",
+            url: $sitio+"/user/getUsers",
             dataSrc: function (json) {
 
                 return json['msg'];
@@ -384,9 +384,6 @@ $(function () {
                 data: "sign"
             },
             {
-                data: "position"
-            },
-            {
                 data: "institute"
             },
             {
@@ -430,7 +427,7 @@ $(function () {
 
 function newUser() {
     $.ajax({
-        url: "/"+$sitio+"/user/newUser",
+        url: $sitio+"/user/newUser",
         type: "post",
         data: $('#frmUser').serialize()
     }).done(
@@ -510,7 +507,7 @@ function forgottenPassword() {
     
         $.ajax(
             {
-                url: "/"+$sitio+"/user/password_request",
+                url: $sitio+"/user/password_request",
                 type: "post",
                 data: {
                     email : $('#email').val()
@@ -520,9 +517,20 @@ function forgottenPassword() {
             function (data) {
     
                 if (data.code == 200) {
-                    $.growl.notice({message: data.msg});
-                    $('#tbUsers').dataTable().api().ajax.reload();
-                    $('#modalUser').modal("toggle");
+                    //title: 'Solicitud Exitosa',
+                    //text: "Se ha enviado por correo el enlace para realizar el restablecimiento de contraseña",
+                    swal(
+                        {
+                            title: 'Solicitud Exitosa',
+                            text: "Se ha enviado por correo el enlace para restablecer contraseña",
+                            type: "success",
+                            confirmButtonColor: "#f58220", confirmButtonText: "Aceptar",                           
+                        }, function (isConfirm) {
+                            if (isConfirm) {
+                                var url = "/login";
+                                $(location).attr('href',url);                        
+                            } 
+                        });
                 } else {
                     $.growl.error({message: data.msg});
                 }
@@ -534,20 +542,24 @@ function forgottenPassword() {
         );
     }
 
-    function Changepassword(){
+    function changepassword(){
+      
         $.ajax(
             {
-                url: "/"+$sitio+"/user/changePassword",
+                url: $sitio+"/user/changePassword",
                 type: "post",
                 data: {
-                    password : $('#password').val()
-                }
+                    password : $('#password').val(),
+                    key: $('#key').val()
+               }
             }
         ).done(
             function (data) {
     
                 if (data.code == 200) {
-                    $.growl.notice({message: data.msg});
+                    var url = "/home";
+                    $(location).attr('href',url);
+
                 } else {
                     $.growl.error({message: data.msg});
                 }
@@ -557,13 +569,15 @@ function forgottenPassword() {
                 $.growl.error({message: "El servidor no está disponible"});
             }
         );
+      
+        
     }
 
 function updateUser() {
 
     $.ajax(
         {
-            url: "/"+$sitio+"/user/updateUser",
+            url: $sitio+"/user/updateUser",
             type: "post",
             data: $('#frmEditUser').serialize()
         }
@@ -591,7 +605,7 @@ function changePhoto() {
     var data = new FormData(form);
 
     $.ajax({
-        url: "/"+$sitio+"/user/changeUserPhoto",
+        url: $sitio+"/user/changeUserPhoto",
         type: "post",
         data: data,
         cache: false,
@@ -632,7 +646,7 @@ function deleteUser(userid) {
 
                 $.ajax(
                     {
-                        url: "/"+$sitio+"/user/deleteUser",
+                        url: $sitio+"/user/deleteUser",
                         type: "post",
                         data: {userid: userid}
                     }

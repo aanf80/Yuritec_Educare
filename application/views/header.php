@@ -1,4 +1,29 @@
+<?php  
 
+if ($this->session->userdata('site_lang')=="spanish" ||$this->session->userdata('site_lang')==null ){
+        $about = "Acerca de";
+        $ed_committee = "Comité Editorial";
+        $contact = "Contacto";
+        $magazine = "Ejemplares";
+        $login = "Iniciar Sesión";
+        $logout = "Cerrar Sesión";
+        $settings = "Configuraciones";
+        $profile = "Perfil";
+        
+}else{
+    $about = "About";
+    $ed_committee = "Editorial Committee";
+    $contact = "Contact";
+    $magazine = "Magazines";
+    $login = "Login";
+    $logout = "Logout";
+    $settings = "Settings";
+    $profile = "Profile";
+}
+
+
+
+?>
 <html>
 <head>
     <meta charset="utf-8">
@@ -32,7 +57,6 @@
 
 
     <script src="<?php echo base_url('assets/js/plugins/bootstrap.min.js'); ?>"></script>
-    <script src="//cloud.tinymce.com/stable/tinymce.min.js?apiKey=wd5ais8s28oo78v3hm9ywtrmyg52wlht7rl6egacitp5lfzu"></script>
     <script src="<?php echo base_url('assets/js/plugins/jqBootstrapValidation.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/plugins/Moment.js'); ?>"></script>
     <script src="<?php echo base_url('assets/js/plugins/sweetalert.min.js'); ?>"></script>
@@ -47,10 +71,18 @@
     <div class="header-top">
         <div class="container">
             <div class="logo">
+                <ul class="list-inline">
+                    <li> <a href='<?php echo base_url(); ?>changelanguage/switchLanguage/spanish'><img src="<?php echo base_url('assets/img/mex.png'); ?>" class="img-responsive" alt=""/></a></li>
+                    <li> <a href='<?php echo base_url(); ?>changelanguage/switchLanguage/english'><img src="<?php echo base_url('assets/img/usa.png'); ?>" class="img-responsive" alt=""/></a></li>
+       
+                </ul>
                 <a href="<?php echo base_url('home'); ?>"><img src="<?php echo base_url('assets/img/header3.jpg'); ?>" class="img-responsive" alt=""/></a>
+              
             </div>
+  
             <div class="clearfix"></div>
         </div>
+
     </div>
 
     <!--head-bottom-->
@@ -69,28 +101,30 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>
+
                         <a href="<?php echo site_url('/home') ?>"><span class="glyphicon glyphicon-home"></span></a>
                     </li>
                     <li>
-                        <?php echo anchor('/about', 'Acerca de', 'class="link-class"') ?>
+                        <?php echo anchor('/about', $about, 'class="link-class"') ?>
                     </li>
                     <li>
-                        <?php echo anchor('/committee', 'Comité Editorial', 'class="link-class"') ?>
+                        <?php echo anchor('/committee', $ed_committee, 'class="link-class"') ?>
                     </li>
                     <li>
-                        <?php echo anchor('/contact', 'Contacto', 'class="link-class"') ?>
+                        <?php echo anchor('/contact', $contact, 'class="link-class"') ?>
                     </li>
-
+                    
                         <?php
 
                         if($this->session->userdata('roleid') != null){
 
-                        ?><li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuraciones<b
+                        ?>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $settings; ?><b
                                         class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <?php echo anchor('/user/profile', 'Perfil', 'class="link-class"') ?>
+                                <?php echo anchor('/user/profile', $profile, 'class="link-class"') ?>
                             </li>
 
                     <?php
@@ -140,7 +174,7 @@
                     }
                     ?>
                     <li>
-                        <?php echo anchor('/magazine', 'Ejemplares', 'class="link-class"') ?>
+                        <?php echo anchor('/magazine', $magazine, 'class="link-class"') ?>
                     </li>
                     <?php
 
@@ -148,14 +182,14 @@
 
                         ?>
                         <li>
-                            <a href="<?php echo site_url('/login') ?>"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesión</a>
+                            <a href="<?php echo site_url('/login') ?>"><span class="glyphicon glyphicon-log-in"></span> <?php echo $login ?></a>
                         </li>
                         <?php
                     }
                     else {
                         ?>
                         <li>
-                            <a href="<?php echo site_url('/login/sign_out') ?>"><span class="glyphicon glyphicon-log-out"></span> Cerrar Sesión</a>
+                            <a href="<?php echo site_url('/login/sign_out') ?>"><span class="glyphicon glyphicon-log-out"></span> <?php echo $logout ?></a>
                         </li>
                         <?php
                     }

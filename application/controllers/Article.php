@@ -88,11 +88,10 @@ class Article extends CI_Controller {
                 'articledate' => $hoy,
                 'status' => 'Enviado',
                 'resumen' => $this->input->post('resumen'),
-                'abstract' => $this->input->post('abstract'),
                 'palabrasclave' => $this->input->post('palabrasclave'),
-                'keywords' => $this->input->post('keywords'),
+                'coautors' => $this->input->post('coautors'),
                 'userid' => $this->session->userdata('userid'),
-                'magazineid' => 0,
+                'magazineid' => null,
                 'categoryid' => $this->input->post('categoryid'),
                 'file' => $datos['upload_data']['file_name']
             );

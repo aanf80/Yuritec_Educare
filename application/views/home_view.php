@@ -1,6 +1,9 @@
 
 
 <div class="container">
+   
+       
+    
     <!-- Marketing Icons Section -->
     <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
@@ -16,21 +19,21 @@
                 <div class="fill"
                      style="background-image:url('https://scontent.ftpq1-1.fna.fbcdn.net/v/t1.0-9/16142280_1834230760148774_1762039721905079297_n.jpg?oh=dfd568124354fd39183015bbcc441be6&oe=5AD560AE');"></div>
                 <div class="carousel-caption">
-                    <h2>¡Bienvenido a Yurítec Educare!</h2>
+                    <h2><?php echo $greeting ?></h2>
                 </div>
             </div>
             <div class="item">
                 <div class="fill"
                      style="background-image:url('https://scontent.ftpq1-1.fna.fbcdn.net/v/t1.0-9/10609604_1697472613824590_1400521813064864168_n.jpg?oh=12c7cde9ef9f6c76fff040deb7fc84de&oe=5A9BB35A');"></div>
                 <div class="carousel-caption">
-                    <h2>¡Bienvenido a Yurítec Educare!</h2>
+                         <h2><?php echo $greeting ?></h2>
                 </div>
             </div>
             <div class="item">
                 <div class="fill"
                      style="background-image:url('https://scontent.ftpq1-1.fna.fbcdn.net/v/t31.0-8/11950157_1637255886512930_8385275946316650418_o.jpg?oh=081fa552c57613ea680cb5b37988f995&oe=5A50CFAE');"></div>
                 <div class="carousel-caption">
-                    <h2>¡Bienvenido a Yurítec Educare!</h2>
+                          <h2><?php echo $greeting ?></h2>
                 </div>
             </div>
 
@@ -49,7 +52,7 @@
 
     <div class="business">
         <div class="row">
-            <h3>Sitios de Interés</h3>
+            <h3><?php echo $sites ?></h3>
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">

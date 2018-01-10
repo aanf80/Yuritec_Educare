@@ -16,13 +16,21 @@ class About extends CI_Controller {
     }
     public function index()
     {
+        $data["about_title"] = $this->lang->line("about_title");
+        $data["about_obj"] = $this->lang->line("about_obj");
+        $data["about_op"] = $this->lang->line("about_op");
+        $data["about_ep"] = $this->lang->line("about_ep");
         $this->load->view('header');
-        $this->load->view('about_view');
+        $this->load->view('about_view',$data);
         $this->load->view('footer');
     }
 
-    public function terms()
+    public function policies()
     {
+        $data["about_title"] = $this->lang->line("about_title");
+        $data["about_obj"] = $this->lang->line("about_obj");
+        $data["about_op"] = $this->lang->line("about_op");
+        $data["about_ep"] = $this->lang->line("about_ep");
         $this->load->model('Model_Terms');
         $data['terms'] = $this->Model_Terms->getTermsByID(1);
         $this->load->view('header');
@@ -31,6 +39,10 @@ class About extends CI_Controller {
     }
     public function evaluation_terms()
     {
+        $data["about_title"] = $this->lang->line("about_title");
+        $data["about_obj"] = $this->lang->line("about_obj");
+        $data["about_op"] = $this->lang->line("about_op");
+        $data["about_ep"] = $this->lang->line("about_ep");
         $this->load->model('Model_Terms');
         $data['terms'] = $this->Model_Terms->getTermsByID(2);
         $this->load->view('header');
@@ -39,6 +51,10 @@ class About extends CI_Controller {
     }
     public function objectives()
     {
+        $data["about_title"] = $this->lang->line("about_title");
+        $data["about_obj"] = $this->lang->line("about_obj");
+        $data["about_op"] = $this->lang->line("about_op");
+        $data["about_ep"] = $this->lang->line("about_ep");
        $this->load->model('Model_Objectives');
        $data['objectives'] = $this->Model_Objectives->getObjectives();
         $this->load->view('header');

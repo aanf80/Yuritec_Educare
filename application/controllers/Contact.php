@@ -20,6 +20,16 @@ class Contact extends CI_Controller
     {
         $this->load->model('Model_Contact');
         $data['contact'] = $this->Model_Contact->getContact();
+        
+        $data["contact_title"] = $this->lang->line("contact_title");
+        $data["contact_msgTitle"] = $this->lang->line("contact_msgTitle");
+        $data["contact_name"] = $this->lang->line("contact_name");
+        $data["contact_phone"] = $this->lang->line("contact_phone");
+        $data["contact_email"] = $this->lang->line("contact_email");
+        $data["contact_msg"] = $this->lang->line("contact_msg");
+        $data["contact_sendMsg"] = $this->lang->line("contact_sendMsg");
+        $data["contact_detail"] = $this->lang->line("contact_detail");
+
         $this->load->view('header');
         $this->load->view('contact_view',$data);
         $this->load->view('footer');

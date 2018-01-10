@@ -27,7 +27,7 @@ class Magazine extends CI_Controller
         $this->load->model('Model_ArticleType');
         $data['articletypes'] = $this->Model_ArticleType->getArticleTypes();
 
-
+        $data["pub_title"] = $this->lang->line("pub_title");
 
         $this->load->model('Model_Magazine');
 //se carga la biblioteca de pagincacion

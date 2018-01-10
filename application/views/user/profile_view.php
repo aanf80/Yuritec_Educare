@@ -302,7 +302,7 @@
 
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                 <?php
-                if($userdata->photo == null || !file_exists(base_url('assets/images/').$userdata->photo)){ ?>
+                if($userdata->photo == null || !file_exists(FCPATH.'assets/images/'.$userdata->photo)){ ?>
                     <img src="<?php echo base_url('assets/images/profile_default.png');  ?>" class="img-responsive" width="300" height="300"/>
                     <?php
                 }
@@ -311,6 +311,7 @@
                     <img src="<?php echo base_url('assets/images/').$userdata->photo;  ?>" class="img-responsive" width="300" height="300"/>
                     <?php
                 }
+               
                 ?>
                 <br>
                 <br>

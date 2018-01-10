@@ -9,9 +9,9 @@
 ?>
 <script type="text/javascript" src="<?php echo base_url('assets/js/login.js'); ?>"></script>
 <div class="container">
-    <h3 class="page-header">Iniciar sesión</h3>
-
-    <!-- Content Row -->
+    <div class="business">
+            <h3 class="page-header">Iniciar sesión</h3>
+            <!-- Content Row -->
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4 well" style="padding-bottom: 40px">
             <h1 class="text-center" style="color: #555; font-size: 20px; font-weight: 400">Inicie sesión para continuar</h1>
@@ -49,3 +49,7 @@
     </div>
     <hr>
 
+    </div>
+
+
+    
