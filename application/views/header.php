@@ -9,6 +9,7 @@ if ($this->session->userdata('site_lang')=="spanish" ||$this->session->userdata(
         $logout = "Cerrar Sesión";
         $settings = "Configuraciones";
         $profile = "Perfil";
+        $language = "Seleccione Idioma";
         
 }else{
     $about = "About";
@@ -19,6 +20,7 @@ if ($this->session->userdata('site_lang')=="spanish" ||$this->session->userdata(
     $logout = "Logout";
     $settings = "Settings";
     $profile = "Profile";
+    $language = "Select a language";
 }
 
 
@@ -72,6 +74,7 @@ if ($this->session->userdata('site_lang')=="spanish" ||$this->session->userdata(
         <div class="container">
             <div class="logo">
                 <ul class="list-inline">
+                <li><p><strong><?php echo $language.": "; ?></strong></p></li>
                     <li> <a href='<?php echo base_url(); ?>changelanguage/switchLanguage/spanish'><img src="<?php echo base_url('assets/img/mex.png'); ?>" class="img-responsive" alt=""/></a></li>
                     <li> <a href='<?php echo base_url(); ?>changelanguage/switchLanguage/english'><img src="<?php echo base_url('assets/img/usa.png'); ?>" class="img-responsive" alt=""/></a></li>
        
@@ -161,13 +164,9 @@ if ($this->session->userdata('site_lang')=="spanish" ||$this->session->userdata(
                                 <li>
                                     <?php echo anchor('/user/users_new', 'Usuarios', 'class="link-class"') ?>
                                 </li>
-
-
-
                         <?php
                     }
                     ?>
-
                         </ul>
                     </li>
                     <?php

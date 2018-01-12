@@ -16,9 +16,9 @@ class LanguageLoader{
 
         $site_lang = $ci->session->userdata('site_lang');
         if($site_lang){
-            $ci->lang->load(array('about','home','contact','magazine'),$site_lang);        
+            $ci->lang->load(array('about','committee','home','contact','login','magazine','profile'),$site_lang);        
         } else{
-            $ci->lang->load(array('about','home','contact','magazine'),'spanish');
+            $ci->lang->load(array('about','committee','home','contact','login','magazine','profile'),'spanish');
         }
             
     }

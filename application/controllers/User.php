@@ -22,14 +22,52 @@ class User extends CI_Controller
 
     public function sign_up()
     {
+        $data["profile_email"] = $this->lang->line("profile_email");
+        $data["profile_institution"] = $this->lang->line("profile_institution");
+        $data["profile_sign"] = $this->lang->line("profile_sign");
+        $data["profile_country"] = $this->lang->line("profile_country");
+        $data["profile_bio"] = $this->lang->line("profile_bio");
+        $data["profile_edit"] = $this->lang->line("profile_edit");
+        $data["profile_photo"] = $this->lang->line("profile_photo");
+        $data["profile_pwd"] = $this->lang->line("profile_pwd");
+        $data["profile_cpwd"] = $this->lang->line("profile_cpwd");
+        $data["profile_name"] = $this->lang->line("profile_name");
+        $data["profile_lname"] = $this->lang->line("profile_lname");
+        $data["profile_mname"] = $this->lang->line("profile_mname");
+        $data["profile_ini"] = $this->lang->line("profile_ini");
+        $data["profile_gender"] = $this->lang->line("profile_gender");
+        $data["profile_street"] = $this->lang->line("profile_street");
+        $data["profile_neighborhood"] = $this->lang->line("profile_neighborhood");
+        $data["profile_streetnumber"] = $this->lang->line("profile_streetnumber");
+        $data["profile_zipcode"] = $this->lang->line("profile_zipcode");
+        $data["profile_city"] = $this->lang->line("profile_city");
+        $data["profile_state"] = $this->lang->line("profile_state");
+        $data["profile_male"] = $this->lang->line("profile_male");
+        $data["profile_female"] = $this->lang->line("profile_female");
+        $data["profile_save"] = $this->lang->line("profile_save");
+        $data["profile_address"] = $this->lang->line("profile_address");
+        $data["login_signUp"] = $this->lang->line("login_signUp");
+
+        $data["profile_mex"] = $this->lang->line("profile_mex");
+        $data["profile_usa"] = $this->lang->line("profile_usa");
+        $data["profile_spa"] = $this->lang->line("profile_spa");
+        $data["profile_arg"] = $this->lang->line("profile_arg");
+        $data["profile_col"] = $this->lang->line("profile_col");
+        $data["profile_uk"] = $this->lang->line("profile_uk");
+
         $this->load->view('header');
-        $this->load->view('user/signup_view');
+        $this->load->view('user/signup_view',$data);
         $this->load->view('footer');
     }
     public function forgotten_password()
     {
+
+        $data["login_forgot"] = $this->lang->line("login_forgot");
+        $data["login_forgotMsg"] = $this->lang->line("login_forgotMsg");
+        $data["login_send"] = $this->lang->line("login_send");
+
         $this->load->view('header');
-        $this->load->view('user/forgottenpwd_view');
+        $this->load->view('user/forgottenpwd_view',$data);
         $this->load->view('footer');
     }
     public function change_password($key)
@@ -606,6 +644,37 @@ class User extends CI_Controller
     public
     function profile()
     {
+        $data["profile_title"] = $this->lang->line("profile_title");
+        
+        $data["profile_myprofile"] = $this->lang->line("profile_myprofile");
+        $data["profile_myArt"] = $this->lang->line("profile_myArt");
+        $data["profile_newArt"] = $this->lang->line("profile_newArt");
+
+
+        $data["profile_email"] = $this->lang->line("profile_email");
+        $data["profile_institution"] = $this->lang->line("profile_institution");
+        $data["profile_sign"] = $this->lang->line("profile_sign");
+        $data["profile_country"] = $this->lang->line("profile_country");
+        $data["profile_bio"] = $this->lang->line("profile_bio");
+        $data["profile_edit"] = $this->lang->line("profile_edit");
+        $data["profile_photo"] = $this->lang->line("profile_photo");
+        $data["profile_pwd"] = $this->lang->line("profile_pwd");
+        $data["profile_cpwd"] = $this->lang->line("profile_cpwd");
+        $data["profile_name"] = $this->lang->line("profile_name");
+        $data["profile_lname"] = $this->lang->line("profile_lname");
+        $data["profile_mname"] = $this->lang->line("profile_mname");
+        $data["profile_ini"] = $this->lang->line("profile_ini");
+        $data["profile_gender"] = $this->lang->line("profile_gender");
+        $data["profile_street"] = $this->lang->line("profile_street");
+        $data["profile_neighborhood"] = $this->lang->line("profile_neighborhood");
+        $data["profile_streetnumber"] = $this->lang->line("profile_streetnumber");
+        $data["profile_zipcode"] = $this->lang->line("profile_zipcode");
+        $data["profile_city"] = $this->lang->line("profile_city");
+        $data["profile_state"] = $this->lang->line("profile_state");
+        $data["profile_male"] = $this->lang->line("profile_male");
+        $data["profile_female"] = $this->lang->line("profile_female");
+        $data["profile_save"] = $this->lang->line("profile_save");
+       
         $userid = $this->session->userdata('userid');
         $this->load->model('Model_User');
         $data['user'] = $this->Model_User->getUserByID($userid);

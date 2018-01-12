@@ -14,7 +14,7 @@
     <div class="business">
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="page-header">Comité Editorial</h2>
+                <h2 class="page-header"><?php echo $committee_title;?></h2>
             </div>
             <?php
             //if($magazines != false){

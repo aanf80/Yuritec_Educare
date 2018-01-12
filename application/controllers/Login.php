@@ -16,8 +16,18 @@ class Login extends CI_Controller {
     }
     public function index()
     {
+        $data["login_title"] = $this->lang->line("login_title");
+        $data["login_msg"] = $this->lang->line("login_msg");
+        $data["login_pwd"] = $this->lang->line("login_pwd");
+        $data["login_email"] = $this->lang->line("login_email");
+        $data["login_signIn"] = $this->lang->line("login_signIn");
+        $data["login_remember"] = $this->lang->line("login_title");
+        $data["login_signUp"] = $this->lang->line("login_signUp");
+        $data["login_remember"] = $this->lang->line("login_remember");       
+        $data["login_forgot"] = $this->lang->line("login_forgot");
+               
         $this->load->view('header');
-        $this->load->view('login_view');
+        $this->load->view('login_view',$data);
         $this->load->view('footer');
     }
 

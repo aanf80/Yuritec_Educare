@@ -16,6 +16,7 @@ class Committee extends CI_Controller
 
     public function index()
     {
+        $data["committee_title"] = $this->lang->line("committee_title");
         $this->load->model('Model_Committee');
         $data['member'] = $this->Model_Committee->getMembers();
         $this->load->view('header');
